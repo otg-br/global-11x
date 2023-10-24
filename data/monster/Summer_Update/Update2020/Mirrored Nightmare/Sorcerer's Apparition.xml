@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Sorcerer's Apparition" nameDescription="a Sorcerer's Apparition" race="blood" experience="22000" speed="700">
+	<health now="25000" max="25000" />
+	<look type="141" head="95" body="114" legs="108" feet="95" corpse="3065" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag staticattack="90" />
+		<flag targetdistance="1" />
+		<flag runonhealth="10" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-250" />
+		<attack name="energy" interval="2000" chance="25" range="7" min="-450" max="-580">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="warlock skill reducer" range="5" interval="2000" chance="40" />
+		<attack name="manadrain" interval="2000" chance="10" range="7" min="0" max="-1250" />
+		<attack name="fire" interval="2000" chance="20" range="7" radius="3" target="1" min="-450" max="-730">
+			<attribute key="shootEffect" value="burstarrow" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="firefield" interval="2000" chance="10" range="7" radius="2" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="energy" interval="2000" chance="10" length="8" spread="0" min="-350" max="-850">
+			<attribute key="areaEffect" value="bigclouds" />
+		</attack>
+		<attack name="speed" interval="2000" chance="15" range="7" speedchange="1000" duration="20000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="100" defense="100">
+		<defense name="healing" interval="2000" chance="20" min="100" max="225">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="invisible" interval="2000" chance="20" duration="10000">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element earthPercent="100" />
+		<element firePercent="-20" />
+		<element deathPercent="-20" />
+		<element physicalPercent="50" />
+		<element energyPercent="100" />
+		<element holyPercent="60" />
+		<element icePercent="70" />
+	</elements>
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+		<loot>
+		<item id="7590" countmax="3" chance="15003" /><!-- Great mana Potions -->
+		<item id="2152" countmax="2" chance="8780" /><!--   coin -->
+		<item id="7632" countmax="1" chance="1780" /><!--   Giant Shimmering Pearl -->
+		<item id="2153" chance="1000" />				<!--   Violet Gem -->
+		<item id="26189" chance="13400" />				<!--  Ring of Red Plasma -->
+		<item id="23539" chance="700" />				<!--  Alloy Legs -->
+		<item id="7894" chance="3710" />				<!-- Magma Legs -->
+		<item id="26185" chance="3500" />				<!--  Ring of Blue Plasma -->
+		<item id="18390" chance="4000" />				<!--   Wand of Defiance -->
+		<item id="18409" chance="4205" />				<!--   Wand of Everblazing -->
+		<item id="8922" chance="2100" />				<!--  Wand of Voodoo -->
+		<item id="8920" chance="1000" />				<!--  Wand of Starstorm -->
+		<item id="39856" chance="1" />				<!--  bag of desise -->
+	</loot>
+</monster>

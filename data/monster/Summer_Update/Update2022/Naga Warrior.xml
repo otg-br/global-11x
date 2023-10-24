@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Naga Warrior" nameDescription="a Naga Warrior" race="blood" experience="8835" speed="180">
+	<health now="5290" max="5290"/>
+	<look type="1539" head="85" body="19" legs="85" feet="95" addons="3" corpse="48468"/>
+	<targetchange interval="4000" chance="10"/>
+	
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="0"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+		<flag canwalkonenergy="1"/>
+		<flag canwalkonfire="1"/>
+		<flag canwalkonpoison="1"/>
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-80" death="100" />
+		<attack name="death" interval="2000" chance="15" length="8" spread="0" min="-100" max="-480">
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+    		<attack name="death" interval="2000" chance="20" radius="3" target="1" min="-300" max="-590">
+     			<attribute key="shootEffect" value="death"/>
+     		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="-170" max="-340">
+			<attribute key="areaEffect" value="greenspark" />
+		</attack>
+		<attack name="speed" interval="2000" chance="15" range="7" speedchange="-600" duration="15000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="82" defense="82">
+		<defense name="healing" interval="2000" chance="15" min="300" max="1550">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<elements>
+		<element physicalPercent="20"/>
+	</elements>
+	
+	<voices interval="5000" chance="25">
+		<voice sentence="Fear the wrath of the wronged!" />
+	</voices>
+	
+	<loot>
+		<item id="2152" countmax="13" chance="2320" />		<!-- Platinum Coins -->
+		<item id="2124" chance="1420" />             		<!--  Crystal Ring        -->
+		<item id="48640" chance="3220" />             		<!--  Naga Warrior Scales  -->
+		<item id="48637" chance="1390" />             		<!--  Naga Armring        -->
+		<item id="48638" chance="1820" />             		<!--  Naga Earring        -->
+		<item id="2455" chance="7420" />             		<!--  Crossbow            -->
+		<item id="3965" chance="3850" />             		<!--  Hunting Spear       -->
+		<item id="18413" chance="3400" />             		<!--  Blue Crystal Shard  -->
+		<item id="2134" chance="5420" />             		<!--  Silver Brooch       -->
+		<item id="2456" chance="7410" />             		<!--  Bow                 -->
+		<item id="15644" chance="3420" />             		<!--  Ornate Crossbow     -->
+		<item id="7441" chance="8420" />             		<!--  Ice Cube           -->
+		<item id="2127" chance="3650" />             		<!--  Emerald Bangle      -->
+		<item id="27060" chance="1320" />             		<!--  Gemmed Figurine     -->
+		<item id="18453" chance="1220" />             		<!--  Crystal Crossbow     -->
+		<item id="7438" chance="1470" />             		<!--  Elvish Bow          -->
+		<item id="7443" chance="4315" />             		<!--  Bullseye Potion     -->
+	</loot>
+</monster>

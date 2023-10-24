@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Gore Horn" nameDescription="a Gore Horn" race="blood" experience="12595" speed="190">
+	<health now="20620" max="20620" />
+	<look type="1548" corpse="48520" />
+	<targetchange interval="4000" chance="10" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="0" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-415" />
+		<attack name="physical" interval="2000" chance="15" range="7" min="0" max="-341">
+			<attribute key="shootEffect" value="largerock" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="78" defense="78">
+		<defense name="speed" interval="2000" chance="15" speedchange="250" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<voices interval="5000" chance="30">
+		<voice sentence="Rraaaaa!" />
+	</voices>
+	
+	<loot>
+		<item id="2160" chance="5000" countmax="1" />			<!-- Crystal coin -->
+		<item id="2231" chance="13800" /><!-- Big Bone -->
+		<item id="2485" chance="14800" /><!-- Doublet -->
+		<item id="48603" chance="1500" /><!-- Gore Horn -->
+		<item id="2444" chance="500" /><!-- Hammer of Wrath -->
+		<item id="7387" chance="13800" /><!-- Diamond Sceptre -->
+		<item id="2477" chance="13800" /><!-- Knight Legs -->
+		<item id="23540" chance="2000" /><!-- Metal Spats -->
+		<item id="2213" chance="12800" /><!-- Dwarven Ring -->
+	</loot>
+</monster>

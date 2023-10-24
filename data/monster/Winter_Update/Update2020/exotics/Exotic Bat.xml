@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Exotic Bat" namedescription="a Exotic Bat" race="blood" experience="1200" speed="500" manacost="250">
+	<health now="50" max="50" />
+	<look type="1373" corpse="10508" />
+	<targetchange interval="4000" chance="0" />
+	<flags>
+		<flag summonable="1" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="3" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonpoison="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-10" />
+	</attacks>
+	<defenses armor="5" defense="5" />
+	<elements>
+		<element earthPercent="-20" />
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="Flap!Flap!" />
+	</voices>
+	<loot>
+		<item name="bat wing" chance="1220" />
+		<item name="gold coin" countmax="100" chance="99990" />
+		<item name="gold coin" countmax="95" chance="99990" />
+		<item id="2169" chance="710" /><!-- time ring -->
+		<item name="platinum amulet" chance="280" />
+	</loot>
+</monster>

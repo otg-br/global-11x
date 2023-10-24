@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Cloak of Terror" nameDescription="a cloak of terror" race="fire" experience="29550" speed="250">
+	<health now="28000" max="28000" />
+	<look type="1295" corpse="39615" />
+	<targetchange interval="4000" chance="20" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+	    <flag canwalkonfire="1" />
+	    <flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-350" />
+		<attack name="manadrain" interval="2000" chance="10" range="7" min="0" max="-420" />
+		<attack name="fire" interval="2000" chance="20" range="7" radius="7" target="1" min="-450" max="-1200">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="firefield" interval="2000" chance="10" range="7" radius="1" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="-750" max="-1300">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="energy" interval="2000" chance="10" range="1" min="-450" max="-1830">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="speed" interval="2000" chance="15" radius="1" target="1" speedchange="-700" duration="30000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="70" defense="70">
+		<defense name="healing" interval="2000" chance="15" min="280" max="450">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="10" />
+		<element deathPercent="-20" />
+		<element energyPercent="40" />
+		<element earthPercent="-10" />
+		<element holyPercent="-40" />
+	</elements>
+	<immunities>
+		<immunity drown="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="Shocked to meet you." />
+		<voice sentence="Power up!" />
+		<voice sentence="You should be more positive!" />
+	</voices>
+	<loot>
+		<item name="platinum coin" countmax="100" chance="60000" />
+		<item name="crystal coin" countmax="1" chance="3000" />
+		<item name="small emerald" countmax="10" chance="9690" />
+		<item name="small amethyst" countmax="10" chance="7250" />		
+		<item name="small ruby" countmax="10" chance="7430" />		
+		<item name="small topaz" countmax="10" chance="7470" />		
+		<item name="blue gem" chance="5000" />
+		<item id="39816" chance="1500" /><!-- brooch -->
+		<item id="39730" chance="1500" /><!-- CROWN -->
+		<item id="39729" chance="1500" />
+		<item name="great mana potion" countmax="3" chance="22220" />
+		<item name="ultimate health potion" countmax="3" chance="19540" />
+		<item id="39856" chance="15" />	<!-- Bag You Desire -->
+	</loot>
+</monster>

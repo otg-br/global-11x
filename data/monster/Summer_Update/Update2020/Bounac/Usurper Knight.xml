@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Usurper Knight" nameDescription="a Usurper knight" raceid="1646" race="blood" experience="6900" speed="130" manacost="0">
+	<health now="8200" max="8200" />
+	<look type="1317" head="76" body="76" legs="76" feet="116" addons="1" corpse="33365" />
+	<targetchange interval="5000" chance="8" />
+	<flags>
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonpoison="0" />
+		<flag canwalkonfire="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-550" />
+		<attack name="energy" interval="1000" chance="12" length="4" spread="0" min="-300" max="-560">
+			<attribute key="areaEffect" value="holydamage" />
+		</attack>
+		<attack name="physical" interval="1000" chance="10" radius="3" min="-340" max="-650">
+			<attribute key="areaEffect" value="groundshaker" />
+		</attack>
+	</attacks>
+	<defenses armor="86"/>
+	<elements>
+		<element physicalPercent="10" />
+		<element energyPercent="10" />
+		<element earthPercent="10" />
+		<element deathPercent="10" />
+		<element holyPercent="-5" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+	<loot>
+        <item name="great mana potion" countmax="2" chance="7100" />
+    	<item name="platinum coin" countmax="5" chance="10000" />
+		<item name="gold ingot" chance="4500" /> 
+		<item name="lion cloak patch" chance="1100" />
+		<item name="lion crest" chance="1100" />
+        <item name="magma legs" chance="4010" />
+        <item name="violet gem" chance="5050" />
+        <item name="green gem" chance="4050" />
+        <item name="blue gem" chance="4050" />
+        <item name="leather legs" chance="3080" />
+		<item id="2477" chance="6000" /> <!-- knight legs -->
+	</loot>
+</monster>

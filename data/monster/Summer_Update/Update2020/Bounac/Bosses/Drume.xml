@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Drume" nameDescription="Drume" race="blood" experience="50000" speed="750" script="boss.lua">
+	<health now="500000" max="500000"/>
+	<look type="1317" head="76" body="76" legs="76" feet="76" addons="2" corpse="33368"/>
+	<targetchange interval="4000" chance="10"/>
+	<flags>
+		<flag rewardboss="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="0"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="70"/>
+		<flag runonhealth="0"/>
+		<flag canwalkonenergy="1"/>
+		<flag canwalkonfire="1"/>
+		<flag canwalkonpoison="1"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-1550"/>
+		<attack name="holy" interval="6000" chance="80" length="8" spread="0" min="-820" max="-1650">
+			<attribute key="areaEffect" value="holyarea"/>
+		</attack>
+		<attack name="earth" interval="1000" chance="40" target="0" radius="5" min="-500" max="-1500">
+			<attribute key="areaEffect" value="blackspark"/>
+		</attack>
+		<attack name="death" interval="2000" chance="40" range="7" min="-400" max="-1500">
+			<attribute key="shootEffect" value="suddendeath"/>
+			<attribute key="areaEffect" value="mortarea"/>
+		</attack>
+	</attacks>
+	<defenses armor="82" defense="60">
+		<defense name="speed" interval="1000" chance="10" speedchange="160" duration="4000">
+			<attribute key="areaEffect" value="poff"/>
+		</defense>
+	</defenses>
+	<elements>
+	    <element physicalPercent="10"/>
+		<element deathPercent="55"/>
+	</elements>
+	<immunities>
+		<immunity paralyze="1"/>
+		<immunity invisible="1"/>
+	</immunities>
+	<loot>
+ <!-- comun -->
+        <item name="purple tome" chance="20000" />
+		<item name="golden mug" chance="12500" />
+		<item name="crystal necklace" chance="20000" />
+		<item name="white pearl" countmax="15" chance="33333" />
+		<item name="black pearl" countmax="8" chance="25000" />
+		<item name="small diamond" countmax="5" chance="20000" />
+		<item name="small sapphire" countmax="8" chance="33333" />
+		<item name="small emerald" countmax="7" chance="25000" />
+		<item name="small amethyst" countmax="17" chance="20000" />
+		<item name="talon" countmax="3" chance="20000" />
+		<item name="platinum coin" countmax="69" chance="100000" />
+		<item name="green gem" chance="6666" />
+		<item name="blue gem" chance="20000" /> 
+ 
+<item name="Spatial Warp Almanac" countmax="3" chance="100000" />
+<item name="Platinum Coin" countmax="3" chance="100000" />
+<item name="gold coin" countmax="60" chance="100000" />
+<item name="gold coin" countmax="40" chance="100000" />
+ <!-- semi raro --> 
+<item name="Grant of Arms" countmax="1" chance="600" />
+ <!-- raro -->
+<item id="39992" chance="300" />  <!-- lion hammer -->
+<item id="39891" chance="300" />  <!-- lion longbow -->
+<item id="39896" chance="300" />  <!-- lion longsword -->
+<item id="39898" chance="300" />  <!-- lion plate -->
+<item id="39895" chance="300" />  <!-- lion shield -->
+<item id="39897" chance="300" />  <!-- lion spangenhelm -->
+<item id="39894" chance="300" />  <!-- lion spellbook -->
+<item id="39893" chance="300" />  <!-- lion wand -->
+<item id="39892" chance="300" />  <!-- lion rod -->
+
+</loot>
+</monster>

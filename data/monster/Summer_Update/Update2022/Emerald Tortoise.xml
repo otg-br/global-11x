@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Emerald Tortoise" nameDescription="a Emerald Tortoise" race="blood" experience="12129" speed="50">
+	<health now="22300" max="22300" />
+	<look type="1550" corpse="48527" />
+	<targetchange interval="5000" chance="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag staticattack="90" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-110" />
+		<attack name="physical" interval="2000" chance="10" range="7" target="1" min="-72" max="-405">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="energy" interval="2000" chance="20" target="0" radius="4" min="-320" max="-650">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+	</attacks>
+	<defenses armor="97" defense="97" />
+	<elements>
+		<element physicalPercent="20" />
+	</elements>
+	<loot>
+		<item id="2160" countmax="3" chance="2000" />
+		<item id="8472" countmax="2" chance="3910" />
+		<item id="2485" chance="8500" />
+		<item id="7899" chance="9500" />
+		<item id="48605" chance="1500" />
+		<item id="2156" chance="1100" />
+		<item id="2155" chance="1130" />
+		<item id="2153" chance="1300" />
+		<item id="18413" chance="2330" />
+		<item id="18415" chance="2430" />
+		<item id="18421" countmax="2" chance="2200" />
+		<item id="18420" countmax="3" chance="2290" />
+		<item id="2144" countmax="2" chance="2200" />
+		<item id="2143" countmax="2" chance="2300" />
+		<item id="5022" countmax="1" chance="3200" />
+		<item id="7632" countmax="1" chance="1330" />
+	</loot>
+</monster>

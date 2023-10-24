@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Paladin's Apparition" nameDescription="a Paladin's Apparition" race="blood" experience="22000" speed="235" manacost="530">
+	<health now="25000" max="25000" />
+	<look type="129" head="76" body="103" legs="114" feet="114" corpse="3058" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag staticattack="90" />
+		<flag targetdistance="1" />
+		<flag runonhealth="10" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-320" />
+		<attack name="physical" interval="2000" chance="100" range="7" min="200" max="-950">
+			<attribute key="shootEffect" value="arrow" />
+		</attack>
+	</attacks>
+	<defenses armor="100" defense="100" />
+	<elements>
+		<element earthPercent="100" />
+		<element firePercent="-20" />
+		<element deathPercent="-20" />
+		<element physicalPercent="50" />
+		<element energyPercent="100" />
+		<element holyPercent="60" />
+		<element icePercent="70" />
+	</elements>
+	<loot>
+		<item id="8472" countmax="3" chance="15003" /><!--  Great Spirit Potion -->
+		<item id="2158" chance="1000" />				<!--   Blue Gem -->
+		<item id="2155" chance="1100" />				<!--  green gem -->
+		<item id="2153" chance="1200" />				<!--  violet gem -->
+		<item id="2152" countmax="2" chance="8570" /><!--   coin -->
+		<item id="2475" chance="2100" />				<!--   Warrior Helmet -->
+		<item id="7902" chance="2140" />				<!--  Glacier Mask -->
+		<item id="5741" chance="2500" />				<!--    Skull Helmet -->
+		<item id="2664" chance="2350" />				<!--  Wood Cape -->
+		<item id="26185" chance="4050" />				<!--    Ring of Blue Plasma -->
+		<item id="26198" chance="1400" />				<!--  Collar of Blue Plasma -->
+		<item id="39856" chance="1" />				<!--  bag of desise -->
+	</loot>
+</monster>

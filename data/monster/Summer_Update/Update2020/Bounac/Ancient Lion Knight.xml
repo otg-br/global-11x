@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Ancient Lion Knight" nameDescription="a Ancient Lion knight" raceid="1646" race="blood" experience="8100" speed="180" manacost="0" script="boss.lua">
+	<health now="29100" max="29100" />
+	<look type="1072" head="57" body="78" legs="57" feet="95" addons="1" corpse="33365" />
+	<targetchange interval="5000" chance="8" />
+	<flags>
+		<flag rewardboss="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="0"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="70"/>
+		<flag runonhealth="0"/>
+		<flag canwalkonenergy="1"/>
+		<flag canwalkonfire="1"/>
+		<flag canwalkonpoison="1"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-950" />
+		<attack name="energy" interval="1000" chance="12" length="4" spread="0" min="-540" max="-960">
+			<attribute key="areaEffect" value="holydamage" />
+		</attack>
+		<attack name="physical" interval="1000" chance="10" radius="3" min="-440" max="-950">
+			<attribute key="areaEffect" value="groundshaker" />
+		</attack>
+	</attacks>
+	<defenses armor="86"/>
+	<elements>
+		<element physicalPercent="10" />
+		<element energyPercent="10" />
+		<element earthPercent="10" />
+		<element deathPercent="10" />
+		<element holyPercent="-5" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+	<loot>
+        <item name="platinum coin" countmax="4" chance="12000" />
+        <item name="plate armor" chance="21500" />
+        <item name="dwarven shield" chance="12900" />
+        <item name="dark shield" chance="20000" />
+        <item name="dark armor" chance="24900" />
+        <item name="combat knife" chance="21100" />
+        <item name="bug meat" chance="20900" />
+        <item name="broken helmet" chance="21100" />
+        <item name="lion axe" chance="300" />
+        <item name="lion hammer" chance="300" />
+        <item name="lion longbow" chance="300" />
+        <item name="lion plate" chance="300" />
+        <item name="lion rod" chance="300" />
+        <item name="lion shield" chance="300" />
+        <item name="lion spangenhelm" chance="300" />
+        <item name="lion spellbook" chance="300" />
+        <item name="lion wand" chance="300" />
+	</loot> 
+</monster>

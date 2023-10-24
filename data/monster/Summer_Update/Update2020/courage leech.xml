@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Courage Leech" nameDescription="a courage leech" race="fire" experience="28350" speed="280">
+	<health now="27000" max="27000" />
+	<look type="1315" corpse="39708" />
+	<targetchange interval="4000" chance="20" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+	    <flag canwalkonfire="1" />
+	    <flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-650" />
+		<attack name="manadrain" interval="2000" chance="10" range="7" min="0" max="-800" />
+		<attack name="fire" interval="2000" chance="20" range="7" radius="7" target="1" min="-1200" max="-1500">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="firefield" interval="2000" chance="10" range="7" radius="1" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="-1500" max="-2000">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="energy" interval="2000" chance="10" range="1" min="-1500" max="-2000">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="speed" interval="2000" chance="15" radius="1" target="1" speedchange="-700" duration="30000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="30" defense="30">
+		<defense name="healing" interval="2000" chance="15" min="180" max="250">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="10" />
+		<element deathPercent="10" />
+		<element energyPercent="50" />
+		<element earthPercent="10" />
+		<element icePercent="-10" />
+		<element holyPercent="-30" />
+	</elements>
+	<immunities>
+		<immunity drown="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="Hiss." />
+		<voice sentence="Zap! Zap!" />
+	</voices>
+	<loot>
+<item id="2160" chance="1300" />   <!-- Crystal coin -->
+<item id="2179" chance="3300" />   <!-- Gold Ring   --> 
+<item id="7901" chance="1400" />   <!-- Lightning Headband  --> 
+<item id="7895" chance="1500" />   <!-- Lightning Legs  --> 
+<item id="7889" chance="3300" />   <!-- Lightning Pendant  --> 
+<item id="7382" chance="2300" />   <!-- Demonrage Sword  --> 
+<item id="2444" chance="2100" />   <!-- Hammer of Wrath  --> 
+<item id="7422" chance="1100" />   <!-- Jade Hammer  --> 
+<item id="7421" chance="3220" />   <!-- Onyx Flail  --> 
+<item id="2197" chance="3400" />   <!-- Stone Skin Amulet   --> 
+<item id="12613" chance="1650" />   <!-- Twiceslicer  --> 
+<item id="7412" chance="1640" />   <!-- Butcher's Axe        --> 
+<item id="7419" chance="1630" />   <!-- Dreaded Cleaver  -->
+<item id="7418" chance="1220" />   <!-- Nightmare Blade  --> 
+<item id="39856" chance="5" />	   <!-- Bag You Desire -->
+	</loot>
+</monster>

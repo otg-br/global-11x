@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Undertaker" nameDescription="a Undertaker" race="venom" experience="13543" speed="205">
+	<health now="20100" max="20100" />
+	<look type="1551" corpse="48531" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-120" poison="600" />
+		<attack name="drunk" interval="2000" chance="20" range="7" radius="4" target="0" duration="4000">
+			<attribute key="areaEffect" value="rednote" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" radius="3" target="0" min="-40" max="-1500">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="earth" interval="2000" chance="15" range="7" min="-60" max="-1500">
+			<attribute key="shootEffect" value="poison" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="77" defense="77">
+		<defense name="healing" interval="2000" chance="5" min="70" max="100">
+			<attribute key="areaEffect" value="whitenote" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="820" duration="5000">
+			<attribute key="areaEffect" value="yellownote" />
+		</defense>
+	</defenses>
+	
+	<elements>
+		<element deathPercent="40" />
+		<element earthPercent="10" />
+	</elements>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<voices interval="5000" chance="15">
+		<voice sentence="Hizzzzz!" />
+	</voices>	
+	
+	<loot>
+		<item id="2160" countmax="3" chance="2320" />		<!-- 	Crystal Coins		-->
+		<item id="7885" chance="2150" />					<!-- 	Terra Legs          -->
+		<item id="7886" chance="3250" />					<!-- 	Terra Boots         -->
+		<item id="2185" chance="3150" />					<!-- 	Necrotic Rod        -->
+		<item id="5879" chance="2250" />					<!-- 	Spider Silk         -->
+		<item id="7383" chance="4150" />					<!-- 	Relic Sword         -->
+		<item id="8922" chance="3050" />					<!-- 	Wand of Voodoo      -->
+		<item id="18413" chance="3450" />					<!-- 	Blue Crystal Shard  -->
+		<item id="29003" chance="2750" />					<!-- 	Butterfly Ring 		-->
+		<item id="2153" chance="3350" />					<!-- 	Violet Gem  		-->
+		<item id="48606" chance="4250" />					<!-- 	Undertaker Fangs    -->
+	</loot>
+</monster>

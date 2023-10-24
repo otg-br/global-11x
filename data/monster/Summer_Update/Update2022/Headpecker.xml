@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Headpecker" nameDescription="a Headpecker" race="blood" experience="12026" speed="217">
+	<health now="14700" max="14700" />
+	<look type="1557" corpse="48556" />
+	<targetchange interval="5000" chance="0" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="10" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonpoison="0" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-500" />
+		<attack name="physical" interval="2000" radius="1" target="1" range="7" chance="20" min="0" max="-2000">
+			<attribute key="shootEffect" value="explosion" />
+			<attribute key="areaEffect" value="explosionarea" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="68" defense="68">
+		<defense name="healing" interval="2000" chance="25" min="50" max="140">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<loot>
+		<item id="2160" countmax="1" chance="2320" />		<!-- Crystal Coins -->
+		<item id="48614" countmax="1" chance="1320" />		<!-- Headpecker Feather -->
+		<item id="2684" countmax="5" chance="7190" />		<!-- Carrot -->
+		<item id="9971" countmax="1" chance="2420" />		<!-- Gold Ingot -->
+		<item id="2391" chance="1540" />					<!-- War Hammer -->
+		<item id="7413" chance="1420" />					<!-- Titan Axe -->
+		<item id="48613" chance="1320" />					<!-- Headpecker Beak -->
+		<item id="2383" chance="8320" />					<!-- Spike Sword -->
+		<item id="8920" chance="2100" />					<!-- Wand of Starstorm -->
+		<item id="2158" chance="3420" />					<!--  Blue Gem -->	
+	</loot>
+</monster>

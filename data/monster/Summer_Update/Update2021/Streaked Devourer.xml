@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Streaked Devourer" nameDescription="a Streaked Devourer" race="blood" experience="6300" speed="120" manacost="0">
+	<health now="7000" max="7000" />
+	<look type="1398" corpse="6068" />
+	<targetchange interval="5000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+	</flags>
+    <attacks>
+		<attack name="melee" interval="2000" min="0" max="-330" />
+		<attack name="earth" interval="2000" chance="15" range="7" min="-180" max="-350">
+			<attribute key="shootEffect" value="smallearth" />
+			<attribute key="areaEffect" value="smallplants" />
+		</attack>
+		<attack name="poisonfield" interval="2000" chance="20" radius="4" target="0" />
+		<attack name="poisoncondition" interval="2000" chance="10" length="8" spread="0" min="-500" max="-1000">
+			<attribute key="areaEffect" value="greenbubble" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" target="0" length="5" spread="0" min="-130" max="-260">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		<attack name="poisoncondition" interval="2000" chance="10" target="0" radius="3" range="7" min="-400" max="-640">
+			<attribute key="areaEffect" value="greenspark" />
+		</attack>
+	</attacks>
+	<elements>
+		<element firePercent="0" />
+		<element physicalPercent="0" />
+		<element holyPercent="0" />
+		<element deathPercent="0" />
+		<element icePercent="-30" />
+		<element earthPercent="0" />
+		<element energyPercent="30" />
+	</elements>
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities> 
+
+	<loot>
+
+		
+			<!--quase sempre-->
+			<item name="Small Enchanted Sapphire"  chance="8050" />  
+			<item name="Small Enchanted Ruby"  chance="6780" />  
+			<item name="Crystalline Arrow" count="40" chance="23520" />  
+			<item name="Blue Crystal Shard"  chance="10590" />  
+			<item name="Violet Crystal Shard"  chance="7630" />  
+			<item name="Green Crystal Shard"  chance="8900" />  
+			<item name="Cyan Crystal Fragment"  chance="5720" />  
+			<item name="Slime Heart" count="4"  chance="13770" />  
+
+			
+				<!--semi raro-->
+				<item name="Stealth Ring"  chance="2540" />  
+
+
+	</loot>
+</monster>

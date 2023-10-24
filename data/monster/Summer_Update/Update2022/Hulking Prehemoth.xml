@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Hulking Prehemoth" nameDescription="a Hulking Prehemoth" race="blood" experience="12690" speed="191">
+	<health now="20700" max="20700" />
+	<look type="1553" corpse="48539" />
+	<targetchange interval="4000" chance="10" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="0" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-600" />
+		<attack name="physical" interval="2000" chance="25" range="7" min="0" max="-600">
+			<attribute key="shootEffect" value="largerock" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="94" defense="94">
+		<defense name="speed" interval="2000" chance="15" speedchange="300" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<elements>
+		<element holyPercent="-30" /> 		<!--130% Fraco contra -->
+		<element firePercent="40" /> 		<!--60% Fraco contra -->
+		<element energyPercent="30" /> 		<!--70% Fraco contra -->
+		<element physicalPercent="5" /> 	<!--95% Fraco contra -->
+		<element icePercent="-30" /> 		<!--130% Fraco contra -->
+	</elements>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<voices interval="5000" chance="10">
+		<voice sentence="SMAASH!" />
+	</voices>
+	
+	<loot>
+		<item id="2160" countmax="1" chance="2320" />		<!-- Crystal Coins -->
+		<item id="48609" countmax="2" chance="2320" />		<!-- Prehemoth Claw  -->
+		<item id="2391" chance="1540" />					<!-- War Hammer -->
+		<item id="2454" chance="1420" />					<!-- War Axe -->
+		<item id="48608" chance="1770" />					<!-- Prehemoth Horns  -->
+		<item id="2127" chance="2320" />					<!-- Emerald Bangle  -->
+		<item id="2134" chance="2420" />					<!-- Silver Brooch   -->
+		<item id="2485" chance="5420" />					<!-- Doublet   -->
+		<item id="7432" chance="2120" />					<!-- Furry club   -->
+	</loot>
+</monster>

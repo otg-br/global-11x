@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Dark Carnisylvan" nameDescription="a Dark Carnisylvan" race="fire" experience="3900" speed="380" manacost="0">
+	<health now="7500" max="7500" />
+	<look type="1418" addons="3" corpse="43871" />
+	<targetchange interval="2000" chance="50" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="75" attack="150" />
+		<attack name="manadrain" interval="2000" chance="10" range="7" min="0" max="-320" />
+		<attack name="fire" interval="2000" chance="20" range="7" radius="7" target="1" min="-450" max="-1250">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="choking fear drown" interval="2000" chance="20" />
+		<attack name="death" interval="2000" chance="20" radius="4" target="1" min="-250" max="-700">
+			<attribute key="shootEffect" value="suddendeath" />
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="-350" max="-800">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="firefield" interval="2000" chance="50" range="7" radius="1" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="-400" max="-890">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="energy strike" interval="2000" chance="10" range="1" min="-510" max="-1300">
+		</attack>
+		<attack name="speed" interval="2000" chance="50" radius="1" target="1" speedchange="-800" duration="30000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="55" defense="55">
+		<defense name="healing" interval="2000" chance="25" min="180" max="550">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="100" />
+		<element deathPercent="80" />
+		<element energyPercent="80" />
+		<element earthPercent="90" />
+		<element icePercent="-110" />
+		<element firePercent="-120" />
+		<element holyPercent="100" />
+	</elements>
+	<immunities>
+		<immunity drown="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<loot>
+		<item id="2152" countmax="6" chance="100000" /><!-- platinum coin -->		
+		<item id="7590" countmax="3" chance="8285" /><!-- great mana potion -->
+		
+		<item id="43783" countmax="3" chance="4985" /><!-- Carnisylvan Finger  -->
+		<item id="43784" countmax="3" chance="1985" /><!-- Carnisylvan Bark -->
+		<item id="43785" countmax="3" chance="800" /><!-- Human Teeth -->
+
+		<item id="2179" chance="8285" /><!-- Golden ring -->
+		<item id="29003" chance="13285" /><!-- Butterfly Ring -->
+		<item id="2175" chance="14328" /><!-- Spellbook -->
+		<item id="2183" chance="19390" /><!-- Hailstorm Rod -->
+		<item id="8901" chance="12213" /><!-- Spellbook of Warding -->
+		<item id="8910" chance="15204" /><!-- Underworld Rod -->
+		<item id="8912" chance="16626" /><!-- Springsprout Rod -->
+		<item id="8920" chance="10203" /><!-- Wand of Starstorm -->
+	</loot>
+</monster>

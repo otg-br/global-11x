@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Magma Bubble" nameDescription="a Magma Bubble" race="fire" experience="80000" speed="390" script="boss.lua">
+	<health now="484800" max="484800" />
+	<look type="1413" corpse="6324" />
+	<targetchange interval="4000" chance="10" />
+	
+	<flags>
+	    <flag rewardboss="1"/>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="300" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-403" />
+		<attack name="death" interval="2000" chance="41" length="16" spread="0" min="-1200" max="-3200">
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="fire" interval="2000" chance="15" length="9" spread="2" min="-990" max="-3330">
+			<attribute key="areaEffect" value="fireattack" />
+		</attack>
+		<attack name="magma crawler soulfire" interval="2000" chance="30" />
+		<attack name="soulfire" interval="2000" chance="45" />
+		<attack name="fire" interval="2000" chance="35" target="0" radius="9" min="-740" max="-3480">
+			<attribute key="areaEffect" value="fire" />
+		</attack>
+		<attack name="speed" interval="2000" chance="40" radius="20" target="0" spread="0" speedchange="-900" duration="20000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="95" defense="95">
+		<defense name="invisible" interval="2000" chance="30" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity fire="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+
+	<loot>
+		<item id="48730" chance="1000"  />			<!-- firefighting axe -->
+		<item id="48433" chance="900"  />			<!-- arboreal ring -->
+		<item id="48398" chance="600"  />			<!-- arcanomancer regalia-->
+		<item id="48399" chance="600"  />			<!-- Arcanomancer Folio-->
+		<item id="48729" chance="600"  />			<!-- smoldering -->
+		<item id="48424" chance="600"  />			<!-- spiritthorn -->
+		<item id="48427" chance="600"  />			<!-- Alicorn Ring -->
+		<item id="48396" chance="600"  />			<!-- Alicorn Headguard -->
+		<item id="48400" chance="600"  />			<!-- Arboreal Crown -->
+		<item id="48320" chance="600"  />			<!-- fiery tear -->
+		<item id="48401" chance="600"  />			<!-- Arboreal Tome -->
+		<item id="48395" chance="600"  />			<!-- Spiritthorn Helmet -->
+		<item id="48430" chance="600"  />			<!-- Arcanomancer Sigil -->
+		<item id="48394" chance="600"  />			<!-- Spiritthorn Armor -->
+		<item id="48732" chance="750"  />			<!-- primal bag -->
+		<item id="2160" chance="5000" countmax="3" />			<!-- Crystal coin -->
+		<item id="7440" chance="2000" countmax="4" />			<!-- Mastermind Potion -->
+		<item id="7443" chance="3030" countmax="3" />			<!-- Bullseye Potion -->
+		<item id="7439" chance="4030" countmax="3" />			<!-- Berserk Potion -->
+		<item id="37458" chance="5100" countmax="5" />			<!-- Giant Topaz -->
+		<item id="34699" chance="6130" countmax="3" />			<!-- Giant Sapphire -->
+		<item id="34698" chance="7500" countmax="2" />			<!-- Giant Emerald -->
+	</loot>
+</monster>

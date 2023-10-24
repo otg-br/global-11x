@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Goshnar's Megalomania" nameDescription="a goshnar's megalomania" race="fire" experience="100000" speed="280" script="boss.lua">
+	<health now="900000" max="900000" />
+	<look type="1308" corpse="39690" />
+	<targetchange interval="4000" chance="20" />
+	<flags>
+	    <flag rewardboss="1"/>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-2000" />
+		<attack name="manadrain" interval="2000" chance="10" range="7" min="0" max="-1700" />
+		<attack name="fire" interval="2000" chance="20" range="7" radius="7" target="1" min="-1140" max="-2440">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="firefield" interval="2000" chance="10" range="7" radius="1" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="-1140" max="-2000">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="energy" interval="2000" chance="10" range="1" min="-1100" max="-2200">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="speed" interval="2000" chance="15" radius="1" target="1" speedchange="-700" duration="30000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="30" defense="30">
+		<defense name="healing" interval="2000" chance="15" min="180" max="250">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="10" />
+		<element deathPercent="10" />
+		<element energyPercent="10" />
+		<element earthPercent="10" />
+		<element icePercent="-10" />
+		<element holyPercent="-10" />
+	</elements>
+	<immunities>
+		<immunity fire="1" />
+		<immunity drown="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+<item id="2160" countmax="8" chance="31500" />   <!-- Crystal Coin      -->	
+<item id="7440" chance="2000" />          <!-- Mastermind Potion       -->	
+<item id="9971" chance="10000" />         <!-- Gold Ingot              -->	
+<item id="34698" chance="8500" />          <!-- Giant Emerald           -->	
+<item id="37458" chance="8500" />          <!-- Giant Topaz             -->	
+<item id="2154" chance="17800" />          <!-- Yellow Gem              -->	
+<item id="7632" chance="10000" />          <!-- Giant Shimmering Pearl  -->	
+<item id="7439" chance="7800" />           <!-- Berserk Potion          -->	
+<item id="2155" chance="17800" />          <!-- Green Gem               -->	
+<item id="7443" chance="2000" />          <!-- Bullseye Potion         -->	
+<item id="37457" chance="2000" />           <!-- Giant Sapphire          -->	
+<item id="39747" chance="2000" />            <!-- Figurine of Spite       -->	
+<item id="39813" chance="2000" />         <!-- Figurine of Hatred      -->	
+<item id="39811" chance="2000" />         <!-- Figurine of Malice      -->	
+<item id="39814" chance="2000" />         <!-- Figurine of Greed       -->	
+<item id="39812" chance="2000" />        <!-- Figurine of Cruelty     -->	
+<item id="39748" chance="2000" />         <!-- Figurine of Megalomania -->	
+<item id="39723" chance="2000" />       <!-- Megalomania's Essence   -->	
+<item id="39720" chance="2000" />         <!-- Megalomania's Skull     -->	
+<item id="5123" chance="17800" />         <!-- Violet Gem              -->	
+<item id="2156" chance="10000" />         <!-- Red Gem                 -->	
+<item id="2158" chance="7800" />          <!-- Blue Gem                -->	
+<item id="34697" chance="17800" />         <!-- Giant Ruby              -->	
+<item id="39856" chance="25" />         <!-- Bag You Desire          -->	
+	</loot>
+</monster>

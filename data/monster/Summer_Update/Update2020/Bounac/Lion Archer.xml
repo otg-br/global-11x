@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Lion Archer" nameDescription="a Lion Archer" raceid="1647" race="undead" experience="0" speed="160" manacost="0">
+	<health now="7300" max="7300" />
+	<look type="1316" head="19" body="57" legs="57" feet="59" addons="2" corpse="32559" />
+	<targetchange interval="5000" chance="8" />
+	<flags>
+		<flag attackable="1" />
+		<flag hostile="0" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonpoison="0" />
+		<flag canwalkonfire="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-580" />
+		<attack name="physical" interval="1500" chance="16" range="7" min="-450" max="-750">
+			<attribute key="shootEffect" value="royalspear" />
+		</attack>
+		<attack name="energy" interval="1500" chance="12" range="7" radius="3" target="1" min="-450" max="-650">
+			<attribute key="shootEffect" value="powerbolt" />
+			<attribute key="areaEffect" value="energyarea" />
+		</attack>
+		<attack name="energy" interval="1500" chance="12" length="4" spread="0" min="-350" max="-680">
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+	</attacks>
+	<defenses armor="82"/>
+	<elements>
+		<element physicalPercent="10" />
+		<element energyPercent="10" />
+		<element earthPercent="10" />
+		<element deathPercent="10" />
+		<element holyPercent="-5" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+</monster>

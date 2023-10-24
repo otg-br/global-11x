@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Brachiodemon" nameDescription="a brachiodemon" race="fire" experience="21120" speed="220">
+	<health now="25000" max="25000" />
+	<look type="1299" corpse="39631" />
+	<targetchange interval="4000" chance="20" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+	    <flag canwalkonfire="1" />
+	    <flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-1850" />
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="-450" max="-1050">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="fire" interval="2000" chance="25" target="1" radius="5" min="-570" max="-1090">
+		<attribute key="areaEffect" value="explosionarea"/>
+		</attack>
+		<attack name="lifedrain" interval="1000" chance="9" target="0" radius="4" min="-490" max="-1050">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="70" defense="70">
+		<defense name="healing" interval="2000" chance="10" min="100" max="350">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>	
+	</defenses>
+	<elements>
+		<element physicalPercent="50" />
+		<element deathPercent="50" />
+		<element icePercent="-25" />
+		<element holyPercent="-35" />
+		<element firePercent="70" />
+	</elements>
+	<immunities>
+		<immunity drown="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices interval="5000" chance="30">
+		<voice sentence="Hand over your life" />
+		<voice sentence="Feel the heat!" />
+		<voice sentence="I can give you a hand...or two" />
+	</voices>
+	<loot>	
+		<item name="crystal coin" countmax="4" chance="20000" />
+		<item name="platinum coin" countmax="12" chance="40000" />
+		<item name="ultimate health potion" countmax="3" chance="19540" />
+		<item name="skull staff" chance="2700" />
+		<item name="epee" chance="2300" />
+		<item name="crystal mace" chance="2900" />
+		<item name="noble axe" chance="1700" />
+		<item name="spellbook of mind control" chance="1700" />
+		<item id="39856" chance="15" />	<!-- Bag You Desire -->
+		<item id="26187" chance="2800" />	<!-- ring of green plasma -->
+		<item id="39731" chance="1380" />	<!-- hand -->
+		<item id="39732" chance="1300" />	<!-- head -->
+		<item name="fire axe" chance="10300" />
+		<item name="royal helmet" chance="2200" />	
+		<item name="mastermind shield" chance="4790" />			
+		<item name="assassin dagger" chance="4990" />
+		<item name="butcher's axe" chance="5090" />		
+		<item name="jade hammer" chance="5090" />
+		<item name="crystalline sword" chance="4000" />	
+		<item name="alloy legs" chance="3700" />	
+		<item name="metal bat" chance="4700" />	
+		<item name="diabolic skull" chance="1190" />		
+	</loot>
+</monster>

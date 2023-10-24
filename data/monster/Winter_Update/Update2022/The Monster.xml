@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="The Monster" nameDescription="a The Monster" race="fire" experience="80000" speed="700" script="boss.lua">
+	<health now="4848000" max="4848000" />
+	<look type="1600" corpse="8721" />
+	<targetchange interval="4000" chance="10" />
+	
+	<flags>
+	    <flag rewardboss="1"/>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="300" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-403" />
+		<attack name="death" interval="2000" chance="41" length="16" spread="0" min="-2100" max="-6400">
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="fire" interval="2000" chance="15" length="9" spread="2" min="-1290" max="-5800">
+			<attribute key="areaEffect" value="fireattack" />
+		</attack>
+		<attack name="magma crawler soulfire" interval="2000" chance="30" />
+		<attack name="soulfire" interval="2000" chance="45" />
+		<attack name="fire" interval="2000" chance="35" target="0" radius="9" min="-1740" max="-5480">
+			<attribute key="areaEffect" value="fire" />
+		</attack>
+		<attack name="speed" interval="2000" chance="40" radius="20" target="0" spread="0" speedchange="-900" duration="20000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="80" defense="80">
+		<defense name="invisible" interval="2000" chance="30" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity fire="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+
+	<loot>
+		<!-- editar loots -->
+	</loot>
+</monster>

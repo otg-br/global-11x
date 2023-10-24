@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Goshnar's Hatred" nameDescription="a goshnar's hatred" race="fire" experience="50000" speed="280" script="boss.lua">
+	<health now="650000" max="650000" />
+	<look type="1307" corpse="39676" />
+	<targetchange interval="4000" chance="20" />
+	<flags>
+	    <flag rewardboss="1"/>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-1200" />
+		<attack name="manadrain" interval="2000" chance="10" range="7" min="0" max="-1800" />
+		<attack name="fire" interval="2000" chance="20" range="7" radius="7" target="1" min="-930" max="-1500">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="firefield" interval="2000" chance="10" range="7" radius="1" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="-1200" max="-2000">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="energy" interval="2000" chance="10" range="1" min="-1100" max="-2200">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="speed" interval="2000" chance="15" radius="1" target="1" speedchange="-700" duration="30000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="30" defense="30">
+		<defense name="healing" interval="2000" chance="15" min="180" max="450">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="10" />
+		<element deathPercent="10" />
+		<element energyPercent="10" />
+		<element earthPercent="10" />
+		<element icePercent="-10" />
+		<element holyPercent="-10" />
+	</elements>
+	<immunities>
+		<immunity fire="1" />
+		<immunity drown="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+<item id="39772" chance="2000" />     <!-- Vial of Hatred        -->
+<item id="39823" chance="2000" />     <!-- Bracelet of Strengthenin    -->
+<item id="39813" chance="2000" />     <!-- Figurine of Hatred    -->
+<item id="2153" chance="10000" />     <!-- Violet Gem             -->
+<item id="37457" chance="4150" />     <!-- Giant Amethyst         -->
+<item id="37604" chance="8500" />     <!-- White Gem              -->
+<item id="2160" countmax="8" chance="10000" />     <!-- Crystal Coin           -->
+<item id="2156" chance="18000" />     <!-- Red Gem                -->
+<item id="7440" chance="17800" />     <!-- Mastermind Potion      -->
+<item id="7443" chance="17800" />     <!-- Bullseye Potion        -->
+<item id="9971" chance="10000" />     <!-- Gold Ingot             -->
+<item id="2154" chance="10000" />     <!-- Yellow Gem             -->
+<item id="34698" chance="5000" />     <!-- Giant Emerald          -->
+<item id="7439" chance="7800" />     <!-- Berserk Potion         -->
+<item id="2158" chance="10000" />     <!-- Blue Gem               -->
+<item id="34699" chance="2000" />     <!-- Giant Sapphire         -->
+<item id="2155" chance="17800" />     <!-- Green Gem              -->
+<item id="39856" chance="10" />     <!-- Bag You Desire         -->
+	</loot>
+</monster>

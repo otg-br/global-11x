@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Foam Stalker" nameDescription="a Foam Stalker" race="undead" experience="3120" speed="300">
+	<health now="4500" max="4500" />
+	<look type="1562" corpse="10499" />
+	<targetchange interval="4000" chance="10" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag staticattack="90" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-160" poison="60" />
+		<attack name="drown" interval="2000" chance="25" target="1" range="7" radius="2" min="-125" max="-235">
+			<attribute key="areaEffect" value="bluebubble" />
+		</attack>
+		<attack name="ice" interval="2000" chance="20" range="7" min="-88" max="-150">
+			<attribute key="shootEffect" value="smallice" />
+		</attack>
+		<attack name="icecondition" interval="2000" chance="15" target="0" radius="5" min="-225" max="-260">
+			<attribute key="areaEffect" value="ice" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="20" defense="20">
+		<defense name="healing" interval="2000" chance="5" min="50" max="80">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="300" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<voices interval="2000" chance="15">
+		<voice sentence="splash dribble" yell="1" />
+		<voice sentence="dribble" yell="1" />
+		<voice sentence="gurgle" yell="1" />
+	</voices>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<loot>
+		<item id="2152" chance="1130" countmax="20" />			<!-- Platinum coin-->
+		<item id="2143" chance="4660" />						<!-- White Pearl -->	
+		<item id="2144" chance="5660" />						<!-- black Pearl -->	
+		<item id="2667" chance="20000" /><!-- fish -->
+		<item id="2245" chance="2800" /><!-- twigs -->
+		<item id="2401" chance="7800" /><!-- staff -->
+		<item id="48632" chance="2430" /><!-- Coral Branch -->
+		<item id="7886" chance="3800" /><!-- Terra Boots -->
+		<item id="2381" chance="5800" /><!-- halberd -->
+		<item id="2404" chance="15800" /><!-- knife -->
+		<item id="48633" chance="1290" /><!-- Flotsam -->
+		<item id="7892" chance="1190" /><!-- Glacier Shoes -->
+		<item id="2477" chance="1000" /><!-- Knight Legs  -->
+		<item id="7386" chance="1320" /><!-- Mercenary Sword  -->
+		<item id="2240" chance="1190" /><!-- Remains of a Fish  -->
+		<item id="5022" chance="940" /><!-- Orichalcum Pearl  -->
+		<item id="7632" chance="2110" />			<!-- Giant Shimmering Pearl  -->
+		<item id="2145" countmax="3" chance="4580" />					<!-- Small Diamond -->		
+		<item id="2149" countmax="3" chance="4100" />					<!-- Small Emerald -->		
+		<item id="5944" chance="3400" />					<!-- Soul Orb -->
+		<item id="2153" chance="2400" />						<!--  violet Gem  -->
+	</loot>
+</monster>

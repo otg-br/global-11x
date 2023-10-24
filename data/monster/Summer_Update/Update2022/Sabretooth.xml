@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Sabretooth" nameDescription="a Sabretooth" race="blood" experience="11931" speed="225">
+	<health now="17300" max="17300" />
+	<look type="1549" corpse="48523" />
+	<targetchange interval="4000" chance="10" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="100" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-356"/>
+		<attack name="lifedrain" interval="2000" chance="50" length="4" spread="0" min="-50" max="-300">
+		<attribute key="areaEffect" value="smoke"/>
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="50" target="1" radius="3" min="-100" max="-290">
+		<attribute key="areaEffect" value="smoke"/>
+		</attack>
+	</attacks>	
+	
+	<defenses armor="63" defense="63">
+		<defense name="healing" interval="2000" chance="10" min="150" max="300">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="370" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<loot>
+		<item id="2160" countmax="2" chance="2320" />		<!-- Crystal Coins -->
+		<item id="2187" chance="2100" />					<!-- wand of inferno   -->
+		<item id="2191" chance="3100" />					<!-- wand of dragonbreath   -->
+		<item id="2392" chance="2900" />					<!-- fire sword  -->
+		<item id="7899" chance="2850" />					<!-- magma coat  -->
+		<item id="10219" chance="2250" />					<!-- sacred tree amulet -->
+		<item id="2198" chance="3250" />					<!-- elven amulet -->
+		<item id="2201" chance="4250" />					<!-- dragon nacklace -->
+		<item id="23540" chance="2210" />					<!-- metal spats -->
+		<item id="48604" chance="3210" />					<!-- Sabretooth Fur -->
+	</loot>
+</monster>

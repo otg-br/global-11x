@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Jungle Moa" nameDescription="a Jungle Moa" race="blood" experience="1200" speed="105">
+	<health now="1300" max="1300" />
+	<look type="1534" corpse="48448" />
+	<targetchange interval="5000" chance="0" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="10" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonpoison="0" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-316" />
+		<attack name="energy" interval="2000" radius="1" target="1" range="7" chance="20" min="100" max="-228">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+		
+		<attack name="earth" interval="2000" chance="15" range="7" min="-60" max="-215">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="greenbubble" />
+		</attack>
+		
+		<attack name="earth" interval="2000" chance="15" radius="3" target="0" min="-40" max="-130">
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+		
+		<attack name="explosion wave timira" interval="2000" chance="30" min="-70" max="-230"/>
+	</attacks>
+	
+	<defenses armor="30" defense="30" />
+	
+	<voices interval="5000" chance="30">
+		<voice sentence="Kreeee. Kreeeee." />
+	</voices>
+	
+	<loot>
+		<item name="gold coin" countmax="100" chance="64090" />
+		<item name="gold coin" countmax="100" chance="64091" />
+		<item name="gold coin" countmax="27" chance="64092" />
+		<item name="meat" countmax="2" chance="19950" />
+		<item id="18419" countmax="4" chance="8650" />		<!-- Cyan Crystal Fragment  -->
+		<item id="2485" chance="5420" />					<!-- Doublet   -->
+		<item id="48631" chance="1220" />					<!-- Jungle Moa Egg   -->
+		<item id="48629" chance="1320" />					<!-- Jungle Moa Feather   -->
+		<item id="48630" chance="1420" />					<!-- Jungle Moa Claw   -->
+		<item id="8900" chance="2420" />					<!-- Spellbook of Enlightenment    -->
+	</loot>
+</monster>

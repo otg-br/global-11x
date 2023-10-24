@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Ancient Lion Warlock" nameDescription="a Ancient Lion Warlock" raceid="1647" race="undead" experience="8100" speed="160" manacost="0">
+	<health now="8500" max="8500" />
+	<look type="1071" head="19" body="76" legs="77" feet="59" addons="2" corpse="32559" />
+	<targetchange interval="5000" chance="8" />
+	<flags>
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="5" />
+		<flag staticattack="90" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonpoison="0" />
+		<flag canwalkonfire="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-450" />
+		<attack name="physical" interval="1500" chance="16" range="7" min="-300" max="-650">
+			<attribute key="shootEffect" value="royalspear" />
+		</attack>
+		<attack name="energy" interval="1500" chance="12" range="7" radius="3" target="1" min="-350" max="-560">
+			<attribute key="shootEffect" value="powerbolt" />
+			<attribute key="areaEffect" value="energyarea" />
+		</attack>
+		<attack name="energy" interval="1500" chance="12" length="4" spread="0" min="-250" max="-590">
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+	</attacks>
+	<defenses armor="82"/>
+	<elements>
+		<element physicalPercent="10" />
+		<element energyPercent="10" />
+		<element earthPercent="10" />
+		<element deathPercent="10" />
+		<element holyPercent="-5" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+</monster>

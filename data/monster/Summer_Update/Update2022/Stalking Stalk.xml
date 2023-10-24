@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Stalking Stalk" nameDescription="a Stalking Stalk" race="venom" experience="11569" speed="190">
+	<health now="17100" max="17100" />
+	<look type="1554" corpse="48543" />
+	<targetchange interval="4000" chance="10" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="3" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-80" />
+		<attack name="earth" interval="2000" target="0" chance="30" radius="6" min="-310" max="-320">
+			<attribute key="areaEffect" value="yellowsmoke" />
+		</attack>
+		<attack name="earth" interval="2000" chance="25" length="5" spread="0" min="-240" max="-560">
+			<attribute key="areaEffect" value="greenspark" />
+		</attack>
+		<attack name="speed" interval="2000" chance="25" range="7" speedchange="-800" duration="30000">
+			<attribute key="shootEffect" value="poison" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="fire" interval="2000" chance="10" range="7" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="76" defense="76">
+		<defense name="invisible" interval="2000" chance="40" duration="6000">
+			<attribute key="areaEffect" value="greenshimmer" />
+		</defense>
+	</defenses>
+	
+	<elements>
+		<element firePercent="35" />
+		<element earthPercent="35" />
+	</elements>
+	
+	<immunities>
+		<immunity invisible="1" />
+	</immunities>
+	
+	<loot>
+		<item id="2160" countmax="3" chance="2320" />		<!-- Crystal Coins -->
+		<item id="48610" countmax="2" chance="2330" />		<!-- Stalking Seeds  -->
+		<item id="2145" chance="5420" />					<!-- small diamond  -->
+		<item id="18421" chance="2000" />					<!-- green crystal fragment  -->
+		<item id="2201" chance="4250" />					<!-- dragon nacklace -->
+		<item id="7899" chance="2850" />					<!-- magma coat  -->
+		<item id="2456" chance="2850" />					<!-- bow  -->
+		<item id="15451" chance="1850" />					<!-- warriors axe  -->
+		<item id="2155" chance="2850" />					<!-- green gem  -->
+		<item id="18411" chance="2850" />					<!-- muck rod  -->
+		<item id="24850" chance="1250" />					<!-- opal  -->
+	</loot>
+</monster>

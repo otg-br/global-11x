@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Druid's Apparition" nameDescription="a Druid's Apparition" race="blood" experience="18870" speed="235">
+	<health now="25000" max="25000" />
+	<look type="148" head="114" body="123" legs="114" feet="95" corpse="3058" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag staticattack="90" />
+		<flag targetdistance="1" />
+		<flag runonhealth="10" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-450" />
+		<attack name="energy" interval="2000" chance="15" range="7" min="-410" max="-750">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+		<attack name="fire" interval="2000" chance="15" range="7" radius="1" target="1" min="-330" max="-810">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="energyfield" interval="2000" chance="10" range="7" radius="1" target="1">
+			<attribute key="shootEffect" value="energyball" />
+		</attack>
+	</attacks>
+	<defenses armor="40" defense="40" />
+	<elements>
+		<element earthPercent="5" />
+		<element firePercent="-20" />
+		<element deathPercent="-20" />
+		<element physicalPercent="-12" />
+		<element energyPercent="5" />
+		<element holyPercent="60" />
+		<element icePercent="70" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+		<item id="7590" countmax="3" chance="15003" /><!-- Great mana Potions -->
+		<item id="2160" countmax="3" chance="8780" /><!--   coin -->
+		<item id="9971" countmax="1" chance="1780" /><!--  Gold Ingot -->
+		<item id="2158" chance="1000" />				<!--   Blue Gem -->
+		<item id="2155" chance="1100" />				<!--  green gem -->
+		<item id="2197" chance="13400" />				<!--  ssa -->
+		<item id="26200" chance="700" />				<!--  collar red plasma -->
+		<item id="2181" chance="3710" />				<!-- terra rod -->
+		<item id="7897" chance="3500" />				<!--  Glacier Robe -->
+		<item id="7890" chance="4000" />				<!--  magma amulet -->
+		<item id="2171" chance="4205" />				<!--   Platinum Amulet -->
+		<item id="10219" chance="2100" />				<!--  Sacred Tree Amulet -->
+		<item id="8912" chance="2300" />				<!--  Springsprout -->
+		<item id="8910" chance="2400" />				<!--   Underworld Rod -->
+		<item id="39856" chance="1" />				<!--  bag of desise -->
+	</loot>
+</monster>

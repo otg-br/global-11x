@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Parder" nameDescription="a Parder" experience="1100" speed="115" race="blood">
+	<health now="1200" max="1200" />
+	<targetchange interval="4000" chance="15" />
+	<look type="1533" corpse="48444" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="0" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-356"/>
+		<attack name="lifedrain" interval="2000" chance="50" length="4" spread="0" min="-50" max="-300">
+		<attribute key="areaEffect" value="SMOKE"/>
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="50" target="1" radius="3" min="-100" max="-290">
+		<attribute key="areaEffect" value="EXPLOSIONAREA"/>
+		</attack>
+	</attacks>	
+		
+	<defenses armor="43" defense="43">
+		<defense name="healing" interval="2000" chance="10" min="120" max="230">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="270" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<voices interval="5000" chance="40">
+		<voice sentence="Grrroaaar!" />
+	</voices>
+	
+	<loot>
+		<item name="gold coin" countmax="100" chance="60000" />
+		<item name="gold coin" countmax="100" chance="60000" />
+		<item name="gold coin" countmax="74" chance="60000" />
+		<item id="18420" chance="920" />					<!-- red crystal fragment  -->
+		<item id="7385" chance="1920" />					<!-- Crimson Sword  -->
+		<item id="2429" chance="1920" />					<!-- Barbarian Axe   -->
+		<item id="48643" chance="1220" />					<!-- Parder Tooth    -->
+		<item id="48644" chance="1320" />					<!-- Parder Fur    -->
+		
+	</loot>
+</monster>

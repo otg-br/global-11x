@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Noxious Ripptor" nameDescription="a Noxious Ripptor" race="blood" experience="13190" speed="180">
+	<health now="21500" max="21500" />
+	<look type="1558" corpse="48559" />
+	<targetchange interval="5000" chance="8" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="2000" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-600" />
+		<attack name="energy" interval="3000" chance="30" radius="3" min="-130" max="-780">
+			<attribute key="areaEffect" value="yellowenergy" />
+		</attack>
+		<attack name="energy" interval="3000" chance="35" range="7" min="-200" max="-900">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="fire" interval="2500" chance="17" length="8" spread="3" min="-270" max="-1200">
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="82" defense="82">
+		<defense name="healing" interval="1000" chance="25" min="57" max="93">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="12" speedchange="457" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<elements>
+		<element physicalPercent="20" />
+	</elements>
+
+	<voices interval="5000" chance="30">
+		<voice sentence="Krccchht!" />
+	</voices>
+
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<loot>
+		<item id="2160" countmax="1" chance="2320" />		<!-- Crystal Coins -->
+		<item id="10219" chance="2120" />					<!-- Sacred Tree Amulet   -->
+		<item id="48615" chance="2100" />					<!-- ripptor claw   -->
+		<item id="48617" chance="2520" />					<!-- ripptor scales   -->
+	</loot>
+</monster>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Two-Headed Turtle" nameDescription="a Two-Headed Turtle" race="blood" experience="2930" speed="170">
+	<health now="5010" max="5010" />
+	<look type="1535" corpse="48452" />
+	<targetchange interval="5000" chance="0" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="1" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag staticattack="90" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonpoison="0" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-310" />
+		<attack name="physical" interval="2000" chance="20" range="7" radius="2" target="1" min="231" max="-432">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="physical" interval="2000" chance="20" range="7" target="1" min="-72" max="-405">
+			<attribute key="shootEffect" value="purpleenergy" />
+		</attack>
+		
+	</attacks>
+	
+	<defenses armor="72" defense="72" />
+	
+	<elements>
+		<element icePercent="50" />
+		<element firePercent="50" />
+	</elements>
+	
+	<voices interval="5000" chance="30">
+		<voice sentence="Krk! Krk!" />
+		<voice sentence="BONK!" />
+	</voices>
+	
+	<loot>
+		<item id="2152" countmax="27" chance="2320" />		<!--  Platinum Coin -->
+		<item id="48635" chance="2450" />					<!-- Two-Headed Turtle Heads   -->
+		<item id="48636" chance="2250" />					<!-- hydrophytes   -->
+		<item id="7887" chance="2750" />					<!-- terra amulet   -->
+		<item id="7892" chance="1750" />					<!--Glacier Shoes   -->
+		<item id="7901" chance="1650" />					<!-- Lightning Headband   -->
+		<item id="2127" chance="4650" />					<!-- Emerald Bangle   -->
+		<item id="2134" chance="3650" />					<!-- Silver Brooch   -->
+		<item id="2477" chance="1780" />					<!-- Knight Legs   -->
+		<item id="2654" chance="2780" />					<!-- cape   -->
+		<item id="8900" chance="2280" />					<!-- Spellbook of Enlightenment   -->
+		<item id="27059" chance="3180" />					<!--  Coral Brooch   -->
+		<item id="48634" chance="4180" />					<!--  Small Tropical Fish    -->
+		<item id="2157" chance="2180" />					<!--  Gold Nugget     -->
+		<item id="11339" chance="2980" />					<!-- Clay Lump     -->
+		<item id="37604" chance="2880" />					<!-- white gem     -->
+	</loot>
+</monster>

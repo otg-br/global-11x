@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Shrieking Cry-Stal" nameDescription="a Shrieking Cry-Stal" race="venom" experience="13560" speed="207">
+	<health now="18700" max="18700" />
+	<look type="1560" corpse="48567" />
+	<targetchange interval="4000" chance="10" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonfire="0" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-350" />
+	</attacks>
+	
+	<defenses armor="35" defense="35" />
+	
+	<elements>
+		<element physicalPercent="20" />
+	</elements>
+
+	<voices interval="5000" chance="40">
+		<voice sentence="SCREEECH..." />
+	</voices>
+	
+	<loot>
+		<item id="2160" countmax="1" chance="2320" />		<!-- Crystal Coins -->
+		<item id="2145" chance="5420" />					<!-- small diamond  -->
+		<item id="18421" chance="2000" />					<!-- green crystal fragment  -->
+	</loot>
+</monster>

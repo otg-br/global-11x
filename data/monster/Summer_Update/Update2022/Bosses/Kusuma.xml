@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Kusuma" nameDescription="a Kusuma" race="blood" experience="9380" speed="210" manacost="0" script="boss.lua">
+	<health now="7650" max="7650" />
+	<look type="1068" head="79" body="94" legs="120" feet="79" addon="1" corpse="33404" />
+<targetchange interval="4000" chance="10" />
+	<flags>
+	    <flag rewardboss="1"/>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="80" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-500" />
+		<attack name="manadrain" interval="2000" chance="20" range="7" min="0" max="-1500" />
+		 
+		<attack name="lifedrain" interval="2000" chance="20" length="4" spread="2" min="-550" max="-1000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		
+		
+	    <attack name="fire" interval="1000" chance="15" length="3" min="120" max="250">
+			<attribute key="areaEffect" value="fire" />
+		</attack>
+		
+		
+				<attack name="death" interval="1000" chance="20" radius="3" target="1"  min="650" max="1250">
+			<attribute key="areaEffect" value="mortarea"/>
+	</attack>
+	
+		 
+		 		<attack name="death" interval="2000" chance="20"  radius="4" min="540" max="1300">
+	 			<attribute key="areaEffect" value="blacksmoke" />
+		</attack>
+		  
+		 
+		 
+		<attack name="speed" interval="2000" chance="15" radius="1" target="1" speedchange="-100" duration="30000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="75" defense="55">
+		<defense name="healing" interval="2000" chance="15" min="150" max="800">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<loot>
+		<item id="2182" chance="4925"  />			<!-- snakebite rod -->
+		<item id="18411" chance="2925"  />			<!-- Muck Rod -->
+		<item id="2124" chance="5925"  />			<!-- crystal ring -->
+		<item id="24637" chance="1300"  />			<!-- Oriental Shoes -->
+		<item id="2155" chance="4300"  />			<!-- Green Gem -->
+		<item id="37604" chance="2300"  />			<!-- White Gem -->
+		<item id="9971" chance="2300"  />			<!-- Gold Ingot-->
+		<item id="7632" chance="1340"  />			<!-- Giant Shimmering Pearl-->
+		<item id="24630" chance="1240"  />			<!-- Golden Lotus Brooch -->
+		<item id="7903" chance="3140"  />			<!-- Terra Hood -->
+		<item id="2185" chance="3240"  />			<!--Necrotic Rod -->
+		<item id="24631" chance="950"  />			<!--Peacock Feather Fan -->
+		<item id="7885" chance="3920"  />			<!--Terra legs -->
+		<item id="8880" chance="1220"  />			<!-- Swamplair Armor -->
+		
+		<item id="2148" countmax="242" chance="97000" />	            <!-- gold coin -->		
+		<item id="2152" chance="5000" countmax="9" />			<!-- Platinum coin -->
+		<item id="29036" chance="5000" countmax="4" />			<!-- Leaf Star -->
+		<item id="2149" chance="5000" countmax="6" />			<!--Small Emerald -->
+		<item id="2142" chance="3900" countmax="6" />			<!--White Pearl -->
+		<item id="6500" chance="6900" countmax="3" />			<!--Demonic Essence -->
+		<item id="5910" chance="9900" countmax="3" />			<!--Green Piece of Cloth -->
+	</loot>
+</monster>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Usurper Archer" nameDescription="a Usurper Archer" raceid="1647" race="undead" experience="6800" speed="125" manacost="0">
+	<health now="7300" max="7300" />
+	<look type="1316" head="76" body="76" legs="76" feet="116" addons="2" corpse="32559" />
+	<targetchange interval="5000" chance="8" />
+	<flags>
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="1" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="5" />
+		<flag staticattack="90" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonpoison="0" />
+		<flag canwalkonfire="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-450" />
+		<attack name="physical" interval="1500" chance="16" range="7" min="-300" max="-650">
+			<attribute key="shootEffect" value="royalspear" />
+		</attack>
+		<attack name="energy" interval="1500" chance="12" range="7" radius="3" target="1" min="-350" max="-560">
+			<attribute key="shootEffect" value="powerbolt" />
+			<attribute key="areaEffect" value="energyarea" />
+		</attack>
+		<attack name="energy" interval="1500" chance="12" length="4" spread="0" min="-250" max="-590">
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+	</attacks>
+	<defenses armor="82"/>
+	<elements>
+		<element physicalPercent="10" />
+		<element energyPercent="10" />
+		<element earthPercent="10" />
+		<element deathPercent="10" />
+		<element holyPercent="-5" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+	<loot>
+    	<item name="platinum coin" countmax="5" chance="10000" />
+        <item name="coral brooch" chance="2000" />
+		<item name="mino shield" chance="6600" />
+		<item name="warrior helmet" chance="5000" />
+		<item name="white pearl" countmax="4" chance="3000" />
+		<item name="small amethyst" countmax="4" chance="9000" />
+		<item name="ultimate health potion" countmax="4" chance="4500" />
+		<item name="broken longbow" chance="4100" />
+        <item name="silver brooch" chance="4010" />
+        <item name="wood cape" chance="5050" />
+        <item id="7632" chance="3170" /> <!-- Giant Shimmering Pearl -->
+        <item name="damaged armor plates" chance="3080" />
+        <item name="emerald bangle" chance="1220" />
+        <item name="gemmed figurine" chance="1600" />
+        <item name="elvish bow" chance="500" />
+		<item id="2476" chance="6000" /> <!-- knight armor -->
+		<item id="15644" chance="2000" /> <!-- ornate crossbow -->
+	</loot>
+</monster>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="The Moonlight Aster" nameDescription="a The Moonlight Aster" race="blood" experience="9250" speed="500" manacost="0" script="boss.lua">
+	<health now="4500" max="4500" />
+	<look type="150" head="0" body="114" legs="90" feet="90" addons="3" corpse="24648" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag rewardboss="1"/>
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="3" />
+		<flag staticattack="80" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-369" />
+		<attack name="manadrain" interval="2000" chance="10" range="7" min="0" max="-770" />
+		 
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="300" max="1200">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		 
+		 	 
+		<attack name="death" interval="2000" chance="10" length="8" spread="0" min="400" max="1220">
+	 			<attribute key="areaEffect" value="blacksmoke" />
+		</attack>
+		
+		<attack name="speed" interval="2000" chance="15" radius="1" target="1" speedchange="-100" duration="30000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+		
+		 <attack name="drunk" interval="2000" chance="10" range="3" target="1" radius="4" duration="4000">
+			<attribute key="areaEffect" value="stun" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="75" defense="55">
+		<defense name="healing" interval="2000" chance="15" min="520" max="1000">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+				<defense name="invisible" interval="2000" chance="20" duration="10000">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	
+	<elements>
+		<element icePercent="20" />
+		<element firePercent="20" />
+		<element energyPercent="-10" />
+		<element earthPercent="-15" />
+	</elements>
+	
+	<immunities> 
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<loot>
+		<item id="2148" countmax="242" chance="97000" />	            <!-- gold coin -->		
+		<item id="7368" countmax="2" chance="2000" />				    <!-- Assassin Stars -->		
+		<item id="2144" chance="2000" />				                <!--  Black Pearls -->
+		<item id="6558" chance="2000" />				                <!-- Concentrated Demonic Blood -->		
+		<item id="6500" chance="2210" />					            <!-- Demonic Essence -->		
+
+		<item id="18413" countmax="5" chance="1200" />					<!-- Blue Crystal Shard -->
+		<item id="2146" countmax="3" chance="4580" />					<!-- Small Sapphire -->			
+		<item id="7591" chance="700" />					                <!-- Great Health Potion -->	
+		<item id="2143" chance="4660" />						<!-- White Pearl -->		
+		<item id="2158" chance="3420" />					<!--  Blue Gem -->	
+		<item id="2656" chance="5000" />					<!-- Blue Robe -->		
+		<item id="9971" chance="4400" />					<!--  Gold Ingot -->
+	    <item id="24630" chance="2600" />					<!-- Golden Lotus Brooch -->		
+	    <item id="2186" chance="2000" />					<!-- Moonlight Rod, -->		
+	    <item id="2185" chance="2000" />					<!-- Necrotic Rod -->		
+	    <item id="24637" chance="1200" />					<!-- Oriental Shoes -->		
+		<item id="24631" chance="950" />					<!-- Peacock Feather Fan -->
+		<item id="8889" chance="1700" />					<!--  Skullcracker Armor -->
+		<item id="2134" chance="1600" />					<!-- Silver Brooch -->
+		<item id="2170" chance="3600" />					<!-- Silver amulet -->
+		<item id="5944" chance="3400" />					<!-- Soul Orb -->
+		<item id="8902" chance="1000" />					<!-- Spellbook of Mind Control -->
+	    <item id="3967" chance="1500" />						<!-- Tribal Mask -->
+		<item id="8910" chance="2000" />					<!-- Underworld Rod  -->
+		<item id="2189" chance="2300" />					<!-- Wand of Cosmic Energy  -->
+		<item id="2154" chance="400" />						<!--  Yellow Gem  -->
+	</loot>
+</monster>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Timira the Many-Headed" nameDescription="Timira the Many-Headed" race="blood" experience="45500" speed="500" manacost="0" script="boss.lua">
+	<health now="75000" max="75000" />
+	<look type="495" corpse="48803" />
+	<targetchange interval="5000" chance="10" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag rewardboss="1"/>
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="80" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+	
+		<attack name="melee" interval="3000" skill="300" attack="600" />
+		<attack name="energycondition" interval="1000" chance="30" radius="6" target="0" min="-800" max="-2500">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="fire" interval="2000" chance="20" range="7" radius="7" target="1" min="-550" max="-2300">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="energy" interval="2000" chance="50" range="1" min="-450" max="-1250">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="explosion wave timira" interval="2000" chance="30" min="-1000" max="-2500"/>
+		<attack name="purple chain" interval="2000" chance="40" min="-2000" max="-3800"/>
+		<attack name="death chain" interval="2000" chance="40" min="-2000" max="-3800"/>
+		
+	</attacks>
+	
+	<defenses armor="80" defense="80">
+		<defense name="healing" interval="1000" chance="20" min="1000" max="2000">
+			<attribute key="areaEffect" value="insects" />
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<loot>
+		<item id="48846" chance="2000" />	<!-- naga basin -->
+		<item id="34699" chance="6000" />	<!-- Giant Sapphire -->
+		<item id="48625" chance="2300" />	<!-- One of Timira's Many Heads -->
+		<item id="48411" chance="1300" />	<!-- Dawnfire Sherwani -->
+		<item id="48405" chance="1240" />	<!-- Frostflower Boots -->
+		<item id="48406" chance="1110" />	<!-- Naga Crossbow -->
+		<item id="48626" chance="2010" />	<!-- Piece of Timira's Sensors -->
+		<item id="48474" chance="300" />	<!-- Enchanted Turtle Amulet -->
+		<item id="48408" chance="1000" />	<!-- Feverbloom Boots -->
+
+
+		<item id="34697" chance="6130" countmax="3" />			<!-- Giant Ruby -->
+		<item id="37457" chance="4130" countmax="3" />			<!-- Giant Amethist -->
+		<item id="34698" chance="7500" countmax="2" />			<!-- Giant Emerald -->
+		<item id="2160" chance="5000" countmax="5" />			<!-- Crystal coin -->
+		<item id="7440" chance="6000" countmax="4" />			<!-- Mastermind Potion -->
+		<item id="7443" chance="6030" countmax="3" />			<!-- Bullseye Potion -->
+		<item id="7439" chance="7030" countmax="3" />			<!-- Berserk Potion -->
+		<item id="37418" chance="2000" countmax="2" />	<!-- Empera Skulls -->
+	</loot>
+</monster>

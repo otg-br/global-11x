@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Vibrant Phantom" nameDescription="a Vibrant Phantom" race="blood" experience="29550" speed="230">
+	<health now="27000" max="27000" />
+	<look type="1298" head="85" body="85" legs="88" feet="91" corpse="39627" />
+	<targetchange interval="5000" chance="8" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-650" />
+		<attack name="manadrain" interval="2000" chance="10" range="7" min="0" max="-800" />
+		<attack name="fire" interval="2000" chance="20" range="7" radius="7" target="1" min="-1200" max="-1500">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="firefield" interval="2000" chance="10" range="7" radius="1" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="10" length="8" spread="0" min="-1500" max="-2000">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="energy" interval="2000" chance="10" range="1" min="-1500" max="-2000">
+			<attribute key="shootEffect" value="energy" />
+		</attack>
+		<attack name="speed" interval="2000" chance="15" radius="1" target="1" speedchange="-700" duration="30000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="30" defense="30">
+		<defense name="healing" interval="2000" chance="15" min="180" max="250">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="10" />
+		<element deathPercent="10" />
+		<element energyPercent="10" />
+		<element earthPercent="10" />
+		<element icePercent="-10" />
+		<element holyPercent="-10" />
+	</elements>
+	<immunities>
+		<immunity drown="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="All this beautiful lightnining" />
+	</voices>
+	<loot>
+		<item id="7632" chance="1200" />   <!-- Giant Shimmering           -->
+		<item id="7633" chance="1300" />   <!-- Giant Shimmering Pearl -->   
+		<item id="9971" chance="4000" />   <!-- Gold Ingot --> 
+		<item id="2181" chance="2300" />   <!-- Terra Rod -->
+		<item id="2153" chance="2000" />   <!-- Violet Gem -->
+		<item id="18413" chance="3000" />   <!-- Blue Crystal Shard -->
+		<item id="2158" chance="4000" />   <!-- Blue Gem -->
+		<item id="2160" chance="1300" />   <!-- Crystal coin -->
+		<item id="8912" chance="3400" />   <!-- Springsprout Rod   -->
+		<item id="8890" chance="3430" />   <!-- Underworld Rod -->
+		<item id="39884" chance="1000" />   <!-- Vibrant Heart -->
+		<item id="39885" chance="1304" />   <!-- Vibrant Robe -->
+		<item id="18414" chance="3030" />   <!-- Violet Crystal Shard -->
+		<item id="2183" chance="1000" />   <!-- Hailstorm Rod -->
+		<item id="39856" chance="5" />	<!-- Bag You Desire -->
+
+	</loot>
+</monster>

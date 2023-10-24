@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Many Faces" nameDescription="a many faces" race="blood" experience="28305" speed="215">
+	<health now="30000" max="30000" />
+	<look type="1296" corpse="39619" />
+	<targetchange interval="4000" chance="25" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+	    <flag canwalkonfire="1" />
+	    <flag canwalkonpoison="1" />
+		<flag canpushitems="1"/> 
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-1550" />
+		<attack name="lifedrain" interval="2000" chance="25" length="8" spread="0" min="-650" max="-1350">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="lifedrain" interval="1000" chance="25" target="0" radius="4" min="-690" max="-1400">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="105" defense="100">
+		<defense name="healing" interval="2000" chance="30" min="480" max="1250">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>	
+	</defenses>
+	<elements>
+		<element physicalPercent="30" />
+		<element deathPercent="-30" />
+		<element icePercent="30" />
+		<element holyPercent="30" />
+		<element firePercent="-20" />
+	</elements>
+	<immunities>
+		<immunity drown="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices interval="5000" chance="30">
+		<voice sentence="Look into my eyes! No, the other ones." />
+		<voice sentence="The mirrors can't contain the night." />
+	</voices>
+	<loot>	
+		<item id="8473" countmax="3" chance="15003" /><!--  Ultimate Health Potions -->
+		<item id="2153" chance="1000" />				<!--   Violet Gem -->
+		<item id="2155" chance="1100" />				<!--  green gem -->
+		<item id="2197" chance="13400" />				<!--  ssa -->
+		<item id="2152" countmax="10" chance="85780" /><!--  platinum coin -->
+		<item id="10219" chance="2100" />				<!--  Sacred Tree Amulet -->
+		<item id="39728" chance="2140" />				<!--  Apron -->
+		<item id="2183" chance="2500" />				<!--   Hailstorm Rod -->
+		<item id="8911" chance="2350" />				<!--  Northwind Rod -->
+		<item id="7897" chance="4050" />				<!--   Glacier Robe -->
+		<item id="7892" chance="5200" />				<!--  Glacier shoe -->
+		<item id="26189" chance="1400" />				<!--  Ring of Red Plasma -->
+		<item id="18412" chance="1230" />				<!--  Glacial Rod -->
+		<item id="39817" chance="1200" />				<!--  Gruesome Fan -->
+		<item id="39727" chance="1100" />				<!--  Head Many -->
+		<item id="39856" chance="15" />	<!-- Bag You Desire -->
+	</loot>
+</monster>

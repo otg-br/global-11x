@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Sulphur Spouter" nameDescription="a Sulphur Spouter" race="fire" experience="11517" speed="180">
+	<health now="19000" max="19000" />
+	<look type="1547" corpse="48515" />
+	<targetchange interval="4000" chance="10" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="4" />
+		<flag staticattack="90" />
+		<flag runonhealth="10" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-1500" />
+		<attack name="death" interval="2000" chance="10" length="8" spread="0" min="-300" max="-2000">
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="fire" interval="2000" chance="15" length="3" spread="2" min="-290" max="-1500">
+			<attribute key="areaEffect" value="fireattack" />
+		</attack>
+		<attack name="magma crawler soulfire" interval="2000" chance="20" />
+		<attack name="soulfire" interval="2000" chance="10" />
+		<attack name="fire" interval="2000" chance="15" target="0" radius="3" min="-140" max="-180">
+			<attribute key="areaEffect" value="fire" />
+		</attack>
+		<attack name="speed" interval="2000" chance="10" radius="2" target="0" spread="0" speedchange="-800" duration="20000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="84" defense="84">
+		<defense name="invisible" interval="2000" chance="10" duration="5000">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<voices interval="5000" chance="15">
+		<voice sentence="Gruugl..." />
+	</voices>
+	
+	<loot>
+		<item id="2160" countmax="2" chance="2320" />		<!-- Crystal Coins -->
+		<item id="48602" chance="3150" />					<!-- sulphur powder   -->
+		<item id="2156" chance="3150" />					<!-- red gem   -->
+		<item id="2154" chance="3150" />					<!-- yellow gem   -->
+		<item id="15453" chance="1150" />					<!-- warrios shield   -->
+		<item id="7632" chance="1150" />					<!-- giant shimmering pearl   -->
+		<item id="26189" chance="2150" />					<!-- ring of red plasma   -->
+		<item id="2477" chance="3350" />					<!-- knight legs   -->
+		<item id="2392" chance="3050" />					<!-- fire sword   -->
+		<item id="18453" chance="1250" />					<!-- crystal crossbow -->
+		<item id="9813" chance="1000" />					<!-- Slightly Rusted Legs -->
+	</loot>
+</monster>

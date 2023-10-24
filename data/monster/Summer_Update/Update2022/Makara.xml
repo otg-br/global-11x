@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Makara" nameDescription="a Makara" race="blood" experience="6150" speed="175">
+	<health now="4770" max="4770" />
+	<look type="1565" corpse="48591" />
+	<targetchange interval="5000" chance="0" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="10" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-350" />
+		<attack name="ice" interval="2000" chance="25" range="7" radius="3" target="0" min="-50" max="-320">
+			<attribute key="areaEffect" value="icetornado"/>
+		</attack>
+		<attack name="drown" interval="2000" chance="15" target="1" range="7" radius="2" min="-330" max="-450">
+			<attribute key="areaEffect" value="bluebubble" />
+		</attack>
+		<attack name="ice" interval="2000" chance="20" range="7" min="-170" max="-710">
+			<attribute key="shootEffect" value="smallice" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="25" defense="25" />
+	
+	<elements>
+		<element icePercent="25" />
+	</elements>
+	
+	<voices interval="5000" chance="10">
+		<voice sentence="Waddle Waddle" />
+	</voices>
+	
+	<loot>
+		<item name="meat" countmax="2" chance="19950" />
+		<item id="2152" countmax="13" chance="3650" />		<!-- platinum coin  -->
+		<item id="48628" chance="1340" />					<!-- Makara Tongue   -->
+		<item id="48627" chance="1230" />					<!-- Makara fin   -->
+		<item id="2154" chance="3120" />					<!-- yellow gem   -->
+		<item id="2158" chance="2220" />					<!-- blue gem   -->
+		<item id="29038" chance="1820" />					<!-- rainbow quartz   -->
+		<item id="18415" chance="3100" />					<!-- green crystal shard  -->
+		<item id="18421" chance="2000" />					<!-- green crystal fragment  -->
+		<item id="18419" chance="1420" />					<!-- cyan crystal fragment  -->
+		<item id="36158" chance="1000" />					<!-- sea horse figurine  -->
+		<item id="2145" chance="5420" />					<!-- small diamond  -->
+	</loot>
+</monster>

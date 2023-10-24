@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Afflicted Strider" nameDescription="a Afflicted Strider" race="fire" experience="5700" speed="350">
+	<health now="12000" max="12000" />
+	<look type="1403" corpse="6068" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="4" />
+		<flag staticattack="90" />
+		<flag runonhealth="300" />
+		<flag canwalkonenergy="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-250" />
+		<attack name="death" interval="2000" chance="10" length="8" spread="0" min="-300" max="-1100">
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="fire" interval="2000" chance="15" length="3" spread="2" min="-290" max="-800">
+			<attribute key="areaEffect" value="fireattack" />
+		</attack>
+		<attack name="magma crawler soulfire" interval="2000" chance="20" />
+		<attack name="soulfire" interval="2000" chance="10" />
+		<attack name="fire" interval="2000" chance="15" target="0" radius="3" min="-140" max="-180">
+			<attribute key="areaEffect" value="fire" />
+		</attack>
+		<attack name="speed" interval="2000" chance="10" radius="2" target="0" spread="0" speedchange="-800" duration="20000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</attack>
+	</attacks>
+	<defenses armor="50" defense="55">
+		<defense name="invisible" interval="2000" chance="10" duration="5000">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element icePercent="10" />
+		<element energyPercent="10" />
+		<element deathPercent="5" />
+		<element physicalPercent="5" />
+	</elements>
+	<immunities>
+		<immunity fire="1" />
+		<immunity earth="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="Knorror norror!" />
+	</voices>
+	<loot>
+		<item name="small diamond" countmax="3" chance="8800" />
+		<item name="gold coin" countmax="100" chance="50000" />
+		<item name="gold coin" countmax="99" chance="50000" />
+		<item name="platinum coin" countmax="5" chance="100000" />
+		<item name="yellow gem" chance="1030" />
+		<item name="energy ring" chance="1650" />
+		<item name="great mana potion" chance="6500" />
+		<item name="great health potion" chance="7270" />
+		
+		
+	</loot>
+</monster>

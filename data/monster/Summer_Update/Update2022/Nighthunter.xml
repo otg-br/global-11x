@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Nighthunter" nameDescription="a Nighthunter" race="blood" experience="12647" speed="205">
+	<health now="19200" max="19200" />
+	<look type="1552" corpse="48536" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="300" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-600" />
+		<attack name="death" interval="2000" chance="15" radius="3" range="6" target="1" min="-50" max="-500">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="bleedcondition" interval="2000" chance="10" radius="6" min="-220" max="-700">
+			<attribute key="areaEffect" value="bats" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="81" defense="81">
+		<defense name="speed" interval="2000" chance="15" speedchange="300" duration="4000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<elements>
+		<element deathPercent="20" />
+	</elements>
+	
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+	
+	<voices interval="5000" chance="10">
+		<voice sentence="Shriiiiek! Shriiiiek!" />
+	</voices>
+	
+	<loot>
+		<item id="2160" countmax="1" chance="2320" />		<!-- Crystal Coins -->
+		<item id="2154" chance="3120" />					<!-- yellow gem   -->
+		<item id="7449" chance="4020" />					<!-- crystal sword   -->
+		<item id="15451" chance="320" />					<!-- warrior's axe   -->
+		<item id="8902" chance="2120" />					<!-- spellbook of mind control   -->
+		<item id="48607" chance="1460" />					<!--Nighthunter Wing    -->
+		<item id="18415" chance="3100" />					<!-- green crystal shard  -->
+		<item id="18419" chance="1420" />					<!-- cyan crystal fragment  -->
+		<item id="18420" chance="1220" />					<!-- red crystal fragment  -->
+	</loot>
+</monster>

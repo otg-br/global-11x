@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Mantosaurus" nameDescription="an Mantosaurus" race="blood" experience="11569" speed="205">
+	<health now="17450" max="17450" />
+	<look type="1556" corpse="48551" />
+	<targetchange interval="4000" chance="15" />
+	
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag staticattack="80" />
+		<flag lightlevel="5" />
+		<flag lightcolor="3" />
+		<flag targetdistance="1" />
+		<flag runonhealth="250" />
+	</flags>
+	
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-450" fire="650" />
+		<attack name="firefield" interval="2000" chance="15" range="7" radius="4" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="fire" interval="1000" chance="15" length="1" min="-300" max="-900">
+			<attribute key="areaEffect" value="fireattack" />
+		</attack>
+		<attack name="fire" interval="1000" chance="13" target="1" radius="4" min="-200" max="-350">
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+	</attacks>
+	
+	<defenses armor="65" defense="65">
+		<defense name="healing" interval="2000" chance="15" min="100" max="550">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	
+	<voices interval="5000" chance="10">
+		<voice sentence="Klkkk... Klkkk..." />
+	</voices>
+	
+	<loot>
+		<item id="2160" countmax="1" chance="2320" />		<!-- Crystal Coins -->
+		<item id="18419" chance="1420" />					<!-- cyan crystal fragment  -->
+		<item id="2134" chance="5020" />					<!-- silver brooch  -->
+		<item id="2124" chance="4420" />					<!-- crystal ring  -->
+		<item id="48612" chance="1420" />					<!--Mantosaurus jaw  -->
+	</loot>
+</monster>
