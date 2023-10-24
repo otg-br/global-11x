@@ -10,5 +10,5 @@
     <channel id="10" name="Loot" public="1" script="loot.lua" />
 	<channel id="11" name="Guild Leaders" script="guildleaders.lua" />
 	<channel id="12" name="Events" script="events.lua" />
-	<channel id="13" name="Spoof" script="spoof.lua" />
+	
 </channels>
