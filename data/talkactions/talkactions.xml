@@ -67,7 +67,7 @@
 	<!-- <talkaction words="!ausente" script="player/ausente.lua"/> -->
 	<talkaction words="!flask" separator=" " script="player/empty_vial.lua" />
 	<talkaction words="!aol" script="player/aol.lua"/>
-	<!--<talkaction words="!bless" script="player/bless.lua" />-->
+	<talkaction words="!bless" script="player/bless.lua" />
 	<talkaction words="!bosstimer" script="player/bossTimer.lua" />
 	<talkaction words="!buyhouse" script="player/house_buy.lua" />
 	<talkaction words="!leavehouse" script="player/house_leave.lua" />
