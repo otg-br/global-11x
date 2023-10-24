@@ -33,7 +33,7 @@ end
 
 dofile('data/lib/libs.lua')
 
-ADVENTURERS_BLESSING_LEVEL = 50
+ADVENTURERS_BLESSING_LEVEL = 100
 
 NOT_MOVEABLE_ACTION = 8000
 PARTY_PROTECTION = 0 -- Set to 0 to disable.
