@@ -1,0 +1,81 @@
+<monster name="Brokul" nameDescription="a brokul" race="blood" experience="23000" speed="210">
+	<health now="50000" max="50000" />
+	<look type="1076" corpse="33152" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="1" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag staticattack="90" />
+		<flag targetdistance="0" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonpoison="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-50" max="-1500" />			
+		<attack name="lifedrain" interval="2500" range="7" target="1" min="-100" max="-800">
+			<attribute key="shooteffect" value="whirlwindaxe" />
+			<attribute key="areaEffect" value="explosionarea" />
+		</attack>			
+		<attack name="fire" interval="1000" chance="34" target="1" range="2" radius="4"  min="-100" max="-870">
+			<attribute key="areaEffect" value="firearea" />
+		</attack>		
+		<attack name="Physical" interval="1000" chance="18" target="1" range="2" radius="4"  min="-100" max="-900">
+			<attribute key="areaEffect" value="explosionarea" />
+		</attack>		
+		<attack name="manadrain" interval="1000" chance="5" target="1" range="2" radius="4"  min="-100" max="-900">
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>			
+		<attack name="holy" interval="1000" chance="23" target="0" length="8" spread="0"  min="0" max="-860">
+			<attribute key="areaEffect" value="holyarea"/>
+		</attack>		
+		<attack name="fire" interval="1000" chance="19" target="0" length="8" spread="0"  min="-100" max="-910">
+			<attribute key="areaEffect" value="fire"/>
+		</attack>		
+		<attack name="death" interval="1000" chance="27" target="0" length="8" spread="0"  min="0" max="-820">
+			<attribute key="areaEffect" value="mortarea"/>
+		</attack>		
+	</attacks>	
+	<summons maxSummons="5">
+		<summon name="neutral deepling warrior" interval="1000" chance="70" />
+	</summons>
+	<defenses armor="72" defense="72">
+		<defense name="healing" interval="4000" chance="15" min="0" max="860">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element earthPercent="10" />
+		<element energyPercent="10" />
+		<element deathPercent="-10" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity ice="1" />
+		<immunity drown="1" />
+		<immunity fire="1" />
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="VCB J-T =I- " />
+	</voices>
+	<loot>
+		<item name="small sapphire" countmax="10" chance="2854" />
+		<item name="gold coin" countmax="60" chance="70000" />
+		<item name="platinum coin" countmax="10" chance="80000" />
+		<item name="gold ingot" countmax="10" chance="3448" />
+		<item name="broccoli" countmax="10" chance="2439" />
+		<item name="small diamond" countmax="10" chance="498" />
+		<item name="blue gem" chance="2500" />
+		<item name="red gem" chance="2000" />
+		<item name="deepling ceremonial dagger" chance="200" />
+		<item name="deepling fork" chance="200" />
+		<item name="true book of death" chance="70000" />
+	</loot>
+</monster>
+

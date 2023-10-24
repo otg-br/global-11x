@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Bright Percht Sleigh" nameDescription="a Bright Percht Sleigh" race="blood" experience="2500" speed="160" manacost="0">
+	<health now="2800" max="2800" />
+	<look type="1133" corpse="6068" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+				<flag isblockable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-400" />
+	</attacks>
+	<defenses armor="20" defense="20" />
+	<elements>
+		<element firePercent="20" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+		<item id="2671" countmax="1" chance="60780" />		<!-- ham -->
+		<item id="2666" countmax="1" chance="4920" />		<!-- meat -->
+	</loot>
+</monster>

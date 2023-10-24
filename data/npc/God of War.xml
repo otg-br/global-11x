@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="God of War" script="God of War.lua" walkinterval="0" floorchange="0" speechbubble="3">
+  <health now="100" max="100" />
+  <look type="367" head="31" body="131" legs="123" feet="112" addons="3" />
+</npc>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<globalevents>
+	<globalevent name="anuncios30" interval="1800000" script="anuncios30.lua" />
+
+	<!-- Scarllet Etzel -->
+	<globalevent name="randomMirrors" interval="20000" script="quests/grave_danger/cobra_bastion/randomMirrors.lua" />
+
+	<!-- Morgathla -->
+	<globalevent name="morgathlaTiles" interval="15000" script="morgathlaTiles.lua" />
+
+	<!-- Autoloot -->
+	<globalevent name="autoloot" type="startup" script="autoloot.lua"/>
+
+	<!-- Mawhawk -->
+	<globalevent name="Mawhawk" interval="14399999" script="bosses/Mawhawk.lua"/>
+
+	<!-- Battlefield (Davi) -->
+	<globalevent name="startBattlefield_x2" time="19:00" script="events/battlefield/start_1.lua" />
+	<!-- The Last Man Standing (Davi) -->
+	<globalevent name="startTheLastMan" time="18:00" script="events/lastman/start.lua" />
+	<!-- Zombie (Davi) -->
+	<globalevent name="startZombie" time="20:00" script="events/zombie/start.lua" />
+	<!-- Castle (Davi) -->
+	<globalevent name="startCastle" time="21:00" script="events/castle/start.lua" />
+
+	<!-- Pits of Inferno -->
+	<globalevent name="bosspoi" interval="46800000" script="bosses/bosspoi.lua"/>
+
+	<!-- Mad Mage -->
+	<globalevent name="Mad" interval="14400000" script="bosses/Mad.lua"/>
+
+	<globalevent name="npcs" type="startup" script="others/npcspawn.lua"/>
+
+	<!-- Grimvale -->
+	<globalevent name="Grimvale" interval="2000" script="others/grimvale.lua" />
+	<globalevent name="Respawn" type="startup" script="others/grimvaleRespawn.lua" />
+	
+	<!-- Dream Courts -->
+	<globalevent name="startupCourts" type="startup" script="worldchanges/dream_courts_worldchange.lua" />
+	<globalevent name="fixCourts" time="00:00" script="worldchanges/dream_courts_worldchange.lua" />
+	<globalevent name="earthTrap" interval="3000" script="dreamCourts.lua" />
+
+	<!-- Ferumbras Ascendant -->
+	<globalevent name="Effect" interval="3000" script="quests/ferumbras ascedant/effect.lua"/>
+	<globalevent name="Effcts" interval="4000" script="quests/ferumbras ascedant/effects.lua"/>
+
+	<!-- Blooming Griffinclaw -->
+	<globalevent name="GriffinclawFlower" type="startup" script="others/griffinclawFlower.lua" />
+
+	<!-- Demon Oak -->
+	<globalevent name="DemonOakVoices" interval="15000" script="quests/demon oak/voices.lua" />
+
+	<!-- Rent Horses -->
+	<globalevent name="RentedMounts" interval="15000" script="others/checkMount.lua" />
+
+	<!-- World Changes -->
+	<globalevent name="TheirMastersVoice" type="startup" script="worldchanges/theirmastersvoice.lua" />
+	<globalevent name="dailyWorldChanges" type="startup" script="worldchanges/daily_worldchanges.lua"/>
+	<globalevent name="deeplings" type="startup" script="spawn/deeplings.lua"/>
+	
+	<!-- Catacombs spawn change (demon, minotaur & wrath) -->
+	<globalevent name="Catacombs" type="startup" script="worldchanges/catacombs_spawn.lua"/>
+
+	<!-- Manually Raids -->
+	<globalevent name="raids" interval="1000" script="spawn/raids.lua"/>
+
+	<!-- Others -->
+	<globalevent name="Spawn Damage" interval="9000" script="spawnDamage.lua" />
+	<globalevent type="startup" name="ServerStartup" script="startup.lua" />
+	<globalevent type="record" name="PlayerRecord" script="record.lua" />
+	<globalevent name="ServerSave" time="05:55:00" script="serversave.lua" />
+	<globalevent name="SavePlayer" interval="3600000" script="save.lua" /> <!-- 1 horas -->
+	<globalevent type="startup" name="rashid" script="rashid.lua"/>
+	<globalevent type="startup" name="yasir" script="worldchanges/yasir.lua"/>
+
+	<globalevent type="startup" name="doCheckHouses" script="others/doCheckHouses.lua" />
+	<globalevent name="checkInbox" interval="30000" script="others/checkInbox.lua"/>
+	<!-- <globalevent interval="100000" name="GuildWar" script="guildwar.lua"/> -->
+	
+	<globalevent name="loadEventMaps" type="startup" script="events/maps/load_maps.lua"/>
+</globalevents>

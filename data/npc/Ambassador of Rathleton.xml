@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<npc name="Ambassador of Rathleton" script="default.lua" walkinterval="0" floorchange="0">
+  <health now="100" max="100" />
+  <look type="472" head="19" body="53" legs="61" feet="3" addons="0" />
+</npc>

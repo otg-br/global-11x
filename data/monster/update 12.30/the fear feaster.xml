@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="The Fear Feaster" nameDescription="an the fear feaster" race="blood" experience="5000" speed="240" manacost="450" raceid="224">
+	<health now="4000" max="4000"/>
+	<look type="1276" corpse="37463"/>
+	<targetchange interval="4000" chance="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="1"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+		<flag canwalkonenergy="0"/>
+		<flag canwalkonfire="0"/>
+		<flag canwalkonpoison="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-120"/>
+		<attack name="physical" interval="2000" chance="15" range="7" min="0" max="-40">
+			<attribute key="shootEffect" value="throwingstar"/>
+		</attack>
+		<attack name="poisoncondition" interval="2000" chance="10" range="7" min="-120" max="-160">
+			<attribute key="shootEffect" value="poison"/>
+			<attribute key="areaEffect" value="poison"/>
+		</attack>
+	</attacks>
+	<defenses armor="79" defense="15">
+		<defense name="invisible" interval="2000" chance="10" duration="2000">
+			<attribute key="areaEffect" value="blueshimmer"/>
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="-5"/>
+		<element deathPercent="-5"/>
+	</elements>
+	<immunities>
+		<immunity invisible="1"/>
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="!"/>
+	</voices>
+	<loot>
+		<item name="platinum coin" countmax="20" chance="29980"/>
+		<item name="death toll" countmax="6" chance="29980"/>
+		<!-- <item name="supreme spirit potion" countmax="6" chance="29980"/> -->
+		<item name="bullseye potion" countmax="10" chance="29980"/>
+		<item name="mastermind potion" countmax="10" chance="29980"/>
+		<item name="silver hand mirror" chance="220"/>
+		<item id="37497" countmax="2" chance="220"/> <!--moonstone-->
+		<item name="soulforged lantern" chance="220"/>
+		<item name="white gem" chance="220"/>
+		<item name="spooky hood" chance="220"/>
+		<item name="ghost chestplate" chance="220"/>
+
+
+	</loot>
+</monster>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<towns>
+	<config maxvalue="10000000" rate="2" />
+	<town clientid="" serverid="" name="">
+		<position fromx="" fromy="" fromz="" tox="" toy="" toz="" />
+	</town>
+</towns>

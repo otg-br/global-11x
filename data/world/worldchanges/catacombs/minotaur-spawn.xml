@@ -1,0 +1,934 @@
+<?xml version="1.0"?>
+<spawns>
+	<spawn centerx="33414" centery="31719" centerz="8" radius="3">
+		<monster name="Execowtioner" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="3" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="3" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33425" centery="31719" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33510" centery="31719" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="3" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33523" centery="31719" centerz="8" radius="3">
+		<monster name="Execowtioner" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-2" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33544" centery="31719" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33397" centery="31720" centerz="8" radius="3">
+		<monster name="Execowtioner" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-3" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33386" centery="31721" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-1" y="-3" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="-1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Moohtant" x="3" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33481" centery="31722" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="0" z="8" spawntime="90" />
+		<monster name="Moohtant" x="3" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33518" centery="31723" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33430" centery="31724" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-2" y="-3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="-3" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-3" y="0" z="8" spawntime="90" />
+		<monster name="Moohtant" x="-1" y="0" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-2" y="2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33546" centery="31724" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="1" z="8" spawntime="32512" />
+	</spawn>
+	<spawn centerx="33392" centery="31726" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33509" centery="31726" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33396" centery="31727" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33461" centery="31727" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33484" centery="31728" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="-1" y="-1" z="8" spawntime="32512" />
+	</spawn>
+	<spawn centerx="33538" centery="31728" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-3" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33384" centery="31729" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33428" centery="31731" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33464" centery="31731" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33477" centery="31731" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33388" centery="31732" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33472" centery="31732" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33457" centery="31733" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33474" centery="31734" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33383" centery="31735" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33400" centery="31735" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33540" centery="31735" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33548" centery="31735" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33507" centery="31736" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="1" y="0" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33454" centery="31738" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33543" centery="31739" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33472" centery="31740" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33507" centery="31740" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33481" centery="31741" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-3" y="-3" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33462" centery="31742" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="3" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-2" y="0" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33430" centery="31743" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33393" centery="31746" centerz="8" radius="3">
+		<monster name="Execowtioner" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="3" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33481" centery="31748" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33543" centery="31748" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33429" centery="31749" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33406" centery="31750" centerz="8" radius="3">
+		<monster name="Execowtioner" x="0" y="-1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33448" centery="31750" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-2" y="0" z="8" spawntime="90" />
+		<monster name="Moohtant" x="3" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33459" centery="31750" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33486" centery="31750" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33493" centery="31750" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="3" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33507" centery="31750" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="2" y="-3" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33520" centery="31750" centerz="8" radius="3">
+		<monster name="Execowtioner" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33418" centery="31751" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33422" centery="31751" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33474" centery="31751" centerz="8" radius="3">
+		<monster name="Moohtant" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-2" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-1" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-1" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33528" centery="31751" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33551" centery="31751" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-3" y="-1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="-1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33441" centery="31752" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33384" centery="31753" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-1" y="-3" z="8" spawntime="90" />
+		<monster name="Moohtant" x="3" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33455" centery="31754" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33484" centery="31754" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33430" centery="31755" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33430" centery="31759" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33385" centery="31760" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33397" centery="31760" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33408" centery="31760" centerz="8" radius="3">
+		<monster name="Moohtant" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33507" centery="31760" centerz="8" radius="3">
+		<monster name="Moohtant" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33537" centery="31760" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="3" y="-1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-3" y="0" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-1" y="0" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33473" centery="31762" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33552" centery="31763" centerz="8" radius="3">
+		<monster name="Moohtant" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33482" centery="31764" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33384" centery="31766" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33408" centery="31766" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33399" centery="31767" centerz="8" radius="3">
+		<monster name="Moohtant" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33529" centery="31767" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-2" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33429" centery="31769" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33473" centery="31769" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33551" centery="31770" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33406" centery="31771" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33482" centery="31773" centerz="8" radius="3">
+		<monster name="Grim Reaper" x="0" y="-3" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33411" centery="31774" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33508" centery="31774" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33526" centery="31774" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33455" centery="31775" centerz="8" radius="3">
+		<monster name="Grim Reaper" x="0" y="-3" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-3" y="0" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-2" y="2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="32512" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33429" centery="31777" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33385" centery="31778" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33398" centery="31778" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33540" centery="31778" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33464" centery="31779" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33551" centery="31779" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-3" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33502" centery="31781" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33386" centery="31783" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="3" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33428" centery="31784" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33422" centery="31785" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33454" centery="31785" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33509" centery="31785" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33517" centery="31785" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33399" centery="31786" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33409" centery="31787" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="3" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33527" centery="31787" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33535" centery="31787" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33511" centery="31789" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33386" centery="31790" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-3" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="-1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33399" centery="31790" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="3" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33429" centery="31791" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33506" centery="31792" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-3" y="0" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-2" y="2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-1" y="2" z="8" spawntime="32512" />
+		<monster name="Execowtioner" x="0" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33400" centery="31793" centerz="8" radius="3">
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33422" centery="31793" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33433" centery="31793" centerz="8" radius="3">
+		<monster name="Moohtant" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33464" centery="31794" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33538" centery="31794" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33552" centery="31794" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-2" y="0" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="0" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33410" centery="31795" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33418" centery="31795" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33528" centery="31795" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33460" centery="31796" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-3" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-1" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33479" centery="31796" centerz="8" radius="3">
+		<monster name="Grim Reaper" x="2" y="-3" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="3" y="-1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-3" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33515" centery="31797" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33469" centery="31799" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33428" centery="31800" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33526" centery="31800" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33507" centery="31801" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33551" centery="31801" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33410" centery="31803" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33464" centery="31803" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33386" centery="31804" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-3" z="8" spawntime="90" />
+		<monster name="Moohtant" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-2" y="2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="0" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33475" centery="31804" centerz="8" radius="1">
+		<monster name="Moohtant" x="-1" y="0" z="8" spawntime="32512" />
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33526" centery="31805" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33538" centery="31805" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33507" centery="31807" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33429" centery="31808" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33467" centery="31808" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33551" centery="31809" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33384" centery="31811" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33468" centery="31812" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33550" centery="31816" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33386" centery="31818" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-2" y="-3" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-3" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="0" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-2" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33551" centery="31820" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="3" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33403" centery="31821" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33420" centery="31821" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33431" centery="31821" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-3" y="2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33447" centery="31821" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33460" centery="31821" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33470" centery="31821" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33479" centery="31821" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-3" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33493" centery="31821" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33507" centery="31821" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="3" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33522" centery="31821" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33414" centery="31822" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33529" centery="31822" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33463" centery="31823" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33500" centery="31823" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33533" centery="31823" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="1" z="8" spawntime="32512" />
+	</spawn>
+	<spawn centerx="33545" centery="31824" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33393" centery="31825" centerz="8" radius="3">
+		<monster name="Hellspawn" x="0" y="-3" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="3" y="-3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="-2" y="-1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33445" centery="31832" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33465" centery="31833" centerz="8" radius="3">
+		<monster name="Execowtioner" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33525" centery="31833" centerz="8" radius="3">
+		<monster name="Execowtioner" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33388" centery="31834" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33491" centery="31834" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-2" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33512" centery="31834" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="-1" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33404" centery="31835" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33445" centery="31835" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33452" centery="31835" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-3" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="0" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33551" centery="31836" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-2" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33424" centery="31837" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33432" centery="31837" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-1" y="-3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-3" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33531" centery="31837" centerz="8" radius="3">
+		<monster name="Moohtant" x="0" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="3" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33544" centery="31837" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33411" centery="31840" centerz="8" radius="3">
+		<monster name="Execowtioner" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-1" y="2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33426" centery="31840" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33446" centery="31840" centerz="8" radius="3">
+		<monster name="Moohtant" x="1" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33471" centery="31840" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33505" centery="31840" centerz="8" radius="3">
+		<monster name="Moohtant" x="2" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33525" centery="31840" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33385" centery="31841" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33391" centery="31841" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33464" centery="31841" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33486" centery="31841" centerz="8" radius="3">
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33525" centery="31843" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33426" centery="31844" centerz="8" radius="3">
+		<monster name="Execowtioner" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="1" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33463" centery="31844" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33527" centery="31845" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33549" centery="31845" centerz="8" radius="3">
+		<monster name="Hellspawn" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="-2" y="0" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33387" centery="31846" centerz="8" radius="3">
+		<monster name="Grim Reaper" x="1" y="-2" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="-2" y="-1" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33406" centery="31846" centerz="8" radius="3">
+		<monster name="Minotaur Amazon" x="-2" y="-3" z="8" spawntime="90" />
+		<monster name="Execowtioner" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Moohtant" x="2" y="-1" z="8" spawntime="90" />
+		<monster name="Moohtant" x="-3" y="0" z="8" spawntime="90" />
+		<monster name="Hellspawn" x="-2" y="1" z="8" spawntime="90" />
+		<monster name="Minotaur Amazon" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Grim Reaper" x="-1" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33448" centery="31846" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33451" centery="31846" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33430" centery="31847" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33465" centery="31847" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33489" centery="31847" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33505" centery="31847" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33507" centery="31847" centerz="8" radius="1">
+		<monster name="Execowtioner" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33448" centery="31848" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33533" centery="31848" centerz="8" radius="1">
+		<monster name="Moohtant" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="33391" centery="31849" centerz="8" radius="1">
+		<monster name="Minotaur Amazon" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+</spawns>

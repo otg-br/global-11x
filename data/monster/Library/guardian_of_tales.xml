@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Guardian of Tales" nameDescription="a guardian of tales" race="undead" experience="11800" speed="110" raceid="1659">
+	<health now="15000" max="15000"/>
+	<look type="1063" head="92" body="54" legs="0" feet="79" addons="3" corpse="33256"/>
+<targetchange interval="5000" chance="8"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="0"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-444" max="-950"/>
+	 	<attack name="energy" interval="2000" chance="20" radius="3" min="-444" max="-950">
+			<attribute key="areaEffect" value="energyarea"/>
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="15" length="5" spread="0" min="-444" max="-950">
+			<attribute key="areaEffect" value="redshimmer"/>
+		</attack>
+		<attack name="fire" interval="2000" chance="20" radius="3" min="-444" max="-975">
+			<attribute key="areaEffect" value="fire"/>
+		</attack>
+	</attacks>
+	<defenses armor="82" defense="40"/>
+	<elements>
+		<element icePercent="-10"/>
+		<element deathPercent="50"/>
+	</elements>
+	<immunities>
+		<immunity paralyze="1"/>
+		<immunity invisible="1"/>
+		<immunity fire="1"/>
+	</immunities>
+	<loot>
+	<item name="Platinum Coin" countmax="10" chance="10000"/>
+		<item name="Book Page" countmax="5" chance="10000"/>
+		<item name="Burnt Scroll" countmax="5" chance="10000"/>
+		<item name="Glowing Rune" countmax="5" chance="10000"/>
+		<item name="Small Diamond" countmax="5" chance="10000"/>
+
+		<item name="Fire Axe" chance="2500"/>
+		<item name="Soul Orb" countmax="5" chance="2600"/>
+		<item name="Spellbook of Warding" chance="1000"/>
+		<item name="Wand of Inferno" chance="2500"/>
+
+
+		<item name="Fire Sword" chance="2500"/>
+		<item name="Magma Coat" chance="3500"/>
+		<item name="Magma Legs" chance="2500"/>
+		<item name="Piece of Hellfire Armor" countmax="5" chance="5000"/>
+
+		<item id="13757" countmax="5" chance="10000"/> <!-- coal -->
+	</loot>
+</monster>

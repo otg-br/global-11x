@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Spirit of Fertility" nameDescription="a Spirit of Fertility" race="blood" experience="0" speed="150" manacost="290">
+	<health now="1200" max="1200" />
+	<look type="11" />
+	<targetchange interval="5000" chance="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+	</flags>
+	<attacks>
+	
+	</attacks>
+	<defenses armor="10" defense="10" />
+	<elements>
+	</elements>
+	<voices interval="2000" chance="7">
+
+	</voices>
+	<loot>
+		
+	</loot>
+</monster>

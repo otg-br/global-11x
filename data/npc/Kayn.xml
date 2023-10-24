@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kayn" script="Kayn.lua" walkinterval="0" floorchange="0">
+<health now="100" max="100" />
+<look type="908" head="57" body="38" legs="57" feet="114" addons="2"/>
+	<parameters>
+		<parameter key="message_greet" value="Hello, |PLAYERNAME|. I'm here to give you the chance to prove your worth. If you are interested, just say {challenge}." />
+		<parameter key="message_farewell" value="Good bye, warrior." />
+		<parameter key="message_walkaway" value="Good bye, warrior." />
+	</parameters>
+</npc>
+

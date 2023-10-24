@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="The Dream Master" script="The Dream Master.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100" />
+	<look type="130" head="19" body="39" legs="20" feet="58" addons="0" />
+	<parameters>
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_sellable" value="demonic essence,6500,1000; soul orb,5944,25;"/>
+	</parameters>
+</npc>

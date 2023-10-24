@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<npc name="Gelidrazah'S Thirst" script="Gelidrazah'S Thirst.lua" walkinterval="0" floorchange="0">
+  <health now="100" max="100" />
+  <look typeex="10948" />
+  	<parameters>
+		<parameter key="message_greet" value="Have you come to answer Gelidrazah's questions?" />
+		<parameter key="message_farewell" value="Farewell." />
+		<parameter key="message_walkaway" value="Farewell." />
+	</parameters>
+</npc>

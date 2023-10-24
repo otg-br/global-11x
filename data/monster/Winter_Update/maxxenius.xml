@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Maxxenius" nameDescription="Maxxenius" race="blood" experience="55000" speed="250" script="boss.lua">
+	<health now="75000" max="75000" />
+	<look type="1142" corpse="34644" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+	    <flag preyable="0" />
+        <flag rewardboss="1" />
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag isblockable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-200" max="-740" />
+		<attack name="energy" chance="20" range="5" target="1" radius="5" min="-300" max="-600">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+		<attack name="energy" interval="2000" chance="10" length="8" spread="3" min="-300" max="-750">
+			<attribute key="areaEffect" value="teleport"/>
+		</attack>
+		<attack name="energy" chance="15" length="9" spread="0" min="-410" max="-920">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="energyarea" />
+		</attack>
+		<attack name="Maxxenius Energy Elemental" interval="15000" chance="100" min="-1500" max="-2300"/>
+	</attacks>
+	<defenses armor="80" defense="80">
+		<defense name="healing" interval="2000" chance="10" min="510" max="940">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+	<loot>
+<!--common-->
+<item name="Platinum Coin" count="5" chance="100000" />
+<item name="Mysterious Remains" chance="100000" />
+<item name="Piggy Bank" chance="100000" />
+<item name="Brain in a Jar" chance="100000" />
+<item name="Maxxenius Head" chance="100000" />
+<item name="Silver Token" countmin="2" countmax="3" chance="100000" />
+<item name="Energy Bar" chance="100000" />
+<item name="Crystal Coin" chance="13790" />
+<item name="Gold Ingot" chance="17240" /> 
+<item name="Bullseye Potion" count="10" chance="24114" />
+<item name="Mastermind Potion" count="10" chance="17240" />
+<item name="Royal Star" count="100" chance="100000" />
+<item name="Supreme Health Potion" countmin="14" countmax="20" chance="41380" />
+<item name="Ultimate Spirit Potion" countmin="6" countmax="60" chance="48280" /> 
+<item name="Ultimate Mana Potion" count="14" chance="68970" /> 
+<item name="Giant Ruby" chance="3450" />  
+<item name="Ornate Locket" chance="3450" />  
+<item name="Gold Token" count="2" chance="68970" />
+<item id="7632" chance="28540" /> <!-- Giant Shimmering Pearl -->
+<item name="Pomegranate" chance="24140" />
+<item name="Chaos Mace" chance="6900" /> 
+<item id="26184" chance="17240" /> <!-- Collar of Red Plasma-->
+<item id="26199" chance="13790" /> <!-- collar of green plasma-->
+<item name="Green Gem" chance="31030" /> 
+<item name="Yellow Gem" chance="31030" /> 
+<item name="Violet Gem" chance="6900" /> 
+<item name="Blue Gem" chance="10340" /> 
+<item name="Huge Chunk of Crude Iron" chance="17240" />
+
+<item id="26185" chance="3450" /> <!-- ring of blue plasma-->
+<item name="Skull Staff" chance="13790" />
+<!-- rare-->
+<item name="Energized Limb" chance="3450" />
+<item name="Purple Tendril Lantern" chance="100" unique="1"/>
+</loot>
+</monster>

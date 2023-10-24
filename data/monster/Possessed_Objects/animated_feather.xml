@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Animated Feather" nameDescription="an animated feather" race="undead" experience="11600" speed="110" raceid="1671">
+	<health now="13000" max="13000" />
+	<look type="1058" corpse="33100" />
+	<targetchange interval="5000" chance="8" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-290" max="-600" />
+		<attack name="ice" interval="1000" chance="15" range="7" min="-444" max="-777">
+			<attribute key="shootEffect" value="ice" />
+		</attack>
+			<attack name="ice" interval="1000" chance="10" range="7" min="-520" max="-1100">
+			<attribute key="shootEffect" value="smallice" />
+			<attribute key="areaEffect" value="iceattack" />
+		</attack>
+		<attack name="ice" interval="1000" chance="10" length="3" spread="2" min="-490" max="-999">
+			<attribute key="areaEffect" value="iceattack" />
+		</attack>
+		<attack name="ice" interval="1000" chance="15" range="7" radius="3" min="-444" max="-750">
+			<attribute key="shootEffect" value="smallice" />
+			<attribute key="areaEffect" value="icetornado" />
+		</attack>
+	</attacks>
+	<defenses armor="79" defense="40" />
+	<elements>
+		<element firePercent="-30" />
+	</elements>
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity ice="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+		<item name="glowing rune" countmax="10" chance="6000" />
+		<item name="small sapphire" countmax="5" chance="6000" />
+		<item name="platinum coin" countmax="50" chance="87000" />
+		<item name="energy ring" chance="5000" />
+		<item id="7441" chance="4000" />						<!-- ice cube -->
+		<item name="shard" countmax="3" chance="5000" />
+		<item name="glacier mask" chance="5000" />
+		<item name="hailstorm rod" chance="5000" />
+		<item name="glacial rod" chance="3000" />
+		<item name="life crystal" chance="5000" />
+		<item name="ultimate mana potion" countmax="2" chance="5000" />
+		<item name="great mana potion" countmax="4" chance="5000" />
+		<item name="golden mug" chance="5000" />
+		<item name="energy ring" chance="8700" />
+		<item name="quill" chance="5000" />
+		<item name="small diamond" countmax="5" chance="5000" />
+		<item name="crystal mace" chance="3000" />
+		<item name="crystalline armor" chance="1000" />
+		<item name="diamond sceptre" chance="5000" />
+		<item name="glacier amulet" chance="3000" />
+		<item name="sapphire hammer" chance="1000" />
+		<item name="leviathan's amulet" chance="1000" />
+	</loot>
+</monster>

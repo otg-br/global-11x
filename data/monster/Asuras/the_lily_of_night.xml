@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="The Lily Of Night" nameDescription="The Lily Of Night" race="blood" experience="9000" speed="240">
+	<health now="9000" max="9000" />
+	<look type="1068" head="58" body="76" legs="72" feet="38" addons="1" corpse="33135" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="1" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+		<flag canwalkonfire="1" />
+	</flags>
+	<script>
+		<event name="asurasMechanic"/>
+	</script>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-550" />
+		<attack name="death" interval="2000" chance="10" length="8" spread="0" min="-150" max="-480">
+			<attribute key="areaEffect" value="blacksmoke" />
+		</attack>
+		<attack name="death" interval="2000" chance="20" range="4" min="-180" max="-350">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="death" interval="2000" chance="10" range="4" radius="4" min="-10" max="-420">
+			<attribute key="shootEffect" value="death" />
+			<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="manadrain" interval="2000" chance="10" radius="4" target="1" min="-50" max="-220">
+			<attribute key="areaEffect" value="stun" />
+		</attack>
+	</attacks>
+	<defenses armor="55" defense="55">
+		<defense name="invisible" interval="2000" chance="15" duration="8000">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element firePercent="1" />
+		<element earthPercent="-1" />
+		<element holyPercent="1" />
+		<element icePercent="1" />
+		<element energyPercent="-1" />
+	</elements>
+	<immunities>
+		<immunity death="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+		<item id="2148" countmax="100" chance="100000" />	            <!-- gold coin -->
+		<item id="2152" countmax="8" chance="100000"/>					<!-- platinum coin -->
+		<item id="2160" countmax="1" chance="3850"/>					<!-- Silver Amulet -->
+		<item id="2170" countmax="1" chance="9230"/>					<!-- Crystal coin -->
+		<item id="7368" countmax="5" chance="3080" />				    <!-- Assassin Stars -->	
+		<item id="7368" countmax="3" chance="2310" />				    <!-- Royal Stars -->	
+		<item id="2144" countmax="2" chance="9230" />				    <!--  Black Pearls -->
+		<item id="6558" chance="17690" />				                <!-- Concentrated Demonic Blood -->		
+		<item id="6500" chance="16920" />					            <!-- Demonic Essence -->		
+		<item id="2145" countmax="3" chance="10470" />					<!-- Small Diamond -->		
+		<item id="2146" countmax="3" chance="16150" />					<!-- Small Sapphire -->	
+		<item id="2149" countmax="2" chance="10770" />					<!-- Small Emerald -->	
+		<item id="9970" coutnmax="2" chance="10770" />					<!-- Small Topaz -->	
+		<item id="2147" coutnmax="2" chance="5380" />					<!-- Small Ruby -->	
+		<item id="7762" coutnmax="3" chance="19230" />					<!-- Small Enchanted Amethyst -->	
+		<item id="7591" countmax="2" chance="20770" />					<!-- Great Health Potion -->	
+		<item id="7404" chance="2310" />								<!-- Assassin Dagger-->	
+		<item id="2134" chance="3490" />								<!-- Silver Brooch -->
+		<item id="3967" chance="1540" />								<!-- Tribal Mask -->
+		<item id="24630" chance="17690" />								<!-- Golden Lotus Brooch -->
+		<item id="2143" countmax="2" chance="9230" />					<!-- White Pearl -->	
+		<item id="2158" chance="1540" />								<!--  Blue Gem -->	
+		<item id="2153" chance="770" />									<!--  Violet Gem  -->
+		<item id="2656" chance="1160" />								<!-- Blue Robe -->	
+		<item id="2185" chance="1540" />								<!-- Necrotic Rod -->
+		<item id="8910" chance="2310" />								<!-- Underworld Rod  -->				
+	    <item id="24637" chance="1540" />								<!-- Oriental Shoes -->		
+		<item id="24631" chance="23080" />								<!-- Peacock Feather Fan -->
+		<item id="9971" chance="770" />									<!-- Gold Ingot -->
+		<item id="5944" chance="26920" />								<!-- Soul Orb -->	
+		<item id="8901" chance="770" /> 								<!-- Spellbook of Mind Control -->
+		<item id="2124" chance="770" /> 								<!-- Crystal Ring -->
+		<item id="8889" chance="330" /> 								<!-- Skullcracker Armor -->
+		<item id="2656" chance="990" /> 								<!-- Blue Robe -->
+	</loot>
+</monster>

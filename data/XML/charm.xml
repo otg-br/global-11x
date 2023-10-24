@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<charms>
+	<charm clientid="0" name="Wound" description="Wounds the creature and deals 5% of its initial hit points as Physical Damage." price="400" type="0" />
+	<charm clientid="1" name="Enflame" description="Burns the creature and deals 5% of its initial hit points as Fire Damage." price="400" type="0" />
+	<charm clientid="2" name="Poision" description="Poisons the creature and deals 5% of its initial hit points as Earth Damage." price="400" type="0" />
+	<charm clientid="3" name="Freeze" description="Freezes the creature and deals 5% of its initial hit points as Ice Damage." price="500" type="0" />
+	<charm clientid="4" name="Zap" description="Electrifies the creature and deals 5% of its initial hit points as Energy Damage." price="500" type="0" />
+	<charm  clientid="5" name="Curse" description="Curses the creature and deals 5% of its initial hit points as Death Damage." price="600" type="0" />
+	<charm clientid="6" name="Cripple" description="Cripples the creature with a certain chance and paralyses it for 10 seconds." price="250" type="0" />
+
+
+	<charm clientid="7" name="Parry" description="Any damage taken is reflected to the aggressor with a certain chance." price="600" type="1" />
+	<charm clientid="8" name="Dodge" description="Dodges an attack without taking any damage at all." price="400" type="1" />
+	<charm clientid="9" name="Adrenaline Burst" description="Bursts of adrenaline enhance your reflexes with a certain chance after you get hit and let you move faster for 10 seconds." price="250" type="1" />
+	<charm clientid="10" name="Numb" description="Numbs the creature with a certain chance after its attack and paralyses the creature for 10 seconds." price="250" type="1" />
+	<charm clientid="11" name="Cleanse" description="Cleanses you from within with a certain chance after you get hit and removes one random active negative status effect and temporarily makes you immune against it." price="250" type="1" />
+
+	<charm clientid="12" name="Bless" description="Blesses you and reduces skill and xp loss by 3% when killed by the chosen creature." price="1000" type="2" />
+	<charm clientid="13" name="Scavenge" description="Enhances your chances to successfully skin/dust a skinnable/dustable creature." price="1000" type="2" />
+	<charm clientid="14" name="Gut" description="Gutting the creature yields 10% more creature products." price="1000" type="2" />
+	<charm clientid="15" name="Low Blow" description="Adds 3% critical hit chance to attacks with critical hit weapons." price="1000" type="2" />
+</charms>

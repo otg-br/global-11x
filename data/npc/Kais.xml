@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Kais" script="Kais.lua" walkinterval="0">
+	<health now="100" max="100" />
+	<look type="103" />
+	<parameters>
+		<parameter key="message_greet" value="Hmm... surely you are in need of help - will you let me? I am Kais the Bound and I can lend you a hand in healing your body and soul or even grant an {enhanced} blessing!" />
+	</parameters>
+</npc>

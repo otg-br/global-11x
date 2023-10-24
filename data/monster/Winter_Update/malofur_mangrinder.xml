@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Malofur Mangrinder" nameDescription="Malofur Mangrinder" race="blood" experience="55000" speed="250" script="boss.lua">
+	<health now="100000" max="100000" /> 
+	<look type="1120" head="19" body="22" legs="76" feet="22" corpse="34510" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+	    <flag preyable="0" />
+        <flag rewardboss="1" />
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag isblockable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-730" />
+		<attack name="physical" interval="2000" chance="15" target="1" radius="3" min="-100" max="-450">
+			<attribute key="shootEffect" value="largerock"/>
+			<attribute key="areaEffect" value="explosionarea"/>
+		</attack>
+		<attack name="earth" interval="2000" chance="10" target="1" radius="2" min="-200" max="-660">
+			<attribute key="areaEffect" value="yellowenergy"/>
+		</attack>
+		<attack name="earth" interval="2000" chance="15" target="1" min="-200" max="-580">
+			<attribute key="areaEffect" value="carniphila"/>
+		</attack>
+		<attack name="physical" interval="2000" chance="15" length="8" spread="0" min="-220" max="-600">
+			<attribute key="areaEffect" value="poff"/>
+		</attack>
+		<attack name="Malofur Explosion" inverval="2000" chance="40" min="-1111" max="-2222" /> <!-- Exaust feito por script -->
+	</attacks>
+	<defenses armor="80" defense="80">
+		<defense name="healing" interval="2000" chance="15" min="300" max="1050">
+			<attribute key="areaEffect" value="redshimmer"/>
+		</defense>
+	</defenses>
+	<elements>
+		<element firePercent="20" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+		<voices interval="5000" chance="10">
+		<voice sentence="RAAAARGH! I'M MASHING YE TO DUST BOOM!" />
+		<voice sentence="BOOOM!" />
+		<voice sentence="BOOOOM!!!" />
+		<voice sentence="BOOOOOM!!!" />
+	</voices>
+	<loot>
+		<!--common-->
+		<item name="Platinum Coin" count="6" chance="100000" /> 
+		<item name="Piggy Bank" chance="100000" />
+		<item name="Mysterious Remains" chance="100000" />    
+		<item name="Energy Bar" chance="100000" />
+		<item name="Silver Token" count="2" chance="100000" />
+		<item name="Supreme Health Potion" count="6" chance="75000" />
+		<item id="7632" chance="100000" /> <!-- Giant Shimmering Pearl -->
+		<item name="Gold Token" count="2" chance="100000" />
+		<item name="Ultimate Mana Potion" count="14" chance="50000" /> 
+		<item name="Red Gem" chance="50000" /> 
+		
+		<item name="Crystal Coin" count="2" chance="25000" />
+		<item name="Ultimate Spirit Potion" count="6" chance="25000" />
+		<item name="Bullseye Potion" count="10" chance="25000" />
+	
+		<item id="26199" chance="25000" /> <!-- collar of green plasma-->
+		<item name="Ring of the Sky" chance="10000" />
+		<item name="Blue Gem" chance="10000" />
+		<item name="Resizer" chance="1000" unique="1"/>
+		<item name="Shoulder Plate" chance="1000" />
+		<item name="Malofur's Lunchbox" chance="1000" />
+		<item name="Pomegranate" chance="5000" />
+	</loot>
+</monster>

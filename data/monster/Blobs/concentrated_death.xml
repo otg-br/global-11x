@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Concentrated Death" nameDescription="Concentrated Death" race="undead" experience="0" speed="50">
+	<health now="10000" max="10000"/>
+	<look type="315" />
+	<targetchange interval="5000" chance="8"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag isblockable="0"/>
+		<flag illusionable="0"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<script>
+		<event name="ghuloshDeath"/>
+	</script>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-200"/>
+		<attack name="physical" interval="1000" chance="25" radius="3" min="0" max="-1000">
+			<attribute key="areaEffect" value="redspark"/>
+		</attack>
+	</attacks>
+	<defenses armor="28" defense="33"/>
+	<immunities>
+		<immunity invisible="1"/>
+	</immunities>
+</monster>

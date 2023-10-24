@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Rei em Refiller" script="David Refiller.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100" />
+	<look type="133" head="114" body="86" legs="85" feet="0" addons="3" mount="559"/>
+	<parameters>
+		<parameter key="message_greet" value="I sell a selection of {various} items, {equipment}, {distance} weapons, {wands} and {rods}, {potions}, {runes}, {supplies}, {tools} and {postal} goods. Just ask!"/>
+	</parameters>
+</npc>

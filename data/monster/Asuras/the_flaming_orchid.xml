@@ -1,0 +1,82 @@
+<monster name="The Flaming Orchid" nameDescription="The Flaming Orchid" race="blood" experience="8000" speed="210" manacost="0">
+	<health now="4000" max="4000" />
+	<look type="150" head="114" body="94" legs="78" feet="79" addons="1" corpse="24643" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="80" />
+		<flag runonhealth="280" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="death" interval="2000" min="0" max="-300" >
+		<attribute key="shootEffect" value="death" />
+		</attack>
+		<attack name="Ignite" interval="2000" chance="20" range="7" radius="1" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+         <attack name="asuradeathwave" interval="4000" chance="18" min="0" max="-500" />
+         <attack name="asuradeathheart" interval="5000" chance="19" min="0" max="-200" />
+        <attack name="fire" interval="6000" chance="20" range="5" radius="7" target="1" min="-100" max="-250">
+			<attribute key="areaEffect" value="firearea" />
+		 </attack>
+	</attacks>
+	<defenses armor="55" defense="55">
+		<defense name="healing" interval="2000" chance="15" min="50" max="280">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+		<defense name="invisible" interval="1000"  duration="10000">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+	<element physicalPercent="0" />
+		<element holyPercent="0" />
+		<element deathPercent="0" />
+		<element firePercent="0" />
+		<element icePercent="0" />
+		<element earthPercent="0" />
+		<element energyPercent="0" />
+	</elements>
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices interval="2000" chance="7">
+		<voice sentence="I will end your torment. Do not run, little mortal." />
+		<voice sentence="*SNIFF* *SNIFF* BLOOD! I CAN SMELL YOU, MORTAL!!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="250" chance="100000" />				<!-- gold coin -->
+		<item id="2152" countmax="10" chance="100000"/>					<!-- platinum coin -->			
+		<item id="2153" chance="18200" />								<!-- red gem -->		
+		<item id="9971" countmax="5" chance="29700" />					<!-- gold ingot -->
+		<item id="7368" countmax="13" chance="29700" />					<!-- assassin star -->
+		<item id="6500" chance="330" />									<!-- Demonic Essence -->
+		<item id="8472" chance="330" />									<!-- great spirit -->
+		<item id="5944" chance="19530" />								<!-- Soul Orb -->	
+		<item id="2150" countmax="2" chance="8310" />					<!-- Small Amethyst -->	
+		<item id="8473" countmax="4" chance="700" />					<!--  Ultimate Health Potion -->		
+		<item id="24630" chance="19740" />								<!-- Golden Lotus Brooch -->
+		<item id="2155" chance="15780" />								<!--  green gem -->						
+		<item id="7899" chance="1050" />								<!-- Magma Coat -->
+		<item id="2186" chance="1050" />								<!-- Moonlight Rod -->
+		<item id="2185" chance="1050" />								<!-- necrotic rod -->
+		<item id="24637" chance="490" />								<!-- Oriental Shoes -->
+		<item id="24631" chance="16870" />								<!-- Peacock Feather Fan -->		
+	    <item id="5944" chance="1400" />								<!-- soul orb -->	   
+	</loot>
+</monster>

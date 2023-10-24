@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <skillstages> -->
+	<!-- <skills enabled="1"> -->
+		<!-- <skill minskill="1" maxskill="30" multiplier="75" /> -->
+		<!-- <skill minskill="31" maxskill="40" multiplier="65" /> -->
+		<!-- <skill minskill="41" maxskill="50" multiplier="55" /> -->
+		<!-- <skill minskill="51" maxskill="60" multiplier="45" /> -->
+		<!-- <skill minskill="61" maxskill="70" multiplier="40" /> -->
+		<!-- <skill minskill="71" maxskill="80" multiplier="25" /> -->
+		<!-- <skill minskill="81" maxskill="90" multiplier="15" /> -->
+		<!-- <skill minskill="90" maxskill="100" multiplier="10" /> -->
+		<!-- <skill minskill="101" maxskill="120" multiplier="5" /> -->
+		<!-- <skill minskill="121" multiplier="2" /> -->
+	<!-- </skills> -->
+	<!-- <magiclevel enabled="1"> -->
+		<!-- <ml minmagic="0" maxmagic="50" multiplier="25" /> -->
+		<!-- <ml minmagic="51" maxmagic="70" multiplier="20" /> -->
+		<!-- <ml minmagic="71" maxmagic="80" multiplier="15" /> -->
+		<!-- <ml minmagic="81" maxmagic="100" multiplier="10" /> -->
+		<!-- <ml minmagic="101" maxmagic="120" multiplier="5" /> -->
+		<!-- <ml minmagic="121" multiplier="2" /> -->
+	<!-- </magiclevel> -->
+<!-- </skillstages> -->
+
+<skillstages>
+	<skills enabled="1">
+		<skill minskill="1" maxskill="30" multiplier="113" />
+		<skill minskill="31" maxskill="40" multiplier="98" />
+		<skill minskill="41" maxskill="50" multiplier="83" />
+		<skill minskill="51" maxskill="60" multiplier="68" />
+		<skill minskill="61" maxskill="70" multiplier="60" />
+		<skill minskill="71" maxskill="80" multiplier="38" />
+		<skill minskill="81" maxskill="90" multiplier="23" />
+		<skill minskill="90" maxskill="100" multiplier="15" />
+		<skill minskill="101" maxskill="110" multiplier="3" />
+		<skill minskill="111" multiplier="1" />
+	</skills>
+	<magiclevel enabled="1">
+		<ml minmagic="0" maxmagic="50" multiplier="38" />
+		<ml minmagic="51" maxmagic="70" multiplier="35" />
+		<ml minmagic="71" maxmagic="80" multiplier="23" />
+		<ml minmagic="81" maxmagic="100" multiplier="15" />
+		<ml minmagic="101" maxmagic="110" multiplier="3" />
+		<ml minmagic="111" multiplier="1" />
+	</magiclevel>
+</skillstages>

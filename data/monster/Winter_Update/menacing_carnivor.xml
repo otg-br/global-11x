@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Menacing Carnivor" nameDescription="a menacing carnivor" race="blood" experience="3200" speed="170" manacost="0" raceid="1723">
+	<health now="3500" max="3500" />
+	<look type="1139" head="128" body="128" legs="81" feet="91" addons="3" corpse="34596" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag isblockable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<script>
+		<event name="reflect"/>
+	</script>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-450" />
+		<attack name="lifedrain" interval="2000" chance="20"  length="4" spread="0" min="-100" max="-180">
+			<attribute key="areaEffect" value="smoke" />
+		</attack>
+		<attack name="lifedrain" interval="2000" chance="14"  length="4" spread="0" min="-100" max="-200">
+			<attribute key="areaEffect" value="poison" />
+		</attack>
+		<attack name="physical" interval="2000" chance="15" radius="4" min="-150" max="-330">
+			<attribute key="areaEffect" value="groundshaker" />
+		</attack>
+	</attacks>
+	<defenses armor="68" defense="0">
+		<defense name="healing" interval="2000" chance="10" min="150" max="200">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="50" />
+		<element icePercent="-20" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+	<loot>
+<!--common-->
+<item name="platinum coin" countmin="0" countmax="8" chance="100000" /> 
+<item name="Morning Star" chance="26870" /> 
+<!--uncommon-->
+<item name="Small Ruby" chance="5500" />
+<item name="Terra Rod" chance="6470" />    
+<item name="Crystal Sword" chance="7440" />
+<item name="Ultimate Mana Potion" chance="14230" />
+<item name="Violet Glass Plate" chance="12650" />
+<!--semi-rare-->
+<item name="Small Enchanted Ruby" chance="3190" /> 
+<item name="Terra Legs" chance="2710" /> 
+<item name="Wand of Dragonbreath" chance="970" /> 
+<item name="Serpent Sword" chance="1880" />
+<item name="Machete" chance="1880" />
+<item name="Heavy Machete" chance="1760" />
+<item name="Iron Helmet" chance="1110" /> 
+<item name="Knight Legs" chance="3030" />
+<item name="Wand of Starstorm" chance="2780" /> 
+<item name="Wand of Voodoo" chance="2650" /> 
+<item name="Green Crystal Fragment" chance="4700" /> 
+<item name="Onyx Chip" chance="4480" /> 
+<item name="Opal" chance="1360" /> 
+<item name="Tiger Eye" chance="1970" /> 
+<!--rare-->  
+<item name="Wand of Decay" chance="770" /> 
+</loot>
+</monster>

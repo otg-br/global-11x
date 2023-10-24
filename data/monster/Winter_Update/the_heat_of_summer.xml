@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="The Heat Of Summer" nameDescription="The Heat Of Summer" race="fire" experience="220" speed="200" manacost="690">
+	<health now="3000" max="3000" />
+	<look type="49"/>
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonpoison="0" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-450" />
+		<attack name="fire" interval="2000" chance="15" range="7" radius="2" target="1" min="-45" max="-160">
+			<attribute key="shootEffect" value="fire" />
+			<attribute key="areaEffect" value="firearea" />
+		</attack>
+		<attack name="fire" interval="2000" chance="15" radius="2"  min="-45" max="-220">
+			<attribute key="areaEffect" value="fire" />
+		</attack>
+		<attack name="firefield" interval="2000" chance="5" range="7" radius="1" target="1">
+			<attribute key="shootEffect" value="fire" />
+		</attack>
+		<attack name="Heat of Summer" interval="2000" chance="25" min="-160" max="-430"/>
+	</attacks>
+	<defenses armor="15" defense="15" />
+	<elements>
+		<element icePercent="-25" />
+	</elements>
+	<immunities>
+		<immunity death="1" />
+		<immunity fire="1" />
+		<immunity lifedrain="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+</monster>

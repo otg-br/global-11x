@@ -1,0 +1,31 @@
+<monster name="Malicious Minion" nameDescription="a malicious minion" race="undead" experience="0" speed="30">
+	<health now="2500" max="2500"/>
+	<look type="40" corpse="5985"/>
+	<targetchange interval="5000" chance="8"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="0"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="5"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-200"/>
+		<attack name="fire" interval="1000" chance="15" range="7" min="0" max="-600">
+			<attribute key="areaEffect" value="fire"/>
+		</attack>		
+		<attack name="fire" interval="1000" chance="15" range="7" target="1" radius="2" min="0" max="-400">
+			<attribute key="areaEffect" value="fireattack"/>
+		</attack>
+	</attacks>
+	<defenses armor="28" defense="33"/>
+	<immunities>
+		<immunity invisible="1"/>
+	</immunities>
+</monster>

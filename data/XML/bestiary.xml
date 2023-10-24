@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bestiary>
+	<!-- comum -->
+	<difficulty id="0" type="0" charm="1" first="5" second="10" final="25" />
+	<difficulty id="1" type="0" charm="5" first="10" second="100" final="250" />
+	<difficulty id="2" type="0" charm="15" first="25" second="250" final="500" />
+	<difficulty id="3" type="0" charm="25" first="50" second="500" final="1000" />
+	<difficulty id="4" type="0" charm="50" first="100" second="1000" final="2500" />
+
+	<!-- raro -->
+	<difficulty id="0" type="1" charm="5" first="2" second="3" final="5" />
+	<difficulty id="1" type="1" charm="10" first="2" second="3" final="5" />
+	<difficulty id="2" type="1" charm="30" first="2" second="3" final="5" />
+	<difficulty id="3" type="1" charm="50" first="2" second="3" final="5" />
+	<difficulty id="4" type="1" charm="100" first="2" second="3" final="5" />
+
+<!-- 	<category name="Teste">
+		<race id="226" difficulty="3" ocorrence="2" />
+	</category>
+ -->
+
+	<category name="Amphibic">
+		<race id="262" name="Toad" difficulty="2" ocorrence="1" /> <!-- toad -->
+		<race id="267" name="Green Frog" difficulty="1" ocorrence="1" /> <!-- green frog -->
+		<race id="268" name="Azure Frog" difficulty="2" ocorrence="1" /> <!-- azure frog -->
+		<race id="269" name="Coral Frog" difficulty="2" ocorrence="1" /> <!-- coral frog -->
+		<race id="270" name="Crimson Frog" difficulty="2" ocorrence="1" /> <!-- crimson frog -->
+		<race id="271" name="Orchid Frog" difficulty="2" ocorrence="1" /> <!-- orchid frog -->
+		<race id="563" name="Infernal Frog" difficulty="3" ocorrence="2" /> <!-- infernal frog -->
+		<race id="735" name="Filth Toad" difficulty="2" ocorrence="2" /> <!-- filth toad -->
+		<race id="738" name="Bog Frog" difficulty="1" ocorrence="1" /> <!-- bog frog -->
+		<race id="913" name="Salamander" difficulty="2" ocorrence="1" /> <!-- salamander -->
+	</category>
+	<category name="Aquatic">
+		<race id="112" name="Crab" difficulty="2" ocorrence="1" /> <!-- crab -->
+		<race id="237" name="Quara Predator" difficulty="3" ocorrence="1" /> <!-- quara predator -->
+		<race id="238" name="Quara Predator Scout" difficulty="3" ocorrence="1" /> <!-- quara predator scout -->
+		<race id="239" name="Quara Constrictor" difficulty="3" ocorrence="1" /> <!-- quara constrictor -->
+		<race id="240" name="Quara Constrictor Scout" difficulty="3" ocorrence="1" /> <!-- quara constrictor scout -->
+		<race id="241" name="Quara Mantassin" difficulty="3" ocorrence="1" /> <!-- quara mantassin -->
+		<race id="242" name="Quara Mantassin Scout" difficulty="2" ocorrence="1" /> <!-- quara mantassin scout -->
+		<race id="243" name="Quara Hydromancer" difficulty="3" ocorrence="1" /> <!-- quara hydromancer -->
+		<race id="244" name="Quara Hydromancer Scout" difficulty="3" ocorrence="1" /> <!-- quara hydromancer scout -->
+		<race id="245" name="Quara Pincher" difficulty="3" ocorrence="1" /> <!-- quara pincher -->
+		<race id="246" name="Quara Pincher Scout" difficulty="3" ocorrence="1" /> <!-- quara pincher scout -->
+		<race id="261" name="Blood Crab" difficulty="2" ocorrence="1" /> <!-- blood crab -->
+		<race id="697" name="Crustacea Gigantica" difficulty="3" ocorrence="4" /> <!-- crustacea gigantica -->
+		<race id="734" name="Deepling Scout" difficulty="3" ocorrence="1" /> <!-- deepling scout -->
+		<race id="769" name="Deepling Warrior" difficulty="3" ocorrence="1" /> <!-- deepling warrior -->
+		<race id="770" name="Deepling Guard" difficulty="3" ocorrence="1" /> <!-- deepling guard -->
+		<race id="772" name="Deepling Spellsinger" difficulty="3" ocorrence="1" /> <!-- deepling spellsinger -->
+		<race id="779" name="Manta Ray" difficulty="3" ocorrence="3" /> <!-- manta ray -->
+		<race id="780" name="Calamary" difficulty="2" ocorrence="2" /> <!-- calamary -->
+		<race id="781" name="Jellyfish" difficulty="2" ocorrence="2" /> <!-- jellyfish -->
+		<race id="782" name="Shark" difficulty="3" ocorrence="1" /> <!-- shark -->
+		<race id="783" name="Northern Pike" difficulty="0" ocorrence="2" /> <!-- northern pike -->
+		<race id="784" name="Fish" difficulty="1" ocorrence="1" /> <!-- fish -->
+		<race id="795" name="Deepling worker" difficulty="2" ocorrence="1" /> <!-- deepling worker -->
+		<race id="859" name="Deepling Brawler" difficulty="3" ocorrence="2" /> <!-- deepling brawler -->
+		<race id="860" name="Deepling Master Librarian" difficulty="3" ocorrence="3" /> <!-- deepling master librarian -->
+		<race id="861" name="Deepling Tyrant" difficulty="4" ocorrence="3" /> <!-- deepling tyrant -->
+		<race id="862" name="Deepling Elite" difficulty="3" ocorrence="2" /> <!-- deepling elite -->
+		<race id="1105" name="Abyssal Calamary" difficulty="2" ocorrence="1" /> <!-- abyssal calamary -->
+		<race id="1667" name="Deathling Scout" difficulty="4" ocorrence="1" /> <!-- deathling scout -->
+		<race id="1677" name="Deathling Spellsinger" difficulty="4" ocorrence="1" /> <!-- deathling spellsinger -->
+	</category>
+	<category name="Bird">
+		<race id="111" name="Chicken" difficulty="1" ocorrence="1" /> <!-- chicken -->
+		<race id="212" name="Flamingo" difficulty="1" ocorrence="1" /> <!-- flamingo -->
+		<race id="217" name="Parrot" difficulty="1" ocorrence="1" /> <!-- parrot -->
+		<race id="218" name="Terror Bird" difficulty="2" ocorrence="1" /> <!-- terror bird -->
+		<race id="264" name="Seagull" difficulty="1" ocorrence="1" /> <!-- seagull -->
+		<race id="318" name="Penguin" difficulty="1" ocorrence="1" /> <!-- penguin -->
+		<race id="335" name="Dire Penguin" difficulty="2" ocorrence="4" /> <!-- dire penguin -->
+		<race id="561" name="Berserker Chicken" difficulty="3" ocorrence="2" /> <!-- berserker chicken -->
+		<race id="562" name="Demon Parrot" difficulty="3" ocorrence="2" /> <!-- demon parrot -->
+		<race id="914" name="Marsh Stalker" difficulty="2" ocorrence="1" /> <!-- marsh stalker -->
+		<race id="915" name="Pigeon" difficulty="0" ocorrence="2" /> <!-- pigeon -->
+	</category>
+	<category name="Construct">
+		<race id="67" name="Stone Golem" difficulty="2" ocorrence="1" /> <!-- stone golem -->
+		<race id="326" name="Ice Golem" difficulty="3" ocorrence="1" /> <!-- ice golem -->
+		<race id="503" name="Worker Golem" difficulty="3" ocorrence="1" /> <!-- worker golem -->
+		<race id="524" name="Damaged Worker Golem" difficulty="2" ocorrence="1" /> <!-- damaged worker golem -->
+		<race id="533" name="War Golem" difficulty="3" ocorrence="1" /> <!-- war golem -->
+		<race id="615" name="Eternal Guardian" difficulty="3" ocorrence="1" /> <!-- eternal guardian -->
+		<!-- <race id="680" difficulty="2" ocorrence="4" /> cake golem --> 
+		<race id="700" name="Iron Servant" difficulty="2" ocorrence="4" /> <!-- iron servant -->
+		<race id="701" name="Golden Servant" difficulty="3" ocorrence="4" /> <!-- golden servant -->
+		<race id="702" name="Diamond Servant" difficulty="3" ocorrence="4" /> <!-- diamond servant -->
+		<race id="705" name="Sandstone Scorpion" difficulty="3" ocorrence="3" /> <!-- sandstone scorpion -->
+		<race id="706" name="Clay Guardian" difficulty="3" ocorrence="1" /> <!-- clay guardian -->
+		<race id="873" name="Enraged Crystal Golem" difficulty="3" ocorrence="1" /> <!-- enraged crystal golem -->
+		<race id="874" name="Damaged Crystal Golem" difficulty="2" ocorrence="2" /> <!-- damaged crystal golem -->
+		<race id="879" name="Stone Devourer" difficulty="4" ocorrence="2" /> <!-- stone devourer -->
+		<race id="882" name="Weeper" difficulty="4" ocorrence="2" /> <!-- weeper -->
+		<race id="883" name="Orewalker" difficulty="4" ocorrence="2" /> <!-- orewalker -->
+		<race id="884" name="Lava Golem" difficulty="4" ocorrence="2" /> <!-- lava golem -->
+		<race id="885" name="Magma Crawler" difficulty="4" ocorrence="1" /> <!-- magma crawler -->
+		<race id="897" name="Infected Weeper" difficulty="4" ocorrence="2" /> <!-- infected weeper -->
+		<race id="1038" name="Glooth Golem" difficulty="3" ocorrence="1" /> <!-- glooth golem -->
+		<race id="1039" name="Metal Gargoyle" difficulty="3" ocorrence="1" /> <!-- metal gargoyle -->
+		<race id="1041" name="Rustheap Golem" difficulty="3" ocorrence="1" /> <!-- rustheap golem -->
+		<race id="1043" name="Walker" difficulty="3" ocorrence="2" /> <!-- walker -->
+		<race id="1325" name="Iron Servant Replica" difficulty="3" ocorrence="1" /> <!-- iron servant replica -->
+		<race id="1326" name="Diamond Servant Replica" difficulty="3" ocorrence="3" /> <!-- diamond servant replica -->
+		<race id="1327" name="Golden Servant Replica" difficulty="3" ocorrence="3" /> <!-- golden servant replica -->
+		<race id="1656" name="Biting Book" difficulty="4" ocorrence="1" /> <!-- biting book -->
+		<race id="1751" name="Animated Snowman" difficulty="3" ocorrence="3" /> <!-- animated snowman -->
+	</category>
+	<category name="Demon">
+		<race id="35" name="Demon" difficulty="4" ocorrence="1" location="Hero Cave, Ferumbras' Citadel, Goroma, Ghostlands (Warlock area; unreachable), Liberty Bay (hidden underground passage; unreachable), Razzachai, deep in Pits of Inferno (found in every throneroom except Verminor's), deep Formorgar Mines, Demon Forge, Alchemist Quarter, Magician Quarter, Chyllfroest, Oramond Dungeon, Abandoned Sewers." /> <!-- demon -->
+		<race id="40" name="Fire Devil" sdifficulty="2" ocorrence="1" /> <!-- fire devil -->
+		<race id="285" name="Dark Torturer" difficulty="4" ocorrence="1" /> <!-- dark torturer -->
+		<race id="287" name="Destroyer" difficulty="3" ocorrence="1" /> <!-- destroyer -->
+		<race id="288" name="Diabolic Imp" difficulty="3" ocorrence="1" /> <!-- diabolic imp -->
+		<race id="291" name="Fury" difficulty="4" ocorrence="1" /> <!-- fury -->
+		<race id="294" name="Hellhound" difficulty="4" ocorrence="1" /> <!-- hellhound -->
+		<race id="295" name="Hellfire Fighter" difficulty="4" ocorrence="1" /> <!-- hellfire fighter -->
+		<race id="296" name="Juggernaut" difficulty="4" ocorrence="1" /> <!-- juggernaut -->
+		<race id="314" name="Plaguesmith" difficulty="3" ocorrence="1" /> <!-- plaguesmith -->
+		<race id="519" name="Hellspawn" difficulty="3" ocorrence="1" /> <!-- hellspawn -->
+		<race id="523" name="Gozzler" difficulty="2" ocorrence="1" /> <!-- gozzler -->
+		<race id="581" name="Duskbringer" difficulty="3" ocorrence="4" /> <!-- duskbringer -->
+		<race id="582" name="Shadow Hound" difficulty="3" ocorrence="4" /> <!-- shadow hound -->
+		<race id="586" name="Herald of Gloom" difficulty="3" ocorrence="4" /> <!-- herald of gloom -->
+		<race id="724" name="Shaburak Demon" difficulty="3" ocorrence="1" /> <!-- shaburak demon -->
+		<race id="725" name="Shaburak Lord" difficulty="3" ocorrence="3" /> <!-- shaburak lord -->
+		<race id="726" name="Shaburak Prince" difficulty="3" ocorrence="3" /> <!-- shaburak prince -->
+		<race id="727" name="Askarak Demon" difficulty="3" ocorrence="1" /> <!-- askarak demon -->
+		<race id="728" name="Askarak Lord" difficulty="3" ocorrence="3" /> <!-- askarak lord -->
+		<race id="729" name="Askarak Prince" difficulty="3" ocorrence="3" /> <!-- askarak prince -->
+		<race id="973" name="Nightfiend" difficulty="3" ocorrence="4" /> <!-- nightfiend -->
+		<race id="1019" name="Demon Outcast" difficulty="4" ocorrence="1" /> <!-- demon outcast -->
+		<race id="1134" name="Dawnfire Asura" difficulty="4" ocorrence="1" /> <!-- dawnfire asura -->
+		<race id="1135" name="Midnight Asura" difficulty="3" ocorrence="1" /> <!-- midnight asura -->
+		<race id="1196" name="Grimeleech" difficulty="4" ocorrence="1" /> <!-- grimeleech -->
+		<race id="1197" name="Vexclaw" difficulty="4" ocorrence="1" /> <!-- vexclaw -->
+		<race id="1198" name="Hellflayer" difficulty="4" ocorrence="1" /> <!-- hellflayer -->
+		<race id="1619" name="Frost Flower Asura" difficulty="3" ocorrence="1" /> <!-- frost flower asura -->
+		<race id="1620" name="True Dawnfire Asura" difficulty="4" ocorrence="1" /> <!-- true dawnfire asura -->
+		<race id="1621" name="True Midnight Asura" difficulty="4" ocorrence="1" /> <!-- true midnight asura -->
+		<race id="1622" name="True Frost Flower Asura" difficulty="4" ocorrence="1" /> <!-- true frost flower asura -->
+		<race id="1637" name="Floating Savant" difficulty="4" ocorrence="1" /> <!-- floating savant -->
+	</category>
+	<category name="Dragon">
+		<race id="34" name="Dragon" difficulty="3" ocorrence="1" /> <!-- dragon -->
+		<race id="39" name="Dragon Lord" difficulty="3" ocorrence="1" /> <!-- dragon lord -->
+		<race id="121" name="Hydra" difficulty="3" ocorrence="1" /> <!-- hydra -->
+		<race id="317" name="Frost Dragon" difficulty="3" ocorrence="1" /> <!-- frost dragon -->
+		<race id="385" name="Dragon Hatchling" difficulty="3" ocorrence="1" /> <!-- dragon hatchling -->
+		<race id="386" name="Dragon Lord Hatchling" difficulty="3" ocorrence="1" /> <!-- dragon lord hatchling -->
+		<race id="402" name="Frost Dragon Hatchling" difficulty="3" ocorrence="1" /> <!-- frost dragon hatchling -->
+		<race id="461" name="Wyrm" difficulty="3" ocorrence="1" /> <!-- wyrm -->
+		<race id="617" name="Draken Warmaster" difficulty="3" ocorrence="1" /> <!-- draken warmaster -->
+		<race id="618" name="Draken Spellweaver" difficulty="4" ocorrence="1" /> <!-- draken spellweaver -->
+		<race id="643" name="Ghastly Dragon" difficulty="4" ocorrence="1" /> <!-- ghastly dragon -->
+		<race id="672" name="Draken Elite" difficulty="4" ocorrence="1" /> <!-- draken elite -->
+		<race id="673" name="Draken Abomination" difficulty="4" ocorrence="1" /> <!-- draken abomination -->
+		<race id="963" name="Elder Wyrm" difficulty="4" ocorrence="1" /> <!-- elder wyrm -->
+		<race id="1376" name="Haunted Dragon" difficulty="4" ocorrence="3" /> <!-- haunted dragon -->
+		<race id="1380" name="Ice Dragon" difficulty="3" ocorrence="3" /> <!-- ice dragon -->
+	</category>
+	<category name="Elemental">
+		<race id="49" name="Fire Elemental" difficulty="3" ocorrence="1" /> <!-- fire elemental -->
+		<race id="236" name="Water Elemental" difficulty="3" ocorrence="1" /> <!-- water elemental -->
+		<race id="279" name="Massive Water Elemental" difficulty="3" ocorrence="1" /> <!-- massive water elemental -->
+		<race id="313" name="Massive Fire Elemental" difficulty="3" ocorrence="1" /> <!-- massive fire elemental -->
+		<race id="455" name="Massive Earth Elemental" difficulty="3" ocorrence="1" /> <!-- massive earth elemental -->
+		<race id="456" name="Massive Energy Elemental" difficulty="3" ocorrence="2" /> <!-- massive energy elemental -->
+		<race id="457" name="Energy Elemental" difficulty="3" ocorrence="1" /> <!-- energy elemental -->
+		<race id="458" name="Earth Elemental" difficulty="3" ocorrence="1" /> <!-- earth elemental -->
+		<race id="889" name="Cliff Strider" difficulty="4" ocorrence="2" /> <!-- cliff strider -->
+		<race id="890" name="Ironblight" difficulty="4" ocorrence="2" /> <!-- ironblight -->
+		<race id="1569" name="Ravenous Lava Lurker" difficulty="3" ocorrence="1" /> <!-- ravenous lava lurker -->
+		<race id="1670" name="Knowledge Elemental" difficulty="4" ocorrence="2" /> <!-- knowledge elemental -->
+	</category>
+	<category name="Extra Dimensional">
+		<race id="717" name="Yielothax" difficulty="3" ocorrence="1" /> <!-- yielothax -->
+		<race id="1224" name="Reality Reaver" difficulty="4" ocorrence="1" /> <!-- reality reaver -->
+		<race id="1234" name="Sparkion" difficulty="4" ocorrence="1" /> <!-- sparkion -->
+		<race id="1235" name="Breach Brood" difficulty="4" ocorrence="1" /> <!-- breach brood -->
+		<race id="1260" name="Dread Intruder" difficulty="4" ocorrence="1" /> <!-- dread intruder -->
+		<race id="1265" name="Instable Breach Brood" difficulty="3" ocorrence="1" /> <!-- instable breach brood -->
+	</category>
+	<category name="Fey">
+		<race id="383" name="Dryad" difficulty="3" ocorrence="4" /> <!-- dryad -->
+		<race id="462" name="Wisp" difficulty="1" ocorrence="1" /> <!-- wisp -->
+		<race id="1434" name="Faun" difficulty="3" ocorrence="1" /> <!-- faun -->
+		<race id="1435" name="Pooka" difficulty="3" ocorrence="1" /> <!-- pooka -->
+		<race id="1436" name="Twisted Pooka" difficulty="3" ocorrence="1" /> <!-- twisted pooka -->
+		<race id="1437" name="Swan Maiden" difficulty="3" ocorrence="2" /> <!-- swan maiden -->
+		<race id="1438" name="Pixie" difficulty="3" ocorrence="1" /> <!-- pixie -->
+		<race id="1439" name="Boogy" difficulty="3" ocorrence="1" /> <!-- boogy -->
+		<race id="1485" name="Nymph" difficulty="3" ocorrence="1" /> <!-- nymph -->
+		<race id="1496" name="Dark Faun" difficulty="3" ocorrence="1" /> <!-- dark faun -->
+		<race id="1626" name="Arctic Faun" difficulty="3" ocorrence="2" /> <!-- arctic faun -->
+		<race id="1740" name="Percht" difficulty="3" ocorrence="3" /> <!-- percht -->
+		<race id="1741" name="Schiach" difficulty="3" ocorrence="3" /> <!-- schiach -->
+	</category>
+	<category name="Giant">
+		<race id="22" name="Cyclops" difficulty="2" ocorrence="1" /> <!-- cyclops -->
+		<race id="55" name="Behemoth" difficulty="3" ocorrence="1" /> <!-- behemoth -->
+		<race id="324" name="Frost Giant" difficulty="2" ocorrence="1" /> <!-- frost giant -->
+		<race id="334" name="Frost Giantess" difficulty="2" ocorrence="1" /> <!-- frost giantess -->
+		<race id="389" name="Cyclops Smith" difficulty="3" ocorrence="1" /> <!-- cyclops smith -->
+		<race id="391" name="Cyclops Drone" difficulty="3" ocorrence="1" /> <!-- cyclops drone -->
+		<race id="1161" name="Ogre Brute" difficulty="3" ocorrence="1" /> <!-- ogre brute -->
+		<race id="1162" name="Ogre Savage" difficulty="3" ocorrence="1" /> <!-- ogre savage -->
+		<race id="1163" name="Ogre Shaman" difficulty="3" ocorrence="1" /> <!-- ogre shaman -->
+		<race id="1314" name="Orclops Doomhauler" difficulty="3" ocorrence="1" /> <!-- orclops doomhauler -->
+		<race id="1820" name="Ogre Ruffian" difficulty="4" ocorrence="1" /> <!-- ogre ruffian -->
+		<race id="1821" name="Ogre Rowdy" difficulty="2" ocorrence="3" /> <!-- Ogre Rowdy -->
+		<race id="1822" name="Ogre Sage" difficulty="2" ocorrence="3" /> <!-- Ogre Sage -->
+		<race id="1857" name="loricate orger" difficulty="3" ocorrence="3" /> <!-- loricate orger -->
+		<race id="1858" name="bellicose orger" difficulty="3" ocorrence="3" /> <!-- bellicose orger -->
+	</category>
+	<category name="Human">
+		<race id="9" name="Necromancer" difficulty="3" ocorrence="1" /> <!-- necromancer -->
+		<race id="10" name="Warlock" difficulty="3" ocorrence="1" /> <!-- warlock -->
+		<race id="11" name="Hunter" difficulty="2" ocorrence="1" /> <!-- hunter -->
+		<race id="12" name="Valkyrie" difficulty="2" ocorrence="1" /> <!-- valkyrie -->
+		<race id="47" name="Wild Warrior" difficulty="2" ocorrence="1" /> <!-- wild warrior -->
+		<race id="54" name="Witch" difficulty="2" ocorrence="1" /> <!-- witch -->
+		<race id="57" name="Monk" difficulty="2" ocorrence="1" /> <!-- monk -->
+		<race id="58" name="Priestess" difficulty="3" ocorrence="1" /> <!-- priestess -->
+		<race id="72" name="Stalker" difficulty="2" ocorrence="1" /> <!-- stalker -->
+		<race id="73" name="Hero" difficulty="3" ocorrence="1" /> <!-- hero -->
+		<race id="77" name="Amazon" difficulty="2" ocorrence="1" /> <!-- amazon -->
+		<race id="222" name="Smuggler" difficulty="2" ocorrence="1" /> <!-- smuggler -->
+		<race id="223" name="Bandit" difficulty="2" ocorrence="1" /> <!-- bandit -->
+		<race id="224" name="Assassin" difficulty="2" ocorrence="1" /> <!-- assassin -->
+		<race id="225" name="Dark Monk" difficulty="2" ocorrence="1" /> <!-- dark monk -->
+		<race id="247" name="Pirate Marauder" difficulty="2" ocorrence="1" /> <!-- pirate marauder -->
+		<race id="248" name="Pirate Cutthroat" difficulty="3" ocorrence="1" /> <!-- pirate cutthroat -->
+		<race id="249" name="Pirate Buccaneer" difficulty="3" ocorrence="1" /> <!-- pirate buccaneer -->
+		<race id="250" name="Pirate Corsair" difficulty="3" ocorrence="1" /> <!-- pirate corsair -->
+		<race id="252" name="Enlightened of the Cult" difficulty="3" ocorrence="1" /> <!-- enlightened of the cult -->
+		<race id="253" name="Acolyte of the Cult" difficulty="3" ocorrence="1" /> <!-- acolyte of the cult -->
+		<race id="254" name="Adept of the Cult" difficulty="3" ocorrence="1" /> <!-- adept of the cult -->
+		<race id="255" name="Novice of the Cult" difficulty="2" ocorrence="1" /> <!-- novice of the cult -->
+		<race id="310" name="Nomad" difficulty="2" ocorrence="1" /> <!-- nomad -->
+		<race id="322" name="Barbarian Skullhunter" difficulty="2" ocorrence="1" /> <!-- barbarian skullhunter -->
+		<race id="323" name="Barbarian Bloodwalker" difficulty="3" ocorrence="1" /> <!-- barbarian bloodwalker -->
+		<race id="331" name="Ice Witch" difficulty="1" ocorrence="1" /> <!-- ice witch -->
+		<race id="332" name="Barbarian Brutetamer" difficulty="2" ocorrence="1" /> <!-- barbarian brutetamer -->
+		<race id="333" name="Barbarian Headsplitter" difficulty="2" ocorrence="1" /> <!-- barbarian headsplitter -->
+		<race id="371" name="Dark Magician" difficulty="2" ocorrence="1" /> <!-- dark magician -->
+		<race id="372" name="Dark Apprentice" difficulty="2" ocorrence="1" /> <!-- dark apprentice -->
+		<race id="376" name="Poacher" difficulty="2" ocorrence="1" /> <!-- poacher -->
+		<race id="521" name="Mutated Human" difficulty="3" ocorrence="1" /> <!-- mutated human -->
+		<race id="525" name="Crazed Beggar" difficulty="2" ocorrence="1" /> <!-- crazed beggar -->
+		<race id="526" name="Gang Member" difficulty="2" ocorrence="1" /> <!-- gang member -->
+		<race id="527" name="Gladiator" difficulty="2" ocorrence="1" /> <!-- gladiator -->
+		<race id="528" name="Mad Scientist" difficulty="2" ocorrence="1" /> <!-- mad scientist -->
+		<race id="529" name="Infernalist" difficulty="4" ocorrence="1" /> <!-- infernalist -->
+		<race id="578" name="Acolyte of Darkness" difficulty="2" ocorrence="4" /> <!-- acolyte of darkness -->
+		<race id="579" name="Nightslayer" difficulty="3" ocorrence="4" /> <!-- nightslayer -->
+		<race id="583" name="Doomsday Cultist" difficulty="2" ocorrence="4" /> <!-- doomsday cultist -->
+		<race id="585" name="Midnight Warrior" difficulty="3" ocorrence="4" /> <!-- midnight warrior -->
+		<race id="587" name="Bride of Night" difficulty="3" ocorrence="4" /> <!-- bride of night -->
+		<race id="719" name="Feverish Citizen" difficulty="2" ocorrence="3" /> <!-- feverish citizen -->
+		<race id="776" name="NomadBlue" difficulty="2" ocorrence="2" /> <!-- nomad -->
+		<race id="777" name="NomadFemale" difficulty="2" ocorrence="2" /> <!-- nomad -->
+		<race id="867" name="Grave Robber" difficulty="2" ocorrence="3" /> <!-- grave robber -->
+		<race id="868" name="Crypt Defiler" difficulty="2" ocorrence="3" /> <!-- crypt defiler -->
+		<race id="922" name="Adventurer" difficulty="2" ocorrence="1" /> <!-- adventurer -->
+		<race id="960" name="Shadow Pupil" difficulty="3" ocorrence="1" /> <!-- shadow pupil -->
+		<race id="961" name="Blood Priest" difficulty="3" ocorrence="1" /> <!-- blood priest -->
+		<race id="974" name="Blood Hand" difficulty="3" ocorrence="1" /> <!-- blood hand -->
+		<race id="1119" name="Glooth Bandit" difficulty="3" ocorrence="1" /> <!-- glooth bandit -->
+		<race id="1120" name="Glooth Brigand" difficulty="3" ocorrence="1" /> <!-- glooth brigand -->
+		<race id="1145" name="Vicious Squire" difficulty="3" ocorrence="1" /> <!-- vicious squire -->
+		<race id="1146" name="Renegade Knight" difficulty="3" ocorrence="1" /> <!-- renegade knight -->
+		<race id="1147" name="Vile Grandmaster" difficulty="3" ocorrence="1" /> <!-- vile grandmaster -->
+		<race id="1413" name="Misguided Thief" difficulty="3" ocorrence="1" /> <!-- misguided thief -->
+		<race id="1481" name="Goldhanded Cultist" difficulty="3" ocorrence="2" /> <!-- goldhanded cultist -->
+		<race id="1482" name="Goldhanded Cultist Bride" difficulty="3" ocorrence="2" /> <!-- goldhanded cultist bride -->
+		<race id="1512" name="Cult Believer" difficulty="3" ocorrence="1" /> <!-- cult believer -->
+		<race id="1513" name="Cult Enforcer" difficulty="3" ocorrence="1" /> <!-- cult enforcer -->
+		<race id="1514" name="Cult Scholar" difficulty="3" ocorrence="2" /> <!-- Cult Scholar -->
+		<race id="1775" name="Cobra Assassin" difficulty="2" ocorrence="3" /> <!-- Cobra Assassin -->
+		<race id="1776" name="Cobra Scout" difficulty="2" ocorrence="3" /> <!-- Cobra Scout -->
+		<race id="1824" name="Cobra Vizier" difficulty="4" ocorrence="1" /> <!-- cobra vizier -->
+		<race id="1800" name="Black Sphinx Acolyte" difficulty="4" ocorrence="3" /> <!-- black sphinx acolyte -->
+		<race id="1799" name="Priestess of the Wild Sun" difficulty="2" ocorrence="3" /> <!-- Priestess of the Wild Sun -->
+		<race id="1798" name="Burning Gladiator" difficulty="4" ocorrence="1" /> <!-- burning gladiator -->
+	</category>
+	<category name="Humanoid">
+		<race id="2" name="Orc Warlord" difficulty="3" ocorrence="1" /> <!-- orc warlord -->
+		<race id="4" name="orc rider" difficulty="2" ocorrence="1" /> <!-- orc rider -->
+		<race id="5" name="orc" difficulty="2" ocorrence="1" /> <!-- orc -->
+		<race id="6" name="orc shaman" difficulty="2" ocorrence="1" /> <!-- orc shaman -->
+		<race id="7" name="orc warrior" difficulty="2" ocorrence="1" /> <!-- orc warrior -->
+		<race id="8" name="orc berserker" difficulty="3" ocorrence="1" /> <!-- orc berserker -->
+		<race id="15" name="troll" difficulty="1" ocorrence="1" /> <!-- troll -->
+		<race id="23" name="minotaur mage" difficulty="2" ocorrence="1" /> <!-- minotaur mage -->
+		<race id="24" name="minotaur archer" difficulty="2" ocorrence="1" /> <!-- minotaur archer -->
+		<race id="25" name="minotaur" difficulty="2" ocorrence="1" /> <!-- minotaur -->
+		<race id="29" name="minotaur guard" difficulty="2" ocorrence="1" /> <!-- minotaur guard -->
+		<race id="50" name="orc spearman" difficulty="2" ocorrence="1" /> <!-- orc spearman -->
+		<race id="53" name="frost troll" difficulty="1" ocorrence="1" /> <!-- frost troll -->
+		<race id="59" name="orc leader" difficulty="3" ocorrence="1" /> <!-- orc leader -->
+		<race id="61" name="goblin" difficulty="1" ocorrence="1" /> <!-- goblin -->
+		<race id="62" name="elf" difficulty="2" ocorrence="1" /> <!-- elf -->
+		<race id="63" name="elf arcanist" difficulty="2" ocorrence="1" /> <!-- elf arcanist -->
+		<race id="64" name="elf scout" difficulty="2" ocorrence="1" /> <!-- elf scout -->
+		<race id="66" name="dwarf geomancer" difficulty="3" ocorrence="1" /> <!-- dwarf geomancer -->
+		<race id="69" name="dwarf" difficulty="2" ocorrence="1" /> <!-- dwarf -->
+		<race id="70" name="dwarf guard" difficulty="2" ocorrence="1" /> <!-- dwarf guard -->
+		<race id="71" name="dwarf soldier" difficulty="2" ocorrence="1" /> <!-- dwarf soldier -->
+		<race id="76" name="swamp troll" difficulty="2" ocorrence="1" /> <!-- swamp troll -->
+		<race id="214" name="dworc voodoomaster" difficulty="2" ocorrence="1" /> <!-- dworc voodoomaster -->
+		<race id="215" name="dworc fleshhunter" difficulty="2" ocorrence="1" /> <!-- dworc fleshhunter -->
+		<race id="216" name="dworc venomsniper" difficulty="1" ocorrence="1" /> <!-- dworc venomsniper -->
+		<race id="277" name="island troll" difficulty="1" ocorrence="1" /> <!-- island troll -->
+		<race id="319" name="chakoya tribewarden" difficulty="2" ocorrence="1" /> <!-- chakoya tribewarden -->
+		<race id="328" name="chakoya toolshaper" difficulty="2" ocorrence="1" /> <!-- chakoya toolshaper -->
+		<race id="329" name="chakoya windcaller" difficulty="2" ocorrence="1" /> <!-- chakoya windcaller -->
+		<race id="377" name="goblin leader" difficulty="2" ocorrence="4" /> <!-- goblin leader -->
+		<race id="379" name="dwarf henchman" difficulty="3" ocorrence="1" /> <!-- dwarf henchman -->
+		<race id="392" name="troll champion" difficulty="2" ocorrence="1" /> <!-- troll champion -->
+		<race id="393" name="grynch clan goblin" difficulty="1" ocorrence="4" /> <!-- grynch clan goblin -->
+		<race id="463" name="goblin assassin" difficulty="2" ocorrence="1" /> <!-- goblin assassin -->
+		<race id="464" name="goblin scavenger" difficulty="2" ocorrence="1" /> <!-- goblin scavenger -->
+		<race id="540" name="furious troll" difficulty="2" ocorrence="2" /> <!-- furious troll -->
+		<race id="541" name="troll legionnaire" difficulty="3" ocorrence="1" /> <!-- troll legionnaire -->
+		<race id="614" name="orc marauder" difficulty="3" ocorrence="1" /> <!-- orc marauder -->
+		<race id="737" name="firestarter" difficulty="2" ocorrence="3" /> <!-- firestarter -->
+		<race id="741" name="elf overseer" difficulty="3" ocorrence="4" /> <!-- elf overseer -->
+		<race id="745" name="troll guard" difficulty="2" ocorrence="4" /> <!-- troll guard -->
+		<race id="886" name="enslaved dwarf" difficulty="3" ocorrence="1" /> <!-- enslaved dwarf -->
+		<race id="888" name="lost berserker" difficulty="4" ocorrence="1" /> <!-- lost berserker -->
+		<race id="916" name="corym charlatan" difficulty="2" ocorrence="1" /> <!-- corym charlatan -->
+		<race id="917" name="corym skirmisher" difficulty="3" ocorrence="1" /> <!-- corym skirmisher -->
+		<race id="918" name="corym vanguard" difficulty="3" ocorrence="1" /> <!-- corym vanguard -->
+		<race id="920" name="little corym charlatan" difficulty="2" ocorrence="2" /> <!-- little corym charlatan -->
+		<race id="924" name="lost husher" difficulty="3" ocorrence="1" /> <!-- lost husher -->
+		<race id="925" name="lost basher" difficulty="3" ocorrence="1" /> <!-- lost basher -->
+		<race id="926" name="lost thrower" difficulty="3" ocorrence="1" /> <!-- lost thrower -->
+		<race id="1044" name="moohtant" difficulty="3" ocorrence="1" /> <!-- moohtant -->
+		<race id="1045" name="minotaur amazon" difficulty="4" ocorrence="1" /> <!-- minotaur amazon -->
+		<race id="1046" name="execowtioner" difficulty="3" ocorrence="1" /> <!-- execowtioner -->
+		<race id="1051" name="mooh'tah warrior" difficulty="3" ocorrence="1" /> <!-- mooh'tah warrior -->
+		<race id="1052" name="minotaur hunter" difficulty="3" ocorrence="1" /> <!-- minotaur hunter -->
+		<race id="1053" name="worm priestess" difficulty="3" ocorrence="1" /> <!-- worm priestess -->
+		<race id="1321" name="broken shaper" difficulty="3" ocorrence="1" /> <!-- broken shaper -->
+		<race id="1322" name="twisted shaper" difficulty="3" ocorrence="1" /> <!-- twisted shaper -->
+		<race id="1394" name="shaper matriarch" difficulty="3" ocorrence="1" /> <!-- shaper matriarch -->
+		<race id="1412" name="misguided bully" difficulty="3" ocorrence="1" /> <!-- misguided bully -->
+		<race id="1486" name="barkless devotee" difficulty="3" ocorrence="1" /> <!-- barkless devotee -->
+		<race id="1488" name="barkless fanatic" difficulty="3" ocorrence="1" /> <!-- barkless fanatic -->
+		<race id="1503" name="orc cultist" difficulty="3" ocorrence="2" /> <!-- orc cultist -->
+		<race id="1504" name="orc cult priest" difficulty="3" ocorrence="2" /> <!-- orc cult priest -->
+		<race id="1505" name="orc cult inquisitor" difficulty="3" ocorrence="1" /> <!-- orc cult inquisitor -->
+		<race id="1506" name="orc cult fanatic" difficulty="3" ocorrence="2" /> <!-- orc cult fanatic -->
+		<race id="1507" name="orc cult minion" difficulty="3" ocorrence="1" /> <!-- orc cult minion -->
+		<race id="1508" name="minotaur cult follower" difficulty="3" ocorrence="1" /> <!-- minotaur cult follower -->
+		<race id="1509" name="minotaur cult prophet" difficulty="3" ocorrence="1" /> <!-- minotaur cult prophet -->
+		<race id="1510" name="minotaur cult zealot" difficulty="3" ocorrence="1" /> <!-- minotaur cult zealot -->
+		<race id="1529" name="lost exile" difficulty="3" ocorrence="1" /> <!-- lost exile -->
+		<race id="1730" name="crazed winter vanguard" difficulty="4" ocorrence="1" /> <!-- crazed winter vanguard -->
+		<race id="1731" name="crazed winter rearguard" difficulty="4" ocorrence="1" /> <!-- crazed winter rearguard -->
+		<race id="1732" name="crazed summer vanguard" difficulty="4" ocorrence="1" /> <!-- crazed summer vanguard -->
+		<race id="1733" name="crazed summer rearguard" difficulty="4" ocorrence="1" /> <!-- crazed summer rearguard -->
+		<race id="1734" name="soul-broken harbinger" difficulty="4" ocorrence="1" /> <!-- soul-broken harbinger -->
+		<race id="1735" name="insane siren" difficulty="4" ocorrence="1" /> <!-- insane siren -->
+	</category>
+	<category name="Lycanthrope">
+		<race id="510" name="werewolf" difficulty="3" ocorrence="1" /> <!-- werewolf -->
+		<race id="1142" name="werebear" difficulty="3" ocorrence="1" /> <!-- werebear -->
+		<race id="1143" name="wereboar" difficulty="3" ocorrence="1" /> <!-- wereboar -->
+		<race id="1144" name="werebadger" difficulty="3" ocorrence="1" /> <!-- werebadger -->
+		<race id="1549" name="werefox" difficulty="3" ocorrence="1" /> <!-- werefox -->
+	</category>
+	<category name="Magical">
+		<race id="17" name="bonelord" difficulty="2" ocorrence="1" /> <!-- bonelord -->
+		<race id="51" name="green djinn" difficulty="3" ocorrence="1" /> <!-- green djinn -->
+		<race id="80" name="blue djinn" difficulty="3" ocorrence="1" /> <!-- blue djinn -->
+		<race id="95" name="gargoyle" difficulty="2" ocorrence="1" /> <!-- gargoyle -->
+		<race id="103" name="efreet" difficulty="3" ocorrence="1" /> <!-- efreet -->
+		<race id="104" name="marid" difficulty="3" ocorrence="1" /> <!-- marid -->
+		<race id="108" name="elder bonelord" difficulty="3" ocorrence="1" /> <!-- elder bonelord -->
+		<race id="109" name="gazer" difficulty="1" ocorrence="1" /> <!-- gazer -->
+		<race id="292" name="phantasm" difficulty="4" ocorrence="1" /> <!-- phantasm -->
+		<race id="299" name="nightmare" difficulty="3" ocorrence="1" /> <!-- nightmare -->
+		<race id="330" name="crystal spider" difficulty="3" ocorrence="1" /> <!-- crystal spider -->
+		<race id="460" name="bog raider" difficulty="3" ocorrence="1" /> <!-- bog raider -->
+		<race id="518" name="nightmare scion" difficulty="3" ocorrence="1" /> <!-- nightmare scion -->
+		<race id="520" name="nightstalker" difficulty="3" ocorrence="1" /> <!-- nightstalker -->
+		<race id="570" name="medusa" difficulty="4" ocorrence="1" /> <!-- medusa -->
+		<race id="698" name="midnight panther" difficulty="3" ocorrence="4" /> <!-- midnight panther -->
+		<race id="739" name="thornfire wolf" difficulty="3" ocorrence="4" /> <!-- thornfire wolf -->
+		<race id="740" name="crystal wolf" difficulty="3" ocorrence="4" /> <!-- crystal wolf -->
+		<race id="869" name="crystalcrusher" difficulty="3" ocorrence="1" /> <!-- crystalcrusher -->
+		<race id="880" name="armadile" difficulty="4" ocorrence="1" /> <!-- armadile -->
+		<race id="894" name="dragonling" difficulty="3" ocorrence="2" /> <!-- dragonling -->
+		<race id="978" name="rorc" difficulty="2" ocorrence="1" /> <!-- rorc -->
+		<race id="980" name="forest fury" difficulty="3" ocorrence="1" /> <!-- forest fury -->
+		<race id="1004" name="shock head" difficulty="4" ocorrence="1" /> <!-- shock head -->
+		<race id="1012" name="sight of surrender" difficulty="4" ocorrence="1" /> <!-- sight of surrender -->
+		<race id="1013" name="guzzlemaw" difficulty="4" ocorrence="1" /> <!-- guzzlemaw -->
+		<race id="1014" name="silencer" difficulty="3" ocorrence="1" /> <!-- silencer -->
+		<race id="1015" name="choking fear" difficulty="4" ocorrence="1" /> <!-- choking fear -->
+		<race id="1016" name="terrorsleep" difficulty="4" ocorrence="1" /> <!-- terrorsleep -->
+		<race id="1018" name="retching horror" difficulty="4" ocorrence="1" /> <!-- retching horror -->
+		<race id="1021" name="feversleep" difficulty="3" ocorrence="1" /> <!-- feversleep -->
+		<race id="1022" name="frazzlemaw" difficulty="4" ocorrence="1" /> <!-- frazzlemaw -->
+		<race id="1157" name="elder forest fury" difficulty="3" ocorrence="2" /> <!-- elder forest fury -->
+		<race id="1442" name="weakened frazzlemaw" difficulty="3" ocorrence="1" /> <!-- weakened frazzlemaw -->
+		<race id="1443" name="enfeebled silencer" difficulty="3" ocorrence="1" /> <!-- enfeebled silencer -->
+		<race id="1653" name="brain squid" difficulty="4" ocorrence="1" /> <!-- brain squid -->
+		<race id="1654" name="flying book" difficulty="3" ocorrence="2" /> <!-- flying book -->
+		<race id="1655" name="cursed book" difficulty="4" ocorrence="2" /> <!-- cursed book -->
+		<race id="1659" name="guardian of tales" difficulty="4" ocorrence="2" /> <!-- guardian of tales -->
+		<race id="1663" name="burning book" difficulty="4" ocorrence="1" /> <!-- burning book -->
+		<race id="1664" name="icecold book" difficulty="4" ocorrence="1" /> <!-- icecold book -->
+		<race id="1665" name="energetic book" difficulty="4" ocorrence="1" /> <!-- energetic book -->
+		<race id="1666" name="energuardian of tales" difficulty="4" ocorrence="1" /> <!-- energuardian of tales -->
+		<race id="1668" name="rage squid" difficulty="4" ocorrence="1" /> <!-- rage squid -->
+		<race id="1669" name="squid warden" difficulty="4" ocorrence="1" /> <!-- squid warden -->
+		<race id="1671" name="animated feather" difficulty="4" ocorrence="1" /> <!-- animated feather -->
+		<race id="1721" name="lumbering carnivor" difficulty="3" ocorrence="1" /> <!-- lumbering carnivor -->
+		<race id="1722" name="spiky carnivor" difficulty="4" ocorrence="1" /> <!-- spiky carnivor -->
+		<race id="1723" name="menacing carnivor" difficulty="4" ocorrence="1" /> <!-- menacing carnivor -->
+		<race id="1728" name="thanatursus" difficulty="4" ocorrence="1" /> <!-- thanatursus -->
+		<race id="1729" name="arachnophobica" difficulty="4" ocorrence="1" /> <!-- arachnophobica -->
+		<race id="1808" name="Sphinx" difficulty="4" ocorrence="1" /> <!-- Sphinx -->
+		<race id="1807" name="feral sphinx" difficulty="4" ocorrence="1" /> <!-- feral sphinx -->
+		<race id="1806" name="Lamassu" difficulty="4" ocorrence="1" /> <!-- Lamassu -->
+		<race id="1816" name="Manticore" difficulty="4" ocorrence="1" /> <!-- Manticore -->
+		<race id="1819" name="Gryphon" difficulty="4" ocorrence="1" /> <!-- Gryphon -->
+	</category>
+	<category name="Mammal">
+		<race id="3" name="war wolf" difficulty="2" ocorrence="1" /> <!-- war wolf -->
+		<race id="13" name="black sheep" difficulty="1" ocorrence="2" /> <!-- black sheep -->
+		<race id="14" name="sheep" difficulty="1" ocorrence="1" /> <!-- sheep -->
+		<race id="16" name="bear" difficulty="2" ocorrence="1" /> <!-- bear -->
+		<race id="21" name="rat" difficulty="1" ocorrence="1" /> <!-- rat -->
+		<race id="27" name="wolf" difficulty="1" ocorrence="1" /> <!-- wolf -->
+		<race id="31" name="deer" difficulty="1" ocorrence="1" /> <!-- deer -->
+		<race id="32" name="dog" difficulty="0" ocorrence="1" /> <!-- dog -->
+		<race id="41" name="lion" difficulty="2" ocorrence="1" /> <!-- lion -->
+		<race id="42" name="polar bear" difficulty="2" ocorrence="1" /> <!-- polar bear -->
+		<race id="52" name="winter wolf" difficulty="1" ocorrence="1" /> <!-- winter wolf -->
+		<race id="56" name="cave rat" difficulty="1" ocorrence="1" /> <!-- cave rat -->
+		<race id="60" name="pig" difficulty="1" ocorrence="1" /> <!-- pig -->
+		<race id="74" name="rabbit" difficulty="1" ocorrence="1" /> <!-- rabbit -->
+		<race id="94" name="hyaena" difficulty="2" ocorrence="1" /> <!-- hyaena -->
+		<race id="105" name="badger" difficulty="1" ocorrence="1" /> <!-- badger -->
+		<race id="106" name="skunk" difficulty="1" ocorrence="1" /> <!-- skunk -->
+		<race id="110" name="yeti" difficulty="3" ocorrence="4" /> <!-- yeti -->
+		<race id="116" name="kongra" difficulty="2" ocorrence="1" /> <!-- kongra -->
+		<race id="117" name="merlkin" difficulty="2" ocorrence="1" /> <!-- merlkin -->
+		<race id="118" name="sibang" difficulty="2" ocorrence="1" /> <!-- sibang -->
+		<race id="122" name="bat" difficulty="1" ocorrence="1" /> <!-- bat -->
+		<race id="123" name="panda" difficulty="2" ocorrence="1" /> <!-- panda -->
+		<race id="125" name="tiger" difficulty="2" ocorrence="1" /> <!-- tiger -->
+		<race id="211" name="elephant" difficulty="2" ocorrence="1" /> <!-- elephant -->
+		<race id="260" name="mammoth" difficulty="2" ocorrence="1" /> <!-- mammoth -->
+		<race id="325" name="husky" difficulty="0" ocorrence="2" /> <!-- husky -->
+		<race id="327" name="silver rabbit" difficulty="1" ocorrence="1" /> <!-- silver rabbit -->
+		<race id="384" name="squirrel" difficulty="1" ocorrence="1" /> <!-- squirrel -->
+		<race id="387" name="cat" difficulty="0" ocorrence="1" /> <!-- cat -->
+		<race id="502" name="mutated rat" difficulty="3" ocorrence="1" /> <!-- mutated rat -->
+		<race id="509" name="mutated bat" difficulty="3" ocorrence="1" /> <!-- mutated bat -->
+		<race id="516" name="mutated tiger" difficulty="3" ocorrence="1" /> <!-- mutated tiger -->
+		<race id="555" name="evil sheep" difficulty="3" ocorrence="1" /> <!-- evil sheep -->
+		<race id="556" name="evil sheep lord" difficulty="3" ocorrence="2" /> <!-- evil sheep lord -->
+		<race id="557" name="hot dog" difficulty="3" ocorrence="2" /> <!-- hot dog -->
+		<race id="559" name="doom deer" difficulty="3" ocorrence="2" /> <!-- doom deer -->
+		<race id="560" name="killer rabbit" difficulty="2" ocorrence="2" /> <!-- killer rabbit -->
+		<race id="630" name="gnarlhound" difficulty="2" ocorrence="1" /> <!-- gnarlhound -->
+		<race id="693" name="boar" difficulty="2" ocorrence="1" /> <!-- boar -->
+		<race id="720" name="white deer" difficulty="1" ocorrence="3" /> <!-- white deer -->
+		<race id="723" name="Starving wolf" difficulty="2" ocorrence="3" /> <!-- Starving wolf -->
+		<race id="730" name="wild horse" difficulty="1" ocorrence="4" /> <!-- wild horse -->
+		<race id="733" name="dromedary" difficulty="1" ocorrence="1" /> <!-- dromedary -->
+		<race id="750" name="Horse3" difficulty="1" ocorrence="2" /> <!-- Horse Gray -->
+		<race id="751" name="Horse1" difficulty="1" ocorrence="2" /> <!-- Horse Brown -->
+		<race id="752" name="Horse" difficulty="1" ocorrence="3" /> <!-- Horse -->
+		<race id="870" name="mushroom sniffer" difficulty="0" ocorrence="1" /> <!-- mushroom sniffer -->
+		<race id="872" name="water buffalo" difficulty="2" ocorrence="4" /> <!-- water buffalo -->
+		<race id="877" name="modified gnarlhound" difficulty="0" ocorrence="2" /> <!-- modified gnarlhound -->
+		<race id="898" name="vulcongra" difficulty="4" ocorrence="1" /> <!-- vulcongra -->
+		<race id="981" name="roaring lion" difficulty="3" ocorrence="1" /> <!-- roaring lion -->
+		<race id="1118" name="noble lion" difficulty="3" ocorrence="2" /> <!-- noble lion -->
+		<race id="1139" name="gloom wolf" difficulty="2" ocorrence="2" /> <!-- gloom wolf -->
+		<race id="1174" name="clomp" difficulty="3" ocorrence="1" /> <!-- clomp -->
+		<race id="1395" name="stone rhino" difficulty="3" ocorrence="2" /> <!-- stone rhino -->
+		<race id="1548" name="fox" difficulty="1" ocorrence="1" /> <!-- fox -->
+		<race id="1570" name="mole" difficulty="2" ocorrence="1" /> <!-- mole -->
+		<race id="1742" name="baleful bunny" difficulty="3" ocorrence="3" /> <!-- baleful bunny -->
+		<race id="1855" name="roast pork" difficulty="3" ocorrence="3" /> <!-- roast pork -->
+		<race id="1856" name="cow" difficulty="3" ocorrence="3" /> <!-- cow -->
+	</category>
+	<category name="Plant">
+		<race id="120" name="carniphila" difficulty="3" ocorrence="1" /> <!-- carniphila -->
+		<race id="221" name="spit nettle" difficulty="2" ocorrence="1" /> <!-- spit nettle -->
+		<race id="511" name="haunted treeling" difficulty="3" ocorrence="1" /> <!-- haunted treeling -->
+		<race id="679" name="bane bringer" difficulty="3" ocorrence="4" /> <!-- bane bringer -->
+		<race id="881" name="humongous fungus" difficulty="4" ocorrence="1" /> <!-- humongous fungus -->
+		<race id="891" name="hideous fungus" difficulty="4" ocorrence="1" /> <!-- hideous fungus -->
+		<race id="919" name="swampling" difficulty="2" ocorrence="1" /> <!-- swampling -->
+		<race id="979" name="leaf golem" difficulty="2" ocorrence="1" /> <!-- leaf golem -->
+		<race id="982" name="wilting leaf golem" difficulty="3" ocorrence="1" /> <!-- wilting leaf golem -->
+		<race id="1042" name="glooth anemone" difficulty="3" ocorrence="1" /> <!-- glooth anemone -->
+		<race id="1141" name="omnivora" difficulty="3" ocorrence="1" /> <!-- omnivora -->
+	</category>
+	<category name="Reptile">
+		<race id="28" name="snake" difficulty="1" ocorrence="1" /> <!-- snake -->
+		<race id="81" name="cobra" difficulty="2" ocorrence="1" /> <!-- cobra -->
+		<race id="113" name="lizard templar" difficulty="2" ocorrence="1" /> <!-- lizard templar -->
+		<race id="114" name="lizard sentinel" difficulty="2" ocorrence="1" /> <!-- lizard sentinel -->
+		<race id="115" name="lizard snakecharmer" difficulty="3" ocorrence="1" /> <!-- lizard snakecharmer -->
+		<race id="119" name="crocodile" difficulty="2" ocorrence="1" location="In the crocodile cave and the jungle east of Port Hope as well as the swamp to the north, Fenrock, Arena and Zoo Quarter, Trade Quarter, Talahu, also located on Meriana and Laguna Islands." /> <!-- crocodile -->
+		<race id="220" name="serpent spawn" difficulty="3" ocorrence="1" /> <!-- serpent spawn -->
+		<race id="258" name="tortoise" difficulty="2" ocorrence="1" /> <!-- tortoise -->
+		<race id="259" name="thornback tortoise" difficulty="2" ocorrence="1" /> <!-- thornback tortoise -->
+		<race id="290" name="wyvern" difficulty="3" ocorrence="1" /> <!-- wyvern -->
+		<race id="438" name="sea serpent" difficulty="3" ocorrence="1" /> <!-- sea serpent -->
+		<race id="439" name="young sea serpent" difficulty="3" ocorrence="1" /> <!-- young sea serpent -->
+		<race id="616" name="lizard zaogun" difficulty="3" ocorrence="1" /> <!-- lizard zaogun -->
+		<race id="620" name="lizard chosen" difficulty="3" ocorrence="1" /> <!-- lizard chosen -->
+		<race id="623" name="lizard dragon priest" difficulty="3" ocorrence="1" /> <!-- lizard dragon priest -->
+		<race id="624" name="lizard legionnaire" difficulty="3" ocorrence="1" /> <!-- lizard legionnaire -->
+		<race id="625" name="lizard high guard" difficulty="3" ocorrence="1" /> <!-- lizard high guard -->
+		<race id="627" name="killer caiman" difficulty="3" ocorrence="1" /> <!-- killer caiman -->
+		<race id="655" name="lizard magistratus" difficulty="3" ocorrence="1" /> <!-- lizard magistratus -->
+		<race id="656" name="lizard noble" difficulty="4" ocorrence="1" /> <!-- lizard noble -->
+		<race id="694" name="stampor" difficulty="3" ocorrence="1" /> <!-- stampor -->
+		<race id="695" name="draptor" difficulty="3" ocorrence="4" /> <!-- draptor -->
+		<race id="1096" name="seacrest serpent" difficulty="4" ocorrence="3" /> <!-- seacrest serpent -->
+		<race id="1525" name="stonerefiner" difficulty="3" ocorrence="1" /> <!-- stonerefiner -->
+		<race id="1817" name="young goanna" difficulty="4" ocorrence="1" /> <!-- young goanna -->
+		<race id="1818" name="adult goanna" difficulty="4" ocorrence="1" /> <!-- adult goanna -->
+	</category>
+	<category name="Slime">
+		<race id="19" name="slime" difficulty="2" ocorrence="1" /> <!-- slime -->
+		<race id="20" name="squidgy slime" difficulty="2" ocorrence="3" /> <!-- squidgy slime -->
+		<race id="265" name="son of verminor" difficulty="4" ocorrence="1" /> <!-- son of verminor -->
+		<race id="289" name="defiler" difficulty="4" ocorrence="1" /> <!-- defiler -->
+		<race id="513" name="acid blob" difficulty="3" ocorrence="1" /> <!-- acid blob -->
+		<race id="514" name="death blob" difficulty="3" ocorrence="1" /> <!-- death blob -->
+		<race id="515" name="mercury blob" difficulty="2" ocorrence="1" /> <!-- mercury blob -->
+		<race id="584" name="midnight spawn" difficulty="3" ocorrence="4" /> <!-- midnight spawn -->
+		<race id="1054" name="glooth blob" difficulty="3" ocorrence="1" /> <!-- glooth blob -->
+		<race id="1056" name="devourer" difficulty="3" ocorrence="1" /> <!-- devourer -->
+		<race id="1658" name="ink blob" difficulty="4" ocorrence="1" /> <!-- ink blob -->
+	</category>
+	<category name="Undead">
+		<race id="18" name="ghoul" difficulty="2" ocorrence="1" /> <!-- ghoul -->
+		<race id="33" name="skeleton" difficulty="2" ocorrence="1" /> <!-- skeleton -->
+		<race id="37" name="demon skeleton" difficulty="3" ocorrence="1" /> <!-- demon skeleton -->
+		<race id="48" name="ghost" difficulty="2" ocorrence="1" /> <!-- ghost -->
+		<race id="65" name="mummy" difficulty="2" ocorrence="1" /> <!-- mummy -->
+		<race id="68" name="vampire" difficulty="3" ocorrence="1" /> <!-- vampire -->
+		<race id="78" name="banshee" difficulty="3" ocorrence="1" /> <!-- banshee -->
+		<race id="99" name="lich" difficulty="3" ocorrence="1" /> <!-- lich -->
+		<race id="100" name="crypt shambler" difficulty="2" ocorrence="1" /> <!-- crypt shambler -->
+		<race id="101" name="bonebeast" difficulty="3" ocorrence="1" /> <!-- bonebeast -->
+		<race id="256" name="pirate skeleton" difficulty="2" ocorrence="1" /> <!-- pirate skeleton -->
+		<race id="257" name="pirate ghost" difficulty="2" ocorrence="1" /> <!-- pirate ghost -->
+		<race id="281" name="hand of cursed fate" difficulty="4" ocorrence="1" /> <!-- hand of cursed fate -->
+		<race id="282" name="undead dragon" difficulty="4" ocorrence="1" /> <!-- undead dragon -->
+		<race id="283" name="lost soul" difficulty="3" ocorrence="1" /> <!-- lost soul -->
+		<race id="284" name="betrayed wraith" difficulty="3" ocorrence="1" /> <!-- betrayed wraith -->
+		<race id="286" name="spectre" difficulty="3" ocorrence="1" /> <!-- spectre -->
+		<race id="298" name="blightwalker" difficulty="4" ocorrence="1" /> <!-- blightwalker -->
+		<race id="321" name="braindeath" difficulty="3" ocorrence="1" /> <!-- braindeath -->
+		<race id="388" name="undead jester" difficulty="1" ocorrence="4" /> <!-- undead jester -->
+		<race id="446" name="skeleton warrior" difficulty="2" ocorrence="1" /> <!-- skeleton warrior -->
+		<race id="465" name="grim reaper" difficulty="4" ocorrence="1" /> <!-- grim reaper -->
+		<race id="483" name="vampire bride" difficulty="3" ocorrence="1" /> <!-- vampire bride -->
+		<race id="508" name="undead gladiator" difficulty="3" ocorrence="1" /> <!-- undead gladiator -->
+		<race id="512" name="zombie" difficulty="3" ocorrence="1" /> <!-- zombie -->
+		<race id="558" name="vampire pig" difficulty="3" ocorrence="2" /> <!-- vampire pig -->
+		<race id="580" name="bane of light" difficulty="3" ocorrence="4" /> <!-- bane of light -->
+		<race id="594" name="undead mine worker" difficulty="2" ocorrence="2" /> <!-- undead mine worker -->
+		<race id="595" name="undead prospector" difficulty="2" ocorrence="2" /> <!-- undead prospector -->
+		<race id="675" name="souleater" difficulty="3" ocorrence="1" /> <!-- souleater -->
+		<race id="696" name="undead cavebear" difficulty="3" ocorrence="4" /> <!-- undead cavebear -->
+		<race id="704" name="ghoulish hyaena" difficulty="3" ocorrence="3" /> <!-- ghoulish hyaena -->
+		<race id="707" name="grave guard" difficulty="3" ocorrence="3" /> <!-- grave guard -->
+		<race id="708" name="tomb servant" difficulty="3" ocorrence="3" /> <!-- tomb servant -->
+		<race id="710" name="death priest" difficulty="3" ocorrence="3" /> <!-- death priest -->
+		<race id="711" name="elder mummy" difficulty="3" ocorrence="3" /> <!-- elder mummy -->
+		<race id="712" name="honour guard" difficulty="2" ocorrence="3" /> <!-- honour guard -->
+		<race id="958" name="vampire viscount" difficulty="3" ocorrence="1" /> <!-- vampire viscount -->
+		<race id="959" name="vicious manbat" difficulty="3" ocorrence="4" /> <!-- vicious manbat -->
+		<race id="962" name="white shade" difficulty="2" ocorrence="1" /> <!-- white shade -->
+		<race id="975" name="gravedigger" difficulty="3" ocorrence="1" /> <!-- gravedigger -->
+		<race id="976" name="tarnished spirit" difficulty="2" ocorrence="1" /> <!-- tarnished spirit -->
+		<race id="1040" name="blood beast" difficulty="3" ocorrence="1" /> <!-- blood beast -->
+		<race id="1055" name="rot elemental" difficulty="3" ocorrence="1" /> <!-- rot elemental -->
+		<race id="1148" name="ghost wolf" difficulty="2" ocorrence="3" /> <!-- ghost wolf -->
+		<race id="1415" name="putrid mummy" difficulty="3" ocorrence="1" /> <!-- putrid mummy -->
+		<race id="1646" name="falcon knight" difficulty="4" ocorrence="1" /> <!-- falcon knight -->
+		<race id="1647" name="falcon paladin" difficulty="4" ocorrence="1" /> <!-- falcon paladin -->
+		<race id="1674" name="skeleton elite warrior" difficulty="4" ocorrence="1" /> <!-- skeleton elite warrior -->
+		<race id="1675" name="undead elite gladiator" difficulty="4" ocorrence="1" /> <!-- undead elite gladiator -->
+		<race id="1724" name="ripper spectre" difficulty="4" ocorrence="1" /> <!-- ripper spectre -->
+		<race id="1725" name="gazer spectre" difficulty="4" ocorrence="1" /> <!-- gazer spectre -->
+		<race id="1726" name="burster spectre" difficulty="4" ocorrence="1" /> <!-- burster spectre -->
+		<race id="1805" name="Crypt Warden" difficulty="4" ocorrence="1" /> <!-- Crypt Warden -->
+	</category>
+	<category name="Vermin">
+		<race id="26" name="rotworm" difficulty="2" ocorrence="1" /> <!-- rotworm -->
+		<race id="30" name="spider" difficulty="1" ocorrence="1" /> <!-- spider -->
+		<race id="36" name="poison spider" difficulty="1" ocorrence="1" /> <!-- poison spider -->
+		<race id="38" name="giant spider" difficulty="3" ocorrence="1" /> <!-- giant spider -->
+		<race id="43" name="scorpion" difficulty="2" ocorrence="1" /> <!-- scorpion -->
+		<race id="44" name="wasp" difficulty="1" ocorrence="1" /> <!-- wasp -->
+		<race id="45" name="bug" difficulty="1" ocorrence="1" /> <!-- bug -->
+		<race id="79" name="ancient scarab" difficulty="3" ocorrence="1" /> <!-- ancient scarab -->
+		<race id="82" name="larva" difficulty="2" ocorrence="1" /> <!-- larva -->
+		<race id="83" name="scarab" difficulty="2" ocorrence="1" /> <!-- scarab -->
+		<race id="124" name="centipede" difficulty="2" ocorrence="1" /> <!-- centipede -->
+		<race id="213" name="Pink Butterfly" difficulty="0" ocorrence="1" /> <!-- Pink Butterfly -->
+		<race id="219" name="tarantula" difficulty="2" ocorrence="1" /> <!-- tarantula -->
+		<race id="227" name="Blue Butterfly" difficulty="0" ocorrence="1" /> <!-- Blue Butterfly -->
+		<race id="228" name="Red Butterfly" difficulty="0" ocorrence="1" /> <!-- Red Butterfly -->
+		<race id="251" name="carrion worm" difficulty="2" ocorrence="1" /> <!-- carrion worm -->
+		<race id="621" name="insect swarm" difficulty="2" ocorrence="1" /> <!-- insect swarm -->
+		<race id="631" name="terramite" difficulty="2" ocorrence="1" /> <!-- terramite -->
+		<race id="632" name="wailing widow" difficulty="3" ocorrence="1" /> <!-- wailing widow -->
+		<race id="633" name="lancer beetle" difficulty="3" ocorrence="1" /> <!-- lancer beetle -->
+		<race id="641" name="sandcrawler" difficulty="1" ocorrence="1" /> <!-- sandcrawler -->
+		<race id="674" name="brimstone bug" difficulty="3" ocorrence="1" /> <!-- brimstone bug -->
+		<race id="691" name="berrypest" difficulty="0" ocorrence="4" /> <!-- berrypest -->
+		<race id="709" name="sacred spider" difficulty="3" ocorrence="3" /> <!-- sacred spider -->
+		<race id="731" name="slug" difficulty="2" ocorrence="1" /> <!-- slug -->
+		<race id="732" name="insectoid scout" difficulty="2" ocorrence="3" /> <!-- insectoid scout -->
+		<race id="778" name="ladybug" difficulty="2" ocorrence="3" /> <!-- ladybug -->
+		<race id="786" name="crawler" difficulty="3" ocorrence="1" /> <!-- crawler -->
+		<race id="787" name="spidris" difficulty="3" ocorrence="3" /> <!-- spidris -->
+		<race id="788" name="kollos" difficulty="3" ocorrence="3" /> <!-- kollos -->
+		<race id="790" name="swarmer" difficulty="3" ocorrence="1" /> <!-- swarmer -->
+		<race id="791" name="spitter" difficulty="3" ocorrence="1" /> <!-- spitter -->
+		<race id="792" name="waspoid" difficulty="3" ocorrence="1" /> <!-- waspoid -->
+		<race id="796" name="insectoid worker" difficulty="3" ocorrence="1" /> <!-- insectoid worker -->
+		<race id="797" name="spidris elite" difficulty="3" ocorrence="3" /> <!-- spidris elite -->
+		<race id="801" name="hive overseer" difficulty="4" ocorrence="3" /> <!-- hive overseer -->
+		<race id="878" name="drillworm" difficulty="3" ocorrence="1" /> <!-- drillworm -->
+		<race id="899" name="wiggler" difficulty="3" ocorrence="1" /> <!-- wiggler -->
+		<race id="912" name="emerald damselfly" difficulty="2" ocorrence="1" /> <!-- emerald damselfly -->
+		<race id="1531" name="deepworm" difficulty="4" ocorrence="1" /> <!-- deepworm -->
+		<race id="1532" name="diremaw" difficulty="4" ocorrence="1" /> <!-- diremaw -->
+		<race id="1544" name="cave devourer" difficulty="4" ocorrence="1" /> <!-- cave devourer -->
+		<race id="1545" name="tunnel tyrant" difficulty="4" ocorrence="1" /> <!-- tunnel tyrant -->
+		<race id="1546" name="chasm spawn" difficulty="4" ocorrence="1" /> <!-- chasm spawn -->
+		<race id="1736" name="lacewing moth" difficulty="3" ocorrence="2" /> <!-- lacewing moth -->
+		<race id="1737" name="hibernal moth" difficulty="3" ocorrence="2" /> <!-- hibernal moth -->
+	</category>
+
+<!-- <monster id="1856" name="cow" type="1253" head="0" body="0" legs="0" feet="0" addons="0" />
+<monster id="1857" name="loricate orger" type="1255" head="79" body="6" legs="94" feet="2" addons="1" />
+<monster id="1858" name="bellicose orger" type="1255" head="79" body="6" legs="94" feet="2" addons="2" /> -->
+
+</bestiary>

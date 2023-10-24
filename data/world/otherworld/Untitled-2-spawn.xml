@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<spawns>
+	<spawn centerx="33029" centery="31370" centerz="7" radius="3" />
+	<spawn centerx="33036" centery="31370" centerz="7" radius="3">
+		<npc name="Messenger of Heaven" x="2" y="-3" z="7" spawntime="60" direction="2" />
+	</spawn>
+</spawns>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="True Frost Flower Asura" nameDescription="a true frost flower asura" race="blood" experience="8500" speed="130">
+	<health now="4000" max="4000" />
+	<look type="1068" head="58" body="0" legs="19" feet="38" addons="2" corpse="33182" />
+	<targetchange interval="4000" chance="5" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="3" />
+		<flag staticattack="1" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-540" />
+		<attack name="ice" interval="2000" chance="10" length="8" spread="0" min="-50" max="-400">
+			<attribute key="areaEffect" value="purpleenergy" />
+		</attack>
+		<attack name="ice" interval="2000" chance="10" length="8" spread="0" min="-185" max="-495">
+			<attribute key="areaEffect" value="icetornado" />
+		</attack>
+		<attack name="ice" interval="2000" chance="20" range="4" min="-180" max="-315">
+			<attribute key="shootEffect" value="ice" />
+		</attack>
+		<attack name="manadrain" interval="2000" chance="10" radius="4" target="1" min="-50" max="-300">
+			<attribute key="areaEffect" value="stun" />
+		</attack>
+	</attacks>
+	<defenses armor="55" defense="55">
+		<defense name="healing" interval="2000" chance="15" min="130" max="170">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element firePercent="-1" />
+		<element physicalPercent="-1" />
+		<element earthPercent="-1" />
+		<element holyPercent="1" />
+		<element deathPercent="1" />
+	</elements>
+	<immunities>
+		<immunity ice="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<voices interval="2000" chance="7">
+		<voice sentence="Ah, the sweet music of a beating heart!" />
+		<voice sentence="Death and Darkness"/>
+		<voice sentence="Embrace the night!" />
+		<voice sentence="May night fall upon you!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance="100000" />	            <!-- gold coin -->	
+		<item id="2152" countmax="6" chance="100000"/>					<!-- platinum coin -->
+		<item id="7368" countmax="5" chance="9300" />				    <!-- Assassin Stars -->		
+		<item id="2144" countmax="2" chance="5810" />				    <!--  Black Pearls -->
+		<item id="6558" chance="15120" />				                <!-- Concentrated Demonic Blood -->		
+		<item id="6500" chance="12790" />					            <!-- Demonic Essence -->		
+		<item id="2145" countmax="3" chance="10470" />					<!-- Small Diamond -->		
+		<item id="2146" countmax="3" chance="5810" />					<!-- Small Sapphire -->	
+		<item id="2149" countmax="2" chance="2330" />					<!-- Small Emerald -->	
+		<item id="9970" coutnmax="2" chance="4650" />					<!-- Small Topaz -->	
+		<item id="2147" coutnmax="2" chance="4650" />					<!-- Small Ruby -->		
+		<item id="7591" countmax="2" chance="10470" />					<!-- Great Health Potion -->	
+		<item id="7404" chance="2330" />								<!-- Assassin Dagger-->	
+		<item id="2134" chance="3490" />								<!-- Silver Brooch -->
+		<item id="3967" chance="3490" />								<!-- Tribal Mask -->
+		<item id="24630" chance="22090" />								<!-- Golden Lotus Brooch -->
+		<item id="2143" countmax="2" chance="3490" />					<!-- White Pearl -->	
+		<item id="2158" chance="1160" />								<!--  Blue Gem -->	
+		<item id="2154" chance="2330" />								<!--  Yellow Gem  -->
+		<item id="2656" chance="1160" />								<!-- Blue Robe -->	
+		<item id="8911" chance="3640" />								<!-- Northwind Rod -->
+		<item id="2183" chance="970" />									<!-- Hailstorm Rod  -->				
+	    <item id="24637" chance="510" />								<!-- Oriental Shoes -->		
+		<item id="24631" chance="15120" />								<!-- Peacock Feather Fan -->
+		<item id="8889" chance="440" />									<!--  Skullcracker Armor -->
+		<item id="5944" chance="1860" />								<!-- Soul Orb -->		
+	</loot>
+</monster>

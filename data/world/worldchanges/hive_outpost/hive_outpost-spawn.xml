@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<spawns>
+	<spawn centerx="32161" centery="32847" centerz="5" radius="3">
+		<monster name="Insectoid Worker" x="-1" y="1" z="5" spawntime="90" />
+		<monster name="Insectoid Worker" x="2" y="2" z="5" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32847" centerz="5" radius="3">
+		<monster name="Insectoid Worker" x="0" y="2" z="5" spawntime="90" />
+		<monster name="Spitter" x="-3" y="3" z="5" spawntime="90" />
+		<monster name="Swarmer" x="-1" y="3" z="5" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32854" centerz="5" radius="3">
+		<monster name="Spitter" x="1" y="-2" z="5" spawntime="90" />
+		<monster name="Crawler" x="2" y="-2" z="5" spawntime="90" />
+		<monster name="Crawler" x="3" y="-1" z="5" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32854" centerz="5" radius="3">
+		<monster name="Spidris" x="3" y="0" z="5" spawntime="90" />
+		<monster name="Spidris" x="-3" y="1" z="5" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32854" centerz="5" radius="3">
+		<monster name="Insectoid Worker" x="1" y="-3" z="5" spawntime="90" />
+		<monster name="Spitter" x="-3" y="-2" z="5" spawntime="90" />
+		<monster name="Crawler" x="-3" y="3" z="5" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32861" centerz="5" radius="3">
+		<monster name="Crawler" x="-2" y="-2" z="5" spawntime="90" />
+		<monster name="Kollos" x="0" y="1" z="5" spawntime="90" />
+		<monster name="Spitter" x="-2" y="3" z="5" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32861" centerz="5" radius="3">
+		<monster name="Swarmer" x="1" y="-3" z="5" spawntime="90" />
+		<monster name="Crawler" x="3" y="2" z="5" spawntime="90" />
+	</spawn>
+	<spawn centerx="32160" centery="32862" centerz="5" radius="1">
+		<monster name="Crawler" x="0" y="0" z="5" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32868" centerz="5" radius="3">
+		<monster name="Crawler" x="2" y="-2" z="5" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32840" centerz="6" radius="3">
+		<monster name="Swarmer" x="-3" y="-2" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32847" centerz="6" radius="3">
+		<monster name="Waspoid" x="2" y="1" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32847" centerz="6" radius="3">
+		<monster name="Insectoid Worker" x="-2" y="-2" z="6" spawntime="90" />
+		<monster name="Spitter" x="0" y="1" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32147" centery="32854" centerz="6" radius="3">
+		<monster name="Insectoid Worker" x="3" y="2" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32854" centerz="6" radius="3">
+		<monster name="Spidris" x="-3" y="0" z="6" spawntime="90" />
+		<monster name="Insectoid Worker" x="-2" y="0" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32854" centerz="6" radius="3">
+		<monster name="Waspoid" x="1" y="1" z="6" spawntime="90" />
+		<monster name="Spitter" x="0" y="2" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32854" centerz="6" radius="3">
+		<monster name="Waspoid" x="2" y="-2" z="6" spawntime="90" />
+		<monster name="Crawler" x="1" y="0" z="6" spawntime="90" />
+		<monster name="Insectoid Worker" x="3" y="2" z="6" spawntime="90" />
+		<monster name="Insectoid Worker" x="3" y="3" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32861" centerz="6" radius="3">
+		<monster name="Swarmer" x="-1" y="-2" z="6" spawntime="90" />
+		<monster name="Insectoid Worker" x="-3" y="2" z="6" spawntime="90" />
+		<monster name="Spidris" x="1" y="3" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32861" centerz="6" radius="3">
+		<monster name="Crawler" x="0" y="-2" z="6" spawntime="90" />
+		<monster name="Insectoid Worker" x="-1" y="2" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32861" centerz="6" radius="3">
+		<monster name="Spitter" x="2" y="1" z="6" spawntime="90" />
+		<monster name="Insectoid Worker" x="-3" y="2" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32868" centerz="6" radius="3">
+		<monster name="Crawler" x="-1" y="1" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32868" centerz="6" radius="3">
+		<monster name="Crawler" x="1" y="0" z="6" spawntime="90" />
+		<monster name="Waspoid" x="2" y="0" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32868" centerz="6" radius="3">
+		<monster name="Waspoid" x="-3" y="0" z="6" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32819" centerz="7" radius="3">
+		<monster name="Bug" x="1" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32819" centerz="7" radius="3">
+		<monster name="Bug" x="3" y="2" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32826" centerz="7" radius="3">
+		<monster name="Flamingo" x="-3" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32840" centerz="7" radius="3">
+		<monster name="Swarmer" x="3" y="2" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32167" centery="32843" centerz="7" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32166" centery="32845" centerz="7" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32847" centerz="7" radius="3">
+		<monster name="Insectoid Worker" x="3" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32847" centerz="7" radius="3">
+		<monster name="Swarmer" x="2" y="-3" z="7" spawntime="90" />
+		<monster name="Insectoid Worker" x="-3" y="1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32854" centerz="7" radius="3">
+		<monster name="Waspoid" x="3" y="0" z="7" spawntime="90" />
+		<monster name="Waspoid" x="3" y="2" z="7" spawntime="90" />
+		<monster name="Crawler" x="-3" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32854" centerz="7" radius="3">
+		<monster name="Waspoid" x="-3" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32854" centerz="7" radius="3">
+		<monster name="Insectoid Worker" x="-3" y="-3" z="7" spawntime="90" />
+		<monster name="Waspoid" x="3" y="-2" z="7" spawntime="90" />
+		<monster name="Swarmer" x="-1" y="2" z="7" spawntime="90" />
+		<monster name="Waspoid" x="3" y="2" z="7" spawntime="90" />
+		<monster name="Insectoid Worker" x="0" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32147" centery="32861" centerz="7" radius="3">
+		<monster name="Crawler" x="3" y="-2" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32861" centerz="7" radius="3">
+		<monster name="Swarmer" x="-3" y="-1" z="7" spawntime="90" />
+		<monster name="Waspoid" x="3" y="2" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32170" centery="32864" centerz="7" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32868" centerz="7" radius="3">
+		<monster name="Swarmer" x="0" y="-1" z="7" spawntime="90" />
+		<monster name="Waspoid" x="1" y="-1" z="7" spawntime="90" />
+		<monster name="Crawler" x="-3" y="1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32868" centerz="7" radius="3">
+		<monster name="Waspoid" x="-2" y="1" z="7" spawntime="90" />
+		<monster name="Waspoid" x="3" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32868" centerz="7" radius="3">
+		<monster name="Swarmer" x="-2" y="-1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="32151" centery="32845" centerz="8" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32160" centery="32845" centerz="8" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32162" centery="32846" centerz="8" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32847" centerz="8" radius="1">
+		<monster name="Waspoid" x="1" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32170" centery="32847" centerz="8" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32850" centerz="8" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32854" centerz="8" radius="3">
+		<monster name="Waspoid" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Waspoid" x="-2" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32175" centery="32855" centerz="8" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="8" spawntime="90" />
+		<monster name="Waspoid" x="-1" y="1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32167" centery="32856" centerz="8" radius="1">
+		<monster name="Insectoid Worker" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Waspoid" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32162" centery="32857" centerz="8" radius="1">
+		<monster name="Spitter" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32156" centery="32858" centerz="8" radius="1">
+		<monster name="Spitter" x="0" y="0" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32861" centerz="8" radius="3">
+		<monster name="Crawler" x="-2" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32861" centerz="8" radius="3">
+		<monster name="Waspoid" x="-3" y="-2" z="8" spawntime="90" />
+		<monster name="Waspoid" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Spitter" x="3" y="-2" z="8" spawntime="90" />
+		<monster name="Spitter" x="-3" y="3" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32166" centery="32867" centerz="8" radius="3">
+		<monster name="Waspoid" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Insectoid Worker" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Crawler" x="0" y="-1" z="8" spawntime="90" />
+		<monster name="Crawler" x="-2" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32868" centerz="8" radius="3">
+		<monster name="Swarmer" x="-3" y="-2" z="8" spawntime="90" />
+		<monster name="Swarmer" x="0" y="-2" z="8" spawntime="90" />
+		<monster name="Waspoid" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Swarmer" x="-1" y="1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="32153" centery="32843" centerz="9" radius="1">
+		<monster name="Waspoid" x="1" y="0" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32166" centery="32843" centerz="9" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32844" centerz="9" radius="1">
+		<monster name="Spitter" x="1" y="0" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32162" centery="32845" centerz="9" radius="1">
+		<monster name="Waspoid" x="0" y="0" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32166" centery="32845" centerz="9" radius="1">
+		<monster name="Spitter" x="1" y="0" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32169" centery="32845" centerz="9" radius="1">
+		<monster name="Spitter" x="0" y="0" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32147" centery="32854" centerz="9" radius="3">
+		<monster name="Spitter" x="3" y="-2" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32854" centerz="9" radius="3">
+		<monster name="Insectoid Worker" x="-3" y="-1" z="9" spawntime="90" />
+		<monster name="Insectoid Worker" x="1" y="-1" z="9" spawntime="90" />
+		<monster name="Swarmer" x="3" y="3" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32854" centerz="9" radius="3">
+		<monster name="Spitter" x="-3" y="-3" z="9" spawntime="90" />
+		<monster name="Crawler" x="3" y="-3" z="9" spawntime="90" />
+		<monster name="Crawler" x="-3" y="1" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32854" centerz="9" radius="3">
+		<monster name="Waspoid" x="-3" y="1" z="9" spawntime="90" />
+		<monster name="Waspoid" x="1" y="2" z="9" spawntime="90" />
+		<monster name="Spidris" x="-1" y="3" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32861" centerz="9" radius="3">
+		<monster name="Crawler" x="-1" y="-3" z="9" spawntime="90" />
+		<monster name="Kollos" x="2" y="0" z="9" spawntime="90" />
+		<monster name="Crawler" x="3" y="3" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32168" centery="32861" centerz="9" radius="3">
+		<monster name="Waspoid" x="0" y="3" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32160" centery="32864" centerz="9" radius="1">
+		<monster name="Spidris" x="0" y="0" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32165" centery="32866" centerz="9" radius="1">
+		<monster name="Kollos" x="0" y="0" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32154" centery="32868" centerz="9" radius="3">
+		<monster name="Spidris" x="1" y="-1" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="32161" centery="32868" centerz="9" radius="3">
+		<monster name="Kollos" x="-2" y="1" z="9" spawntime="90" />
+	</spawn>
+</spawns>

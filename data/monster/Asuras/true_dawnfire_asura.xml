@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="True Dawnfire Asura" nameDescription="a true dawnfire asura" race="blood" experience="9200" speed="130" manacost="0">
+	<health now="8500" max="8500" />
+	<look type="1068" head="114" body="94" legs="78" feet="79" addons="1" corpse="33178" />
+	<targetchange interval="4000" chance="5" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="80"/>
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-270" max="-570" />
+		<attack name="fire" interval="2000" chance="10" range="3" radius="3" target="1" min="-111" max="-420">
+			<attribute key="shootEffect" value="fire" />
+			<atribbute key="areaEffect" value="fire" />
+		</attack>
+		<attack name="fire" interval="2000" chance="15" range="3" min="-190" max="-340">
+			<atribbute key="shootEffect" value="fire" />
+			<atribbute key="areaEffect" value="fire" />
+		</attack>		
+		<attack name="death" interval="2000" chance="10" radius="3" min="-190" max="-480">
+			<attribute key="areaEffect" value="blacksmoke" />
+		</attack>
+	</attacks>
+	<defenses armor="80" defense="80">
+		<defense name="healing" interval="2000" chance="15" min="50" max="100">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" interval="2000" chance="15" speedchange="320" duration="5000">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element deathPercent="20" />
+		<element firePercent="0" />
+		<element physicalPercent="-10" />
+		<element earthPercent="0" />
+		<element holyPercent="-10" />
+		<element icePercent="5" />
+		<element energyPercent="-10" />
+	</elements>
+	<immunities>
+		<immunity fire="1" />
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+		<item id="2148" countmax="180" chance="100000" />				<!-- gold coin -->
+		<item id="2152" countmax="12" chance="100000"/>					<!-- platinum coin -->	
+		<item id="2170" countmax="1" chance="880"/>						<!-- Crystal coin -->			
+		<item id="7368" countmax="3" chance="4420" />				    <!-- Royal Stars -->
+		<item id="6558" countmax="2" chance="35040" />					<!-- Concentrated Demonic Blood -->		
+		<item id="7590" countmax="2" chance="19470" />					<!-- Great Mana Potion -->		
+		<item id="2147" countmax="1" chance="8310" />					<!-- Small Ruby -->					
+		<item id="6300" chance="1160" />								<!-- Death Ring -->		
+		<item id="6500" chance="22120" />								<!-- Demonic Essence -->
+		<item id="2145" countmax="2" chance="7080" />					<!-- Smal Diamond -->			
+		<item id="2149" countmax="5" chance="14160" />					<!-- Small Emerald -->	
+		<item id="2150" countmax="2" chance="5310" />					<!-- Small Amethyst -->	
+		<item id="9970" coutnmax="2" chance="8850" />					<!-- Small Topaz -->	
+		<item id="2147" coutnmax="2" chance="8850" />					<!-- Small Ruby -->	
+		<item id="7760" coutnmax="3" chance="7960" />					<!-- Small Enchanted Ruby -->		
+		<item id="8871" chance="3540" />								<!--  Focus Cape -->		
+		<item id="24630" chance="25660" />								<!-- Golden Lotus Brooch -->		
+		<item id="7899" chance="1540" />								<!-- Magma Coat -->
+		<item id="2158" chance="2650" />								<!--  Blue Gem -->	
+	    <item id="2194" chance="2700" />								<!-- Mysterious Fetish -->
+	    <item id="2663" chance="3540" />								<!-- Mystic Turban -->
+	    <item id="24637" chance="3540" />								<!-- Oriental Shoes -->
+	    <item id="24631" chance="16870" />								<!-- Peacock Feather Fan -->		
+		<item id="5911" chance="5310" />								<!-- Red Piece of Cloth -->
+		<item id="2133" chance="1770" />								<!--  Ruby Necklace -->
+		<item id="5944" chance="14480" />								<!-- Soul Orb -->
+		<item id="8902" chance="770" />									<!-- Spellbook of Mind Control -->
+	    <item id="2187" chance="880" />									<!-- Wand of Inferno -->
+	    <item id="2156" chance="5310" />								<!-- Red Gem -->
+	</loot>
+</monster>

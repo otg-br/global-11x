@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Vanys" script="Vanys.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100" />
+	<look type="1137" head="0" body="38" legs="34" feet="73" addons="0" mount="0" />
+</npc>

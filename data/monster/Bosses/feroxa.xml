@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Feroxa" nameDescription="Feroxa" experience="0" speed="200" race="blood" >
+	<health now="100000" max="100000"/>
+	<look type="158" head="57" body="76" legs="77" feet="57" corpse="6560"/>
+	<targetchange speed="2000" chance="2"/>
+	<flags>
+		<flag preyable="0" />
+		<flag rewardboss="1"/>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="0"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="4"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<script>
+		<event name="feroxaTransform"/>
+	</script>
+	<attacks>
+		<attack name="melee" interval="2000" min="-1400" max="-1800"/>
+		<attack name="death" interval="2000" chance="20" radius="6" target="0" min="-700" max="-1250">
+			<attribute key="areaEffect" value="mortarea"/>
+		</attack>
+		<attack name="poison" interval="2000" chance="20" range="6" target="1" min="-700" max="-1250">
+			<attribute key="shootEffect" value="arrow"/>
+			<attribute key="areaEffect" value="explosionarea"/>
+		</attack>
+	</attacks>
+	<defenses armor="50" defense="55">
+		<defense name="speed" interval="2000" chance="12" speedchange="1250" duration="10000">
+			<attribute key="areaEffect" value="thunder"/>
+		</defense>
+		<defense name="feroxa summon" interval="2000" chance="20"/>
+	</defenses>
+	<elements>
+		<element physicalPercent="30"/>
+		<element deathPercent="30"/>
+		<element icePercent="30"/>
+		<element firePercent="30"/>
+		<element earthPercent="30"/>
+		<element energyPercent="30"/>
+		<element holyPercent="30"/>
+	</elements>
+	<immunities>
+		<immunity paralyze="1"/>
+		<immunity invisible="1"/>
+		<immunity drunk="1"/>
+	</immunities>
+	<loot>
+		<!--Comum-->
+		<item name="platinum coin" countmax="20" chance="85000"/>
+		<item name="great Health potion" countmax="5" chance="85000"/>
+		<item name="great mana potion" countmax="6" chance="85000"/>
+		<item name="great spirit potion" countmax="5" chance="85000"/>
+		<item name="ultimate health potion" countmax="5" chance="85000"/>
+		<item name="blue crystal shard" countmax="5" chance="85000"/>
+		<item name="blue crystal splinter" countmax="5" chance="85000"/>
+		<item name="brown crystal splinter" countmax="5" chance="85000"/>
+		<item name="green crystal shard" countmax="5" chance="85000"/>
+		<item name="green crystal splinter" countmax="5" chance="85000"/>
+		<item name="moonlight crystal" countmax="6" chance="85000"/>
+		<item name="small diamond" countmax="3" chance="85000"/>
+		<item name="small emerald" countmax="3" chance="85000"/>
+		<item name="small ruby" countmax="3" chance="85000"/>
+		<item name="small sapphire" countmax="3" chance="85000"/>
+		<item name="small topaz" countmax="3" chance="85000"/>
+		<item name="violet crystal shard" countmax="3" chance="85000"/>
+		<item name="blue gem"  chance="85000"/>
+		<item name="red crystal fragment" chance="85000"/>
+		<item name="red gem"  chance="85000"/>
+		<!--SemiRaro-->
+		<item name="angelic axe"  chance="26000"/>
+		<item name="badger boots"  chance="26000"/>
+		<item name="bonebreaker"  chance="26000"/>
+		<item name="dreaded cleaver"  chance="26000"/>
+		<item name="epee"  chance="26000"/>
+		<item name="fur armor"  chance="26000"/>
+		<item name="relic sword"  chance="26000"/>
+		<item name="stone skin amulet"  chance="26000"/>
+		<item name="underworld rod"  chance="26000"/>
+		<item name="wand of voodoo"  chance="26000"/>
+		<item name="wereboar Loincloth"  chance="26000"/>
+		<item name="werewolf amulet"  chance="26000"/>
+	</loot>
+</monster>

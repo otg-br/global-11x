@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talkactions>
+	<!--
+	<talkaction words="!proxy" separator=" " script="player/proxy.lua" />
+	-->
+	<!-- <talkaction words="!tradeplayer" separator=" " script="playersell/showoffer.lua" /> -->
+
+	<!-- God -->
+	<!-- 
+	<talkaction words="/teste2" separator=" " script="teste2.lua" />
+	<talkaction words="/teste" separator=" " script="teste.lua" />-->
+	<talkaction words="/addmount" separator=" " script="god/add_mount.lua" />
+	<talkaction words="/remmount" separator=" " script="god/rem_mount.lua" />
+	<talkaction words="/addtutor" separator=" " script="god/addTutor.lua" />
+	<talkaction words="/remtutor" separator=" " script="god/remTutor.lua" />
+	<talkaction words="/addcharm" separator=" " script="god/addCharm.lua" />
+	<talkaction words="/coins" separator=" " script="god/managecoin.lua" />
+	<talkaction words="/shutdown" separator=" " script="god/shutdown.lua" />
+	<talkaction words="/addskill" separator=" " script="god/add_skill.lua" />
+	<talkaction words="/r" separator=" " script="god/remove_thing.lua" />
+	<talkaction words="/chameleon" separator=" " script="god/chameleon.lua" />
+	<talkaction words="/clean" script="god/clean.lua" />
+	<talkaction words="/save" separator=" " script="god/save.lua" />
+	<talkaction words="/i" separator=" " script="god/create_item.lua" />
+	<talkaction words="/cid" separator=" " script="god/itemcid.lua" />
+	<talkaction words="/ghost" script="god/ghost.lua" />
+	<talkaction words="/hide" script="god/hide.lua" />
+	<talkaction words="/mccheck" script="god/mc_check.lua" />
+	<talkaction words="/closeserver" separator=" " script="god/close_server.lua" />
+	<talkaction words="/openserver" script="god/open_server.lua" />
+	<talkaction words="/reload" separator=" " script="god/reload.lua" />
+	<talkaction words="/raid" separator=" " script="god/force_raid.lua" />
+	<talkaction words="/owner" separator=" " script="god/owner.lua" />
+	<talkaction words="/m" separator=" " script="god/place_monster.lua" />
+	<talkaction words="/s" separator=" " script="god/place_npc.lua" />
+	<talkaction words="/summon" separator=" " script="god/place_summon.lua" />
+	<talkaction words="/set" separator=" " script="god/storage_set.lua" />
+	<talkaction words="/get" separator=" " script="god/storage_get.lua" />
+	<talkaction words="/attr" separator=" " script="god/attributes.lua" />
+	<talkaction words="/emptyhouses" script="god/empty_houses.lua" />
+	<talkaction words="/pos" separator=" " script="god/to_position.lua" />
+	<talkaction words="/prey" separator=" " script="god/prey.lua" />
+
+	<!-- Gamemaster -->
+	<talkaction words="/tt" separator=" " script="gamemaster/teleportilha.lua" />
+	<talkaction words="/ban" separator=" " script="gamemaster/ban.lua" />
+	<talkaction words="/unban" separator=" " script="gamemaster/unban.lua" />
+	<talkaction words="/ipban" separator=" " script="gamemaster/ipban.lua" />
+	<talkaction words="/up" script="gamemaster/up.lua" />
+	<talkaction words="/down" script="gamemaster/down.lua" />
+	<talkaction words="/c" separator=" " script="gamemaster/teleport_creature_here.lua" />
+	<talkaction words="/goto" separator=" " script="gamemaster/teleport_to_creature.lua" />
+	<talkaction words="/gotopos" separator=" " script="gamemaster/teleport_to_pos.lua" />
+	<talkaction words="/t" script="gamemaster/teleport_home.lua" />
+	<talkaction words="/town" separator=" " script="gamemaster/teleport_to_town.lua" />
+	<talkaction words="/a" separator=" " script="gamemaster/teleport_ntiles.lua" />
+	<talkaction words="/info" separator=" " script="gamemaster/info.lua" />
+	<talkaction words="/kick" separator=" " script="gamemaster/kick.lua" />
+	<talkaction words="/b" separator=" " script="gamemaster/broadcast.lua" />
+	<talkaction words="/looktype" separator=" " script="gamemaster/looktype.lua" />
+
+	<!--Tutor/Senior -->
+	<talkaction words="/mute" separator=" " script="tutor/mute.lua" />
+
+	<!-- Player -->
+	<talkaction words="!commands" script="player/commands.lua"/>
+	<!-- <talkaction words="!ausente" script="player/ausente.lua"/> -->
+	<talkaction words="!flask" separator=" " script="player/empty_vial.lua" />
+	<talkaction words="!aol" script="player/aol.lua"/>
+	<!--<talkaction words="!bless" script="player/bless.lua" />-->
+	<talkaction words="!bosstimer" script="player/bossTimer.lua" />
+	<talkaction words="!buyhouse" script="player/house_buy.lua" />
+	<talkaction words="!leavehouse" script="player/house_leave.lua" />
+	<talkaction words="!sellhouse" separator=" " script="player/house_sell.lua" />
+	<talkaction words="!uptime" script="player/uptime.lua" />
+	<talkaction words="!online" script="player/online.lua" />
+	<talkaction words="!serverinfo" script="player/server_info.lua" />
+	<talkaction words="!report" separator=" " script="player/admin_report.lua"/>
+	<talkaction words="!frags" separator=" " script="player/frags.lua" />
+
+	<!-- Autoloot Vankk -->
+	<talkaction words="!autoloot" separator=" " script="player/autoloot.lua" />
+
+
+	<!-- <talkaction words="!add" separator=" " script="player/addautoloot.lua" /> -->
+	<!-- <talkaction words="!show" separator=" " script="player/autoloot_show.lua" /> -->
+	<!-- <talkaction words="!bp" separator=" " script="player/autoloot_container.lua" /> -->
+	<!-- <talkaction words="!autoloot" separator=" " script="player/autoloot_help.lua" /> -->
+	<!-- <talkaction words="!analyser" separator=" " script="player/analyser.lua" /> -->
+	<!-- <talkaction words="!daily" separator=" " script="player/dailyrewardtalkaction.lua" /> -->
+	<!-- Guild -->
+	<talkaction words="!target" separator=" " script="player/target.lua" />
+	<talkaction words="!outfit" separator=" " script="player/outfit.lua" />
+
+
+    <!-- cast talkactions -->
+	<talkaction words="!cast" separator=" " script="player/livecast.lua" />
+
+</talkactions>

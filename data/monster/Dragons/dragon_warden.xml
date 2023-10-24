@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Dragon Warden" nameDescription="a Dragon Warden" race="blood" experience="0" speed="200" manacost="290">
+	<health now="2600" max="2600" />
+	<look type="947" head="5" body="5" legs="5" feet="5" corpse="27733" />
+	<targetchange interval="5000" chance="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-500" />
+
+	</attacks>
+	<defenses armor="10" defense="10" />
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<elements>
+	</elements>
+
+	<loot>
+	</loot>
+</monster>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Pinhata Skelot" nameDescription="Pinhata Skelot" race="undead" experience="0" speed="0" manacost="0">
+    <health now="1000000" max="1000000"/>
+    <look typeex="27730"/>
+    <targetchange interval="5000" chance="50"/>
+    <strategy attack="100" defense="0"/>
+    <flags>
+        <flag summonable="0"/>
+        <flag attackable="1"/>
+        <flag hostile="1"/>
+        <flag illusionable="0"/>
+        <flag convinceable="0"/>
+        <flag pushable="0"/>
+        <flag canpushitems="1"/>
+        <flag canpushcreatures="1"/>
+        <flag targetdistance="1"/>
+        <flag staticattack="90"/>
+        <flag runonhealth="0"/>
+    </flags>
+	<script>
+		<event name="foodMonster"/>
+	</script>
+    <attacks>
+        <attack name="melee" interval="2000" min="0" max="1"/>
+    </attacks>
+    <defenses armor="15" defense="10"/>
+    <immunities>
+        <immunity paralyze="1"/>
+		<immunity invisible="1"/>
+    </immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="You can't have my treasures!"/>
+		<voice sentence="Hit me one more time!"/>
+		<voice sentence="Na Nana Naaa Naaa!"/>
+		<voice sentence="You'll never get my stuff!"/>
+		<voice sentence="Do you really want to hurt me?"/>
+		<voice sentence="Bring it on!"/>
+	</voices>
+</monster>

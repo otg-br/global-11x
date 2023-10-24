@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Crazed Summer Rearguard" nameDescription="a crazed summer rearguard" race="blood" experience="4700" speed="110" manacost="0" raceid="1733">
+	<health now="5300" max="5300" />
+	<look type="1136" head="1" body="94" legs="20" feet="119" corpse="34574" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag isblockable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />			
+		<flag canwalkonfire="1" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-440"/>
+		<attack name="fire" interval="3000" chance="10" length="3" spread="0" min="0" max="-710">
+			<attribute key="areaEffect" value="firearea"/>
+		</attack>
+		<attack name="fire" interval="3000" chance="10" range="7" min="0" max="-300">
+			<attribute key="shootEffect" value="fire"/>
+		</attack>
+		<attack name="fire" interval="3000" chance="10" target="1" radius="5" min="0" max="-380">
+			<attribute key="areaEffect" value="explosion"/>
+		</attack>
+		<attack name="fire" interval="3000" chance="10" target="1" radius="5" min="0" max="-350">
+			<attribute key="areaEffect" value="explosionarea"/>
+		</attack>
+	</attacks>
+	<defenses armor="70" defense="20">
+		<defense name="healing" interval="2000" chance="14" min="150" max="250">
+			<attribute key="areaEffect" value="blueshimmer"/>
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="-10" />
+		<element holyPercent="20" />
+		<element firePercent="40" />
+		<element icePercent="-25" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+	<loot>
+		<!--common-->
+		<item name="power bolt" chance="1000000" /> 
+		<item name="small enchanted sapphire" count="2" chance="920" /> 
+		<item name="platinum coin" count="11" chance="100000" /> 
+		<!--uncommon-->
+		<item id="5921" chance="12150" /><!-- heaven blossom -->
+		<item name="dream essence egg" chance="10080" />    
+		<item name="elvish talisman" chance="7890" />
+		<item name="violet crystal shard" chance="5250" />
+		<item name="small enchanted ruby" chance="6555" />
+		<item name="red crystal fragment" chance="5100" />
+		<!--semi-rare-->
+		<item name="leaf star" count="8" chance="5229" /> 
+		<item id="26185"  chance="3270" /> <!--ring of blue plasma--> 
+		<item name="sun fruit" chance="1190" /> 
+		<item id="26198"  chance="1170" />  <!--collar of blue plasma --> 
+		<item name="wood cape" chance="1690" />
+		<!--rare-->  
+		<item name="small diamond" chance="750" /> 
+		<item name="yellow gem"  chance="999" />  
+		<item name="crystal crossbow" chance="570" />
+	</loot>
+</monster>

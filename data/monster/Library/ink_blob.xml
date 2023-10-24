@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Ink Blob" nameDescription="an ink blob" race="undead" experience="17000" speed="120" raceid="1658">
+	<health now="9500" max="9500"/>
+	<look type="1064" corpse="31996"/>
+<targetchange interval="5000" chance="8"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="0"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="85"/>
+		<flag runonhealth="0"/>
+		<flag canwalkonenergy="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-333" max="-800"/>
+		<attack name="poison" interval="2000" chance="15" radius="4" target="0" min="-777" max="-1600">
+			<attribute key="areaEffect" value="poison"/>
+		</attack>
+		<attack name="drown" interval="2000" chance="10" length="5" spread="6" min="-999" max="-2150">
+			<attribute key="areaEffect" value="energyarea" />
+		</attack>
+		<attack name="poison" interval="2000" chance="15" radius="3" target="1" min="-777" max="-1600">
+			<attribute key="areaEffect" value="greenbubble"/>
+			<attribute key="shootEffect" value="envenomedarrow"/>
+		</attack>
+		<attack name="poison" interval="2000" chance="10" radius="3" min="-777" max="-1700">
+			<attribute key="areaEffect" value="greenbubble"/>
+		</attack>
+	</attacks>
+	<defenses armor="15" defense="15"/>
+	<elements>
+		<element energyPercent="-8"/>
+	</elements>
+	<immunities>
+		<immunity invisible="1"/>
+		<immunity paralyze="1"/>
+		<immunity earth="1"/>
+	</immunities>
+	<loot>
+		<item name="Platinum Coin" countmax="4" chance="120000"/>
+		<item name="Envenomed Arrow" countmax="14" chance="15000"/>
+		<item id="33090" countmax="2" chance="15000"/>
+		<item name="Poisonous Slime" countmax="4" chance="8000"/>
+		<item name="Small Diamond" countmax="4" chance="8000"/>
+ 		<item name="Small Topaz" countmax="4" chance="8000"/>
+		<item id="8880" chance="250"/>
+		<item id="7633" countmax="4" chance="4000"/>
+		<item name="Blue Gem" countmax="4" chance="4000"/>
+		<item name="Terra Boots" countmax="4" chance="4000"/>
+		<item name="Terra Hood" countmax="4" chance="4000"/>
+		<item name="Protection Amulet" countmax="4" chance="12000"/>
+		<item name="Sacred Tree Amulet" countmax="4" chance="4000"/>
+		<item name="Springsprout Rod" countmax="4" chance="4000"/>
+		<item name="Stone Skin Amulet" countmax="4" chance="12000"/>
+		<item name="Terra Legs" countmax="4" chance="4000"/>
+		<item name="Terra Mantle" countmax="4" chance="4000"/>
+		<item name="Clay Lump" countmax="4" chance="4000"/>
+		<item name="Terra Amulet" countmax="4" chance="12000"/>
+	</loot>
+</monster>

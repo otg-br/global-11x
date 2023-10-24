@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+	<event name="Battlefield" day="todos" description="The event continues until one of the teams is exterminated or times out." begin="21:00" end="21:05" isseasonal="0" colorlight="#00008B" colordark="#00008B" />
+	<event id="2" name="Castle" day="domingo" description="Any player can join the event. You do not need to be inside a guild." begin="21:00" end="21:30" isseasonal="0" colorlight="#9370DB" colordark="#7B68EE" />
+	<event name="Last Man Standing" day="todos" description="The event will start only with 5 players or more." begin="18:00" end="18:05" isseasonal="0" colorlight="#008000" colordark="#006400" />
+
+	<event name="Zumbi" day="sabado" description="The event lasts until the last participant got killed. This one who will be the winner." begin="20:00" end="20:05" isseasonal="0" colorlight="#FA8072" colordark="#B22222" />
+
+	<event name="Evento de data" databegin="2019-12-7 05:09:12" dataend="2019-12-19 05:09:12" description="Exemplo Evento seasioal" isseasonal="1" colorlight="#64162b" colordark="#7a1b34" />
+</events>

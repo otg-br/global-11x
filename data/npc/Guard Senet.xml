@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<npc name="Guard Senet" script="default.lua" walkinterval="0" floorchange="0">
+  <health now="100" max="100" />
+  <look type="1200" head="76" body="0" legs="3" feet="105" addons="2" />
+</npc>

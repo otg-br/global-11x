@@ -1,0 +1,78 @@
+<npc name="A Suspicious Trader" script="A Suspicious Trader.lua" walkinterval="0" floorchange="0">
+  	<health now="150" max="150" />
+	<look type="667" head="77" body="57" legs="96" feet="99" addons="2" />
+	<parameters>
+		<parameter key="message_greet" value="What is your wish?" />
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="
+			single human eye, 29006, 21000;
+			shimmering beetles, 28998, 11150;
+			fiery heart, 10553, 11375; 
+			green dragon scale, 5920, 11150;
+			demon horn, 5954, 21000; 
+			swamp grass, 10603, 1150; 
+			poisonous slime, 10557, 5850; 
+			slime heart, 23565, 11125; 
+			Frosty Heart, 10578, 2370; 
+			Seacrest Hair, 24170, 21980; 
+			Polar Bear Paw, 10567, 21810; 
+			Rorc Feather, 21310, 11422; 
+			Peacock Feather Fan, 24631, 11391; 
+			Energy Vein, 26164, 11408;
+			Pile of Grave Earth, 12440, 11151;
+			Demonic Skeletal Hand, 10564, 11105;
+			Petrified Scream, 11337, 21436;
+			Vampire Teeth, 10602, 22456;
+			Bloody Pincers, 10550, 25000;
+			Piece of Dead Brain, 10580, 21185;
+			Rope Belt, 12448, 22450;
+			Silencer Claws, 22534, 23000;
+			Some Grimeleech Wings, 25386, 21600;
+			Protective Charm, 12400, 22530;
+			Sabretooth, 11228, 23590;
+			Vexclaw Talon, 25384, 21400;
+			Flask of Embalming Fluid, 12422, 5920;
+			Gloom Wolf Fur, 24663, 24780;
+			Mystical Hourglass, 10577, 21000;
+			Piece of Swampling Wood, 20103, 22100;
+			Snake Skin, 10611, 5570;
+			Brimstone Fangs, 12658, 5790;
+			Green Dragon Leather, 5877, 5700;
+			Blazing Bone, 18425, 21260;
+			Draken Sulphur, 12614, 2760;
+			Winter Wolf Fur, 11212, 21460;
+			Thick Fur, 11224, 5350;
+			Deepling Warts, 15425, 5280;
+			Wyvern Talisman, 10561, 5300;
+			Crawler Head Plating, 15482, 5470;
+			Wyrm Scale, 10582, 5450;
+			Cultish Robe, 10556, 5180;
+			Cultish Mask, 10555, 5300;
+			Hellspawn Tail, 11221, 5490;
+			Damselfly Wing, 19738, 5200;
+			Compass, 11219, 5150;
+			Waspoid Wing, 15484, 21200;
+			Orc Tooth, 11113, 5500;
+			Battle Stone, 12403, 5300;
+			Moohtant Horn, 23571, 22300;
+			Lion's Mane, 10608, 5290;
+			Mooh'tah Shell, 23573, 2150;
+			War Crystal, 10571, 5700;
+			Cyclops Toe, 10574, 1560;
+			Ogre Nose Ring, 24845, 5490;
+			Warmaster's Wristguards, 11322, 5420;
+			Elven Scouting Glass, 12420, 5600;
+			Elven Hoof, 21311, 23000;
+			Metal Spike, 11215, 5600;	
+			Piece of Scarab Shell, 10558, 21000;	
+			Brimstone Shell, 12659, 2720;	
+			Frazzle Skin, 22533, 2400;	
+			Elvish Talisman, 10552, 21200;	
+			Broken Shamanic Staff, 12408, 23400;	
+			Strand of Medusa Hair, 11226, 5725;	
+			Fairy Wings, 28999, 5250;	
+			Little Bowl of Myrrh, 29007, 22500;	
+			Goosebump Leather, 22539, 5700;" />	
+			<!-- Nome, ID, Preço; -->		
+	</parameters>
+</npc>

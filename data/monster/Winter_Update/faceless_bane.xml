@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Faceless Bane" nameDescription="Faceless Bane" race="blood" experience="14000" speed="170">
+	<health now="17000" max="17000" />
+	<look type="1122" head="19" body="22" legs="76" feet="22" corpse="34506" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+	    <flag rewardboss="1"/>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag isblockable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-500" />
+		<attack name="fire" interval="2000" chance="30" length="5" spread="0" min="-300" max="-500" >
+			<attribute key="areaEffect" value="explosionarea"/>
+		</attack>
+		<attack name="fire" interval="2000" chance="30" radius="5" min="-300" max="-500" >
+			<attribute key="areaEffect" value="fire"/>
+		</attack>
+		<attack name="fire" interval="2000" chance="30" range="4" radius="3" target="1" min="-100" max="-300" >
+			<attribute key="areaEffect" value="fire"/>
+		<attribute key="shootEffect" value="burstarrow"/>
+		</attack>
+		<attack name="ice" interval="2000" chance="30" length="5" spread="0" min="-300" max="-500" >
+			<attribute key="areaEffect" value="iceattack"/>
+		</attack>
+		<attack name="death" interval="2000" chance="30" length="5" spread="0" min="-100" max="-1000" >
+			<attribute key="areaEffect" value="mortarea"/>
+		</attack>
+		<attack name="drowncondition" interval="2000" chance="30" length="5" spread="2" min="-100" max="-300" >
+			<attribute key="areaEffect" value="mortarea"/>
+		</attack>
+		<attack name="manadrain" interval="2000" chance="30" radius="4" min="-100" max="-300" >
+			<attribute key="areaEffect" value="explosion"/>
+		</attack>
+		<attack name="earth" interval="2000" chance="30" radius="3" min="-300" max="-500" >
+			<attribute key="areaEffect" value="poison"/>
+		</attack>
+		<attack name="earth" interval="2000" chance="30" range="4" min="-100" max="-300" >
+			<attribute key="areaEffect" value="poison"/>
+			<attribute key="shootEffect" value="poison"/>
+		</attack>
+	</attacks>
+	<defenses armor="30" defense="0" >
+		<defense name="healing" interval="2000" chance="10" min="300" max="600">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="50" />
+		<element firePercent="-20" />
+		<element deathPercent="50" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+	<script>
+		<event name="reflect"/>
+	</script>
+	<loot>
+		<!--common-->
+		<item name="platinum coin" count="10" chance="10000" /> 
+		<item name="Gold Ingot"  countmax="2" chance="10000" />
+		<!--uncommon-->
+		<item name="Hexagonal Ruby" chance="1500" /> 
+		<item name="Small Sapphire" countmax="3" chance="1200" />  
+		<item name="Spear" countmax="3" chance="1500" /> 
+		<item name="Crowbar" chance="1100" /> 
+		<item name="Orb" chance="11800" /> 
+		<item name="Dagger" chance="17800" />
+		<item name="Hailstorm Rod" chance="17800" />
+		<!--semi-rare-->
+		<item name="Cyan Crystal Fragment"  chance="8900" /> 
+		<item name="Ice Rapier"  countmax="2" chance="8100" />
+		<item name="Green Crystal Shard" chance="7500" />
+		<item name="Green Gem" chance="6500" />
+		<item name="Lightning Pendant" chance="5560" />
+		<item name="Red Crystal Fragment" chance="7800" />
+		<item name="Terra Rod" chance="7120" />
+		<!--rare-->  
+		<item name="Book Backpack" unique="1" chance="50" /> 
+		<item name="Ectoplasmic Shield" unique="1" chance="100" /> 
+		<item name="Spirit Guide" unique="1" chance="100" /> 
+		<item id="36270" unique="1" chance="100" /> <!-- Enchanted Pendulet -->
+	</loot>
+</monster>

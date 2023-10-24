@@ -1,0 +1,782 @@
+<?xml version="1.0"?>
+<spawns>
+	<spawn centerx="33421" centery="31718" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33416" centery="31719" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33427" centery="31719" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33511" centery="31719" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33514" centery="31719" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33519" centery="31719" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33524" centery="31719" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33388" centery="31720" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33422" centery="31720" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33481" centery="31720" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33429" centery="31721" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33522" centery="31722" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33538" centery="31722" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33421" centery="31723" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33425" centery="31723" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33427" centery="31723" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33481" centery="31723" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33525" centery="31723" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33548" centery="31723" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33394" centery="31724" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33417" centery="31724" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33475" centery="31724" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33513" centery="31724" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33519" centery="31724" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33542" centery="31724" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33397" centery="31725" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33455" centery="31725" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33385" centery="31726" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33474" centery="31726" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33547" centery="31727" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33394" centery="31730" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33390" centery="31731" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33397" centery="31731" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33460" centery="31731" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33474" centery="31731" centerz="8" radius="1">
+		<monster name="Destroyer" x="1" y="-1" z="8" spawntime="60" />
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33544" centery="31731" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33550" centery="31732" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33383" centery="31733" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33463" centery="31734" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33537" centery="31734" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33453" centery="31736" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33474" centery="31736" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33457" centery="31737" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="-1" y="-1" z="8" spawntime="60" />
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33393" centery="31738" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33544" centery="31739" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33472" centery="31740" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33457" centery="31741" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33481" centery="31741" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33460" centery="31743" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33507" centery="31743" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33483" centery="31746" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33504" centery="31747" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33510" centery="31747" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33473" centery="31748" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33430" centery="31749" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33457" centery="31749" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33479" centery="31749" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33388" centery="31750" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33461" centery="31750" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33506" centery="31750" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33395" centery="31751" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33404" centery="31751" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33425" centery="31751" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33432" centery="31751" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33437" centery="31751" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33510" centery="31751" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33520" centery="31751" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33540" centery="31752" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33430" centery="31753" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33482" centery="31753" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33507" centery="31753" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33461" centery="31754" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33473" centery="31755" centerz="8" radius="1">
+		<monster name="Destroyer" x="1" y="-1" z="8" spawntime="60" />
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33452" centery="31756" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33480" centery="31756" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33507" centery="31756" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33428" centery="31757" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33508" centery="31759" centerz="8" radius="1">
+		<monster name="Hellhound" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33403" centery="31760" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33407" centery="31761" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33482" centery="31761" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33531" centery="31761" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33537" centery="31761" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33472" centery="31762" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33551" centery="31762" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33397" centery="31763" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33528" centery="31763" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33402" centery="31764" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33410" centery="31764" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33533" centery="31764" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33404" centery="31765" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33429" centery="31765" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33527" centery="31766" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33537" centery="31766" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33532" centery="31767" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33476" centery="31768" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33401" centery="31769" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33405" centery="31769" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33537" centery="31769" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33473" centery="31770" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33529" centery="31770" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33410" centery="31771" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33455" centery="31771" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33481" centery="31771" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33484" centery="31771" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33552" centery="31771" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33462" centery="31775" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33479" centery="31775" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33482" centery="31776" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33409" centery="31777" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33473" centery="31777" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33393" centery="31778" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33454" centery="31778" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33480" centery="31779" centerz="8" radius="1">
+		<monster name="Hellhound" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33462" centery="31780" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33423" centery="31784" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33432" centery="31784" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33477" centery="31784" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33503" centery="31784" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33507" centery="31785" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33514" centery="31785" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33427" centery="31787" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33509" centery="31787" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33536" centery="31787" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33551" centery="31787" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33423" centery="31788" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33512" centery="31788" centerz="8" radius="1">
+		<monster name="Juggernaut" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33516" centery="31788" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33527" centery="31788" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33531" centery="31788" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33397" centery="31789" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33430" centery="31789" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33473" centery="31789" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33505" centery="31789" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33405" centery="31790" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33480" centery="31790" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33534" centery="31790" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33409" centery="31791" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33421" centery="31791" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33513" centery="31791" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33537" centery="31791" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33402" centery="31792" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33462" centery="31792" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33508" centery="31792" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33528" centery="31792" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33431" centery="31793" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33435" centery="31793" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33425" centery="31794" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33465" centery="31794" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33480" centery="31794" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33514" centery="31794" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33531" centery="31794" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33472" centery="31795" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33399" centery="31796" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33456" centery="31796" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33481" centery="31797" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33527" centery="31797" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33403" centery="31798" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33405" centery="31798" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33410" centery="31798" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33461" centery="31800" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33477" centery="31801" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33408" centery="31805" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33467" centery="31805" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33544" centery="31805" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33527" centery="31806" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33535" centery="31806" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33384" centery="31809" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33468" centery="31812" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33384" centery="31817" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33467" centery="31821" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33471" centery="31821" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33386" centery="31822" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33393" centery="31822" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33398" centery="31822" centerz="8" radius="1">
+		<monster name="Juggernaut" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33411" centery="31822" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33430" centery="31822" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33443" centery="31822" centerz="8" radius="1">
+		<monster name="Juggernaut" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33451" centery="31822" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33494" centery="31822" centerz="8" radius="1">
+		<monster name="Juggernaut" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33497" centery="31822" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33506" centery="31822" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33519" centery="31822" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33526" centery="31822" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33542" centery="31822" centerz="8" radius="1">
+		<monster name="Juggernaut" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33545" centery="31822" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33400" centery="31823" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33406" centery="31823" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33426" centery="31823" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33487" centery="31823" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33387" centery="31832" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33446" centery="31833" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33467" centery="31833" centerz="8" radius="1">
+		<monster name="Hellhound" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33491" centery="31833" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33512" centery="31833" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33547" centery="31833" centerz="8" radius="1">
+		<monster name="Hellhound" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33404" centery="31834" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33428" centery="31834" centerz="8" radius="1">
+		<monster name="Hellhound" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33448" centery="31834" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33464" centery="31834" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33470" centery="31834" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33488" centery="31834" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33388" centery="31835" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33392" centery="31835" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33432" centery="31835" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33485" centery="31835" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33509" centery="31835" centerz="8" radius="1">
+		<monster name="Hellhound" x="-1" y="-1" z="8" spawntime="60" />
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33546" centery="31835" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33548" centery="31835" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33427" centery="31836" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33466" centery="31836" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33504" centery="31836" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33528" centery="31836" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Hellspawn" x="1" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33407" centery="31837" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Destroyer" x="-1" y="1" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33509" centery="31837" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33532" centery="31837" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33551" centery="31837" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33470" centery="31838" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33488" centery="31838" centerz="8" radius="1">
+		<monster name="Hellspawn" x="-1" y="-1" z="8" spawntime="60" />
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33490" centery="31838" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33428" centery="31839" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33431" centery="31839" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33445" centery="31839" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33524" centery="31839" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33545" centery="31839" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33389" centery="31840" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33448" centery="31840" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33506" centery="31840" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33511" centery="31840" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33528" centery="31840" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33549" centery="31840" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33405" centery="31841" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33392" centery="31842" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33410" centery="31842" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33446" centery="31843" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33524" centery="31843" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33532" centery="31843" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33543" centery="31843" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33473" centery="31844" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33487" centery="31844" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="-1" z="8" spawntime="60" />
+		<monster name="Destroyer" x="-1" y="0" z="8" spawntime="60" />
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33528" centery="31844" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="-1" z="8" spawntime="60" />
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33551" centery="31844" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33388" centery="31845" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33432" centery="31845" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33469" centery="31845" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33507" centery="31845" centerz="8" radius="1">
+		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33511" centery="31845" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33546" centery="31845" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33430" centery="31846" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33452" centery="31846" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33465" centery="31846" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33407" centery="31847" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33410" centery="31847" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33412" centery="31847" centerz="8" radius="1">
+		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33448" centery="31847" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="33427" centery="31848" centerz="8" radius="1">
+		<monster name="Hellspawn" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Hellspawn" x="1" y="0" z="8" spawntime="60" />
+	</spawn>
+</spawns>

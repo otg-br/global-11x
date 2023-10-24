@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creaturescripts>
+	<event type="modalwindow" name="ModalWindow_Offers" script="playersell/playersell.lua" />
+	<event type="textedit" name="Text_Offers" script="playersell/playersell.lua" />
+    
+	<!-- AutoLoot Vankk Master -->
+	<event type="kill" name="AutoLoot" script="autoloot.lua" />
+	
+	<!-- Cobra Bastion
+	<event type="kill" name="killingCobra" script="quests/cobra_bastion/kill.lua"/>
+    <event type="login" name="loginCobra" script="quests/cobra_bastion/login.lua"/>
+    -->
+    <event type="healthchange" name="scarlettHealth" script="quests/grave_danger/cobra_bastion/scarlett.lua"/>
+    <event type="think" name="scarlettThink" script="quests/grave_danger/cobra_bastion/scarlett.lua"/>
+
+	<!-- bot_functions modals 
+	<event type="modalwindow" name="ModalWindow_autoHeal" script="modal/autoHeal_modal.lua"/>
+	<event type="think" name="AutoHeal" script="bot_functions/autoheal.lua" />
+	<event type="textedit" name="autoHeal_textEdit" script="bot_functions/onTextEdit.lua"/>
+	<event type="login" name="login_bot_functions" script="bot_functions/login.lua" />
+	-->
+	<!-- The Dream Courts -->
+	<event type="think" name="facelessThink" script="quests/dream_courts/facelessBane.lua" />
+	<event type="healthchange" name="facelessHealth" script="quests/dream_courts/facelessBane.lua" />
+	<event type="think" name="izcandarThink" script="quests/dream_courts/Izcandar.lua" />
+	<event type="think" name="nightmareCurse" script="quests/dream_courts/nightmareCurse.lua" />
+	<event type="death" name="dreamCourtsDeath" script="quests/dream_courts/dreamCourtsDeath.lua" />
+	
+	<!-- Reflect -->
+	<event type="healthchange" name="reflect" script="others/reflect.lua" />
+	
+	<!-- Custom -->
+	<event type="modalwindow" name="modalWindow_sellingNPCs" script="modal/sellingNPCs_modal.lua"/>
+	<event type="modalwindow" name="modalWindow_teleportScroll" script="modal/teleportScroll_modal.lua"/>
+
+	<!-- bossTimer -->
+	<event type="modalwindow" name="ModalWindow_bossTimer" script="modal/bossTimer_modal.lua" />
+
+	<!-- Bless -->
+	<event type="modalwindow" name="ModalWindow_Bless" script="modal/bless_modal.lua" />
+
+	<!-- The Secret Library -->
+	<!-- Geral -->
+	<event type="kill" name="killingLibrary" script="quests/the_secret_library/kill.lua"/>
+	<event type="healthchange" name="oberonImmune" script="quests/the_secret_library/kill.lua"/>
+    <event type="login" name="loginLibrary" script="quests/the_secret_library/login.lua"/>
+	<!-- Falcon Bastion -->
+	<!-- Asuras -->
+	<event type="healthchange" name="asurasMechanic" script="quests/the_secret_library/asuras/asuras_mechanic.lua"/>
+	<!-- Library -->
+	<event type="healthchange" name="mazzinorHealth" script="quests/the_secret_library/library/mazzinor.lua"/>
+	<event type="death" name="mazzinorDeath" script="quests/the_secret_library/library/mazzinor.lua"/>
+	<event type="death" name="lokathmorDeath" script="quests/the_secret_library/library/lokathmor.lua"/>
+	<event type="death" name="ghuloshDeath" script="quests/the_secret_library/library/ghulosh.lua"/>
+	<event type="think" name="ghuloshThink" script="quests/the_secret_library/library/ghulosh.lua"/>
+	<event type="death" name="gorzindelDeath" script="quests/the_secret_library/library/gorzindel.lua"/>
+	<event type="healthchange" name="gorzindelHealth" script="quests/the_secret_library/library/gorzindel.lua"/>
+	
+	<!-- The Curse Spread -->
+	<event type="kill" name="BossesTheCurseSpread" script="quests/the curse spreads/bosses.lua" />
+	
+	<!-- Castle -->
+	<event type="think" name="Castle" script="events/castle/castle_events.lua" />
+	
+	<!-- Skelot Cake -->
+	<event type="healthchange" name="foodMonster" script="events/food_monster.lua" />
+
+	<!-- Battlefield (x4) -->
+	<event type="preparedeath" name="Battlefield_PrepareDeath_x4" script="events/battlefield/battlefield_x4_events.lua" />
+	<event type="healthchange" name="Battlefield_HealthChange_x4" script="events/battlefield/battlefield_x4_events.lua" />
+	<event type="manachange" name="Battlefield_ManaChange_x4" script="events/battlefield/battlefield_x4_events.lua" />
+	<event type="logout" name="Battlefield_Logout_x4" script="events/battlefield/battlefield_x4_events.lua" />
+	<!-- Battlefield (x2) -->
+	<event type="preparedeath" name="Battlefield_PrepareDeath_x2" script="events/battlefield/battlefield_x2_events.lua" />
+	<event type="healthchange" name="Battlefield_HealthChange_x2" script="events/battlefield/battlefield_x2_events.lua" />
+	<event type="manachange" name="Battlefield_ManaChange_x2" script="events/battlefield/battlefield_x2_events.lua" />
+	<event type="logout" name="Battlefield_Logout_x2" script="events/battlefield/battlefield_x2_events.lua" />
+	
+	<!-- Zombie Event -->
+	<event type="logout" name="zombieLogout" script="events/zombie/zombie_events.lua" />
+	<event type="preparedeath" name="zombieDeath" script="events/zombie/zombie_events.lua" />
+
+	<!-- Analyzer -->
+	<event type="healthchange" name="ImpactAnalyzer" script="others/impact_analyzer.lua" />
+
+	<event type="modalwindow" name="AnalyserWindow" script="others/AnalyserWindow.lua" />
+
+	<!-- Adventurers Guild -->
+	<event type="kill" name="theGreatDragonHuntKill" script="quests/adventurers guild/the great dragon hunt.lua"/>
+
+	<!-- The Masters Voice Quest-->
+	<event type="death" name="Servant_Death" script="mastervoice/servantDeath.lua"/>
+	<event type="death" name="Mage_Death" script="mastervoice/mageDeath.lua"/>
+
+	<!--  FLY -->
+	<event type="modalwindow" name="fly" script="fly.lua"/>
+
+    <!-- New Summons (Pets) -->
+    <event type="login" name="petlogin" script="pet.lua" />
+    <event type="logout" name="petlogout" script="pet.lua" />
+	<event type="death" name="petdeath" script="pet.lua" />
+
+    <!-- Modal Window -->
+	<event type="modalwindow" name="ModalWindowHelper" script="modalwindowhelper.lua" />
+
+    <!-- Oramond Quest -->
+    <event type="death" name="tp" script="quests/oramond/revanger.lua"/>
+    <event type="death" name="dark" script="quests/oramond/death.lua"/>
+
+	<!-- dangerous_depth -->
+	<event type="kill" name="dwarvesTasks" script="quests/dangerous_depth/dwarvesTasks.lua"/>
+	<event type="login" name="loginDwarvesTasks" script="quests/dangerous_depth/login.lua"/>
+	<event type="healthchange" name="healFireDamage" script="quests/dangerous_depth/healFireDamage.lua"/>
+	<event type="think" name="emberBeasts" script="quests/dangerous_depth/emberBeasts.lua"/>
+	<event type="kill" name="snailSlimeKill" script="quests/dangerous_depth/emberBeasts.lua"/>
+	<event type="kill" name="bossesMissionDepth" script="quests/dangerous_depth/bosses mission depths.lua"/>
+	<event type="think" name="fieryHearts" script="quests/dangerous_depth/fieryHearts.lua"/>
+	<event type="think" name="theBaronFromBelow" script="quests/dangerous_depth/theBaronFromBelow.lua"/>
+	<event type="kill" name="theBaronFromBelowKill" script="quests/dangerous_depth/theBaronFromBelow.lua"/>
+	<!-- Ancient Spawn of Morgathla -->
+	<event type="death" name="beetleRevive" script="quests/dangerous_depth/morgathla/beetle_revive.lua"/>
+	<event type="kill" name="beetleKill" script="quests/dangerous_depth/morgathla/beetle_revive.lua"/>
+	<event type="think" name="morgathlaThink" script="quests/dangerous_depth/morgathla/morgathla.lua"/>
+
+ 	<!-- Cults of Tibia Quest -->
+	<event type="kill" name="taskComColar" script="quests/cults of tibia/taskColar.lua" />
+	<event type="kill" name="jamesfrancisTask" script="quests/cults of tibia/taskCount.lua" />
+	<event type="login" name="loginjamesfrancisTask" script="quests/cults of tibia/login.lua" />
+	<event type="kill" name="vortexSpawnCarlin" script="quests/cults of tibia/vortexSpawnCarlin.lua" />
+	<event type="think" name="Splash" script="quests/cults of tibia/splash.lua" />
+	<event type="think" name="Evaporate" script="quests/cults of tibia/evaporate.lua" />
+	<event type="healthchange" name="healLeiden" script="quests/cults of tibia/healLeiden.lua" />
+	<event type="death" name="spawnBoss" script="quests/cults of tibia/spawnBoss.lua" />
+	<event type="kill" name="bossesMissionCults" script="quests/cults of tibia/bosses mission cults.lua" />
+	<event type="kill" name="destroyedPillars" script="quests/cults of tibia/destroyedPillars.lua" />
+	<event type="healthchange" name="pilaresHealth" script="quests/cults of tibia/pilaresHealth.lua" />
+	<event type="death" name="essenceMalice" script="quests/cults of tibia/essenceMalice.lua" />
+	<event type="death" name="machineDeath" script="quests/cults of tibia/machine.lua" />
+	<event type="healthchange" name="machineHealth" script="quests/cults of tibia/machine.lua" />
+	<event type="think" name="sandkingThink" script="quests/cults of tibia/sandking.lua" />
+	<event type="death" name="sandkingDeath" script="quests/cults of tibia/sandking.lua" />
+	<event type="healthchange" name="sandHealth" script="quests/cults of tibia/sandking.lua" />
+	<event type="healthchange" name="yalahariHealth" script="quests/cults of tibia/reflectDamage.lua" />
+	<event type="think" name="checkPiso" script="quests/cults of tibia/checkPiso.lua" />
+
+	<!-- the_first_dragon -->
+	<event type="kill" name="tasksFirstDragon" script="quests/the_first_dragon/taskCount.lua" />
+	<event type="kill" name="bossesFirstDragon" script="quests/the_first_dragon/bossKill.lua" />
+	<event type="login" name="loginFirstDragon" script="quests/the_first_dragon/login.lua" />
+	<!-- <event type="healthchange" name="sharedLife" script="others/sharedLife.lua" /> -->
+	<event type="death" name="salaBoss" script="quests/the_first_dragon/theFirstDragon.lua"/>
+
+    <!-- Grimvale Quest -->
+	<event type="death" name="feroxaDeath" script="grimvale/feroxaTransform.lua"/>
+	<event type="think" name="feroxaTransform" script="grimvale/feroxaTransform.lua"/>
+	<event type="healthchange" name="feroxaHealth" script="grimvale/feroxaTransform.lua"/>
+
+	<!-- forgotten knowledge -->
+	<event type="healthchange" name="HealthForgotten" script="quests/forgotten_knowledge/healthchangeForgotten.lua"/>
+	<event type="death" name="PossessedTree" script="quests/forgotten_knowledge/possessedTree.lua"/>
+	<event type="kill" name="BossesForgotten" script="quests/forgotten_knowledge/bossesKill.lua"/>
+	<event type="death" name="AstralGlyphDeath" script="quests/forgotten_knowledge/astralGlyphDeath.lua"/>
+	<event type="death" name="ThornKnightDeath" script="quests/forgotten_knowledge/thornKnightDeath.lua"/>
+	<event type="death" name="CorruptedSoul" script="quests/forgotten_knowledge/corruptedSoul.lua"/>
+	<event type="kill" name="ReplicaServants" script="quests/forgotten_knowledge/replicaServants.lua"/>
+	<event type="preparedeath" name="Lloyd" script="quests/forgotten_knowledge/Lloyd.lua"/>
+	<event type="healthchange" name="EnergyPrism" script="quests/forgotten_knowledge/energyPrism.lua"/>
+	<event type="kill" name="EnergyPrismDeath" script="quests/forgotten_knowledge/energyPrismDeath.lua"/>
+	<event type="preparedeath" name="DragonEgg" script="quests/forgotten_knowledge/dragonEgg.lua"/>
+	<event type="healthchange" name="DragonEgg2" script="quests/forgotten_knowledge/dragonEgg.lua"/>
+	<event type="preparedeath" name="timeGuardianHealth" script="quests/forgotten_knowledge/timeGuardianHealth.lua"/>
+	<event type="kill" name="AstralPower" script="quests/forgotten_knowledge/boundAstralPower.lua"/>
+	<event type="think" name="AstralSource" script="quests/forgotten_knowledge/astralSource.lua"/>
+	<event type="think" name="DistortedSource" script="quests/forgotten_knowledge/distortedSource.lua"/>
+
+	<!-- hero of rathleton -->
+	<event type="death" name="TentacleDeep" script="quests/hero of rathleton/tentacle.lua"/>
+	<event type="kill" name="BossesHero" script="quests/hero of rathleton/bossesKill.lua"/>
+	<event type="death" name="GloothHorror" script="bosses/glooth horror.lua" />
+
+    <!-- Roshamuul-->
+    <event type="kill" name="lowerRoshamuul" script="lowerRoshamuul.lua"/>
+
+	<!-- ferumbras ascedant quest-->
+	<event type="death" name="boneCapsule" script="quests/ferumbras ascendant/bone capsule.lua" />
+	<event type="kill" name="BossesKill" script="quests/ferumbras ascendant/bossesKill.lua" />
+	<event type="kill" name="TheShattererKill" script="quests/ferumbras ascendant/theShatterer.lua" />
+	<event type="think" name="zamuloshClone" script="quests/ferumbras ascendant/zamulosh clone.lua"/>
+	<event type="death" name="FerumbrasMortalShell" script="quests/ferumbras ascendant/ferumbras mortal shell.lua"/>
+	<event type="death" name="FerumbrasSoulSplinter" script="quests/ferumbras ascendant/ferumbras soul splinter.lua"/>
+	<event type="death" name="RiftInvader" script="quests/ferumbras ascendant/rift invader.lua"/>
+	<event type="death" name="disgustingOoze" script="quests/ferumbras ascendant/disgusting ooze.lua"/>
+	<event type="death" name="deathDragon" script="quests/ferumbras ascendant/death dragon.lua"/>
+
+    <!-- Reward Chest 19/01 -->
+	<event type="login" name="LoginBossPlayer" script="rewardChest/boss.lua" />
+ 	<event type="death" name="BossDeath" script="rewardChest/boss.lua" />
+ 	<event type="healthchange" name="BossParticipation" script="rewardChest/boss.lua" />
+ 	<event type="think" name="BossThink" script="rewardChest/boss.lua" />
+
+	<!-- Heart of Destruction -->
+	<event type="death" name="ChargerSpawn" script="quests/heart of destruction/chargerSpawn.lua"/>
+	<event type="death" name="OverDeath" script="quests/heart of destruction/overchargeDeath.lua"/>
+	<event type="think" name="AnomalyTransform" script="quests/heart of destruction/anomalyTransform.lua"/>
+	<event type="death" name="ChargedAnomalyDeath" script="quests/heart of destruction/chargedAnomalyDeath.lua"/>
+	<event type="death" name="HeartBossDeath" script="quests/heart of destruction/heartBossDeath.lua"/>
+	<event type="think" name="CracklerTransform" script="quests/heart of destruction/cracklerTransform.lua"/>
+	<event type="think" name="DepolarizedTransform" script="quests/heart of destruction/depolarizedTransform.lua"/>
+	<event type="death" name="DepolarizedDeath" script="quests/heart of destruction/depolarizedDeath.lua"/>
+	<event type="think" name="RuptureResonance" script="quests/heart of destruction/ruptureResonance.lua"/>
+	<event type="healthchange" name="RuptureHeal" script="quests/heart of destruction/ruptureHeal.lua"/>
+	<event type="death" name="SparksDeath" script="quests/heart of destruction/sparksDeath.lua"/>
+
+	<event type="death" name="ShocksDeath" script="quests/heart of destruction/shocksDeath.lua"/>
+	<event type="think" name="ForeshockTransform" script="quests/heart of destruction/foreshockTransform.lua"/>
+	<event type="think" name="AftershockTransform" script="quests/heart of destruction/aftershockTransform.lua"/>
+
+	<event type="think" name="EradicatorTransform" script="quests/heart of destruction/eradicatorTransform.lua"/>
+	<event type="think" name="OutburstCharge" script="quests/heart of destruction/outburstCharge.lua"/>
+	<event type="death" name="ChargingOutDeath" script="quests/heart of destruction/chargingOutDeath.lua"/>
+	<event type="death" name="DevourerStorage" script="quests/heart of destruction/devourerPlayerDeath.lua"/>
+	<event type="death" name="HeartMinionDeath" script="quests/heart of destruction/heartMinionDeath.lua"/>
+	<event type="think" name="DisruptionTransform" script="quests/heart of destruction/disruptionTransform.lua"/>
+	<event type="think" name="cDisruptionTransform" script="quests/heart of destruction/cDisruptionTransform.lua"/>
+	<event type="death" name="SparkDevourerDeath" script="quests/heart of destruction/sparkDevourerDeath.lua"/>
+
+	<!-- Bigfoots burden / warzone -->
+	<event type="death" name="WarzoneBossDeath" script="warzone157.lua" /> <!-- this will kick the players in 1 min after the boss is dead AND add the 20 hours delay to go in again -->
+	<event type="kill" name="ParasiteWarzone" script="quests/bigfoot burden/parasite.lua" /> <!-- opening walls -->
+	<event type="kill" name="BigfootBurdenVersperoth" script="quests/bigfoot burden/VersperothKill.lua" /> <!-- versperoth opening tp -->
+	<event type="kill" name="BigfootBurdenWiggler" script="quests/bigfoot burden/WigglerKill.lua" /> <!-- exterminations task -->
+	<event type="kill" name="bossesWarzone" script="quests/bigfoot burden/bossesWarzone.lua"/> <!-- this will set the status of warzone (killing 1, 2 and 3 wz bosses in order u can open the chest and get "some golden fruits") and the reward chest storages -->
+
+	<!-- Recompense by level -->
+	<event type="advance" name="Recompense" script="others/recompense.lua"/>
+
+    <!-- ragingmagetower -->
+	<event type="kill" name="Yielothax" script="ragingmagetower/yielothax.lua"/>
+	<event type="kill" name="Energized Raging Mage" script="ragingmagetower/energized.lua"/>
+	<event type="kill" name="Raging Mage" script="ragingmagetower/raging.lua"/>
+
+	<!-- Rookgaard Cockroach -->
+	<event type="advance" name="AdvanceRookgaard" script="rookgaard/advance.lua" />
+
+	<!-- Elemental Spheres Quest -->
+	<event type="kill" name="ElementalSpheresOverlords" script="quests/elemental spheres/OverlordsKill.lua" />
+
+	<!-- Svargrond Arena: Killing a boss -->
+	<event type="kill" name="SvargrondArenaKill" script="quests/svargrond arena/arena_kill.lua" />
+
+	<!-- The New Frontier Quest -->
+	<event type="kill" name="NewFrontierShardOfCorruption" script="quests/the new frontier/ShardOfCorruption.lua" />
+	<event type="kill" name="NewFrontierTirecz" script="quests/the new frontier/TireczKill.lua" />
+
+	<!-- In Service Of Yalahar Quest -->
+	<event type="kill" name="ServiceOfYalaharAzerus" script="quests/in service of yalahar/AzerusKill.lua" />
+	<event type="kill" name="ServiceOfYalaharDiseasedTrio" script="quests/in service of yalahar/DiseasedTrioKill.lua" />
+	<event type="kill" name="ServiceOfYalaharQuaraLeaders" script="quests/in service of yalahar/QuaraLeadersKill.lua" />
+
+	<!-- Inquisition Quest -->
+	<event type="kill" name="InquisitionBosses" script="quests/inquisition/inquisitionQuestBosses.lua" />
+	<event type="kill" name="InquisitionUngreez" script="quests/inquisition/inquisitionQuestUngreez.lua" />
+
+	<!-- Killing In The Name Of Quest -->
+	<event type="kill" name="KillingInTheNameOfKills" script="quests/killing in the name of/kills.lua" />
+
+	<event type="kill" name="KillingInTheNameOfKillss" script="necro.lua" />
+	<event type="kill" name="KillingInTheNameOfKillsss" script="minos.lua" />
+
+	<!-- Spike Tasks Quest -->
+	<event type="kill" name="UpperSpikeKill" script="quests/spike tasks/upperspikekill.lua"/>
+	<event type="kill" name="MiddleSpikeKill" script="quests/spike tasks/middlespikekill.lua"/>
+	<event type="kill" name="LowerSpikeKill" script="quests/spike tasks/lowerspikekill.lua"/>
+
+	<!-- Thieves Guild Quest -->
+	<event type="kill" name="ThievesGuildNomad" script="others/nomad.lua" />
+
+	<!-- Secret Service Quest -->
+	<event type="kill" name="SecretServiceBlackKnight" script="others/blackKnight.lua" />
+
+	<!-- Wrath of the Emperor Quest -->
+	<event type="kill" name="WotELizardMagistratus" script="quests/wrath of the emperor/lizardmagistratus.lua" />
+	<event type="kill" name="WotELizardNoble" script="quests/wrath of the emperor/lizardnoble.lua" />
+	<event type="kill" name="WotEKeeper" script="quests/wrath of the emperor/keeper.lua" />
+	<event type="kill" name="WotEBosses" script="quests/wrath of the emperor/bosses.lua" />
+	<event type="kill" name="WotEZalamon" script="quests/wrath of the emperor/zalamon.lua" />
+
+	<!-- Pythius The Rotten (Firewalker Boots Quest) -->
+	<event type="kill" name="PythiusTheRotten" script="others/PythiusTheRotten.lua" />
+
+	<!-- Monsters events -->
+	<event type="death" name="WhiteDeerDeath" script="others/whitedeer.lua" />
+	<event type="death" name="WhiteDeerScoutsDeath" script="others/whitedeer_scouts.lua" />
+	<event type="healthchange" name="sharedLife" script="others/sharedlife.lua" />
+	<event type="think" name="GazharagothHeal" script="others/gaz'haragoth_heal.lua" />
+	<event type="preparedeath" name="MonsterHeal" script="others/monster_heal.lua" />
+	<event type="preparedeath" name="MonsterHeal2" script="others/monster_heal2.lua" />
+	<event type="death" name="NorthernPike" script="others/northern pike.lua" />
+	<event type="think" name="OmrafirExplode" script="others/omrafir explode.lua" />
+	<event type="think" name="ShlorgTp" script="others/shlorg tp.lua" />
+	<event type="think" name="ThePaleCountTp" script="others/the pale count tp.lua" />
+	<event type="think" name="WelterEgg" script="others/welter egg.lua" />
+	<event type="death" name="Wyda" script="others/wyda.lua" />
+	<event type="think" name="ZavarashHide" script="others/zavarash hide.lua" />
+	<event type="death" name="RagingMage" script="others/raging mage.lua" />
+	<event type="death" name="RagingMage2" script="others/raging mage2.lua" />
+	<event type="think" name="GreaterMinion" script="others/greater_minion.lua" />
+	<event type="think" name="SuperiorMinion" script="others/superior_minion.lua" />
+	<event type="think" name="NecromanticMinion" script="others/necromantic_minion.lua" />
+	<event type="think" name="ShargonGrowthCheck" script="others/shargon growth check.lua" />
+	<event type="think" name="TheRavagerHeal" script="others/the ravager heal.lua" />
+	<event type="think" name="CanopicJar" script="others/canopic jar.lua" />
+
+	<!-- Gray Island -->
+	<event type="kill" name="deeplingBosses" script="gray_island/deeplingKill.lua"/>
+
+	<!-- Others -->
+	<event type="login" name="AdventurerBlessings" script="adventureblessings.lua"/>
+	<event type="login" name="PlayerLogin" script="others/login.lua" />
+	<!-- <event type="login" name="FirstItems" script="others/firstitems.lua" /> movido para login.lua -->
+	<event type="login" name="RegenerateStamina" script="others/regeneratestamina.lua" />
+	<event type="login" name="OfflineTraining" script="others/offlinetraining.lua" />
+	<event type="logout" name="PlayerLogout" script="others/logout.lua" />
+	<event type="death" name="PlayerDeath" script="others/playerdeath.lua" />
+	<event type="death" name="DropLoot" script="others/droploot.lua" />
+	<event type="advance" name="AdvanceSave" script="others/advance_save.lua" />
+	<event type="healthchange" name="imbueDamage" script="imbuementElementalProtection.lua"/>
+	
+	<!-- Guild Level System -->
+	<event type="kill" name="guildLevel" script="others/guildLevel.lua" />
+	<event type="healthchange" name="guildLevel_e" script="others/guildLevel.lua" />
+</creaturescripts>

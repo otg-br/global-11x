@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Shirtalis Of The Summer Court" script="Shirtalis Of The Summer Court.lua" walkinterval="0" floorchange="0">
+	<health now="100" max="100" />
+	<look type="990" />
+</npc>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Dazzled Leaf Golem" nameDescription="Dazzled Leaf Golem" race="venom" experience="8000" speed="150" manacost="390" >
+	<health now="15000" max="15000" />
+	<look type="573" corpse="33439" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="1" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-900" />
+		<attack name="physical" interval="2000" chance="15" range="7" target="1" min="0" max="-1005">
+			<attribute key="shootEffect" value="smallstone" />
+		</attack>
+		<attack name="speed" interval="2000" chance="20" radius="3" speedchange="-600" duration="9000">
+			<attribute key="areaEffect" value="smallplants" />
+		</attack>
+	</attacks>
+	<defenses armor="10" defense="10" />
+	<elements>
+		<element earthPercent="40" />
+		<element firePercent="-5" />
+		<element firePercent="-1" />
+	</elements>
+	<voices interval="5000" chance="10">
+		<voice sentence="*crackle*" />
+		<voice sentence="*swwwwishhhh*" />
+	</voices>
+	<loot>
+		<item name="gold coin" countmax="370" chance="86830" />
+	</loot>
+</monster>

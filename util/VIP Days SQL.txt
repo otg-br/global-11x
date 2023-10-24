@@ -1,0 +1,3 @@
+ALTER TABLE `accounts`
+ADD COLUMN `viplastday` int(10) NOT NULL DEFAULT 0 AFTER `lastday`,
+ADD COLUMN `vipdays` int(11) NOT NULL DEFAULT 0 AFTER `lastday`;

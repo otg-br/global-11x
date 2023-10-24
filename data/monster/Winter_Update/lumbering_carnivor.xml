@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Lumbering Carnivor" nameDescription="a lumbering carnivor" race="blood" experience="2200" speed="200" manacost="0" raceid="1721">
+	<health now="2600" max="2600" />
+	<look type="1139" head="79" body="119" legs="57" feet="85" addons="1" corpse="34558" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag isblockable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-500" />
+		<attack name="physical" interval="2000" chance="10" radius="4" min="-100" max="-150">
+			<attribute key="areaEffect" value="groundshaker" />
+		</attack>
+	</attacks>
+		<defenses armor="71" defense="20">
+		<defense name="healing" interval="2000" chance="10" min="150" max="200">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<elements>
+		<element firePercent="20" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+		<!--common-->
+		<item name="platinum coin" countmin="0" countmax="3" chance="100000" /> 
+		<item name="Blue Glass Plate" countmin="0" countmax="3" chance="33290" /> 
+		<!--uncommon-->
+		<item id="2376" chance="12016" /> <!--sword-->
+		<item name="Axe" chance="27410" />    
+		<item name="Ice Rapier" chance="15370" />
+		<!--semi-rare-->
+		<item id="7632" chance="6950" />  <!--Giant Shimmering Pearlz-->
+		<item name="Violet Gem" chance="3810" /> 
+		<item name="Green Gem" chance="4810" /> 
+		<item name="Blue Gem" chance="3020" />
+		<item name="Two Handed Sword" chance="4930" />
+		<item name="Blue Robe" chance="3020" />
+		<item name="Glorious Axe" chance="4470" /> 
+		<item name="Green Crystal Shard" chance="4270" />
+		<item name="Fur Armor" chance="3230" /> 
+		<!--rare-->  
+		<item name="Focus Cape" chance="1500" /> 
+	</loot>
+</monster>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Ripper Spectre" nameDescription="a ripper spectre" race="blood" experience="3500" speed="190" manacost="0" raceid="1724">
+	<health now="3800" max="3800" />
+	<look type="1119" head="101" body="39" legs="61" feet="39" corpse="34519" />
+	<targetchange interval="8000" chance="5" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="70" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="0" max="-370"/>
+		<attack name="poison" interval="2000" chance="20" radius="4" min="-200" max="-390">
+			<attribute key="areaEffect" value="greenbubble"/>
+		</attack>
+		<attack name="poison" interval="2000" chance="15" target="1" radius="4" min="-320" max="-460">
+			<attribute key="areaEffect" value="explosionarea"/>
+		</attack>
+		<attack name="physical" interval="2000" chance="20" length="3" spread="0" min="-200" max="-340">
+			<attribute key="areaEffect" value="groundshaker"/>
+		</attack>
+	</attacks>
+	<defenses armor="69" defense="69">
+		<defense name="healing" interval="2000" chance="10" min="150" max="200">
+			<attribute key="areaEffect" value="blueshimmer"/>
+		</defense>
+	</defenses>
+		<elements>
+		<element physicalPercent="-70"/>
+		<element holyPercent="0"/>
+		<element deathPercent="0"/>
+		<element firePercent="-20"/>
+		<element energyPercent="0"/>
+		<element icePercent="0"/>
+		<element earthPercent="0"/>
+		<element drownPercent="0"/>
+		<element lifedrainPercent="0"/>
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+		<immunity physical="1"/>
+	</immunities>
+	<script>
+		<event name="reflect"/>
+	</script>
+	<loot>
+        <item name="Platinum Coin" countmax="4" chance="100000" />	
+		<item name="Great Spirit Potion" countmax="1" chance="30870" />
+		<item name="Silver Brooch" chance="5040" />
+		<item name="Terra Rod" chance="8790" />
+		<item name="Two Handed Sword" chance="16475" />
+		<item name="Emerald Bangle" chance="4700" />
+		<item name="Serpent Sword" chance="1260" />
+		<item name="Springsprout Rod" chance="3440" />
+		<item name="Twin Hooks" chance="4630" />
+     	<item name="Coral Brooch" chance="1340" />
+		<item name="Green Ectoplasm" chance="1850" />
+		<item name="Assassin Dagger" chance="1000" />
+		<item name="Spike Sword" chance="590" />
+		<item name="Wyvern Fang" chance="130" />
+	</loot>
+</monster>

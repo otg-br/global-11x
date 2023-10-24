@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Skeleton Elite Warrior" nameDescription="a skeleton elite warrior" race="undead" experience="7500" speed="155" manacost="350" raceid="1674">
+	<health now="7800" max="7800"/>
+	<look type="298" corpse="5972"/>
+	<targetchange interval="4000" chance="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="0"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="0"/>
+		<flag canwalkonenergy="0"/>
+		<flag canwalkonfire="1"/>
+		<flag canwalkonpoison="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-460" max="-810"/>
+		<attack name="lifedrain" interval="2000" chance="15" range="1" min="-410" max="-780">
+			<attribute key="areaEffect" value="redshimmer"/>
+		</attack>
+		<attack name="physical" interval="1500" chance="20" range="7" min="-444" max="-790">
+			<attribute key="shootEffect" value="suddendeath"/>
+			<attribute key="areaEffect" value="mortarea"/>
+		</attack>
+	</attacks>
+	<defenses armor="75" defense="60"/>
+	<elements>
+		<element holyPercent="-5"/>
+	</elements>
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+		<immunity death="1"/>
+	</immunities>
+	<loot>
+		<!--Comum -->
+		<item name="Platinum Coin" countmax="15" chance="23500"/>
+		<item id="2230" chance="50000"/><!-- bone -->
+		<item name="white mushroom" countmax="3" chance="24000"/>
+		<item name="Soul Orb" countmax="5" chance="15500"/>
+		<!--Incomum-->
+		<item name="Knight Axe" chance="2500"/>
+		<item name="pelvis bone" countmax="3" chance="5630"/>
+		<item name="Unholy Bone" countmax="1" chance="5630"/>
+
+		<!--Semi-raro-->
+		<item name="Skull Helmet" chance="1500"/>
+		<!--Muito-raro -->
+		<item name="Ruthless Axe" chance="1500"/>
+	</loot>
+</monster>

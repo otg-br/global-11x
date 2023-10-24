@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monster name="Plagueroot" nameDescription="Plagueroot" race="venom" experience="55000" speed="170" script="boss.lua">
+	<health now="100000" max="100000" />
+	<look type="1121" corpse="34515" />
+	<targetchange interval="4000" chance="10" />
+	<flags>
+	    <flag preyable="0" />
+        <flag rewardboss="1" />
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-100" max="-860"/>
+		<attack name="physical" interval="2000" chance="30" length="8" spread="0" min="-200" max="-600">
+			<attribute key="areaEffect" value="stones"/>
+		</attack>
+		<attack name="earth" interval="2000" chance="25" length="8" spread="3" min="-300" max="-750">
+			<attribute key="areaEffect" value="poison"/>
+		</attack>
+		<attack name="earth" interval="2000" chance="30" target="1" range="5" min="-200" max="-400">
+			<attribute key="shootEffect" value="smallearth"/>
+			<attribute key="areaEffect" value="yellowenergy"/>
+		</attack>
+		<attack name="Plagueroot Skill Reducer" interval="2000" chance="10"/>
+		<attack name="Plagueroot Teleport" interval="7000" chance="25" min="-1000" max="-2000"/>
+	</attacks>
+	<defenses armor="60" defense="80">
+		<defense name="healing" interval="2000" chance="15" min="100" max="1350">
+			<attribute key="areaEffect" value="redshimmer"/>
+		</defense>
+	</defenses>
+	<elements>
+		<element earthPercent="100" />
+	</elements>
+	<immunities>
+		<immunity invisible="1" />
+		<immunity paralyze="1" />
+	</immunities>
+	<loot>
+		<!--always-->
+		<item name="platinum coin" count="5" chance="100000" /> 
+		<item name="Piggy Bank" chance="100000" />
+		<item name="Mysterious Remains" chance="100000" />
+		<item name="Energy Bar" chance="100000" />
+		<item name="Silver Token" countmin="2" countmax="3" chance="100000" /> 
+		<!--uncommon-->
+		<item name="Gold Token" count="2" chance="82140" />
+		<item name="Supreme Health Potion" countmin="6" countmax="20" chance="64290" />    
+		<item name="Ultimate Mana Potion" countmin="6" countmax="14" chance="50000" />
+		<item name="Huge Chunk of Crude Iron" chance="42860" />
+		<!--semi-rare-->
+		<item name="Royal Star" count="100" chance="32140" /> 
+		<item name="Green Gem" countmin="1" countmax="2" chance="25000" /> 
+		<item name="Yellow Gem" countmin="1" countmax="2" chance="32140" />
+		<item name="Red Gem" countmin="1" countmax="2" chance="28570" /> 
+		<item name="Bullseye Potion" count="10" chance="32140" /> 
+		<item name="Pomegranate" chance="28570" />
+		<item name="Crystal Coin" countmin="1" countmax="2" chance="25000" /> 
+		<item name="Skull Staff" chance="21430" /> 
+		<!--rare-->  
+		<item name="Chaos Mace" chance="14290" /> 
+		<item name="Gold Ingot" chance="17860" /> 
+		<item id="26199" chance="10710" /> <!-- collar of green plasma-->
+		<item id="7632" chance="14290" /> <!-- Giant Shimmering Pearl -->
+		<item name="Blue Gem" chance="17860" /> 
+		<item name="Violet Gem" countmin="1" countmax="2" chance="10710" /> 
+		<!--very rare-->  
+		<item name="Living Armor" chance="10710" /> 
+		<item name="Magic Sulphur" chance="10710" /> 
+		<item name="Mastermind Potion" count="10" chance="10710" /> 
+		<item id="26185" chance="7140" /> <!-- ring of blue plasma-->
+		<item name="Ring of the Sky" chance="7140" /> 
+		<item name="Living Vine Bow" chance="7140" /> 
+		<item name="Abyss Hammer" chance="3570" /> 
+		<item id="26187" chance="3570" /> <!-- ring of green plasma-->
+		<item name="Plagueroot Offshoot" chance="7140" /> 
+		<item name="Turquoise Tendril Lantern" chance="100" unique="1"/> 
+	</loot>
+</monster>

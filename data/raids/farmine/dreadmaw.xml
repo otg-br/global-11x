@@ -1,0 +1,7 @@
+<raid>
+<!-- Single Spawns -->
+<singlespawn delay="120000" name="Dreadmaw" x="33299" y="31157" z="7"/>
+<areaspawn delay="20000" fromx="33282" fromy="31150" fromz="7" tox="33320" toy="31172" toz="7">
+<monster name="Killer Caiman" amount="20"/>
+</areaspawn>
+</raid>

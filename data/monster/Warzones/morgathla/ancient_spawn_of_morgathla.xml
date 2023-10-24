@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Ancient Spawn of Morgathla" nameDescription="Ancient Spawn of Morgathla" race="blood" experience="40000" speed="250">
+	<health now="50000" max="50000" />
+	<look type="1055" corpse="25151" />
+	<targetchange interval="2000" chance="15"/>
+	<flags>
+        <flag rewardboss="1" />
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag isblockable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="0" />
+		<flag canwalkonfire="1" />
+		<flag canwalkonenergy="1" />
+		<flag canwalkonpoison="1" />
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" skill="90" attack="80" />
+		<attack name="Morgathla Summon" interval="10000" chance="50"/>		
+		<attack name="death" interval="2000" chance="70" range="7" radius="5" target="1" min="-10" max="-2700">
+			<attribute key="shootEffect" value="death" />
+		<attribute key="areaEffect" value="mortarea" />
+		</attack>
+		<attack name="physical" interval="2000" chance="76" range="7" target="1" min="-90" max="-2500">
+			<attribute key="areaEffect" value="blackspark"/> 
+		</attack>
+		<attack name="earth" interval="2000" chance="90" range="7" target="1" min="-60" max="-2700">
+			<attribute key="shootEffect" value="poison"/>
+			<attribute key="areaEffect" value="poison"/>
+		</attack>
+	</attacks>
+	<defenses armor="80" defense="80">
+		<defense name="Morgathla Heal" interval="3000" chance="100"/>
+	</defenses>
+	<elements>
+		<element physicalPercent="0" />
+		<element deathPercent="0" />
+		<element energyPercent="0" />
+		<element icePercent="0" />
+		<element earthPercent="0" />
+	</elements>
+	<immunities>
+		<immunity paralyze="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<loot>
+		<item name="Mastermind Potion" countmax="4" chance="100000"/>
+		<item name="Platinum Coin" countmax="350" chance="100000"/>
+		<item name="Ring of Healing" chance="100000"/>
+		
+		<item name="Blue Crystal Shard" countmax="6" chance="83330"/>
+		<item name="Daramian Waraxe" chance="83330"/>
+		<item name="Violet Crystal Shard" countmax="6" chance="83330"/>
+		
+		<item name="Ancient Stone" countmax="3" chance="66670"/>
+		<item name="Great Spirit Potion" countmax="24" chance="66670"/>
+		<item name="Green Crystal Shard" countmax="6" chance="66670"/>
+		<item name="Onyx Chip" countmax="3" chance="66670"/>
+		<item name="Silver Token" chance="66670"/>
+		<item name="Springsprout Rod" chance="66670"/>
+		
+		<item name="Great Mana Potion" countmax="24" chance="50000"/>
+
+		<item name="Luminous Orb" chance="33333"/>
+		<item name="Scarab Amulet" chance="33333"/>
+		<item name="Terra Hood" chance="33333"/>
+		<item name="Ultimate Health Potion" countmax="24" chance="33333"/>
+		<item name="Yellow Gem" countmax="2" chance="33333"/>
+		
+		<item name="Bonebreaker" chance="16670"/>
+		<item name="Djinn Blade" chance="16670"/>
+		<item id="7632" chance="10530" /> <!-- Giant Shimmering Pearl -->
+		<item name="Gold Token" countmax="2" chance="16670"/>
+		<item name="Red Gem" countmax="2" chance="16670"/>
+		<item name="Scarab Coin" countmax="50" chance="16670"/>
+		<item name="Scarab Shield" chance="16670"/>
+		<item name="Small Amethyst" countmax="20" chance="16670"/>
+		<item name="Small Diamond" countmax="20" chance="16670"/>
+		<item name="Small Emerald" countmax="20" chance="16670"/>
+		<item name="Small Ruby" countmax="20" chance="16670"/>
+		<item name="Small Topaz" countmax="20" chance="16670"/>
+		<item name="Underworld Rod" chance="16670"/>
+		<item id="30891" chance="16670"/><!--Tinged Pot-->
+		
+		<item name="Huge Chunk of Crude Iron" countmax="6" chance="7500"/>
+		<item name="Plan for a Makeshift Armour" chance="7500"/>
+		<item id="30892" chance="7500"/> <!--crude wood planks-->
+		<item name="Earthborn Titan Armor" chance="7500"/>
+		
+		<item name="Gnome Sword" chance="100"/>
+		<item name="Gnome Legs" chance="100"/>
+		<item name="Gnome Armor" chance="100"/>
+		<item name="Gnome Helmet" chance="100"/>
+		<item name="Gnome Shield" chance="100"/>
+		</loot>
+</monster>

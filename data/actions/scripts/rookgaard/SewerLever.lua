@@ -1,0 +1,95 @@
+local config = {
+	bridgePositions = {
+		{position = Position(32099, 32205, 8), groundId = 9022, itemId = 4645},
+		{position = Position(32100, 32205, 8), groundId = 4616},
+		{position = Position(32101, 32205, 8), groundId = 9022, itemId = 4647}
+	},
+	leverPositions = {
+		Position(32098, 32204, 8),
+		Position(32104, 32204, 8)
+	},
+	relocatePosition = Position(32102, 32205, 8),
+	relocateMonsterPosition = Position(32103, 32205, 8),
+	bridgeId = 5770
+}
+
+function moveToPosition(self, toPosition, pushMove, monsterPosition)
+	if self:getPosition() == toPosition then
+		return false
+	end
+
+	if not Tile(toPosition) then
+		return false
+	end
+
+	for i = self:getThingCount() - 1, 0, -1 do
+		local thing = self:getThing(i)
+		if thing then
+			if thing:isItem() then
+				if thing:getId() ~= config.bridgeId and thing:getId() ~= 8893 then
+					thing:moveTo(toPosition)
+				end
+			elseif thing:isCreature() then
+				if monsterPosition and thing:isMonster() then
+					thing:teleportTo(monsterPosition, pushMove)
+				else
+					thing:teleportTo(toPosition, pushMove)
+				end
+			end
+		end
+	end
+	return true
+end
+
+function onUse(player, item, fromPosition, target, toPosition, isHotkey)
+	-- if not item:getPosition():compare(Position(32098, 32204, 8)) and not item:getPosition():compare(Position(32104, 32204, 8))then
+		-- return false
+	-- else
+		-- item:setActionId(50239)
+	-- end
+	local leverLeft, lever = item.itemid == 9825
+	for i = 1, #config.leverPositions do
+		lever = Tile(config.leverPositions[i]):getItemById(leverLeft and 9825 or 9826)
+		if lever then
+			lever:transform(leverLeft and 9826 or 9825)
+		end
+	end
+
+	local tile, tmpItem, bridge
+	if leverLeft then
+		for i = 1, #config.bridgePositions do
+			bridge = config.bridgePositions[i]
+			tile = Tile(bridge.position)
+			tmpItem = tile:getGround()
+			if tmpItem then
+				tmpItem:transform(config.bridgeId)
+			end
+
+			if bridge.itemId then
+				tmpItem = tile:getItemById(bridge.itemId)
+				if tmpItem then
+					tmpItem:remove()
+				end
+			end
+		end
+	else
+		for i = 1, #config.bridgePositions do
+			bridge = config.bridgePositions[i]
+			tile = Tile(bridge.position)
+			if(tile:getThingCount() > 2) then
+				for i = 0, tile:getThingCount() do
+					local it = tile:getThing(i)
+					if it and it:getId() == 8893 then
+						it:remove()
+					end
+				end
+			end
+			moveToPosition(tile, config.relocatePosition, true, config.relocateMonsterPosition)
+			tile:getGround():transform(bridge.groundId)
+			Game.createItem(bridge.groundId, 1, bridge.position)
+			Game.createItem(bridge.itemId, 1, bridge.position)
+		end
+
+	end
+	return true
+end
