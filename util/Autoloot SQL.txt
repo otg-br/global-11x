@@ -1,3 +1,5 @@
+----credits to Vankk and Psychonaut
+
 CREATE TABLE `auto_loot_list` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `player_id` int(11) NOT NULL,
