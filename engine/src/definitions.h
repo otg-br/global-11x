@@ -20,7 +20,7 @@
 #ifndef FS_DEFINITIONS_H_877452FEC245450C9F96B8FD268D8963
 #define FS_DEFINITIONS_H_877452FEC245450C9F96B8FD268D8963
 
-static constexpr auto STATUS_SERVER_NAME = "OTG-BR";
+static constexpr auto STATUS_SERVER_NAME = "OTG-BR Server";
 static constexpr auto STATUS_SERVER_VERSION = "1.4";
 static constexpr auto STATUS_SERVER_CREDITS = "TFS Team, Erick Nunes, Leo Pereira, Marson Schneider, LukST, worthdavi, OTX Team, OTG Team";
 static constexpr auto STATUS_SERVER_CONTRIBUTORS = "Johncore and Mark Samman";
