@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 	<action itemid="33248" function="supply"/>
-	
 	<action itemid="7735" script="others/spellwand.lua"/> <!-- Spellwand -->	
 	<action fromid="31719" toid="31720" script="others/consumables/cupcakes.lua"/> <!-- Cupcakes -->
 	<action itemid="13546" script="others/variables/shimmer_swimmer.lua"/>
