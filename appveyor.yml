@@ -1,4 +1,4 @@
-image: Visual Studio 2019
+image: Visual Studio 2022
 
 shallow_clone: true
 
@@ -14,7 +14,7 @@ matrix:
 only_commits:
   files:
     - /engine/src/
-    - /engine/vc14/
+    - /engine/vc17/
     - .appveyor.yml
     - /engine/cmake/
 
@@ -22,7 +22,6 @@ install:
   - cmd : vcpkg install boost-iostreams:x86-windows
   - cmd : vcpkg install boost-asio:x86-windows
   - cmd : vcpkg install boost-system:x86-windows
-  - cmd : vcpkg install boost-filesystem:x86-windows
   - cmd : vcpkg install boost-variant:x86-windows
   - cmd : vcpkg install boost-lockfree:x86-windows
   - cmd : vcpkg install cryptopp:x86-windows
@@ -38,12 +37,12 @@ build:
   #verbosity: detailed
 
 after_build:
-  - 7z a -tzip OTG.zip -r .\engine\vc14\*.exe -ir!.\engine\vc14\*.dll
+  - 7z a -tzip OTG.zip -r .\engine\vc17\*.exe -ir!.\engine\vc17\*.dll
 
 cache:
   - c:\tools\vcpkg\installed\
 
 artifacts:
-  - path: \engine\vc14\**\theforgottenserver*.exe
-  - path: \engine\vc14\**\*.dll
+  - path: \engine\vc17\**\theforgottenserver*.exe
+  - path: \engine\vc17\**\*.dll
   - path: OTG.zip
