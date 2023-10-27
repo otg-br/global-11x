@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{A10F9657-129F-0FEF-14CB-CEE0B0E5AA3E}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -27,22 +28,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -69,21 +70,31 @@
     <Import Project="release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>$(ProjectName)-$(Platform)</TargetName>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>$(ProjectName)-$(Platform)</TargetName>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\local\boost_1_66_0;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\local\boost_1_66_0\lib64-msvc-14.1;C:\local\boost_1_66_0\boost;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)-$(Platform)</TargetName>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\local\tfs-sdk-3.2;C:\local\boost_1_66_0;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\local\tfs-sdk-3.2;C:\local\boost_1_66_0\boost;C:\local\boost_1_66_0\lib64-msvc-14.1;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)-$(Platform)</TargetName>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>_CONSOLE;$(PREPROCESSOR_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <AdditionalIncludeDirectories>$(VcpkgRoot)include\luajit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -95,6 +106,10 @@
     <ClCompile>
       <PreprocessorDefinitions>_CONSOLE;$(PREPROCESSOR_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <AdditionalIncludeDirectories>$(VcpkgRoot)include\luajit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -106,6 +121,13 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;$(PREPROCESSOR_DEFS);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <AdditionalIncludeDirectories>$(VcpkgRoot)include\luajit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -121,13 +143,19 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <AdditionalIncludeDirectories>$(VcpkgRoot)include\luajit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\local\tfs-sdk-3.2\pugixml\include;C:\local\tfs-sdk-3.2;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -136,9 +164,9 @@
     <ClCompile Include="..\src\ban.cpp" />
     <ClCompile Include="..\src\baseevents.cpp" />
     <ClCompile Include="..\src\bed.cpp" />
-    <ClCompile Include="..\src\bestiary.cpp" />
+	<ClCompile Include="..\src\bestiary.cpp" />
     <ClCompile Include="..\src\chat.cpp" />
-    <ClCompile Include="..\src\charm.cpp" />
+	<ClCompile Include="..\src\charm.cpp" />
     <ClCompile Include="..\src\combat.cpp" />
     <ClCompile Include="..\src\condition.cpp" />
     <ClCompile Include="..\src\configmanager.cpp" />
@@ -160,9 +188,9 @@
     <ClCompile Include="..\src\guild.cpp" />
     <ClCompile Include="..\src\house.cpp" />
     <ClCompile Include="..\src\housetile.cpp" />
-    <ClCompile Include="..\src\imbuements.cpp" />
+	<ClCompile Include="..\src\imbuements.cpp" />
     <ClCompile Include="..\src\inbox.cpp" />
-    <ClCompile Include="..\src\ioguild.cpp" />
+	<ClCompile Include="..\src\ioguild.cpp" />
     <ClCompile Include="..\src\iologindata.cpp" />
     <ClCompile Include="..\src\iomap.cpp" />
     <ClCompile Include="..\src\iomapserialize.cpp" />
@@ -172,7 +200,7 @@
     <ClCompile Include="..\src\luascript.cpp" />
     <ClCompile Include="..\src\mailbox.cpp" />
     <ClCompile Include="..\src\map.cpp" />
-    <ClCompile Include="..\src\modules.cpp" />
+	<ClCompile Include="..\src\modules.cpp" />
     <ClCompile Include="..\src\monster.cpp" />
     <ClCompile Include="..\src\monsters.cpp" />
     <ClCompile Include="..\src\mounts.cpp" />
@@ -192,18 +220,18 @@
     <ClCompile Include="..\src\party.cpp" />
     <ClCompile Include="..\src\player.cpp" />
     <ClCompile Include="..\src\position.cpp" />
-    <ClCompile Include="..\src\prey.cpp" />
+	<ClCompile Include="..\src\prey.cpp" />
     <ClCompile Include="..\src\protocol.cpp" />
-    <ClCompile Include="..\src\protocolcheck.cpp" />
+	<ClCompile Include="..\src\protocolcheck.cpp" />
     <ClCompile Include="..\src\protocolgame.cpp" />
-    <ClCompile Include="..\src\protocolgamebase.cpp" />
+	<ClCompile Include="..\src\protocolgamebase.cpp" />
     <ClCompile Include="..\src\protocollogin.cpp" />
     <ClCompile Include="..\src\protocolold.cpp" />
-    <ClCompile Include="..\src\protocolspectator.cpp" />
+	<ClCompile Include="..\src\protocolspectator.cpp" />
     <ClCompile Include="..\src\protocolstatus.cpp" />
     <ClCompile Include="..\src\quests.cpp" />
     <ClCompile Include="..\src\raids.cpp" />
-    <ClCompile Include="..\src\reward.cpp" />
+	<ClCompile Include="..\src\reward.cpp" />
     <ClCompile Include="..\src\rewardchest.cpp" />
     <ClCompile Include="..\src\rsa.cpp" />
     <ClCompile Include="..\src\scheduler.cpp" />
@@ -211,10 +239,10 @@
     <ClCompile Include="..\src\scriptmanager.cpp" />
     <ClCompile Include="..\src\server.cpp" />
     <ClCompile Include="..\src\signals.cpp" />
-    <ClCompile Include="..\src\site.cpp" />
+	<ClCompile Include="..\src\site.cpp" />
     <ClCompile Include="..\src\spawn.cpp" />
     <ClCompile Include="..\src\spells.cpp" />
-    <ClCompile Include="..\src\store.cpp" />
+	<ClCompile Include="..\src\store.cpp" />
     <ClCompile Include="..\src\talkaction.cpp" />
     <ClCompile Include="..\src\tasks.cpp" />
     <ClCompile Include="..\src\teleport.cpp" />
@@ -223,12 +251,9 @@
     <ClCompile Include="..\src\tools.cpp" />
     <ClCompile Include="..\src\trashholder.cpp" />
     <ClCompile Include="..\src\vocation.cpp" />
-    <ClCompile Include="..\src\waitlist.cpp" />
+	<ClCompile Include="..\src\waitlist.cpp" />
     <ClCompile Include="..\src\weapons.cpp" />
     <ClCompile Include="..\src\wildcardtree.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="TheForgottenServer.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\account.h" />
@@ -236,9 +261,9 @@
     <ClInclude Include="..\src\ban.h" />
     <ClInclude Include="..\src\baseevents.h" />
     <ClInclude Include="..\src\bed.h" />
-    <ClInclude Include="..\src\bestiary.h" />
+	<ClInclude Include="..\src\bestiary.h" />
     <ClInclude Include="..\src\chat.h" />
-    <ClInclude Include="..\src\charm.h" />
+	<ClInclude Include="..\src\charm.h" />
     <ClInclude Include="..\src\combat.h" />
     <ClInclude Include="..\src\condition.h" />
     <ClInclude Include="..\src\configmanager.h" />
@@ -263,9 +288,9 @@
     <ClInclude Include="..\src\guild.h" />
     <ClInclude Include="..\src\house.h" />
     <ClInclude Include="..\src\housetile.h" />
-    <ClInclude Include="..\src\imbuements.h" />
+	<ClInclude Include="..\src\imbuements.h" />
     <ClInclude Include="..\src\inbox.h" />
-    <ClInclude Include="..\src\ioguild.h" />
+	<ClInclude Include="..\src\ioguild.h" />
     <ClInclude Include="..\src\iologindata.h" />
     <ClInclude Include="..\src\iomap.h" />
     <ClInclude Include="..\src\iomapserialize.h" />
@@ -277,7 +302,7 @@
     <ClInclude Include="..\src\luascript.h" />
     <ClInclude Include="..\src\mailbox.h" />
     <ClInclude Include="..\src\map.h" />
-    <ClInclude Include="..\src\modules.h" />
+	<ClInclude Include="..\src\modules.h" />
     <ClInclude Include="..\src\monster.h" />
     <ClInclude Include="..\src\monsters.h" />
     <ClInclude Include="..\src\mounts.h" />
@@ -291,18 +316,18 @@
     <ClInclude Include="..\src\player.h" />
     <ClInclude Include="..\src\position.h" />
     <ClInclude Include="..\src\protocol.h" />
-    <ClInclude Include="..\src\prey.h" />
+	<ClInclude Include="..\src\prey.h" />
     <ClInclude Include="..\src\protocolcheck.h" />
     <ClInclude Include="..\src\protocolgame.h" />
-    <ClInclude Include="..\src\protocolgamebase.h" />
+	<ClInclude Include="..\src\protocolgamebase.h" />
     <ClInclude Include="..\src\protocollogin.h" />
     <ClInclude Include="..\src\protocolold.h" />
-    <ClInclude Include="..\src\protocolspectator.h" />
+	<ClInclude Include="..\src\protocolspectator.h" />
     <ClInclude Include="..\src\protocolstatus.h" />
     <ClInclude Include="..\src\pugicast.h" />
     <ClInclude Include="..\src\quests.h" />
     <ClInclude Include="..\src\raids.h" />
-    <ClInclude Include="..\src\reward.h" />
+	<ClInclude Include="..\src\reward.h" />
     <ClInclude Include="..\src\rewardchest.h" />
     <ClInclude Include="..\src\rsa.h" />
     <ClInclude Include="..\src\scheduler.h" />
@@ -310,7 +335,7 @@
     <ClInclude Include="..\src\scriptmanager.h" />
     <ClInclude Include="..\src\server.h" />
     <ClInclude Include="..\src\signals.h" />
-    <ClInclude Include="..\src\site.h" />
+	<ClInclude Include="..\src\site.h" />
     <ClInclude Include="..\src\spawn.h" />
     <ClInclude Include="..\src\spectators.h" />
     <ClInclude Include="..\src\spells.h" />
@@ -325,9 +350,12 @@
     <ClInclude Include="..\src\town.h" />
     <ClInclude Include="..\src\trashholder.h" />
     <ClInclude Include="..\src\vocation.h" />
-    <ClInclude Include="..\src\waitlist.h" />
+	<ClInclude Include="..\src\waitlist.h" />
     <ClInclude Include="..\src\weapons.h" />
     <ClInclude Include="..\src\wildcardtree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="theforgottenserver.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
