@@ -47044,4 +47044,316 @@
 	    <attribute key="showattributes" value="1" />
 	</item>
 	
+	
+	<item id="42051" article="a" name="Eldritch Claymore">
+		<attribute key="weight" value="8500" />
+		<attribute key="attack" value="6" />
+        <attribute key="elementFire" value="50" />
+		<attribute key="defense" value="33" />
+		<attribute key="skillSword" value="3" />
+		<attribute key="weaponType" value="sword" />>
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42055" article="a" name="Eldritch Greataxe">
+		<attribute key="weight" value="6500" />
+		<attribute key="attack" value="56" />
+		<attribute key="defense" value="33" />
+		<attribute key="skillAxe" value="3" />
+		<attribute key="weaponType" value="axe" />>
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42053" article="a" name="Eldritch Warmace">
+		<attribute key="weight" value="8200" />
+		<attribute key="attack" value="6" />
+        <attribute key="elementEarth" value="50" />
+		<attribute key="defense" value="33" />
+		<attribute key="skillClub" value="3" />
+		<attribute key="weaponType" value="club" />>
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42052" article="a" name="Gilded Eldritch Claymore">
+		<attribute key="weight" value="8600" />
+		<attribute key="attack" value="6" />
+        <attribute key="elementFire" value="50" />
+		<attribute key="defense" value="33" />
+		<attribute key="skillSword" value="3" />
+		<attribute key="weaponType" value="sword" />>
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42056" article="a" name="Gilded Eldritch Greataxe">
+		<attribute key="weight" value="6600" />
+		<attribute key="attack" value="56" />
+		<attribute key="defense" value="33" />
+		<attribute key="skillAxe" value="3" />
+		<attribute key="weaponType" value="axe" />>
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42054" article="a" name="Gilded Eldritch Warmace">
+		<attribute key="weight" value="8300" />
+		<attribute key="attack" value="6" />
+        <attribute key="elementEarth" value="50" />
+		<attribute key="defense" value="33" />
+		<attribute key="skillClub" value="3" />
+		<attribute key="weaponType" value="club" />>
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42058" article="a" name="Eldritch Bow">
+		<attribute key="weight" value="5800" />
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="weaponType" value="distance" />
+		<attribute key="ammoType" value="arrow" />
+		<attribute key="range" value="6" />
+		<attribute key="hitChance" value="6" />
+		<attribute key="attack" value="6" />
+		<attribute key="skillDist" value="2" />
+		<attribute key="skillcriticalchance" value="5" />
+		<attribute key="skillcriticaldamage" value="20" />
+		<attribute key="imbuingSlots" value="3" />
+	</item>
+	<item id="42059" article="a" name="Gilded Eldritch Bow">
+		<attribute key="weight" value="5900" />
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="weaponType" value="distance" />
+		<attribute key="ammoType" value="arrow" />
+		<attribute key="range" value="6" />
+		<attribute key="hitChance" value="6" />
+		<attribute key="attack" value="6" />
+		<attribute key="skillDist" value="2" />
+		<attribute key="skillcriticalchance" value="5" />
+		<attribute key="skillcriticaldamage" value="20" />
+		<attribute key="imbuingSlots" value="3" />
+	</item>
+	<item id="43652" article="a" name="Eldritch Rod">
+		<attribute key="weight" value="3500" />
+		<attribute key="weaponType" value="wand" />
+		<attribute key="shootType" value="ice" />
+		<attribute key="range" value="5" />
+		<attribute key="magiclevelpoints" value="2" />
+		<attribute key="absorbPercentEarth" value="4" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="43646" article="a" name="Eldritch Wand">
+		<attribute key="weight" value="3600" />
+		<attribute key="weaponType" value="wand" />
+		<attribute key="shootType" value="fire" />
+		<attribute key="range" value="5" />
+		<attribute key="magiclevelpoints" value="2" />
+		<attribute key="absorbPercentEnergy" value="4" />
+		<attribute key="skillcriticalchance" value="4" />
+		<attribute key="skillcriticaldamage" value="65" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42068" article="a" name="Gilded Eldritch Rod">
+		<attribute key="weight" value="3600" />
+		<attribute key="weaponType" value="wand" />
+		<attribute key="shootType" value="ice" />
+		<attribute key="range" value="5" />
+		<attribute key="magiclevelpoints" value="2" />
+		<attribute key="absorbPercentEarth" value="4" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42062" article="a" name="Gilded Eldritch Wand">
+		<attribute key="weight" value="3700" />
+		<attribute key="weaponType" value="wand" />
+		<attribute key="shootType" value="fire" />
+		<attribute key="range" value="5" />
+		<attribute key="magiclevelpoints" value="2" />
+		<attribute key="absorbPercentEnergy" value="4" />
+		<attribute key="skillcriticalchance" value="4" />
+		<attribute key="skillcriticaldamage" value="65" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42050" article="a" name="Eldritch Shield">
+		<attribute key="weight" value="6600" />
+		<attribute key="defense" value="39" />
+		<attribute key="absorbPercentPhysical" value="4" />
+		<attribute key="weaponType" value="shield" />
+		<attribute key="imbuingSlots" value="1" />
+	</item>
+	<item id="42066" article="an" name="Eldritch Folio">
+		<attribute key="weight" value="2800" />
+		<attribute key="magiclevelpoints" value="4" />
+		<attribute key="absorbPercentEarth" value="6" />
+		<attribute key="defense" value="21" />
+		<attribute key="weaponType" value="shield" />
+		<attribute key="imbuingSlots" value="1" />
+	</item>
+	<item id="42067" article="an" name="Eldritch Tome">
+		<attribute key="weight" value="2600" />
+		<attribute key="magiclevelpoints" value="4" />
+		<attribute key="absorbPercentFire" value="6" />
+		<attribute key="defense" value="21" />
+		<attribute key="weaponType" value="shield" />
+		<attribute key="imbuingSlots" value="1" />
+	</item>
+	<item id="42060" article="a" name="Eldritch Quiver">
+		<attribute key="weight" value="2200" />
+		<attribute key="containerSize" value="8" />
+		<attribute key="weaponType" value="quiver" />
+		<attribute key="skillDist" value="5" />
+		<attribute key="slotType" value="right-hand" />
+	    <attribute key="showattributes" value="1" />
+		<attribute key="imbuingSlots" value="1" />
+	</item>
+	<item id="42061" name="Eldritch Breeches">
+		<attribute key="weight" value="6900" />
+		<attribute key="armor" value="9" />
+		<attribute key="skillDist" value="2" />
+		<attribute key="absorbPercentPhysical" value="2" />
+		<attribute key="absorbPercentHoly" value="7" />
+		<attribute key="slotType" value="legs" />
+	</item>
+	<item id="42064" article="a" name="Eldritch Cowl">
+		<attribute key="weight" value="2600" />
+		<attribute key="armor" value="7" />
+		<attribute key="magiclevelpoints" value="2" />
+		<attribute key="slotType" value="head" />
+		<attribute key="quicklootcategory" value="helmet" />
+		<attribute key="absorbPercentIce" value="7" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42065" article="a" name="Eldritch Hood">
+		<attribute key="weight" value="2700" />
+		<attribute key="armor" value="7" />
+		<attribute key="magiclevelpoints" value="2" />
+		<attribute key="slotType" value="head" />
+		<attribute key="quicklootcategory" value="helmet" />
+		<attribute key="absorbPercentEarth" value="7" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="42057" article="an" name="Eldritch Cuirass">
+		<attribute key="weight" value="11000" />
+		<attribute key="armor" value="16" />
+		<attribute key="absorbPercentPhysical" value="10" />
+		<attribute key="slotType" value="body" />
+		<attribute key="imbuingSlots" value="2" />			
+	</item>
+	
+	
+	
+	<item id="39554" article="a" name="lion longbow">
+		<attribute key="weight" value="4800" />
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="weaponType" value="distance" />
+		<attribute key="ammoType" value="arrow" />
+		<attribute key="range" value="6" />
+		<attribute key="hitChance" value="6" />
+		<attribute key="attack" value="6" />
+		<attribute key="absorbPercentIce" value="5" />
+		<attribute key="skillDist" value="2" />
+		<attribute key="imbuingSlots" value="3" />
+	</item>
+	
+	<item id="39555" article="a" name="lion rod">
+		<attribute key="weight" value="2600" />
+		<attribute key="weaponType" value="wand" />
+		<attribute key="shootType" value="ice" />
+		<attribute key="range" value="5" />
+		<attribute key="magiclevelpoints" value="2" />
+		<attribute key="skillcriticalchance" value="10" />
+		<attribute key="skillcriticaldamage" value="35" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	
+	<item id="39556" article="a" name="lion wand">
+		<attribute key="weight" value="2100" />
+		<attribute key="weaponType" value="wand" />
+		<attribute key="shootType" value="ice" />
+		<attribute key="range" value="4" />
+		<attribute key="magiclevelpoints" value="2" />
+		<attribute key="skilllifechance" value="100" />
+		<attribute key="skilllifeamount" value="18" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	
+	<item id="39557" article="a" name="lion spellbook">
+		<attribute key="weight" value="2500" />
+		<attribute key="defense" value="20" />
+		<attribute key="absorbPercentPhysical" value="3" />
+		<attribute key="absorbPercentIce" value="7" />
+		<attribute key="magiclevelpoints" value="4" />		
+		<attribute key="weaponType" value="shield" />
+		<attribute key="imbuingSlots" value="1" />
+	</item>	
+	
+	<item id="39558" article="a" name="lion shield">
+		<attribute key="weight" value="6500" />
+		<attribute key="defense" value="39" />
+		<attribute key="absorbPercentPhysical" value="7" />
+		<attribute key="absorbPercentEarth" value="10" />
+		<attribute key="weaponType" value="shield" />
+		<attribute key="imbuingSlots" value="1" />
+	</item>	
+	
+	<item id="39559" article="a" name="lion longsword">
+		<attribute key="weight" value="7500" />
+		<attribute key="attack" value="8" />
+		<attribute key="elementEarth" value="44" />
+		<attribute key="defense" value="31" />
+		<attribute key="extradef" value="2" />
+		<attribute key="skillSword" value="3" />
+		<attribute key="weaponType" value="sword" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>	
+	
+	<item id="39560" article="a" name="lion spangenhelm">
+		<attribute key="weight" value="3000" />
+		<attribute key="armor" value="7" />
+		<attribute key="skillDist" value="2" />
+		<attribute key="absorbPercentPhysical" value="3" />
+		<attribute key="absorbPercentEarth" value="5" />
+		<attribute key="slotType" value="head" />
+		<attribute key="imbuingSlots" value="2" />	
+	</item>	
+	
+	<item id="39561" article="an" name="lion plate">
+		<attribute key="weight" value="15000" />
+		<attribute key="armor" value="17" />
+		<attribute key="skillAxe" value="3" />
+		<attribute key="skillClub" value="3" />
+		<attribute key="skillSword" value="3" />
+		<attribute key="absorbPercentPhysical" value="6" />
+		<attribute key="slotType" value="body" />
+		<attribute key="imbuingSlots" value="2" />	
+	</item>		
+	
+	<item id="39562" article="a" name="lion amulet">
+		<attribute key="weight" value="520" />
+		<attribute key="slotType" value="necklace" />
+		<attribute key="armor" value="3" />
+		<attribute key="absorbPercentPhysical" value="3" />
+		<attribute key="absorbPercentIce" value="7" />
+	</item>	
+
+	<item id="39656" article="a" name="lion axe">
+		<attribute key="weight" value="7900" />
+		<attribute key="attack" value="8" />
+		<attribute key="elementEarth" value="44" />
+		<attribute key="defense" value="31" />
+		<attribute key="extradef" value="2" />
+		<attribute key="skillAxe" value="3" />
+		<attribute key="weaponType" value="axe" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>	
+	
+	<item id="39657" article="a" name="lion hammer">
+		<attribute key="weight" value="6500" />
+		<attribute key="attack" value="8" />
+		<attribute key="elementEarth" value="44" />
+		<attribute key="defense" value="31" />
+		<attribute key="extradef" value="2" />
+		<attribute key="skillClub" value="3" />
+		<attribute key="weaponType" value="club" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>	
+	
+	
+	
+	
 </items>
