@@ -164,4 +164,59 @@
 	<mount id="160" clientid="1266" name="Floating Augur" speed="20" premium="yes" />
 	<mount id="161" clientid="1269" name="Haze" speed="20" premium="yes" />
 	<mount id="162" clientid="1281" name="Antelope" speed="20" premium="yes" />
+	
+	<mount id="163" clientid="1284" name="Snow Strider" speed="20" premium="yes" />
+	<mount id="164" clientid="1285" name="Dusk Pryer" speed="20" premium="yes" />
+	<mount id="165" clientid="1286" name="Dawn Strayer" speed="20" premium="yes" />
+	<mount id="166" clientid="1324" name="Benevolent Savanna Ostrich" speed="20" premium="yes" />
+	<mount id="167" clientid="1325" name="Benevolent Coral Rhea" speed="20" premium="yes" />
+	<mount id="168" clientid="1326" name="Benevolent Eventide Nandu" speed="20" premium="yes" />
+	<mount id="169" clientid="1334" name="Cunning Hyaena" speed="20" premium="yes" /> 
+	<mount id="170" clientid="1335" name="Scruffy Hyaena" speed="20" premium="yes" /> 
+	<mount id="171" clientid="1333" name="Voracious Hyaena" speed="20" premium="yes" /> 
+	<mount id="172" clientid="1321" name="Spectral Horse" speed="20" premium="yes" />
+	<mount id="173" clientid="1336" name="White Lion" speed="20" premium="yes" />
+	<mount id="174" clientid="1363" name="Krakoloss" speed="20" premium="yes" />
+	<mount id="175" clientid="1379" name="Merry Mammoth" speed="20" premium="yes" />
+	<mount id="176" clientid="1380" name="Holiday Mammoth" speed="20" premium="yes" />
+	<mount id="177" clientid="1381" name="Festive Mammoth" speed="20" premium="yes" />
+	<mount id="178" clientid="1364" name="Mossmasher" speed="30" premium="yes" />
+    <mount id="179" clientid="1389" name="Void Watcher" speed="20" premium="yes" />
+    <mount id="180" clientid="1390" name="Rune Watcher" speed="20" premium="yes" />
+    <mount id="181" clientid="1391" name="Rift Watcher" speed="20" premium="yes" />
+	<mount id="182" clientid="1430" name="Shellodon" speed="20" premium="yes" />
+	<mount id="183" clientid="1417" name="Phant" speed="20" premium="yes" />
+	<mount id="184" clientid="1431" name="Singeing Steed" speed="20" premium="yes" />
+	<mount id="185" clientid="1439" name="Hyacinth" speed="20" premium="yes" />
+    <mount id="186" clientid="1440" name="Peony" speed="20" premium="yes" />
+    <mount id="187" clientid="1441" name="Dandelion" speed="20" premium="yes" />
+	<mount id="188" clientid="509" name="Magma Fiend" speed="20" premium="yes" />
+	<mount id="189" clientid="1446" name="Rustwurm" speed="20" premium="yes" />
+    <mount id="190" clientid="1447" name="Bogwurm" speed="20" premium="yes" />
+    <mount id="191" clientid="1448" name="Gloomwurm" speed="20" premium="yes" />
+    <mount id="192" clientid="1453" name="Emerald Raven" speed="20" premium="yes" />
+    <mount id="193" clientid="1454" name="Mystic Raven" speed="20" premium="yes" />
+    <mount id="194" clientid="1455" name="Radiant Raven" speed="20" premium="yes" />
+    <mount id="195" clientid="1459" name="Gloothomotive" speed="20" premium="yes" />
+	<mount id="196" clientid="1492" name="Jade Shrine" speed="20" premium="yes" />
+    <mount id="197" clientid="1493" name="Obsidian Shrine" speed="20" premium="yes" />
+    <mount id="198" clientid="1491" name="Topaz Shrine" speed="20" premium="yes" />
+	<mount id="199" clientid="1528" name="Cinnamon Ibex" speed="20" premium="yes" />
+    <mount id="200" clientid="1527" name="Mint Ibex" speed="20" premium="yes" />
+    <mount id="201" clientid="1526" name="Poppy Ibex" speed="20" premium="yes" />
+    <mount id="202" clientid="1577" name="Ripptor" speed="20" premium="yes" />
+    <mount id="203" clientid="1536" name="Giant Beaver" speed="20" premium="yes" />
+	<mount id="204" clientid="1617" name="Icebreacher" speed="20" premium="yes" />
+    <mount id="205" clientid="1616" name="Winterstride " speed="20" premium="yes" />
+    <mount id="206" clientid="1615" name="Frostbringer" speed="20" premium="yes" />
+    <mount id="207" clientid="1672" name="Boisterous Bull" speed="20" premium="yes" />
+    <mount id="208" clientid="1673" name="Surly Steer" speed="20" premium="yes" />
+    <mount id="209" clientid="1674" name="Obstinate Ox" speed="20" premium="yes" />
+	<mount id="210" clientid="1685" name="Boisterous Bull" speed="20" premium="yes" />
+    <mount id="211" clientid="1686" name="Magma Skull" speed="20" premium="yes" />
+    <mount id="212" clientid="1687" name="Corpsefire Skull" speed="20" premium="yes" />
+	<mount id="213" clientid="1677" name="Darkfire Devourer" speed="20" premium="yes" />
+    <mount id="214" clientid="1632" name="Foxmouse" speed="20" premium="yes" />
+    <mount id="215" clientid="1682" name="Spirit of Purity" speed="20" premium="yes" />
+	
 </mounts>
