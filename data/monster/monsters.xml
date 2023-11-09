@@ -1523,7 +1523,29 @@
 	<monster name="Bright Percht Sleigh" file="Winter_Update/bright_percht_sleigh.xml"/>
 	<monster name="Cold Percht Sleigh" file="Winter_Update/cold_percht_sleigh.xml"/>
 	<monster name="Dark Percht Sleigh" file="Winter_Update/dark_percht_sleigh.xml"/>
-
+    
+	
+	<!-- Summer_Update 2021 -->
+	<monster name="Afflicted Strider" file="Summer_Update/Update2021/Afflicted Strider.xml" />
+	<monster name="Bashmu" file="Summer_Update/Update2021/Bashmu.xml" />
+	<monster name="Blemished Spawn" file="Summer_Update/Update2021/Blemished Spawn.xml" />
+	<monster name="Cave Chimera" file="Summer_Update/Update2021/Cave Chimera.xml" />
+	<monster name="Dark Carnisylvan" file="Summer_Update/Update2021/Dark Carnisylvan.xml" />
+	<monster name="Eyeless Devourer" file="Summer_Update/Update2021/Eyeless Devourer.xml" />
+	<monster name="Girtablilu Warrior" file="Summer_Update/Update2021/Girtablilu Warrior.xml" />
+	<monster name="Hulking Carnisylvan" file="Summer_Update/Update2021/Hulking Carnisylvan.xml" />
+	<monster name="Juvenile Bashmu" file="Summer_Update/Update2021/Juvenile Bashmu.xml" />
+	<monster name="Lavafungus" file="Summer_Update/Update2021/Lavafungus.xml" />
+	<monster name="Lavaworm" file="Summer_Update/Update2021/Lavaworm.xml" />
+	<monster name="Magma Fiend" file="Summer_Update/Update2021/Magma Fiend.xml" />
+	<monster name="Poisonous Carnisylvan" file="Summer_Update/Update2021/Poisonous Carnisylvan.xml" />
+	<monster name="Streaked Devourer" file="Summer_Update/Update2021/Streaked Devourer.xml" />
+	<monster name="Tremendous Tyrant" file="Summer_Update/Update2021/Tremendous Tyrant.xml" />
+	<monster name="Varnished Diremaw" file="Summer_Update/Update2021/Varnished Diremaw.xml" />
+	<monster name="Venerable Girtablilu" file="Summer_Update/Update2021/Venerable Girtablilu.xml" />
+	
+	
+	
 	<!-- Monstros adicionados recentemente -->
 	<monster name="Fahim the Wise" file="new/Fahim_the_Wise.xml"/>
 	<monster name="Flame of Omrafir" file="new/Flame_of_Omrafir.xml"/>

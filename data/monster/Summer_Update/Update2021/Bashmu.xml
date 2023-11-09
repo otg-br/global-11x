@@ -69,7 +69,6 @@
 		<item name="knight armor" chance="800" />
 		<item name="royal helmet" chance="800" />
 		<item name="medusa shield" chance="1000" />
-		<item name="ham" countmax="4" chance="60000" />
 		<item name="strong mana potion" chance="8000" />
 
 		<item id="7407" chance="650" />						<!-- Haunted Blade -->

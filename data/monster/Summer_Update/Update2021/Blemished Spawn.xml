@@ -38,7 +38,6 @@
 	</voices>
 	<loot>
 	<!--Sempre-->
-		<item name="Ham" count="4"  chance="40080" />
 
 			<!--quase sempre-->
 			<item name="Poisonous Slime" count="5"  chance="11930" />  
