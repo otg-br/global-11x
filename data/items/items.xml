@@ -47214,7 +47214,6 @@
 		<attribute key="armor" value="7" />
 		<attribute key="magiclevelpoints" value="2" />
 		<attribute key="slotType" value="head" />
-		<attribute key="quicklootcategory" value="helmet" />
 		<attribute key="absorbPercentIce" value="7" />
 		<attribute key="imbuingSlots" value="2" />
 	</item>
@@ -47223,7 +47222,6 @@
 		<attribute key="armor" value="7" />
 		<attribute key="magiclevelpoints" value="2" />
 		<attribute key="slotType" value="head" />
-		<attribute key="quicklootcategory" value="helmet" />
 		<attribute key="absorbPercentEarth" value="7" />
 		<attribute key="imbuingSlots" value="2" />
 	</item>
@@ -47351,7 +47349,44 @@
 		<attribute key="skillClub" value="3" />
 		<attribute key="weaponType" value="club" />
 		<attribute key="imbuingSlots" value="2" />
-	</item>	
+	</item>
+	
+	
+	
+	<item id="43000" name="green demon legs">
+		<attribute key="weight" value="7000" />
+		<attribute key="armor" value="9" />
+		<attribute key="slotType" value="legs" />
+	</item>
+	<item id="43001" article="a" name="green demon armor">
+		<attribute key="weight" value="8000" />
+		<attribute key="armor" value="16" />
+		<attribute key="slotType" value="body" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="43002" article="a" name="green demon helmet">
+		<attribute key="description" value="You hear an evil whispering from inside." />
+		<attribute key="weight" value="2950" />
+		<attribute key="armor" value="10" />
+		<attribute key="slotType" value="head" />
+		<attribute key="imbuingSlots" value="2" />
+	</item>
+	<item id="43003" name="green demon slippers">
+		<attribute key="weight" value="600" />
+		<attribute key="slotType" value="feet" />
+		<attribute key="imbuingSlots" value="1" />
+	</item>
+	
+	<item id="43004" article="a" name="Morshabaal's mask">
+		<attribute key="weight" value="2500" />
+		<attribute key="magiclevelpoints" value="1" />
+		<attribute key="armor" value="2" />
+		<attribute key="slotType" value="head" />
+	</item>
+	<item id="43006" name="Morshabaal's brain">
+		<attribute key="weight" value="3500" />
+		<attribute key="magiclevelpoints" value="4" />
+	</item>
 	
 	
 	
