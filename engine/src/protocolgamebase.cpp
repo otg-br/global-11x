@@ -747,7 +747,7 @@ void ProtocolGameBase::sendChannel(uint16_t channelId, const std::string& channe
 	writeToOutputBuffer(msg);
 }
 
-void ProtocolGameBase::sendMagicEffect(const Position& pos, uint8_t type)
+void ProtocolGameBase::sendMagicEffect(const Position& pos, uint16_t type)
 {
 	if (!canSee(pos)) {
 		return;
@@ -762,8 +762,8 @@ void ProtocolGameBase::sendMagicEffect(const Position& pos, uint8_t type)
 		msg.addByte(0x83);
 		msg.addByte(0x1);
 		msg.addByte(0x00); // distance -- formula improvisada: https://pastebin.com/EVy6TYWs
-		msg.addByte(MAGIC_EFFECTS_CREATE_EFFECT); // type
-		msg.addByte(type); // effect
+		msg.addByte(MAGIC_EFFECTS_CREATE_EFFECT); // type		
+		msg.add<uint16_t>(type);
 		msg.addByte(MAGIC_EFFECTS_END_LOOP); // hasImpactEffect?
 
 	}

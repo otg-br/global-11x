@@ -42,7 +42,7 @@ enum BlessType_t : uint8_t
 	BLESS_LAST = BLOOD_OF_THE_MOUNTAIN
 };
 
-enum MagicEffectClasses : uint8_t {
+enum MagicEffectClasses : uint16_t {
 	CONST_ME_NONE,
 
 	CONST_ME_DRAWBLOOD = 1,
@@ -162,7 +162,7 @@ enum MagicEffectClasses : uint8_t {
 	CONST_ME_LAST = CONST_ME_BLUE_FIREWORKS,
 };
 
-enum ShootType_t : uint8_t {
+enum ShootType_t : uint16_t {
 	CONST_ANI_NONE,
 
 	CONST_ANI_SPEAR = 1,

@@ -74,8 +74,8 @@ struct CombatParams {
 	CombatType_t combatType = COMBAT_NONE;
 	CombatOrigin origin = ORIGIN_SPELL;
 
-	uint8_t impactEffect = CONST_ME_NONE;
-	uint8_t distanceEffect = CONST_ANI_NONE;
+	uint16_t impactEffect = CONST_ME_NONE;
+	uint16_t distanceEffect = CONST_ANI_NONE;
 
 	bool blockedByArmor = false;
 	bool blockedByShield = false;
@@ -259,7 +259,7 @@ class Combat
 		static ReturnValue canDoCombat(Creature* attacker, Creature* target);
 		static void postCombatEffects(Creature* caster, const Position& pos, const CombatParams& params);
 
-		static void addDistanceEffect(Creature* caster, const Position& fromPos, const Position& toPos, uint8_t effect);
+		static void addDistanceEffect(Creature* caster, const Position& fromPos, const Position& toPos, uint16_t effect);
 
 		void doCombat(Creature* caster, Creature* target) const;
 		void doCombat(Creature* caster, const Position& pos) const;

@@ -50,6 +50,20 @@ static constexpr int32_t MAX_NODES = 512;
 static constexpr int32_t MAP_NORMALWALKCOST = 10;
 static constexpr int32_t MAP_DIAGONALWALKCOST = 25;
 
+static int_fast32_t dirNeighbors[8][5][2] = {
+        {{-1, 0}, {0, 1}, {1, 0}, {1, 1}, {-1, 1}},
+        {{-1, 0}, {0, 1}, {0, -1}, {-1, -1}, {-1, 1}},
+        {{-1, 0}, {1, 0}, {0, -1}, {-1, -1}, {1, -1}},
+        {{0, 1}, {1, 0}, {0, -1}, {1, -1}, {1, 1}},
+        {{1, 0}, {0, -1}, {-1, -1}, {1, -1}, {1, 1}},
+        {{-1, 0}, {0, -1}, {-1, -1}, {1, -1}, {-1, 1}},
+        {{0, 1}, {1, 0}, {1, -1}, {1, 1}, {-1, 1}},
+        {{-1, 0}, {0, 1}, {-1, -1}, {1, 1}, {-1, 1}}
+};
+static int_fast32_t allNeighbors[8][2] = {
+    {-1, 0}, {0, 1}, {1, 0}, {0, -1}, {-1, -1}, {1, -1}, {1, 1}, {-1, 1}
+};
+
 class AStarNodes
 {
 	public:
@@ -329,8 +343,9 @@ class Map
 
 		const Tile* canWalkTo(const Creature& creature, const Position& pos) const;
 
-		bool getPathMatching(const Creature& creature, Position targetPos, std::forward_list<Direction>& dirList,
-		                     const FrozenPathingConditionCall& pathCondition, const FindPathParams& fpp) const;
+		bool getPathMatching(const Creature& creature, const Position& targetPos, std::vector<Direction>& dirList,
+                             const FrozenPathingConditionCall& pathCondition, const FindPathParams& fpp) const;
+
 
 		std::map<std::string, Position> waypoints;
 
