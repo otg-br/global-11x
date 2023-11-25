@@ -339,7 +339,7 @@ class ProtocolGame final : public ProtocolGameBase
 		// charm
 		void sendCharmData();
 
-		void sendDistanceShoot(const Position& from, const Position& to, uint8_t type);
+		void sendDistanceShoot(const Position& from, const Position& to, uint16_t type);
 		void sendCreatureHealth(const Creature* creature);
 		void sendPlayerMana(const Player* target);
 		void sendBestiaryTracker();

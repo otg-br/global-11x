@@ -2971,7 +2971,7 @@ void ProtocolGame::sendChangeSpeed(const Creature* creature, uint32_t speed)
 	writeToOutputBuffer(msg);
 }
 
-void ProtocolGame::sendDistanceShoot(const Position& from, const Position& to, uint8_t type)
+void ProtocolGame::sendDistanceShoot(const Position& from, const Position& to, uint16_t type)
 {
 	NetworkMessage msg;
 	if(version >= 1220) {
@@ -2981,7 +2981,7 @@ void ProtocolGame::sendDistanceShoot(const Position& from, const Position& to, u
 		msg.addByte(0x01);
 		msg.addByte(0);
 		msg.addByte(MAGIC_EFFECTS_CREATE_DISTANCEEFFECT_REVERSED); // type 4-5 [to => from/from => to]
-		msg.addByte(type); // effect
+		msg.add<uint16_t>(type);
 		msg.add<int8_t>(from.x - to.x); // x
 		msg.add<int8_t>(from.y - to.y);// y
 		msg.addByte(MAGIC_EFFECTS_END_LOOP ); // has impactEffect?
@@ -2991,7 +2991,7 @@ void ProtocolGame::sendDistanceShoot(const Position& from, const Position& to, u
 		msg.addByte(0x85);
 		msg.addPosition(from);
 		msg.addPosition(to);
-		msg.addByte(type);		
+		msg.add<uint16_t>(type);
 	}
 
 	writeToOutputBuffer(msg);

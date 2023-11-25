@@ -421,12 +421,12 @@ bool Combat::setParam(CombatParam_t param, uint32_t value)
 		}
 
 		case COMBAT_PARAM_EFFECT: {
-			params.impactEffect = static_cast<uint8_t>(value);
+			params.impactEffect = static_cast<uint16_t>(value);
 			return true;
 		}
 
 		case COMBAT_PARAM_DISTANCEEFFECT: {
-			params.distanceEffect = static_cast<uint8_t>(value);
+			params.distanceEffect = static_cast<uint16_t>(value);
 			return true;
 		}
 
@@ -620,7 +620,7 @@ void Combat::postCombatEffects(Creature* caster, const Position& pos, const Comb
 	}
 }
 
-void Combat::addDistanceEffect(Creature* caster, const Position& fromPos, const Position& toPos, uint8_t effect)
+void Combat::addDistanceEffect(Creature* caster, const Position& fromPos, const Position& toPos, uint16_t effect)
 {
 	if (effect == CONST_ANI_WEAPONTYPE) {
 		if (!caster) {
@@ -951,7 +951,7 @@ void Combat::doAreaCombat(Creature* caster, const Position& position, const Area
 
 	postCombatEffects(caster, position, params);
 
-	uint8_t affecteds = 0;
+	uint16_t affecteds = 0;
 	for (Tile* tile : tileList) {
 		if (canDoCombat(caster, tile, params.aggressive) != RETURNVALUE_NOERROR) {
 			continue;

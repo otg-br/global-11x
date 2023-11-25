@@ -247,15 +247,22 @@ bool Creature::getNextStep(Direction& dir, uint32_t&)
 	return true;
 }
 
-void Creature::startAutoWalk(const std::forward_list<Direction>& listDir)
+void Creature::startAutoWalk()
 {
-	listWalkDir = listDir;
+	addEventWalk(listWalkDir.size() == 1);
+}
 
-	size_t size = 0;
-	for (auto it = listDir.begin(); it != listDir.end() && size <= 1; ++it) {
-		size++;
-	}
-	addEventWalk(size == 1);
+void Creature::startAutoWalk(Direction direction)
+{
+	listWalkDir.clear();
+	listWalkDir.emplace_back(direction);
+	startAutoWalk();
+}
+
+void Creature::startAutoWalk(std::vector<Direction> listDir)
+{
+	listWalkDir = std::move(listDir);
+	startAutoWalk();
 }
 
 void Creature::addEventWalk(bool firstStep)
@@ -923,7 +930,7 @@ void Creature::goToFollowCreature()
 					listWalkDir.clear();
 					if (getPathTo(followCreature->getPosition(), listWalkDir, fpp)) {
 						hasFollowPath = true;
-						startAutoWalk(listWalkDir);
+						startAutoWalk();
 					} else {
 						hasFollowPath = false;
 					}
@@ -936,13 +943,13 @@ void Creature::goToFollowCreature()
 				listWalkDir.push_front(dir);
 
 				hasFollowPath = true;
-				startAutoWalk(listWalkDir);
+				startAutoWalk();
 			}
 		} else {
 			listWalkDir.clear();
 			if (getPathTo(followCreature->getPosition(), listWalkDir, fpp)) {
 				hasFollowPath = true;
-				startAutoWalk(listWalkDir);
+				startAutoWalk();
 			} else {
 				hasFollowPath = false;
 			}
@@ -1633,9 +1640,9 @@ bool Creature::isInvisible() const
 	}) != conditions.end();
 }
 
-bool Creature::getPathTo(const Position& targetPos, std::forward_list<Direction>& dirList, const FindPathParams& fpp) const
+bool Creature::getPathTo(const Position& targetPos, std::vector<Direction>& dirList, const FindPathParams& fpp) const
 {
-	return g_game.map.getPathMatching(*this, targetPos, dirList, FrozenPathingConditionCall(targetPos), fpp);
+    return g_game.map.getPathMatching(*this, targetPos, dirList, FrozenPathingConditionCall(targetPos), fpp);
 }
 
 bool Creature::getPathTo(const Position& targetPos, std::forward_list<Direction>& dirList, int32_t minTargetDist, int32_t maxTargetDist, bool fullPathSearch /*= true*/, bool clearSight /*= true*/, int32_t maxSearchDist /*= 0*/) const

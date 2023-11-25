@@ -534,8 +534,8 @@ class Game
 
 		bool combatBlockHit(CombatDamage& damage, Creature* attacker, Creature* target, bool checkDefense, bool checkArmor, bool field);
 
-		void combatGetTypeInfo(CombatType_t combatType, Creature* target, TextColor_t& color, uint8_t& effect);
-		void combatGetEffect(CombatType_t combatType, Creature* target, uint8_t& effect);
+		void combatGetTypeInfo(CombatType_t combatType, Creature* target, TextColor_t& color, uint16_t& effect);
+		void combatGetEffect(CombatType_t combatType, Creature* target, uint16_t& effect);
 
 		bool combatChangeHealth(Creature* attacker, Creature* target, CombatDamage& damage, bool isEvent = false);
 		bool combatChangeMana(Creature* attacker, Creature* target, CombatDamage& damage);
@@ -543,10 +543,10 @@ class Game
 		//animation help functions
 		void addCreatureHealth(const Creature* target);
 		static void addCreatureHealth(const SpectatorHashSet& spectators, const Creature* target);
-		void addMagicEffect(const Position& pos, uint8_t effect);
-		static void addMagicEffect(const SpectatorHashSet& spectators, const Position& pos, uint8_t effect);
-		void addDistanceEffect(const Position& fromPos, const Position& toPos, uint8_t effect);
-		static void addDistanceEffect(const SpectatorHashSet& spectators, const Position& fromPos, const Position& toPos, uint8_t effect);
+		void addMagicEffect(const Position& pos, uint16_t effect);
+		static void addMagicEffect(const SpectatorHashSet& spectators, const Position& pos, uint16_t effect);
+		void addDistanceEffect(const Position& fromPos, const Position& toPos, uint16_t effect);
+		static void addDistanceEffect(const SpectatorHashSet& spectators, const Position& fromPos, const Position& toPos, uint16_t effect);
 
 		void startImbuementCountdown(Item* item) {
 			item->incrementReferenceCounter();
@@ -617,9 +617,9 @@ class Game
 
 		bool reload(ReloadTypes_t reloadType);
 
-		bool hasEffect(uint8_t effectId);
-		bool hasDistanceEffect(uint8_t effectId);
-		bool hasLootType(uint8_t lootTypeId);
+		bool hasEffect(uint16_t effectId);
+		bool hasDistanceEffect(uint16_t effectId);
+		bool hasLootType(uint16_t lootTypeId);
 
 		bool loadFreePass();
 		bool hasFreePass(uint32_t guid) {
