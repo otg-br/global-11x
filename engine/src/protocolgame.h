@@ -439,7 +439,7 @@ class ProtocolGame final : public ProtocolGameBase
 
 		//otclient
 		void parseExtendedOpcode(NetworkMessage& msg);
-        
+
 		void parseBestiaryTracker(NetworkMessage& msg);
 
 		friend class Player;

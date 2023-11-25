@@ -50,7 +50,7 @@ void RSA::loadPEM(const std::string& filename)
 	std::ostringstream oss;
 	for (std::string line; std::getline(file, line); oss << line);
 	std::string key = oss.str();
-    
+
 	if (key.substr(0, header.size()) != header) {
 		throw std::runtime_error("Missing RSA private key header.");
 	}

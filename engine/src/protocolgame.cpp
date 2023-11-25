@@ -70,7 +70,6 @@ void ProtocolGame::release()
 
 void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingSystem_t operatingSystem)
 {
-
 	//dispatcher thread
 	Player* foundPlayer = g_game.getPlayerByName(name);
 	if (!foundPlayer || g_config.getBoolean(ConfigManager::ALLOW_CLONES)) {
@@ -402,6 +401,9 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 	enableXTEAEncryption();
 	setXTEAKey(key);
 
+	if (operatingSystem >= CLIENTOS_OTCLIENT_LINUX) {
+		disconnectClient("Only official client is allowed!");
+		return;
 	}
 
 	msg.skipBytes(1); // gamemaster flag
