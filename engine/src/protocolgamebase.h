@@ -80,7 +80,7 @@ class ProtocolGameBase : public Protocol {
 		void sendContainer(uint8_t cid, const Container* container, bool hasParent, uint16_t firstIndex);
 		void sendChannel(uint16_t channelId, const std::string& channelName, const UsersMap* channelUsers, const InvitedMap* invitedUsers);
 		void sendAddCreature(const Creature* creature, const Position& pos, int32_t stackpos, bool isLogin);
-		void sendMagicEffect(const Position& pos, uint16_t type);
+		void sendMagicEffect(const Position& pos, uint8_t type);
 		void sendStats();
 		void sendPremiumTrigger();
 		void sendBlessStatus();
