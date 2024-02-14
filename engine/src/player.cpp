@@ -1441,7 +1441,7 @@ void Player::onRemoveCreature(Creature* creature, bool isLogout)
 	}
 }
 
-void Player::openShopWindow(Npc* npc, const std::list<ShopInfo>& shop)
+void Player::openShopWindow(Npc* npc, const std::vector<ShopInfo>& shop)
 {
 	shopItemList = shop;
   	std::map<uint32_t, uint32_t> tempInventoryMap;

@@ -392,7 +392,6 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 	// In version 12.40.10030 we have 13 extra bytes
 	if (msg.getLength() - msg.getBufferPosition() == 141) {
 		msg.skipBytes(13);
-		}
 	}
 
 	if (!Protocol::RSA_decrypt(msg)) {
