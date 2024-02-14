@@ -915,6 +915,9 @@ function sendUpdateCoinBalance(playerId)
 
 	msg:addU32(player:getCoinsBalance())
 	msg:addU32(player:getCoinsBalance())
+	if player:getClient().version >= 1251 then
+		msg:addU32(player:getCoinsBalance())
+	end
 	if player:getClient().version >= 1220 then
 		msg:addU32(0) -- moeda do torneio
 	end

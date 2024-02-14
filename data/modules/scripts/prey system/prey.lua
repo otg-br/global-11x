@@ -203,7 +203,7 @@ function Player.getMinutesUntilFreeReroll(self, slot)
 	if (self:getPreyNextUse(slot) <= currentTime) then
 		return 0
 	end
-	return math.floor((self:getPreyNextUse(slot) - currentTime) / 60)
+	return math.floor((self:getPreyNextUse(slot) - currentTime))
 end
 
 function Player.getRerollPrice(self)
@@ -506,7 +506,7 @@ function sendPreyData(playerId, slot)
 	end
 
 	-- Resources and times are always sent
-	msg:addU16(player:getMinutesUntilFreeReroll(slot)) -- next prey reroll here
+	msg:addU32(player:getMinutesUntilFreeReroll(slot)) -- next prey reroll here
 	-- Client 11.9+ compat, feature unavailable.
 	if version >= 1190  then -- and version < 1220 or (version >= 1220 and slotState ~= Prey.StateTypes.LOCKED) then
 		msg:addByte(0x00) -- preyWildCards

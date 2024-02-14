@@ -374,7 +374,7 @@ class ProtocolGame final : public ProtocolGameBase
 		void sendClientCheck();
 		void sendGameNews();
 		void sendResourceBalance(uint64_t money, uint64_t bank);
-		void sendSaleItemList(const std::list<ShopInfo>& shop);
+    		void sendSaleItemList(const std::vector<ShopInfo>& shop, const std::map<uint32_t, uint32_t>& inventoryMap);
 		void sendMarketEnter(uint32_t depotId);
 		void sendMarketLeave();
 		void sendMarketBrowseItem(uint16_t itemId, const MarketOfferList& buyOffers, const MarketOfferList& sellOffers);

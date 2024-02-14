@@ -7992,7 +7992,10 @@ void Game::playerSendSaleItemList(uint32_t playerId)
 		return;
 	}
 
-	player->sendSaleItemList();
+	std::map<uint32_t, uint32_t> tempInventoryMap;
+ 	player->getAllItemTypeCountAndSubtype(tempInventoryMap);
+
+	player->sendSaleItemList(tempInventoryMap);
 }
 
 void Game::parsePlayerExtendedOpcode(uint32_t playerId, uint8_t opcode, const std::string& buffer)

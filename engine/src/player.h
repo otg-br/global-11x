@@ -1198,12 +1198,11 @@ class Player final : public Creature, public Cylinder
 				client->sendShop(npc, shopItemList);
 			}
 		}
-		void sendSaleItemList() {
-			updatingSaleItemList = false;
-			if (client) {
-				client->sendSaleItemList(shopItemList);
-			}
-		}
+    		void sendSaleItemList(const std::map<uint32_t, uint32_t>& inventoryMap) const {
+      			if (client) {
+        			client->sendSaleItemList(shopItemList, inventoryMap);
+      			}
+    		}
 		void sendCloseShop() const {
 			if (client) {
 				client->sendCloseShop();
@@ -1441,7 +1440,7 @@ class Player final : public Creature, public Cylinder
 		ReturnValue rerollPreyData(uint8_t preySlotId);
 		ReturnValue rerollPreyDataWildcard(uint8_t preySlotId);
 		ReturnValue rerollPreyBonus(uint8_t preySlotId);
-		uint16_t getFreeRerollTime(uint8_t preySlotId);
+		uint32_t getFreeRerollTime(uint8_t preySlotId);
 		uint16_t getPreyTimeLeft(uint8_t preySlotId);
 		void decreasePreyTimeLeft(uint16_t amount);
 
@@ -1770,6 +1769,7 @@ class Player final : public Creature, public Cylinder
 		std::map<uint32_t, uint32_t>& getAllItemTypeCount(std::map<uint32_t, uint32_t>& countMap) const final;
 		Item* getItemByClientId(uint16_t clientId) const;
 		std::map<uint16_t, uint16_t> getInventoryClientIds() const;
+    		void getAllItemTypeCountAndSubtype(std::map<uint32_t, uint32_t>& countMap) const;
 		Thing* getThing(size_t index) const final;
 
 		void internalAddThing(Thing* thing) final;

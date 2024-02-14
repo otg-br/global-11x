@@ -26,8 +26,8 @@ static constexpr auto STATUS_SERVER_CREDITS = "TFS Team, Erick Nunes, Leo Pereir
 static constexpr auto STATUS_SERVER_CONTRIBUTORS = "Johncore and Mark Samman";
 
 static constexpr auto CLIENT_VERSION_MIN = 1100;
-static constexpr auto CLIENT_VERSION_MAX = 1235;
-static constexpr auto CLIENT_VERSION_STR = "12.35";
+static constexpr auto CLIENT_VERSION_MAX = 1251;
+static constexpr auto CLIENT_VERSION_STR = "12.51";
 
 static constexpr auto AUTHENTICATOR_DIGITS = 6U;
 static constexpr auto AUTHENTICATOR_PERIOD = 30U;
