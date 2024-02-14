@@ -379,12 +379,19 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 
 	msg.skipBytes(3); // U8 client type, U16 dat revision
 
+
 	if (clientVersion >= 1149 && clientVersion < 1200) {
 		// on 1149.6xxx, this was removed later.
 		// extra byte for "optimise connection stability"
 		if (msg.getLength() - msg.getBufferPosition() > 128) {
 			shouldAddExivaRestrictions = true;
 			msg.skipBytes(1);
+		}
+
+	if (clientVersion >= 1240) {
+	// In version 12.40.10030 we have 13 extra bytes
+	if (msg.getLength() - msg.getBufferPosition() == 141) {
+		msg.skipBytes(13);
 		}
 	}
 
@@ -1800,6 +1807,7 @@ void ProtocolGame::sendShop(Npc* npc, const ShopInfoList& itemList)
 	// moeda de troca?
 	if (version >= 1220)
 		msg.addItemId(ITEM_GOLD_COIN);
+		msg.addString(std::string()); // ??
 
 	uint16_t itemsToSend = std::min<size_t>(itemList.size(), std::numeric_limits<uint16_t>::max());
 	msg.add<uint16_t>(itemsToSend);
