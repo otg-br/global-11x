@@ -489,7 +489,16 @@ enum PlayerSex_t : uint8_t {
 };
 
 enum Vocation_t : uint16_t {
-	VOCATION_NONE = 0
+	VOCATION_NONE = 0,
+	VOCATION_SORCERER = 1,
+	VOCATION_DRUID = 2,
+	VOCATION_PALADIN = 3,
+	VOCATION_KNIGHT = 4,
+	VOCATION_MASTER_SORCERER = 5,
+	VOCATION_ELDER_DRUID = 6,
+	VOCATION_ROYAL_PALADIN = 7,
+	VOCATION_ELITE_KNIGHT = 8,
+	VOCATION_LAST = VOCATION_ELITE_KNIGHT
 };
 
 enum ReturnValue {
@@ -799,6 +808,11 @@ struct Outfit_t {
 	uint8_t lookLegs = 0;
 	uint8_t lookFeet = 0;
 	uint8_t lookAddons = 0;
+	uint8_t lookMountHead = 0;
+	uint8_t lookMountBody = 0;
+	uint8_t lookMountLegs = 0;
+	uint8_t lookMountFeet = 0;
+	uint16_t lookFamiliarsType = 0;
 };
 
 struct LightInfo {

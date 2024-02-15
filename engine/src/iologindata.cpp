@@ -599,6 +599,11 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
 	player->defaultOutfit.lookFeet = result->getNumber<uint16_t>("lookfeet");
 	player->defaultOutfit.lookMount = result->getNumber<uint16_t>("lookmount");
 	player->defaultOutfit.lookAddons = result->getNumber<uint16_t>("lookaddons");
+	player->defaultOutfit.lookMountHead = result->getNumber<uint16_t>("lookmounthead");
+	player->defaultOutfit.lookMountBody = result->getNumber<uint16_t>("lookmountbody");
+	player->defaultOutfit.lookMountLegs = result->getNumber<uint16_t>("lookmountlegs");
+	player->defaultOutfit.lookMountFeet = result->getNumber<uint16_t>("lookmountfeet");
+	player->defaultOutfit.lookFamiliarsType = result->getNumber<uint16_t>("lookfamiliarstype");
 	player->currentOutfit = player->defaultOutfit;
 	player->direction = static_cast<Direction> (result->getNumber<uint16_t>("direction"));
 	player->setBonusRerollCount(result->getNumber<int64_t>("bonusrerollcount"));
@@ -1178,6 +1183,11 @@ bool IOLoginData::savePlayer(Player* player)
 	query << "`looklegs` = " << static_cast<uint32_t>(player->defaultOutfit.lookLegs) << ',';
 	query << "`looktype` = " << player->defaultOutfit.lookType << ',';
 	query << "`lookaddons` = " << static_cast<uint32_t>(player->defaultOutfit.lookAddons) << ',';
+	query << "`lookmountbody` = " << static_cast<uint32_t>(player->defaultOutfit.lookMountBody) << ',';
+	query << "`lookmountfeet` = " << static_cast<uint32_t>(player->defaultOutfit.lookMountFeet) << ',';
+	query << "`lookmounthead` = " << static_cast<uint32_t>(player->defaultOutfit.lookMountHead) << ',';
+	query << "`lookmountlegs` = " << static_cast<uint32_t>(player->defaultOutfit.lookMountLegs) << ',';
+	query << "`lookfamiliarstype` = " << player->defaultOutfit.lookFamiliarsType << ',';
 	query << "`maglevel` = " << player->magLevel << ',';
 	query << "`mana` = " << player->mana << ',';
 	query << "`manamax` = " << player->manaMax << ',';

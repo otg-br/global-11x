@@ -17,7 +17,9 @@ local ServerPackets = {
     OpenRewardWall = 0xE2, -- 226
     CloseRewardWall = 0xE3, -- 227
     DailyRewardBasic = 0xE4,-- 228
-    DailyRewardHistory = 0xE5 -- 229
+    DailyRewardHistory = 0xE5, -- 229
+    CollectionResource = 0x14,
+    JokerResource = 0x15
 }
 
 local ClientPackets ={

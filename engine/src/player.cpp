@@ -673,6 +673,11 @@ void Player::addStorageValue(const uint32_t key, const int32_t value, const bool
 			return;
 		} else if (IS_IN_KEYRANGE(key, MOUNTS_RANGE)) {
 			// do nothing
+		}
+		else if (IS_IN_KEYRANGE(key, FAMILIARS_RANGE)) {
+			familiars.emplace_back(
+				value >> 16);
+			return;
 		} else {
 			std::cout << "Warning: unknown reserved key: " << key << " player: " << getName() << std::endl;
 			return;
@@ -4233,10 +4238,6 @@ bool Player::canWear(uint32_t lookType, uint8_t addons) const
 		return false;
 	}
 
-	if (outfit->vip && !isVip()) {
-		return false;
-	}
-
 	int32_t value;
 	if (getStorageValue(81723, value)){
 		sendTextMessage(MESSAGE_EVENT_ADVANCE, "You cannot change your outfit inside the Battlefield.");
@@ -4275,10 +4276,15 @@ bool Player::canLogout()
 
 void Player::genReservedStorageRange()
 {
-	//generate outfits range
-	uint32_t base_key = PSTRG_OUTFITS_RANGE_START;
+	// generate outfits range
+	uint32_t outfits_key = PSTRG_OUTFITS_RANGE_START;
 	for (const OutfitEntry& entry : outfits) {
-		storageMap[++base_key] = (entry.lookType << 16) | entry.addons;
+		storageMap[++outfits_key] = (entry.lookType << 16) | entry.addons;
+	}
+	// generate familiars range
+	uint32_t familiar_key = PSTRG_FAMILIARS_RANGE_START;
+	for (const FamiliarEntry& entry : familiars) {
+		storageMap[++familiar_key] = (entry.lookType << 16);
 	}
 }
 
@@ -4327,10 +4333,6 @@ bool Player::getOutfitAddons(const Outfit& outfit, uint8_t& addons) const
 		return false;
 	}
 
-	if (outfit.vip && !isVip()) {
-		return false;
-	}
-
 	for (const OutfitEntry& outfitEntry : outfits) {
 		if (outfitEntry.lookType != outfit.lookType) {
 			continue;
@@ -4345,6 +4347,76 @@ bool Player::getOutfitAddons(const Outfit& outfit, uint8_t& addons) const
 	}
 
 	addons = 0;
+	return true;
+}
+
+bool Player::canFamiliar(uint32_t lookType) const {
+	if (group->access) {
+		return true;
+	}
+
+	const Familiar* familiar = Familiars::getInstance().getFamiliarByLookType(getVocationId(), lookType);
+	if (!familiar) {
+		return false;
+	}
+
+	if (familiar->premium && !isPremium()) {
+		return false;
+	}
+
+	if (familiar->unlocked) {
+		return true;
+	}
+
+	for (const FamiliarEntry& familiarEntry : familiars) {
+		if (familiarEntry.lookType != lookType) {
+			continue;
+		}
+	}
+	return false;
+}
+
+void Player::addFamiliar(uint16_t lookType) {
+	for (FamiliarEntry& familiarEntry : familiars) {
+		if (familiarEntry.lookType == lookType) {
+			return;
+		}
+	}
+	familiars.emplace_back(lookType);
+}
+
+bool Player::removeFamiliar(uint16_t lookType) {
+	for (auto it = familiars.begin(), end = familiars.end(); it != end; ++it) {
+		FamiliarEntry& entry = *it;
+		if (entry.lookType == lookType) {
+			familiars.erase(it);
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Player::getFamiliar(const Familiar& familiar) const {
+	if (group->access) {
+		return true;
+	}
+
+	if (familiar.premium && !isPremium()) {
+		return false;
+	}
+
+	for (const FamiliarEntry& familiarEntry : familiars) {
+		if (familiarEntry.lookType != familiar.lookType) {
+			continue;
+		}
+
+		return true;
+	}
+
+	if (!familiar.unlocked) {
+		return false;
+	}
+
 	return true;
 }
 
@@ -4951,11 +5023,6 @@ bool Player::toggleMount(bool mount)
 			return false;
 		}
 
-		if (currentMount->vip && !isVip()) {
-			sendCancelMessage(RETURNVALUE_YOUNEEDVIPACCOUNT);
-			return false;
-		}
-
 		if (hasCondition(CONDITION_OUTFIT)) {
 			sendCancelMessage(RETURNVALUE_NOTPOSSIBLE);
 			return false;
@@ -5035,10 +5102,6 @@ bool Player::hasMount(const Mount* mount) const
 	}
 
 	if (mount->premium && !isPremium()) {
-		return false;
-	}
-
-	if (mount->vip && !isVip()) {
 		return false;
 	}
 

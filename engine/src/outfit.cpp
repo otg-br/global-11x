@@ -61,7 +61,7 @@ bool Outfits::loadFromXml()
 			pugi::cast<uint16_t>(lookTypeAttribute.value()),
 			outfitNode.attribute("premium").as_bool(),
 			outfitNode.attribute("unlocked").as_bool(true),
-			outfitNode.attribute("vip").as_bool(false)
+			outfitNode.attribute("from").as_string()
 		);
 	}
 	return true;

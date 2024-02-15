@@ -1,6 +1,6 @@
 /**
  * The Forgotten Server - a free and open-source MMORPG server emulator
- * Copyright (C) 2019 Mark Samman <mark.samman@gmail.com>
+ * Copyright (C) 2019  Mark Samman <mark.samman@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,52 +17,48 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef FS_OUTFIT_H_C56E7A707E3F422C8C93D9BE09916AA3
-#define FS_OUTFIT_H_C56E7A707E3F422C8C93D9BE09916AA3
+#ifndef SRC_FAMILIARS_H_
+#define SRC_FAMILIARS_H_
 
 #include <utility>
+#include <vector>
+#include <string>
 
 #include "enums.h"
 
-struct Outfit {
-	Outfit(std::string name, uint16_t lookType, bool premium, bool unlocked, std::string initFrom) :
-		name(std::move(name)), lookType(lookType), premium(premium), unlocked(unlocked), from(initFrom) {}
+struct Familiar {
+	Familiar(std::string initName, uint16_t initLookType, bool initPremium, bool initUnlocked, std::string initType) :
+		name(initName), lookType(initLookType), premium(initPremium), unlocked(initUnlocked),
+		type(initType) {}
 
 	std::string name;
 	uint16_t lookType;
 	bool premium;
 	bool unlocked;
-	std::string from;
+	std::string type;
 };
 
-struct ProtocolOutfit {
-	ProtocolOutfit(const std::string& name, uint16_t lookType, uint8_t addons) :
-		name(name), lookType(lookType), addons(addons) {}
+struct ProtocolFamiliars {
+	ProtocolFamiliars(const std::string& initName, uint16_t initLookType) :
+		name(initName), lookType(initLookType) {}
 
 	const std::string& name;
 	uint16_t lookType;
-	uint8_t addons;
 };
 
-class Outfits
-{
+class Familiars {
 	public:
-		static Outfits& getInstance() {
-			static Outfits instance;
+		static Familiars& getInstance() {
+			static Familiars instance;
 			return instance;
 		}
-
-		const Outfit* getOpositeSexOutfitByLookType(PlayerSex_t sex, uint16_t lookType);
-
 		bool loadFromXml();
-
-		const Outfit* getOutfitByLookType(PlayerSex_t sex, uint16_t lookType) const;
-		const std::vector<Outfit>& getOutfits(PlayerSex_t sex) const {
-			return outfits[sex];
+		const std::vector<Familiar>& getFamiliars(uint16_t vocation) const {
+			return familiars[vocation];
 		}
-
+		const Familiar* getFamiliarByLookType(uint16_t vocation, uint16_t lookType) const;
 	private:
-		std::vector<Outfit> outfits[PLAYERSEX_LAST + 1];
+		std::vector<Familiar> familiars[VOCATION_LAST + 1];
 };
 
-#endif
+#endif  // SRC_FAMILIARS_H_

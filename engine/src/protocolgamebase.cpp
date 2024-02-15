@@ -290,7 +290,14 @@ void ProtocolGameBase::AddCreature(NetworkMessage& msg, const Creature* creature
 	msg.addByte(creature->getDirection());
 
 	if (!creature->isInGhostMode() && !creature->isInvisible()) {
-		AddOutfit(msg, creature->getCurrentOutfit());
+		const Outfit_t& outfit = creature->getCurrentOutfit();
+		AddOutfit(msg, outfit);
+		if (outfit.lookMount != 0) {
+			msg.addByte(outfit.lookMountHead);
+			msg.addByte(outfit.lookMountBody);
+			msg.addByte(outfit.lookMountLegs);
+			msg.addByte(outfit.lookMountFeet);
+		}
 	} else {
 		static Outfit_t outfit;
 		AddOutfit(msg, outfit);
@@ -414,6 +421,10 @@ void ProtocolGameBase::AddPlayerStats(NetworkMessage& msg)
 	} else {
 		std::string message = offer->getDisabledReason(player);
 		msg.addByte(message.empty());
+	}
+	if (version >= 1260) {
+		msg.add<uint16_t>(0);  // remaining mana shield
+		msg.add<uint16_t>(0);  // total mana shield
 	}
 }
 
@@ -1143,6 +1154,7 @@ void ProtocolGameBase::sendBasicData()
 	for (uint8_t sid : spellsList) {
 		msg.addByte(sid);
 	}
+	msg.addByte(0);  // bool - determine whether magic shield is active or not
 	writeToOutputBuffer(msg);
 }
 

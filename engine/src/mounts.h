@@ -20,17 +20,20 @@
 #ifndef FS_MOUNTS_H_73716D11906A4C5C9F4A7B68D34C9BA6
 #define FS_MOUNTS_H_73716D11906A4C5C9F4A7B68D34C9BA6
 
+#include <utility>
+#include <string>
+
 struct Mount
 {
-	Mount(uint8_t id, uint16_t clientId, std::string name, int32_t speed, bool premium, bool vip) :
-		name(std::move(name)), speed(speed), clientId(clientId), id(id), premium(premium), vip(vip) {}
+	Mount(uint8_t id, uint16_t clientId, std::string name, int32_t speed, bool premium, std::string initType) :
+		name(std::move(name)), speed(speed), clientId(clientId), id(id), premium(premium), type(initType) {}
 
 	std::string name;
 	int32_t speed;
 	uint16_t clientId;
 	uint8_t id;
 	bool premium;
-	bool vip;
+	std::string type;
 };
 
 class Mounts
