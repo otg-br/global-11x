@@ -382,6 +382,8 @@ class Game
 
 		void playerRequestLockFind(uint32_t playerId);
 
+		void updatePlayerSaleItems(uint32_t playerId);
+
 		bool internalStartTrade(Player* player, Player* partner, Item* tradeItem);
 		void internalCloseTrade(Player* player);
 		bool playerBroadcastMessage(Player* player, const std::string& text) const;

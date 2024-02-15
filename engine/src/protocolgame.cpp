@@ -388,12 +388,14 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 			msg.skipBytes(1);
 		}
 
-	if (clientVersion >= 1240) {
-	// In version 12.40.10030 we have 13 extra bytes
-	if (msg.getLength() - msg.getBufferPosition() == 141) {
-		msg.skipBytes(13);
+		if (clientVersion >= 1240) {
+			// In version 12.40.10030 we have 13 extra bytes
+			if (msg.getLength() - msg.getBufferPosition() == 141) {
+				msg.skipBytes(13);
+			}
+		}
 	}
-
+	
 	if (!Protocol::RSA_decrypt(msg)) {
 		disconnect();
 		return;
@@ -1885,57 +1887,56 @@ void ProtocolGame::sendResourceBalance(uint64_t money, uint64_t bank)
 
 void ProtocolGame::sendSaleItemList(const std::vector<ShopInfo>& shop, const std::map<uint32_t, uint32_t>& inventoryMap)
 {
-  //Since we already have full inventory map we shouldn't call getMoney here - it is simply wasting cpu power
-  uint64_t playerMoney = 0;
-  auto it = inventoryMap.find(ITEM_CRYSTAL_COIN);
-  if (it != inventoryMap.end()) {
-    playerMoney += static_cast<uint64_t>(it->second) * 10000;
-  }
-  it = inventoryMap.find(ITEM_PLATINUM_COIN);
-  if (it != inventoryMap.end()) {
-    playerMoney += static_cast<uint64_t>(it->second) * 100;
-  }
-  it = inventoryMap.find(ITEM_GOLD_COIN);
-  if (it != inventoryMap.end()) {
-    playerMoney += static_cast<uint64_t>(it->second);
-  }
-}
-  NetworkMessage msg;
-  msg.addByte(0xEE);
-  msg.addByte(0x00);
-  msg.add<uint64_t>(player->getBankBalance());
-  msg.addByte(0xEE);
-  msg.addByte(0x01);
-  msg.add<uint64_t>(playerMoney);
-  msg.addByte(0x7B);
-  msg.add<uint64_t>(playerMoney);
+	//Since we already have full inventory map we shouldn't call getMoney here - it is simply wasting cpu power
+	uint64_t playerMoney = 0;
+	auto it = inventoryMap.find(ITEM_CRYSTAL_COIN);
+	if (it != inventoryMap.end()) {
+		playerMoney += static_cast<uint64_t>(it->second) * 10000;
+	}
+	it = inventoryMap.find(ITEM_PLATINUM_COIN);
+	if (it != inventoryMap.end()) {
+		playerMoney += static_cast<uint64_t>(it->second) * 100;
+	}
+	it = inventoryMap.find(ITEM_GOLD_COIN);
+	if (it != inventoryMap.end()) {
+		playerMoney += static_cast<uint64_t>(it->second);
+	}
+	NetworkMessage msg;
+	msg.addByte(0xEE);
+	msg.addByte(0x00);
+	msg.add<uint64_t>(player->getBankBalance());
+	msg.addByte(0xEE);
+	msg.addByte(0x01);
+	msg.add<uint64_t>(playerMoney);
+	msg.addByte(0x7B);
+	msg.add<uint64_t>(playerMoney);
 
-  uint8_t itemsToSend = 0;
-  auto msgPosition = msg.getBufferPosition();
-  msg.skipBytes(1);
+	uint8_t itemsToSend = 0;
+	auto msgPosition = msg.getBufferPosition();
+	msg.skipBytes(1);
 
-  for (const ShopInfo& shopInfo : shop) {
-    if (shopInfo.sellPrice == 0) {
-      continue;
-    }
+	for (const ShopInfo& shopInfo : shop) {
+		if (shopInfo.sellPrice == 0) {
+			continue;
+		}
 
-    uint32_t index = static_cast<uint32_t>(shopInfo.itemId);
-    if (Item::items[shopInfo.itemId].isFluidContainer()) {
-      index |= (static_cast<uint32_t>(shopInfo.subType) << 16);
-    }
+		uint32_t index = static_cast<uint32_t>(shopInfo.itemId);
+		if (Item::items[shopInfo.itemId].isFluidContainer()) {
+			index |= (static_cast<uint32_t>(shopInfo.subType) << 16);
+		}
 
-    it = inventoryMap.find(index);
-    if (it != inventoryMap.end()) {
-      msg.addItemId(shopInfo.itemId);
-      msg.addByte(std::min<uint32_t>(it->second, std::numeric_limits<uint8_t>::max()));
-      if (++itemsToSend >= 0xFF) {
-        break;
-      }
-    }
-  }
-  msg.setBufferPosition(msgPosition);
-  msg.addByte(itemsToSend);
-  writeToOutputBuffer(msg);
+		it = inventoryMap.find(index);
+		if (it != inventoryMap.end()) {
+			msg.addItemId(shopInfo.itemId);
+			msg.addByte(std::min<uint32_t>(it->second, std::numeric_limits<uint8_t>::max()));
+			if (++itemsToSend >= 0xFF) {
+				break;
+			}
+		}
+	}
+	msg.setBufferPosition(msgPosition);
+	msg.addByte(itemsToSend);
+	writeToOutputBuffer(msg);
 }
 
 void ProtocolGame::sendMarketEnter(uint32_t depotId)
@@ -2655,7 +2656,7 @@ void ProtocolGame::sendCoinBalance() {
 	msg.add<uint32_t>(player->getCoinBalance(COIN_TYPE_DEFAULT)); //total coins
 	msg.add<uint32_t>(player->getCoinBalance(COIN_TYPE_TRANSFERABLE)); //transferable coins
 	if (version >= 1251)
-		msg.add<uint32_t>(player->getCoinBalance); // Reserved Auction Coins
+		msg.add<uint32_t>(player->getCoinBalance(COIN_TYPE_RESERVED)); // Reserved Auction Coins
 	if (version >= 1220)
 		msg.add<uint32_t>(player->getCoinBalance(COIN_TYPE_TOURNAMENT)); //transferable coins
 
@@ -2814,6 +2815,8 @@ void ProtocolGame::sendCreatureSay(const Creature* creature, SpeakClasses type, 
 {
 	NetworkMessage msg;
 	msg.addByte(0xAA);
+	static uint32_t statementId = 0;
+	msg.add<uint32_t>(++statementId);
 
 	std::string name = "";
 	bool isPlayer = false;
@@ -2826,9 +2829,6 @@ void ProtocolGame::sendCreatureSay(const Creature* creature, SpeakClasses type, 
 			isPlayer = true;
 		}
 	}
-
-	g_game.incrementMessageStatement(name, text, creatureId, 0, isPlayer);
-	msg.add<uint32_t>(g_game.getCurrentStatement());
 
 	msg.addString(creature->getName());
 	if (version >= 1251) {
@@ -2857,6 +2857,8 @@ void ProtocolGame::sendToChannel(const Creature* creature, SpeakClasses type, co
 {
 	NetworkMessage msg;
 	msg.addByte(0xAA);
+	static uint32_t statementId = 0;
+	msg.add<uint32_t>(++statementId);
 
 	std::string name = "";
 	bool isPlayer = false;
@@ -2870,8 +2872,6 @@ void ProtocolGame::sendToChannel(const Creature* creature, SpeakClasses type, co
 		}
 	}
 
-	g_game.incrementMessageStatement(name, text, creatureId, channelId, isPlayer);
-	msg.add<uint32_t>(g_game.getCurrentStatement());
 	if (!creature) {
 		msg.add<uint32_t>(0x00);
 		if (version >= 1251) {
@@ -2912,6 +2912,8 @@ void ProtocolGame::sendPrivateMessage(const Player* speaker, SpeakClasses type, 
 {
 	NetworkMessage msg;
 	msg.addByte(0xAA);
+	static uint32_t statementId = 0;
+	msg.add<uint32_t>(++statementId);
 	std::string name = "";
 	uint32_t creatureId = 0;
 	bool isPlayer = false;
@@ -2926,8 +2928,6 @@ void ProtocolGame::sendPrivateMessage(const Player* speaker, SpeakClasses type, 
 		isPlayer = true;
 	}
 
-	g_game.incrementMessageStatement(name, text, creatureId, 0, isPlayer);
-	msg.add<uint32_t>(g_game.getCurrentStatement());
 	if (speaker) {
 		msg.addString(speaker->getName());
 		msg.add<uint16_t>(speaker->getLevel());

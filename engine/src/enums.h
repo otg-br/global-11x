@@ -30,6 +30,7 @@ enum CoinType_t : uint8_t {
 	COIN_TYPE_DEFAULT = 0,
 	COIN_TYPE_TRANSFERABLE = 1,
 	COIN_TYPE_TOURNAMENT = 2,
+	COIN_TYPE_RESERVED = 3
 };
 
 enum ResourceType_t : uint8_t {
@@ -812,7 +813,7 @@ struct CombatDamage
 
 using MarketOfferList = std::list<MarketOffer>;
 using HistoryMarketOfferList = std::list<HistoryMarketOffer>;
-using ShopInfoList = std::list<ShopInfo>;
+using ShopInfoList = std::vector<ShopInfo>;
 
 enum MonstersEvent_t : uint8_t {
 	MONSTERS_EVENT_NONE = 0,

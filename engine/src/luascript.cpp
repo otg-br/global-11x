@@ -1178,6 +1178,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(COIN_TYPE_DEFAULT)
 	registerEnum(COIN_TYPE_TRANSFERABLE)
 	registerEnum(COIN_TYPE_TOURNAMENT)
+	registerEnum(COIN_TYPE_RESERVED)
 
 	registerEnum(COMBAT_NONE)
 	registerEnum(COMBAT_PHYSICALDAMAGE)
