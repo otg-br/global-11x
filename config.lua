@@ -59,8 +59,8 @@ proxyList = "1,0.0.0.0,7000,USA;2,0.0.0.0,7000,BRA"
 
 -- Version Manual
 clientVersionMin = 1100
-clientVersionMax = 1251
-clientVersionStr = "Only support outdated 10.00 and version 12.51"
+clientVersionMax = 1260
+clientVersionStr = "Only support outdated 10.00 and version 12.60"
 
 -- Depot Limit
 freeDepotLimit = 2000
