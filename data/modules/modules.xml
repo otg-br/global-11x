@@ -1,40 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modules>
-	<module type="recvbyte" byte="229" script="character/character.lua"/>
-	<module type="recvbyte" byte="129" script="character/character.lua"/>
-
-	<module type="recvbyte" byte="231" script="teste.lua"/>
-
-	<!-- <module type="recvbyte" byte="238" script="teste.lua"/> -->
-<!-- 	<module type="recvbyte" byte="144" script="teste.lua"/>-->
-	<!-- <module type="recvbyte" byte="211" script="teste.lua"/> -->
-
-	<!-- GameStore -->
-<!-- 	<module type="recvbyte" byte="233" script="gamestore/gamestore.lua"/>
-	<module type="recvbyte" byte="239" script="gamestore/gamestore.lua"/>
-	<module type="recvbyte" byte="250" delay="600" script="gamestore/gamestore.lua"/>
-	<module type="recvbyte" byte="251" script="gamestore/gamestore.lua"/>
-	<module type="recvbyte" byte="252" script="gamestore/gamestore.lua"/>
-	<module type="recvbyte" byte="253" script="gamestore/gamestore.lua"/>
-	<module type="recvbyte" byte="254" script="gamestore/gamestore.lua"/>
- -->
-<!-- 	<module type="recvbyte" byte="239" script="startsystem/store.lua"/>
-	<module type="recvbyte" byte="250" script="startsystem/store.lua"/>
-	<module type="recvbyte" byte="253" script="startsystem/store.lua"/>
-	<module type="recvbyte" byte="254" script="startsystem/store.lua"/>
-	<module type="recvbyte" byte="251" script="startsystem/store.lua"/>
-	<module type="recvbyte" byte="252" script="startsystem/store.lua"/>
- -->
-	<!-- EquipObject -->
-	<!-- <module type="recvbyte" byte="119" delay="1000" script="equipobject/equipobject.lua"/> -->
-
-	<!-- Prey System -->
-<!-- 	<module type="recvbyte" byte="235" script="prey system/prey.lua" />
-	<module type="recvbyte" byte="237" script="prey system/prey.lua" />
- -->
 	<!-- Blessings -->
 	<module type="recvbyte" byte="207" script="blessings/blessings.lua" />
-
 
 	<!-- Cults of Tibia -->
 	<module type="recvbyte" byte="15" script="cults of tibia/death.lua" />
@@ -43,14 +10,4 @@
 	<module type="recvbyte" byte="216" script="dailyreward/dailyrewardmodule.lua" />
 	<module type="recvbyte" byte="217" script="dailyreward/dailyrewardmodule.lua" />
 	<module type="recvbyte" byte="218" script="dailyreward/dailyrewardmodule.lua" />
-
-	<!-- Inspection System (11.10)
-	<module type="recvbyte" byte="205" script="inspection/inspection.lua"/>
-	<module type="recvbyte" byte="206" script="inspection/inspection.lua"/>
-	-->
-
-	<!-- Expert Pvp -->
-	<!-- <module type="recvbyte" byte="160" script="expertpvp/fightmodes.lua"/> -->
-
-	<!-- Join agression formula is still unknown TODO: add it.-->
 </modules>

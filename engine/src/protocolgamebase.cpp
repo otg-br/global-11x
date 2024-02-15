@@ -178,7 +178,7 @@ void ProtocolGameBase::onConnect()
 	send(std::move(output));
 }
 
-void ProtocolGameBase::AddOutfit(NetworkMessage& msg, const Outfit_t& outfit)
+void ProtocolGameBase::AddOutfit(NetworkMessage& msg, const Outfit_t& outfit, bool addMount/* = true*/)
 {
 	msg.add<uint16_t>(outfit.lookType);
 
@@ -192,7 +192,9 @@ void ProtocolGameBase::AddOutfit(NetworkMessage& msg, const Outfit_t& outfit)
 		msg.addItemId(outfit.lookTypeEx);
 	}
 
-	msg.add<uint16_t>(outfit.lookMount);
+	if (addMount) {
+		msg.add<uint16_t>(outfit.lookMount);
+	}
 }
 
 void ProtocolGameBase::checkCreatureAsKnown(uint32_t id, bool& known, uint32_t& removedKnown)

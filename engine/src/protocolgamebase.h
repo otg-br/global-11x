@@ -53,7 +53,7 @@ class ProtocolGameBase : public Protocol {
 		void AddCreature(NetworkMessage& msg, const Creature* creature, bool known, uint32_t remove);
 		void AddPlayerStats(NetworkMessage& msg);
 		void AddPlayerSkills(NetworkMessage& msg);
-		void AddOutfit(NetworkMessage& msg, const Outfit_t& outfit);
+		void AddOutfit(NetworkMessage& msg, const Outfit_t& outfit, bool addMount = true);
 
 	protected:
 		explicit ProtocolGameBase(Connection_ptr connection):

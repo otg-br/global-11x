@@ -218,6 +218,14 @@ class ProtocolGame final : public ProtocolGameBase
 		void parseLootContainer(NetworkMessage& msg);
 		void parseQuickLootBlackWhitelist(NetworkMessage& msg);
 
+		void parseCyclopediaCharacterInfo(NetworkMessage& msg);
+
+		void parseHighscores(NetworkMessage& msg);
+		void sendHighscoresNoData();
+		void sendHighscores(const std::vector<HighscoreCharacter>& characters, uint8_t categoryId, uint32_t vocationId, uint16_t page, uint16_t pages);
+
+		void parseTournamentLeaderboard(NetworkMessage& msg);
+
 		void parseBugReport(NetworkMessage& msg);
 		void parseThankYou(NetworkMessage& msg);
 		void parseDebugAssert(NetworkMessage& msg);
@@ -362,6 +370,25 @@ class ProtocolGame final : public ProtocolGameBase
 		void sendTutorial(uint8_t tutorialId);
 		void sendAddMarker(const Position& pos, uint8_t markType, const std::string& desc);
 		void sendMapManage(uint8_t action);
+
+		void sendItemInspection(uint16_t itemId, uint8_t itemCount, const Item* item, bool cyclopedia);
+		void parseInspectionObject(NetworkMessage& msg);
+
+		void sendTournamentLeaderboard();
+
+		void sendCyclopediaCharacterNoData(CyclopediaCharacterInfoType_t characterInfoType, uint8_t errorCode);
+		void sendCyclopediaCharacterBaseInformation();
+		void sendCyclopediaCharacterGeneralStats();
+		void sendCyclopediaCharacterCombatStats();
+		void sendCyclopediaCharacterRecentDeaths(uint16_t page, uint16_t pages, const std::vector<RecentDeathEntry>& entries);
+		void sendCyclopediaCharacterRecentPvPKills(uint16_t page, uint16_t pages, const std::vector<RecentPvPKillEntry>& entries);
+		void sendCyclopediaCharacterAchievements();
+		void sendCyclopediaCharacterItemSummary();
+		void sendCyclopediaCharacterOutfitsMounts();
+		void sendCyclopediaCharacterStoreSummary();
+		void sendCyclopediaCharacterInspection();
+		void sendCyclopediaCharacterBadges();
+		void sendCyclopediaCharacterTitles();
 
 		void sendCreatureWalkthrough(const Creature* creature, bool walkthrough);
 		void sendCreatureShield(const Creature* creature);
