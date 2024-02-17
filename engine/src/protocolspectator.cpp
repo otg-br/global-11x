@@ -117,9 +117,9 @@ void ProtocolSpectator::onRecvFirstMessage(NetworkMessage& msg)
 		return;
 	}
 
-	if (version < g_config.getNumber(ConfigManager::VERSION_MIN) || version > g_config.getNumber(ConfigManager::VERSION_MAX)) {
+	if (version != g_config.getNumber(ConfigManager::CLIENT_VERSION)) {
 		std::ostringstream ss;
-		ss << "Only clients with protocol " << g_config.getString(ConfigManager::VERSION_STR) << " allowed!";
+		ss << "Only clients with protocol " << g_config.getString(ConfigManager::CLIENT_VERSION_STR) << " allowed!";
 		disconnectSpectator(ss.str());
 		return;
 	}

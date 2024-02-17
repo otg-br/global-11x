@@ -75,7 +75,7 @@ class ProtocolGame final : public ProtocolGameBase
 		void AddItem(NetworkMessage& msg, const Item* item);
 		void AddItem(NetworkMessage& msg, uint16_t id, uint8_t count);
 
-		uint16_t getVersion() const {
+		uint32_t getVersion() const {
 			return version;
 		}
 
@@ -372,6 +372,8 @@ class ProtocolGame final : public ProtocolGameBase
 		void sendTutorial(uint8_t tutorialId);
 		void sendAddMarker(const Position& pos, uint8_t markType, const std::string& desc);
 		void sendMapManage(uint8_t action);
+
+		void sendSessionEndInformation(SessionEndInformations information);
 
 		void sendItemInspection(uint16_t itemId, uint8_t itemCount, const Item* item, bool cyclopedia);
 		void parseInspectionObject(NetworkMessage& msg);

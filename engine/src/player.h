@@ -317,7 +317,7 @@ class Player final : public Creature, public Cylinder
 			operatingSystem = clientos;
 		}
 
-		uint16_t getProtocolVersion() const {
+		uint32_t getProtocolVersion() const {
 			if (!client) {
 				return 0;
 			}
@@ -1331,6 +1331,7 @@ class Player final : public Creature, public Cylinder
 				client->sendCharmData();
 			}
 		}
+
 		void sendCloseContainer(uint8_t cid) {
 			if (client) {
 				client->sendCloseContainer(cid);

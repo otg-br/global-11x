@@ -168,6 +168,7 @@ FILELOADER_ERRORS Items::loadFromOtb(const std::string& file)
 		uint8_t lightLevel = 0;
 		uint8_t lightColor = 0;
 		uint8_t alwaysOnTopOrder = 0;
+		uint8_t classLevel = 0;
 
 		uint8_t attrib;
 		while (stream.read<uint8_t>(attrib)) {
@@ -251,6 +252,17 @@ FILELOADER_ERRORS Items::loadFromOtb(const std::string& file)
 					break;
 				}
 
+				case ITEM_ATTR_CLASSLEVEL: {
+					if (datalen != sizeof(uint8_t)) {
+						return ERROR_INVALID_FORMAT;
+					}
+
+					if (!stream.read<uint8_t>(classLevel)) {
+						return ERROR_INVALID_FORMAT;
+					}
+					break;
+				}
+
 				default: {
 					//skip unknown attributes
 					if (!stream.skip(datalen)) {
@@ -318,6 +330,8 @@ FILELOADER_ERRORS Items::loadFromOtb(const std::string& file)
 		iType.isAnimation = hasBitSet(FLAG_ANIMATION, flags);
 		// iType.walkStack = !hasBitSet(FLAG_FULLTILE, flags);
 		iType.forceUse = hasBitSet(FLAG_FORCEUSE, flags);
+		iType.showClientCharges = hasBitSet(FLAG_CLIENTCHARGES, flags);
+		iType.showClientDuration = hasBitSet(FLAG_CLIENTDURATION, flags);
 
 		iType.id = serverId;
 		iType.clientId = clientId;
@@ -325,6 +339,7 @@ FILELOADER_ERRORS Items::loadFromOtb(const std::string& file)
 		iType.lightLevel = lightLevel;
 		iType.lightColor = lightColor;
 		iType.wareId = wareId;
+		iType.classLevel = classLevel;
 		iType.alwaysOnTopOrder = alwaysOnTopOrder;
 	}
 

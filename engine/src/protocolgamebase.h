@@ -85,6 +85,7 @@ class ProtocolGameBase : public Protocol {
 		void sendPremiumTrigger();
 		void sendBlessStatus();
 		void sendStoreHighlight();
+		void sendItemClasses();
 		void sendBasicData();
 		void sendPendingStateEntered();
 		void sendEnterWorld();

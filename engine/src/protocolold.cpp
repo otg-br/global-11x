@@ -51,7 +51,7 @@ void ProtocolOld::onRecvFirstMessage(NetworkMessage& msg)
 
 	if (version <= 760) {
 		std::ostringstream ss;
-		ss << "Only clients with protocol " << g_config.getString(ConfigManager::VERSION_STR) << " allowed!";
+		ss << "Only clients with protocol " << g_config.getString(ConfigManager::CLIENT_VERSION_STR) << " allowed!";
 		disconnectClient(ss.str());
 		return;
 	}
@@ -74,6 +74,6 @@ void ProtocolOld::onRecvFirstMessage(NetworkMessage& msg)
 	}
 
 	std::ostringstream ss;
-	ss << "Only clients with protocol " << g_config.getString(ConfigManager::VERSION_STR) << " allowed!";
+	ss << "Only clients with protocol " << g_config.getString(ConfigManager::CLIENT_VERSION_STR) << " allowed!";
 	disconnectClient(ss.str());
 }
