@@ -20,8 +20,6 @@
 #ifndef FS_PROTOCOLGAME_H_FACA2A2D1A9348B78E8FD7E8003EBB87
 #define FS_PROTOCOLGAME_H_FACA2A2D1A9348B78E8FD7E8003EBB87
 
-#include <string>
-
 #include "protocol.h"
 #include "chat.h"
 #include "creature.h"
@@ -75,7 +73,7 @@ class ProtocolGame final : public ProtocolGameBase
 		void AddItem(NetworkMessage& msg, const Item* item);
 		void AddItem(NetworkMessage& msg, uint16_t id, uint8_t count);
 
-		uint32_t getVersion() const {
+		uint16_t getVersion() const {
 			return version;
 		}
 
@@ -219,14 +217,6 @@ class ProtocolGame final : public ProtocolGameBase
 		void parseQuickLoot(NetworkMessage& msg);
 		void parseLootContainer(NetworkMessage& msg);
 		void parseQuickLootBlackWhitelist(NetworkMessage& msg);
-
-		void parseCyclopediaCharacterInfo(NetworkMessage& msg);
-
-		void parseHighscores(NetworkMessage& msg);
-		void sendHighscoresNoData();
-		void sendHighscores(const std::vector<HighscoreCharacter>& characters, uint8_t categoryId, uint32_t vocationId, uint16_t page, uint16_t pages);
-
-		void parseTournamentLeaderboard(NetworkMessage& msg);
 
 		void parseBugReport(NetworkMessage& msg);
 		void parseThankYou(NetworkMessage& msg);
@@ -373,27 +363,6 @@ class ProtocolGame final : public ProtocolGameBase
 		void sendAddMarker(const Position& pos, uint8_t markType, const std::string& desc);
 		void sendMapManage(uint8_t action);
 
-		void sendSessionEndInformation(SessionEndInformations information);
-
-		void sendItemInspection(uint16_t itemId, uint8_t itemCount, const Item* item, bool cyclopedia);
-		void parseInspectionObject(NetworkMessage& msg);
-
-		void sendTournamentLeaderboard();
-
-		void sendCyclopediaCharacterNoData(CyclopediaCharacterInfoType_t characterInfoType, uint8_t errorCode);
-		void sendCyclopediaCharacterBaseInformation();
-		void sendCyclopediaCharacterGeneralStats();
-		void sendCyclopediaCharacterCombatStats();
-		void sendCyclopediaCharacterRecentDeaths(uint16_t page, uint16_t pages, const std::vector<RecentDeathEntry>& entries);
-		void sendCyclopediaCharacterRecentPvPKills(uint16_t page, uint16_t pages, const std::vector<RecentPvPKillEntry>& entries);
-		void sendCyclopediaCharacterAchievements();
-		void sendCyclopediaCharacterItemSummary();
-		void sendCyclopediaCharacterOutfitsMounts();
-		void sendCyclopediaCharacterStoreSummary();
-		void sendCyclopediaCharacterInspection();
-		void sendCyclopediaCharacterBadges();
-		void sendCyclopediaCharacterTitles();
-
 		void sendCreatureWalkthrough(const Creature* creature, bool walkthrough);
 		void sendCreatureShield(const Creature* creature);
 		void sendCreatureSkull(const Creature* creature);
@@ -405,7 +374,7 @@ class ProtocolGame final : public ProtocolGameBase
 		void sendClientCheck();
 		void sendGameNews();
 		void sendResourceBalance(uint64_t money, uint64_t bank);
-		void sendSaleItemList(const std::vector<ShopInfo>& shop, const std::map<uint32_t, uint32_t>& inventoryMap);
+		void sendSaleItemList(const std::list<ShopInfo>& shop);
 		void sendMarketEnter(uint32_t depotId);
 		void sendMarketLeave();
 		void sendMarketBrowseItem(uint16_t itemId, const MarketOfferList& buyOffers, const MarketOfferList& sellOffers);

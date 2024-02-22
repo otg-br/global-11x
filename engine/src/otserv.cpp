@@ -278,12 +278,6 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 		return;
 	}
 
-	std::cout << ">> Loading familiars" << std::endl;
-	if (!Familiars::getInstance().loadFromXml()) {
-		startupErrorMessage("Unable to load familiars!");
-		return;
-	}
-
 	std::cout << ">> Checking world type... " << std::flush;
 	std::string worldType = asLowerCaseString(g_config.getString(ConfigManager::WORLD_TYPE));
 	if (worldType == "pvp") {
@@ -375,8 +369,7 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 
 #ifndef _WIN32
 __attribute__ ((used)) void saveServer() {
-	std::cout << "Server crash :O" << std::endl;
-	g_game.saveGameState(true);
-	g_game.saveServeMessage();
+	if(g_game.getPlayersOnline() > 0)
+		g_game.saveGameState(true);
 }
 #endif

@@ -68,7 +68,6 @@ void ProtocolGameBase::AddItem(NetworkMessage& msg, uint16_t id, uint8_t count)
 		msg.addByte(fluidMap[count & 7]);
 	} else if (version >= 1150 && it.isContainer()) {
 		msg.addByte(0x00);
-		msg.addByte(0x00);
 	}
 
 	if (it.isAnimation) {
@@ -179,7 +178,7 @@ void ProtocolGameBase::onConnect()
 	send(std::move(output));
 }
 
-void ProtocolGameBase::AddOutfit(NetworkMessage& msg, const Outfit_t& outfit, bool addMount/* = true*/)
+void ProtocolGameBase::AddOutfit(NetworkMessage& msg, const Outfit_t& outfit)
 {
 	msg.add<uint16_t>(outfit.lookType);
 
@@ -193,9 +192,7 @@ void ProtocolGameBase::AddOutfit(NetworkMessage& msg, const Outfit_t& outfit, bo
 		msg.addItemId(outfit.lookTypeEx);
 	}
 
-	if (addMount) {
-		msg.add<uint16_t>(outfit.lookMount);
-	}
+	msg.add<uint16_t>(outfit.lookMount);
 }
 
 void ProtocolGameBase::checkCreatureAsKnown(uint32_t id, bool& known, uint32_t& removedKnown)
@@ -291,15 +288,7 @@ void ProtocolGameBase::AddCreature(NetworkMessage& msg, const Creature* creature
 	msg.addByte(creature->getDirection());
 
 	if (!creature->isInGhostMode() && !creature->isInvisible()) {
-		const Outfit_t& outfit = creature->getCurrentOutfit();
-		AddOutfit(msg, outfit);
-		if (outfit.lookMount != 0) {
-			// to do: mount colors
-			msg.addByte(0);
-			msg.addByte(0);
-			msg.addByte(0);
-			msg.addByte(0);
-		}
+		AddOutfit(msg, creature->getCurrentOutfit());
 	} else {
 		static Outfit_t outfit;
 		AddOutfit(msg, outfit);
@@ -311,16 +300,6 @@ void ProtocolGameBase::AddCreature(NetworkMessage& msg, const Creature* creature
 
 	msg.add<uint16_t>(creature->getStepSpeed() / 2);
 
-	if (player->getProtocolVersion() >= 1240) {
-		msg.addByte(0x00); //creature debuffs, to do
-		/*
-		if (icon != CREATUREICON_NONE) {
-			msg.addByte(icon);
-			msg.addByte(1);
-			msg.add<uint16_t>(0);
-		}
-		*/
-	}
 	msg.addByte(player->getSkullClient(creature));
 	msg.addByte(player->getPartyShield(otherPlayer));
 
@@ -431,10 +410,6 @@ void ProtocolGameBase::AddPlayerStats(NetworkMessage& msg)
 		std::string message = offer->getDisabledReason(player);
 		msg.addByte(message.empty());
 	}
-	if (version >= 1260) {
-		msg.add<uint16_t>(0);  // remaining mana shield
-		msg.add<uint16_t>(0);  // total mana shield
-	}
 }
 
 void ProtocolGameBase::AddPlayerSkills(NetworkMessage& msg)
@@ -468,16 +443,6 @@ void ProtocolGameBase::AddPlayerSkills(NetworkMessage& msg)
 		msg.add<uint32_t>(player->getCapacity()); // total capacity
 		msg.add<uint32_t>(player->getCapacity() - player->getVarCapacity()); // base total capacity
 	}
-
-	// fatal, dodge, momentum
-	msg.add<uint16_t>(0);
-	msg.add<uint16_t>(0);
-
-	msg.add<uint16_t>(0);
-	msg.add<uint16_t>(0);
-
-	msg.add<uint16_t>(0);
-	msg.add<uint16_t>(0);
 }
 
 void ProtocolGameBase::AddWorldLight(NetworkMessage& msg, LightInfo lightInfo)
@@ -1127,9 +1092,6 @@ void ProtocolGameBase::sendAddCreature(const Creature* creature, const Position&
 		}
 	}
 
-	// tiers for forge and market
-	sendItemClasses();
-
 	sendBasicData();
 	for (uint8_t preySlotId = 0; preySlotId < PREY_SLOTCOUNT; preySlotId++) {
 		sendPreyData(preySlotId);
@@ -1176,7 +1138,6 @@ void ProtocolGameBase::sendBasicData()
 	for (uint8_t sid : spellsList) {
 		msg.addByte(sid);
 	}
-	msg.addByte(0x00); // is magic shield active (bool)
 	writeToOutputBuffer(msg);
 }
 
@@ -1305,7 +1266,7 @@ void ProtocolGameBase::sendPreyData(uint8_t preySlotId)
 		}
 	}
 
-	msg.add<uint32_t>(player->getFreeRerollTime(preySlotId));
+	msg.add<uint16_t>(player->getFreeRerollTime(preySlotId));
 	if (version >= 1190) {
 		msg.addByte(0x00); //preyWildCards
 	}
@@ -1406,35 +1367,6 @@ void ProtocolGameBase::sendCreatureLight(const Creature* creature)
 
 	NetworkMessage msg;
 	AddCreatureLight(msg, creature);
-	writeToOutputBuffer(msg);
-}
-
-void ProtocolGameBase::sendItemClasses()
-{
-	NetworkMessage msg;
-	msg.addByte(0x86);
-
-	// begin item classes block
-	uint8_t classSize = 4;
-	uint8_t tiersSize = 10;
-	msg.addByte(4); // number of item classes
-	for (uint8_t i = 0; i < classSize; i++) {
-		msg.addByte(i + 1); // class id
-
-		// begin tier block
-		msg.addByte(tiersSize); // tiers size
-		for (uint8_t j = 0; j < tiersSize; j++) {
-			msg.addByte(j); // tier id
-			msg.add<uint64_t>(10000); // upgrade cost
-		}
-		// end tier block
-	}
-	// end item classes block
-
-	// unknown
-	for (uint8_t i = 0; i < 11; i++) {
-		msg.addByte(0);
-	}
 	writeToOutputBuffer(msg);
 }
 

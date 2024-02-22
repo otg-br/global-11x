@@ -30,7 +30,6 @@ enum CoinType_t : uint8_t {
 	COIN_TYPE_DEFAULT = 0,
 	COIN_TYPE_TRANSFERABLE = 1,
 	COIN_TYPE_TOURNAMENT = 2,
-	COIN_TYPE_RESERVED = 3
 };
 
 enum ResourceType_t : uint8_t {
@@ -172,9 +171,8 @@ enum MarketAction_t {
 };
 
 enum MarketRequest_t {
-	MARKETREQUEST_OWN_HISTORY = 1,
-	MARKETREQUEST_OWN_OFFERS = 2,
-	MARKETREQUEST_ITEM = 3,
+	MARKETREQUEST_OWN_OFFERS = 0xFFFE,
+	MARKETREQUEST_OWN_HISTORY = 0xFFFF,
 };
 
 enum MarketOfferState_t {
@@ -490,16 +488,7 @@ enum PlayerSex_t : uint8_t {
 };
 
 enum Vocation_t : uint16_t {
-	VOCATION_NONE = 0,
-	VOCATION_SORCERER = 1,
-	VOCATION_DRUID = 2,
-	VOCATION_PALADIN = 3,
-	VOCATION_KNIGHT = 4,
-	VOCATION_MASTER_SORCERER = 5,
-	VOCATION_ELDER_DRUID = 6,
-	VOCATION_ROYAL_PALADIN = 7,
-	VOCATION_ELITE_KNIGHT = 8,
-	VOCATION_LAST = VOCATION_ELITE_KNIGHT
+	VOCATION_NONE = 0
 };
 
 enum ReturnValue {
@@ -652,122 +641,6 @@ enum MagicEffectsType_t : uint8_t {
 	MAGIC_EFFECTS_CREATE_DISTANCEEFFECT_REVERSED = 5,//needs uint8_t and deltaX(int8_t), deltaY(int8_t) after type
 };
 
-enum InspectObjectTypes : uint8_t {
-	INSPECT_NORMALOBJECT = 0,
-	INSPECT_NPCTRADE = 1,
-	INSPECT_UNKNOWN = 2,
-	INSPECT_CYCLOPEDIA = 3
-};
-
-enum CyclopediaCharacterInfoType_t : uint8_t {
-	CYCLOPEDIA_CHARACTERINFO_BASEINFORMATION = 0,
-	CYCLOPEDIA_CHARACTERINFO_GENERALSTATS = 1,
-	CYCLOPEDIA_CHARACTERINFO_COMBATSTATS = 2,
-	CYCLOPEDIA_CHARACTERINFO_RECENTDEATHS = 3,
-	CYCLOPEDIA_CHARACTERINFO_RECENTPVPKILLS = 4,
-	CYCLOPEDIA_CHARACTERINFO_ACHIEVEMENTS = 5,
-	CYCLOPEDIA_CHARACTERINFO_ITEMSUMMARY = 6,
-	CYCLOPEDIA_CHARACTERINFO_OUTFITSMOUNTS = 7,
-	CYCLOPEDIA_CHARACTERINFO_STORESUMMARY = 8,
-	CYCLOPEDIA_CHARACTERINFO_INSPECTION = 9,
-	CYCLOPEDIA_CHARACTERINFO_BADGES = 10,
-	CYCLOPEDIA_CHARACTERINFO_TITLES = 11
-};
-
-enum CyclopediaCharacterInfo_OutfitType_t : uint8_t {
-	CYCLOPEDIA_CHARACTERINFO_OUTFITTYPE_NONE = 0,
-	CYCLOPEDIA_CHARACTERINFO_OUTFITTYPE_QUEST = 1,
-	CYCLOPEDIA_CHARACTERINFO_OUTFITTYPE_STORE = 2
-};
-
-enum CyclopediaCharacterInfo_RecentKillStatus_t : uint8_t {
-	CYCLOPEDIA_CHARACTERINFO_RECENTKILLSTATUS_JUSTIFIED = 0,
-	CYCLOPEDIA_CHARACTERINFO_RECENTKILLSTATUS_UNJUSTIFIED = 1,
-	CYCLOPEDIA_CHARACTERINFO_RECENTKILLSTATUS_GUILDWAR = 2,
-	CYCLOPEDIA_CHARACTERINFO_RECENTKILLSTATUS_ASSISTED = 3,
-	CYCLOPEDIA_CHARACTERINFO_RECENTKILLSTATUS_ARENA = 4
-};
-
-struct RecentDeathEntry
-{
-	RecentDeathEntry(std::string cause, uint32_t timestamp) :
-		cause(std::move(cause)), timestamp(timestamp) {}
-
-	std::string cause;
-	uint32_t timestamp;
-};
-
-struct RecentPvPKillEntry
-{
-	RecentPvPKillEntry(std::string description, uint32_t timestamp, uint8_t status) :
-		description(std::move(description)), timestamp(timestamp), status(status) {}
-
-	std::string description;
-	uint32_t timestamp;
-	uint8_t status;
-};
-enum HighscoreType_t : uint8_t {
-	HIGHSCORE_GETENTRIES = 0,
-	HIGHSCORE_OURRANK = 1
-};
-
-enum HighscoreCategories_t : uint8_t {
-	HIGHSCORE_CATEGORY_EXPERIENCE = 0,
-	HIGHSCORE_CATEGORY_FIST_FIGHTING,
-	HIGHSCORE_CATEGORY_CLUB_FIGHTING,
-	HIGHSCORE_CATEGORY_SWORD_FIGHTING,
-	HIGHSCORE_CATEGORY_AXE_FIGHTING,
-	HIGHSCORE_CATEGORY_DISTANCE_FIGHTING,
-	HIGHSCORE_CATEGORY_SHIELDING,
-	HIGHSCORE_CATEGORY_FISHING,
-	HIGHSCORE_CATEGORY_MAGIC_LEVEL
-};
-
-struct HighscoreCategory
-{
-	HighscoreCategory(const char* name, uint8_t id) :
-		name(name), id(id) {}
-
-	const char* name;
-	uint8_t id;
-};
-
-struct HighscoreCharacter
-{
-	HighscoreCharacter(std::string name, uint64_t points, uint32_t id, uint32_t rank, uint16_t level, uint8_t vocation) :
-		name(std::move(name)), points(points), id(id), rank(rank), level(level), vocation(vocation) {}
-
-	std::string name;
-	uint64_t points;
-	uint32_t id;
-	uint32_t rank;
-	uint16_t level;
-	uint8_t vocation;
-};
-
-enum Cipbia_Elementals_t : uint8_t {
-	CIPBIA_ELEMENTAL_PHYSICAL = 0,
-	CIPBIA_ELEMENTAL_FIRE = 1,
-	CIPBIA_ELEMENTAL_EARTH = 2,
-	CIPBIA_ELEMENTAL_ENERGY = 3,
-	CIPBIA_ELEMENTAL_ICE = 4,
-	CIPBIA_ELEMENTAL_HOLY = 5,
-	CIPBIA_ELEMENTAL_DEATH = 6,
-	CIPBIA_ELEMENTAL_HEALING = 7,
-	CIPBIA_ELEMENTAL_DROWN = 8,
-	CIPBIA_ELEMENTAL_LIFEDRAIN = 9,
-	CIPBIA_ELEMENTAL_UNDEFINED = 10
-};
-
-enum SessionEndInformations : uint8_t {
-	// I'm guessing unknown types are ban/protocol error or something
-	// but since there aren't any difference from logout should we care?
-	SESSION_END_LOGOUT,
-	SESSION_END_UNK2,
-	SESSION_END_FORCECLOSE,
-	SESSION_END_UNK3,
-};
-
 enum QuickLootFilter_t
 {
 	QUICKLOOTFILTER_SKIPPEDLOOT = 0,
@@ -818,11 +691,6 @@ struct Outfit_t {
 	uint8_t lookLegs = 0;
 	uint8_t lookFeet = 0;
 	uint8_t lookAddons = 0;
-	uint8_t lookMountHead = 0;
-	uint8_t lookMountBody = 0;
-	uint8_t lookMountLegs = 0;
-	uint8_t lookMountFeet = 0;
-	uint16_t lookFamiliarsType = 0;
 };
 
 struct LightInfo {
@@ -851,7 +719,7 @@ struct ShopInfo {
 };
 
 struct MarketOffer {
-	uint64_t price;
+	uint32_t price;
 	uint32_t timestamp;
 	uint16_t amount;
 	uint16_t counter;
@@ -869,7 +737,7 @@ struct MarketOfferEx {
 	uint32_t id;
 	uint32_t playerId;
 	uint32_t timestamp;
-	uint64_t price;
+	uint32_t price;
 	uint16_t amount;
 	uint16_t counter;
 	uint16_t itemId;
@@ -879,7 +747,7 @@ struct MarketOfferEx {
 
 struct HistoryMarketOffer {
 	uint32_t timestamp;
-	uint64_t price;
+	uint32_t price;
 	uint16_t itemId;
 	uint16_t amount;
 	MarketOfferState_t state;
@@ -894,9 +762,9 @@ struct MarketStatistics {
 	}
 
 	uint32_t numTransactions;
-	uint64_t highestPrice;
+	uint32_t highestPrice;
 	uint64_t totalPrice;
-	uint64_t lowestPrice;
+	uint32_t lowestPrice;
 };
 
 struct ModalWindow
@@ -944,7 +812,7 @@ struct CombatDamage
 
 using MarketOfferList = std::list<MarketOffer>;
 using HistoryMarketOfferList = std::list<HistoryMarketOffer>;
-using ShopInfoList = std::vector<ShopInfo>;
+using ShopInfoList = std::list<ShopInfo>;
 
 enum MonstersEvent_t : uint8_t {
 	MONSTERS_EVENT_NONE = 0,

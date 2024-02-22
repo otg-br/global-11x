@@ -15,8 +15,7 @@ extern ConfigManager g_config;
 const std::unordered_map<std::string, CoinType_t> CoinTypeMap = {
 	{"coin", COIN_TYPE_DEFAULT},
 	{"transferable", COIN_TYPE_TRANSFERABLE},
-	{"tournament", COIN_TYPE_TOURNAMENT},
-	{ "reserved", COIN_TYPE_RESERVED }
+	{"tournament", COIN_TYPE_TOURNAMENT}
 };
 const std::unordered_map<std::string, OfferStates_t> OfferStatesMap = {
 	{"none", OFFER_STATE_NONE},

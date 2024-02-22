@@ -20,8 +20,6 @@
 #ifndef FS_IOMAP_H_8085D4B1037A44288494A52FDBB775E4
 #define FS_IOMAP_H_8085D4B1037A44288494A52FDBB775E4
 
-#include <utility>
-
 #include "item.h"
 #include "map.h"
 #include "house.h"
@@ -146,7 +144,7 @@ class IOMap
 		}
 
 		void setLastErrorString(std::string error) {
-			errorString = std::move(error);
+			errorString = error;
 		}
 
 	protected:

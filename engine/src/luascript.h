@@ -1017,10 +1017,6 @@ class LuaScriptInterface
 		static int luaPlayerRemoveMount(lua_State* L);
 		static int luaPlayerHasMount(lua_State* L);
 
-		static int luaPlayerAddFamiliar(lua_State* L);
-		static int luaPlayerRemoveFamiliar(lua_State* L);
-		static int luaPlayerHasFamiliar(lua_State* L);
-
 		static int luaPlayerGetPremiumDays(lua_State* L);
 		static int luaPlayerAddPremiumDays(lua_State* L);
 		static int luaPlayerRemovePremiumDays(lua_State* L);

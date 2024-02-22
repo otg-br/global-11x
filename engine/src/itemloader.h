@@ -149,7 +149,6 @@ enum itemattrib_t {
 	ITEM_ATTR_WRITEABLE3, //deprecated
 
 	ITEM_ATTR_WAREID,
-	ITEM_ATTR_CLASSLEVEL,
 
 	ITEM_ATTR_LAST
 };
@@ -176,8 +175,8 @@ enum itemflags_t {
 	FLAG_HORIZONTAL = 1 << 18,
 	FLAG_CANNOTDECAY = 1 << 19, // unused
 	FLAG_ALLOWDISTREAD = 1 << 20,
-	FLAG_CLIENTDURATION = 1 << 21, // 12.90
-	FLAG_CLIENTCHARGES = 1 << 22, // 12.90
+	FLAG_UNUSED = 1 << 21, // unused
+	FLAG_CLIENTCHARGES = 1 << 22, /* deprecated */
 	FLAG_LOOKTHROUGH = 1 << 23,
 	FLAG_ANIMATION = 1 << 24,
 	FLAG_FULLTILE = 1 << 25, // unused

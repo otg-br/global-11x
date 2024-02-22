@@ -382,13 +382,6 @@ class Game
 
 		void playerRequestLockFind(uint32_t playerId);
 
-		void playerCyclopediaCharacterInfo(Player* player, uint32_t characterID, CyclopediaCharacterInfoType_t characterInfoType, uint16_t entriesPerPage, uint16_t page);
-		void playerTournamentLeaderboard(uint32_t playerId, uint8_t leaderboardType);
-
-		void playerHighscores(Player* player, HighscoreType_t type, uint8_t category, uint32_t vocation, const std::string& worldName, uint16_t page, uint8_t entriesPerPage);
-
-		void updatePlayerSaleItems(uint32_t playerId);
-
 		bool internalStartTrade(Player* player, Player* partner, Item* tradeItem);
 		void internalCloseTrade(Player* player);
 		bool playerBroadcastMessage(Player* player, const std::string& text) const;
@@ -483,7 +476,7 @@ class Game
 		void playerBrowseMarket(uint32_t playerId, uint16_t spriteId);
 		void playerBrowseMarketOwnOffers(uint32_t playerId);
 		void playerBrowseMarketOwnHistory(uint32_t playerId);
-		void playerCreateMarketOffer(uint32_t playerId, uint8_t type, uint16_t spriteId, uint16_t amount, uint64_t price, bool anonymous);
+		void playerCreateMarketOffer(uint32_t playerId, uint8_t type, uint16_t spriteId, uint16_t amount, uint32_t price, bool anonymous);
 		void playerCancelMarketOffer(uint32_t playerId, uint32_t timestamp, uint16_t counter);
 		void playerAcceptMarketOffer(uint32_t playerId, uint32_t timestamp, uint16_t counter, uint16_t amount);
 		void playerSendSaleItemList(uint32_t playerId);
@@ -668,9 +661,6 @@ class Game
 
 		std::forward_list<Item*> toDecayItems;
 		std::forward_list<Item*> toImbuedItems;
-		void playerInspectItem(Player* player, const Position& pos);
-		void playerInspectItem(Player* player, uint16_t itemId, uint8_t itemCount, bool cyclopedia);
-
 	protected:
 		void checkImbuements();
 		void playerWhisper(Player* player, const std::string& text);

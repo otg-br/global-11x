@@ -25,7 +25,6 @@
 #include "cylinder.h"
 #include "outfit.h"
 #include "enums.h"
-#include "familiars.h"
 #include "vocation.h"
 #include "protocolgame.h"
 #include "ioguild.h"
@@ -81,12 +80,6 @@ enum tradestate_t : uint8_t {
 	TRADE_TRANSFER,
 };
 
-enum PlayerAsyncOngoingTaskFlags : uint64_t {
-	PlayerAsyncTask_Highscore = 1 << 0,
-	PlayerAsyncTask_RecentDeaths = 1 << 1,
-	PlayerAsyncTask_RecentPvPKills = 1 << 2
-};
-
 struct VIPEntry {
 	VIPEntry(uint32_t guid, std::string name, std::string description, uint32_t icon, bool notify) :
 		guid(guid), name(std::move(name)), description(std::move(description)), icon(icon), notify(notify) {}
@@ -108,11 +101,6 @@ struct OutfitEntry {
 
 	uint16_t lookType;
 	uint8_t addons;
-};
-
-struct FamiliarEntry {
-	constexpr explicit FamiliarEntry(uint16_t initLookType) : lookType(initLookType) {}
-	uint16_t lookType;
 };
 
 struct Skill {
@@ -317,7 +305,7 @@ class Player final : public Creature, public Cylinder
 			operatingSystem = clientos;
 		}
 
-		uint32_t getProtocolVersion() const {
+		uint16_t getProtocolVersion() const {
 			if (!client) {
 				return 0;
 			}
@@ -723,7 +711,7 @@ class Player final : public Creature, public Cylinder
 		void onWalkComplete() final;
 
 		void stopWalk();
-		void openShopWindow(Npc* npc, const std::vector<ShopInfo>& shop);
+		void openShopWindow(Npc* npc, const std::list<ShopInfo>& shop);
 		bool closeShopWindow(bool sendCloseShopWindow = true);
 		bool updateSaleShopList(const Item* item);
 		bool hasShopItemForSale(uint32_t itemId, uint8_t subType) const;
@@ -847,11 +835,6 @@ class Player final : public Creature, public Cylinder
 		bool removeOutfit(uint16_t lookType);
 		bool removeOutfitAddon(uint16_t lookType, uint8_t addons);
 		bool getOutfitAddons(const Outfit& outfit, uint8_t& addons) const;
-
-		bool canFamiliar(uint32_t lookType) const;
-		void addFamiliar(uint16_t lookType);
-		bool removeFamiliar(uint16_t lookType);
-		bool getFamiliar(const Familiar& familiar) const;
 
 		bool canLogout();
 
@@ -1215,9 +1198,10 @@ class Player final : public Creature, public Cylinder
 				client->sendShop(npc, shopItemList);
 			}
 		}
-		void sendSaleItemList(const std::map<uint32_t, uint32_t>& inventoryMap) const {
+		void sendSaleItemList() {
+			updatingSaleItemList = false;
 			if (client) {
-				client->sendSaleItemList(shopItemList, inventoryMap);
+				client->sendSaleItemList(shopItemList);
 			}
 		}
 		void sendCloseShop() const {
@@ -1331,7 +1315,6 @@ class Player final : public Creature, public Cylinder
 				client->sendCharmData();
 			}
 		}
-
 		void sendCloseContainer(uint8_t cid) {
 			if (client) {
 				client->sendCloseContainer(cid);
@@ -1367,100 +1350,6 @@ class Player final : public Creature, public Cylinder
 		void sendQuestLine(const Quest* quest) {
 			if (client) {
 				client->sendQuestLine(quest);
-			}
-		}
-		void sendItemInspection(uint16_t itemId, uint8_t itemCount, const Item* item, bool cyclopedia) {
-			if (client) {
-				client->sendItemInspection(itemId, itemCount, item, cyclopedia);
-			}
-		}
-		void sendCyclopediaCharacterNoData(CyclopediaCharacterInfoType_t characterInfoType, uint8_t errorCode) {
-			if (client) {
-				client->sendCyclopediaCharacterNoData(characterInfoType, errorCode);
-			}
-		}
-		void sendCyclopediaCharacterBaseInformation() {
-			if (client) {
-				client->sendCyclopediaCharacterBaseInformation();
-			}
-		}
-		void sendCyclopediaCharacterGeneralStats() {
-			if (client) {
-				client->sendCyclopediaCharacterGeneralStats();
-			}
-		}
-		void sendCyclopediaCharacterCombatStats() {
-			if (client) {
-				client->sendCyclopediaCharacterCombatStats();
-			}
-		}
-		void sendCyclopediaCharacterRecentDeaths(uint16_t page, uint16_t pages, const std::vector<RecentDeathEntry>& entries) {
-			if (client) {
-				client->sendCyclopediaCharacterRecentDeaths(page, pages, entries);
-			}
-		}
-		void sendCyclopediaCharacterRecentPvPKills(uint16_t page, uint16_t pages, const std::vector<RecentPvPKillEntry>& entries) {
-			if (client) {
-				client->sendCyclopediaCharacterRecentPvPKills(page, pages, entries);
-			}
-		}
-		void sendCyclopediaCharacterAchievements() {
-			if (client) {
-				client->sendCyclopediaCharacterAchievements();
-			}
-		}
-		void sendCyclopediaCharacterItemSummary() {
-			if (client) {
-				client->sendCyclopediaCharacterItemSummary();
-			}
-		}
-		void sendCyclopediaCharacterOutfitsMounts() {
-			if (client) {
-				client->sendCyclopediaCharacterOutfitsMounts();
-			}
-		}
-		void sendCyclopediaCharacterStoreSummary() {
-			if (client) {
-				client->sendCyclopediaCharacterStoreSummary();
-			}
-		}
-		void sendCyclopediaCharacterInspection() {
-			if (client) {
-				client->sendCyclopediaCharacterInspection();
-			}
-		}
-		void sendCyclopediaCharacterBadges() {
-			if (client) {
-				client->sendCyclopediaCharacterBadges();
-			}
-		}
-		void sendCyclopediaCharacterTitles() {
-			if (client) {
-				client->sendCyclopediaCharacterTitles();
-			}
-		}
-		void sendHighscoresNoData() {
-			if (client) {
-				client->sendHighscoresNoData();
-			}
-		}
-		void sendHighscores(const std::vector<HighscoreCharacter>& characters, uint8_t categoryId, uint32_t vocationId, uint16_t page, uint16_t pages) {
-			if (client) {
-				client->sendHighscores(characters, categoryId, vocationId, page, pages);
-			}
-		}
-		void addAsyncOngoingTask(uint64_t flags) {
-			asyncOngoingTasks |= flags;
-		}
-		bool hasAsyncOngoingTask(uint64_t flags) const {
-			return (asyncOngoingTasks & flags);
-		}
-		void resetAsyncOngoingTask(uint64_t flags) {
-			asyncOngoingTasks &= ~(flags);
-		}
-		void sendTournamentLeaderboard() {
-			if (client) {
-				client->sendTournamentLeaderboard();
 			}
 		}
 		void sendEnterWorld() {
@@ -1552,7 +1441,7 @@ class Player final : public Creature, public Cylinder
 		ReturnValue rerollPreyData(uint8_t preySlotId);
 		ReturnValue rerollPreyDataWildcard(uint8_t preySlotId);
 		ReturnValue rerollPreyBonus(uint8_t preySlotId);
-		uint32_t getFreeRerollTime(uint8_t preySlotId);
+		uint16_t getFreeRerollTime(uint8_t preySlotId);
 		uint16_t getPreyTimeLeft(uint8_t preySlotId);
 		void decreasePreyTimeLeft(uint16_t amount);
 
@@ -1677,14 +1566,6 @@ class Player final : public Creature, public Cylinder
 		void sendPvpSquare(Creature* creature, SquareColor_t squareColor);
 		void setPvpSituation(bool situation) {
 			isPvpSituation = situation;
-		}
-
-		void setScheduledSaleUpdate(bool scheduled) {
-			scheduledSaleUpdate = scheduled;
-		}
-
-		bool getScheduledSaleUpdate() {
-			return scheduledSaleUpdate;
 		}
 
 		const std::map<uint8_t, OpenContainer>& getOpenContainers() const {
@@ -1889,7 +1770,6 @@ class Player final : public Creature, public Cylinder
 		std::map<uint32_t, uint32_t>& getAllItemTypeCount(std::map<uint32_t, uint32_t>& countMap) const final;
 		Item* getItemByClientId(uint16_t clientId) const;
 		std::map<uint16_t, uint16_t> getInventoryClientIds() const;
-    		void getAllItemTypeCountAndSubtype(std::map<uint32_t, uint32_t>& countMap) const;
 		Thing* getThing(size_t index) const final;
 
 		void internalAddThing(Thing* thing) final;
@@ -1920,11 +1800,9 @@ class Player final : public Creature, public Cylinder
 		std::vector<uint16_t> autoLootItemIds;
 
 		std::vector<OutfitEntry> outfits;
-		std::vector<FamiliarEntry> familiars;
-
 		GuildWarVector guildWarVector;
 
-		std::vector<ShopInfo> shopItemList;
+		std::list<ShopInfo> shopItemList;
 
 		std::forward_list<Party*> invitePartyList;
 		std::forward_list<uint32_t> modalWindows;
@@ -1958,7 +1836,6 @@ class Player final : public Creature, public Cylinder
 		uint64_t bankBalance = 0;
 		uint64_t instantRewardTokens = 0;
 		uint64_t lastQuestlogUpdate = 0;
-		uint64_t asyncOngoingTasks = 0;
 		int64_t lastFailedFollow = 0;
 		int64_t skullTicks = 0;
 		int64_t lastWalkthroughAttempt = 0;
@@ -2076,7 +1953,6 @@ class Player final : public Creature, public Cylinder
 		bool updatingSaleItemList = false;
 		bool logged = false;
 		bool inventoryAbilities[CONST_SLOT_LAST + 1] = {};
-		bool scheduledSaleUpdate = false;
 
 		static uint32_t playerCombatAutoID;
 		static uint32_t playerAutoID;

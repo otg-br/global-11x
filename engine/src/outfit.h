@@ -20,19 +20,17 @@
 #ifndef FS_OUTFIT_H_C56E7A707E3F422C8C93D9BE09916AA3
 #define FS_OUTFIT_H_C56E7A707E3F422C8C93D9BE09916AA3
 
-#include <utility>
-
 #include "enums.h"
 
 struct Outfit {
-	Outfit(std::string name, uint16_t lookType, bool premium, bool unlocked, std::string initFrom) :
-		name(std::move(name)), lookType(lookType), premium(premium), unlocked(unlocked), from(initFrom) {}
+	Outfit(std::string name, uint16_t lookType, bool premium, bool unlocked, bool vip) :
+		name(std::move(name)), lookType(lookType), premium(premium), unlocked(unlocked), vip(vip) {}
 
 	std::string name;
 	uint16_t lookType;
 	bool premium;
 	bool unlocked;
-	std::string from;
+	bool vip;
 };
 
 struct ProtocolOutfit {

@@ -53,7 +53,7 @@ class ProtocolGameBase : public Protocol {
 		void AddCreature(NetworkMessage& msg, const Creature* creature, bool known, uint32_t remove);
 		void AddPlayerStats(NetworkMessage& msg);
 		void AddPlayerSkills(NetworkMessage& msg);
-		void AddOutfit(NetworkMessage& msg, const Outfit_t& outfit, bool addMount = true);
+		void AddOutfit(NetworkMessage& msg, const Outfit_t& outfit);
 
 	protected:
 		explicit ProtocolGameBase(Connection_ptr connection):
@@ -85,7 +85,6 @@ class ProtocolGameBase : public Protocol {
 		void sendPremiumTrigger();
 		void sendBlessStatus();
 		void sendStoreHighlight();
-		void sendItemClasses();
 		void sendBasicData();
 		void sendPendingStateEntered();
 		void sendEnterWorld();

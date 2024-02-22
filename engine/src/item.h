@@ -20,9 +20,6 @@
 #ifndef FS_ITEM_H_009A319FB13D477D9EEFFBBD9BB83562
 #define FS_ITEM_H_009A319FB13D477D9EEFFBBD9BB83562
 
-#include <utility>
-#include <vector>
-
 #include "cylinder.h"
 #include "thing.h"
 #include "items.h"
@@ -801,8 +798,6 @@ class Item : virtual public Thing
 			return items[id].decayTo;
 		}
 
-		static std::vector<std::pair<std::string, std::string>> getDescriptions(const ItemType& it,
-			const Item* item = nullptr);
 		static std::string getDescription(const ItemType& it, int32_t lookDistance, const Item* item = nullptr, int32_t subType = -1, bool addArticle = true);
 		static std::string getNameDescription(const ItemType& it, const Item* item = nullptr, int32_t subType = -1, bool addArticle = true);
 		static std::string getWeightDescription(const ItemType& it, uint32_t weight, uint32_t count = 1);
