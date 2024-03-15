@@ -439,6 +439,9 @@ class ProtocolGame final : public ProtocolGameBase
 
 		//otclient
 		void parseExtendedOpcode(NetworkMessage& msg);
+		
+		//OTCv8
+		void sendFeatures();
 
 		void parseBestiaryTracker(NetworkMessage& msg);
 
@@ -471,6 +474,8 @@ class ProtocolGame final : public ProtocolGameBase
 		int8_t liveCastViews = 0;
 
 		void sendInventory();
+		
+		uint16_t otclientV8 = 0;
 };
 
 #endif
