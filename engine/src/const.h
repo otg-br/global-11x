@@ -21,7 +21,6 @@
 #define FS_CONST_H_0A49B5996F074465BF44B90F4F780E8B
 
 static constexpr int32_t NETWORKMESSAGE_MAXSIZE = 65500;
-static constexpr int32_t NETWORKMESSAGE_INPUT_MAXSIZE = 1000;
 
 // baseado em "data/modules/scripts/blessings/blessings.lua"
 enum BlessType_t : uint8_t

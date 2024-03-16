@@ -70,7 +70,7 @@ void ProtocolGame::release()
 
 void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingSystem_t operatingSystem)
 {
-		// OTCv8 features and extended opcodes
+	// OTCv8 features and extended opcodes
 	if (otclientV8 || operatingSystem >= CLIENTOS_OTCLIENT_LINUX) {
 		if(otclientV8)
 			sendFeatures();
@@ -376,12 +376,6 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 	if (g_game.getGameState() == GAME_STATE_SHUTDOWN) {
 		disconnect();
 		return;
-	}
-	
-		// OTCv8 version detection
-	uint16_t otcV8StringLength = msg.get<uint16_t>();
-	if(otcV8StringLength == 5 && msg.getString(5) == "OTCv8") {
-		otclientV8 = msg.get<uint16_t>(); // 253, 260, 261, ...
 	}
 
 	OperatingSystem_t operatingSystem = static_cast<OperatingSystem_t>(msg.get<uint16_t>());

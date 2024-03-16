@@ -35,8 +35,6 @@ class ProtocolLogin : public Protocol
 		static const char* protocol_name() {
 			return "login protocol";
 		}
-		
-		uint16_t otclientV8 = 0;
 
 		explicit ProtocolLogin(Connection_ptr connection) : Protocol(connection) {}
 
