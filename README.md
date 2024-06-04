@@ -1,16 +1,32 @@
 
-# OTG-BR - [![Windows](https://ci.appveyor.com/api/projects/status/y69059itp38j0u65?svg=true)](https://ci.appveyor.com/project/Johncorex/global) 
+![enter image description here](https://i.postimg.cc/MTGqtx4h/otgserver-logo-arte.png)
 
+# Otg Server - [![Windows](https://ci.appveyor.com/api/projects/status/y69059itp38j0u65?svg=true)](https://ci.appveyor.com/project/Johncorex/global) 
 
-### Informações:
-Somos um servidor Global Map, no momento suportando apenas cliente 10x, OTCv8 e OTC Mobile.
-Com ajuda de nossos colaboradores vamos atualizar para o cliente 13+ e manter a compatibilidade com o 10x standlone.
+### Repositorios:
+**Otg Server (CLEAN VERSION)**
+https://github.com/otg-br/otg-server
+**Otg Server RealMap 11x**
+https://github.com/otg-br/global-11x/wiki
+
+### Informações PT:
+Bem vindos, somos uma comunidade seria, apaixonada, fundada por brasileiros que buscam uma base revisada, clean, limpa e com estabilidade, livre de Bugs maliciosos.
+Esse repositorio é fork do The Forgotten Server, porém com sistemas atuais como Store System, Imbuements, Prey, Market, Trade NPC System, Charms, Bestiary.
+Temos Datapacks de varios temas como: RealMap 12x/11x, RealMap 8.60, RealMap 8.0, RealMap 7.6.
+Nosso objetivo é ajudar a comunidade opentibia.
+
+### Informations ENG:
+Welcome, we are a serious, passionate community, founded by Brazilians who are looking for a revised, clean, stable and stable base, free from malicious bugs.
+This repository is a fork of The Forgotten Server, but with current systems such as Store System, Imbuements, Prey, Market, Trade NPC System, Charms, Bestiary.
+We have Datapacks for various themes such as: RealMap 12x/11x, RealMap 8.60, RealMap 8.0, RealMap 7.6.
+Our goal is to help the opentibia community.
 
 ### Getting Started:
-* [Compiling Linux](https://github.com/otg-br/global/wiki/Compiling-on-Debian-GNU-Linux)
-* [Compiling Windows](https://github.com/otg-br/global/wiki/Compiling-on-Windows-(vcpkg))
+* [Compiling Debian](https://github.com/otg-br/otg-server/wiki/Compiling-on-Debian-GNU-Linux)
+*  [Compiling Ubuntu](https://github.com/otg-br/otg-server/wiki/Compiling-on-Ubuntu)
+* [Compiling Windows](https://github.com/otg-br/otg-server/wiki/Compiling-on-Windows-(vcpkg))
 
-### Help / Contact
+### Contact US / WHATSAPP GROUP
 
 **PORT**
 Se precisar de ajuda, visite o nosso grupo [**Whatsapp Support**](https://chat.whatsapp.com/EWV3dVvS6nt1em7q23FGu7).
@@ -27,8 +43,6 @@ We use the [issue tracker no GitHub](https://github.com/otg-br/global/issues). R
 
 ### Special Thanks
 
--   our partners
--   our crew (johncore, Erick Nunes, Leonardo Pereira, worthdavi, marson schneider, LukST, guibruxo)
+-   our crew (Erick Nunes, Johncore, Leonardo Pereira, worthdavi, marson schneider, LukST, guibruxo)
 -   [our contributors](https://github.com/otg-br/global/graphs/contributors)
--   [otland/forgottenserver](https://github.com/otland/forgottenserver)  and contributors.
--   if we forget someone, we apologize by forgot you. but you know,  **forgot**tenserver.
+-   otland/forgottenserver and contributors.
