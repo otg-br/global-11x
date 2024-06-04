@@ -86,11 +86,6 @@ void ProtocolSpectator::onRecvFirstMessage(NetworkMessage& msg)
 	enableXTEAEncryption();
 	setXTEAKey(key);
 
-	if (operatingSystem >= CLIENTOS_OTCLIENT_LINUX) {
-		disconnectSpectator("Only official client is allowed!");
-		return;
-	}
-
 	msg.skipBytes(1); // gamemaster flag
 
 	std::string sessionKey = msg.getString();

@@ -446,6 +446,8 @@ class ProtocolGame final : public ProtocolGameBase
 		void parseBestiaryTracker(NetworkMessage& msg);
 
 		friend class Player;
+		
+		uint16_t otclientV8 = 0;
 
 		// Helpers so we don't need to bind every time
 		template <typename Callable, typename... Args>
@@ -475,7 +477,6 @@ class ProtocolGame final : public ProtocolGameBase
 
 		void sendInventory();
 		
-		uint16_t otclientV8 = 0;
 };
 
 #endif
