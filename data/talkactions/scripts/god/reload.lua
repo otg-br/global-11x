@@ -1,3 +1,14 @@
+if not table.contains then
+	function table.contains(tab, value)
+		for _, v in pairs(tab) do
+			if v == value then
+				return true
+			end
+		end
+		return false
+	end
+end
+
 local reloadTypes = {
 	["all"] = RELOAD_TYPE_ALL,
 
@@ -18,8 +29,6 @@ local reloadTypes = {
 	["creaturescripts"] = RELOAD_TYPE_CREATURESCRIPTS,
 
 	["events"] = RELOAD_TYPE_EVENTS,
-
-	["global"] = RELOAD_TYPE_GLOBAL,
 
 	["globalevent"] = RELOAD_TYPE_GLOBALEVENTS,
 	["globalevents"] = RELOAD_TYPE_GLOBALEVENTS,
@@ -64,7 +73,6 @@ local reloadTypes = {
 	["store"] = RELOAD_TYPE_STORE,
 
 	["free pass"] = RELOAD_TYPE_FREE_PASS,
-
 }
 
 function onSay(player, words, param)
@@ -77,38 +85,56 @@ function onSay(player, words, param)
 	end
 
 	saveServer()
+
 	local reloads = Game.getStorageValue("reload") or 0
 	if reloads >= 10 then
-		player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Por medidas de segurança, só é permitido 10 reloads no server até que fique arrumado")
+		player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE,
+			"Por medidas de segurança, só é permitido 10 reloads no server até que fique arrumado")
 		return false
 	end
 
 	logCommand(player, words, param)
+
 	if param:lower() == "autoset" then
 		Game.reload(RELOAD_TYPE_GLOBAL)
 		Game.loadAutomation(true)
 		print(string.format("Reloaded %s and global.lua.", param:lower()))
-		player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, string.format("Reloaded %s and global.lua.", param:lower()))
+		player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE,
+			string.format("Reloaded %s and global.lua.", param:lower()))
 		return false
 	end
 
-	local reloadType = reloadTypes[param]
+	local reloadType = reloadTypes[param:lower()]
 	if not reloadType then
 		player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Reload type not found.")
 		return false
 	end
 
+	-- Optional: If you want to prevent certain reloads for safety:
 	-- if reloadType == RELOAD_TYPE_CREATURESCRIPTS then
-	-- 	player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Por medidas de segurança, esse reload está desativado até que fique arrumado")
+	-- 	player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE,
+	-- 		"Por medidas de segurança, esse reload está desativado até que fique arrumado")
 	-- 	return false
 	-- end
 
 	--Game.setStorageValue("reload", reloads + 1)
+
+	-- If we only want to reset quest storage for RELOAD_TYPE_QUESTS:
 	if reloadType == RELOAD_TYPE_QUESTS then
 		Game.setStorageValue(RELOAD_TYPE_QUESTS, 0)
 	else
+		-- Clear any leftover event data if reloading scripts or everything:
+		if table.contains({RELOAD_TYPE_SCRIPTS, RELOAD_TYPE_ALL}, reloadType) then
+			Event:clear() 
+		end
+
 		Game.reload(reloadType)
+
+		if reloadType == RELOAD_TYPE_GLOBAL then
+			Game.reload(RELOAD_TYPE_SCRIPTS)
+		end
 	end
+
 	print(string.format("Reloaded %s.", param:lower()))
 	player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, string.format("Reloaded %s.", param:lower()))
 	return false
