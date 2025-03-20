@@ -193,7 +193,14 @@ function onLogin(player)
 	
 	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, loginStr)
 	if Game.getBoostMonster():lower() ~= 'none' and MonsterType(Game.getBoostMonster()) then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Today's boosted creature: %s\nBoosted creatures yield more experience points, carry more loot than usual and respawn at a faster rate.", MonsterType(Game.getBoostMonster()):getName()))
+		local expBonus = math.max(getGlobalStorageValueDB(GlobalStorage.BoostedExpBonus), 0)
+		local lootBonus = math.max(getGlobalStorageValueDB(GlobalStorage.BoostedLootBonus), 0)
+		
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 
+			string.format("Today's boosted creature: %s\nBoosted creatures yield +%d%% experience points, +%d%% loot and respawn at a faster rate.", 
+				MonsterType(Game.getBoostMonster()):getName(),
+				expBonus,
+				lootBonus))
 	end
 
 	if player:getClient().version == 1100 then

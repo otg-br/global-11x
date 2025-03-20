@@ -1937,6 +1937,8 @@ GlobalStorage = {
 
 	LastServerSave =  69798,
 	LastBoostTime =  69799,
+	BoostedLootBonus = 69802,
+	BoostedExpBonus = 69803,
 
 	XpDisplayMode = 5634,
 

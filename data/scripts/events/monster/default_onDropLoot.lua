@@ -12,12 +12,22 @@ event.onDropLoot = function(self, corpse)
     
     local player = Player(corpse:getCorpseOwner())
     local percent = 1.5
+    local boostedBonusLoot = 0
+    
+    -- Boosted
     if self:isBoosted() then
-        percent = percent + 0.5
+        local storedValue = getGlobalStorageValueDB(GlobalStorage.BoostedLootBonus)
+        boostedBonusLoot = math.max(storedValue, 0)
+        -- Debug
+        if player then
+            player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, string.format("[DEBUG] Boosted loot bonus from storage: %s", tostring(storedValue)))
+        end
+        percent = percent + (boostedBonusLoot / 100)
     end
     
     local bonusPrey = 0
     local hasCharm = false
+    
     -- Guild Level System
     if player then
         local random = (player:getPreyBonusLoot(mType) >= math.random(100))
@@ -64,13 +74,19 @@ event.onDropLoot = function(self, corpse)
 
         if player then
             local party = player:getParty()
+            local lootMessage = corpse:getLoot(mType:getNameDescription(), player:getClient().version, bonusPrey, hasCharm)
+            
+            if boostedBonusLoot > 0 and self:isBoosted() then
+                lootMessage = string.format("Boosted Loot +%d%%: %s", boostedBonusLoot, lootMessage)
+            end
+            
             if party then
                 party:broadcastPartyLoot(corpse, mType:getNameDescription(), bonusPrey, hasCharm)
                 party:broadcastPartyLootTracker(self, corpse)
             else
-                player:sendTextMessage(MESSAGE_LOOT, corpse:getLoot(mType:getNameDescription(), player:getClient().version, bonusPrey, hasCharm))
+                player:sendTextMessage(MESSAGE_LOOT, lootMessage)
                 player:sendKillTracker(self, corpse)
-                player:sendChannelMessage("", corpse:getLoot(mType:getNameDescription(), 900, bonusPrey, hasCharm), TALKTYPE_CHANNEL_O, 10)
+                player:sendChannelMessage("", lootMessage, TALKTYPE_CHANNEL_O, 10)
             end
         end
     else

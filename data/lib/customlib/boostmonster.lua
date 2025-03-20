@@ -308,16 +308,26 @@ local monsters_boosts = {
 
 local LAST_MONSTER = 1885
 function Game.updateBoostMonster()
-	local oldname = Game.getBoostMonster()
-	local rand = 1
-	local boost = monsters_boosts[rand]
-	repeat
-		rand = math.random(FIRST_MONSTER, LAST_MONSTER)
-		boost = monsters_boosts[rand]
-		local monsterType = MonsterType(boost)
-	until boost and oldname ~= boost and monsterType and monsterType:getExperience() > 500
-	Game.setBoostMonster(boost, rand)
-	return true
+    local oldname = Game.getBoostMonster()
+    local rand = 1
+    local boost = monsters_boosts[rand]
+    repeat
+        rand = math.random(FIRST_MONSTER, LAST_MONSTER)
+        boost = monsters_boosts[rand]
+        local monsterType = MonsterType(boost)
+    until boost and oldname ~= boost and monsterType and monsterType:getExperience() > 500
+    
+    local expBonus = math.random(20, 45)
+    local lootBonus = math.random(20, 45)
+    
+    setGlobalStorageValueDB(GlobalStorage.BoostedExpBonus, expBonus)
+    setGlobalStorageValueDB(GlobalStorage.BoostedLootBonus, lootBonus)
+    
+    print(string.format(">> New boosted monster: %s with +%d%% exp and +%d%% loot bonus", 
+        boost, expBonus, lootBonus))
+    
+    Game.setBoostMonster(boost, rand)
+    return true
 end
 
 function Monster.isBoosted(self)
