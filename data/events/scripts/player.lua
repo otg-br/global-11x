@@ -410,7 +410,7 @@ function Player:onGainExperience(source, exp, rawExp)
         end
     end
 
-    local multiplier = (self:getPremiumEndsAt() > os.stime()) and 1.10 or 1
+    local multiplier = (self:getPremiumDays() > os.stime()) and 1.10 or 1
 
     exp = multiplier * exp
     exp = exp + grindingBoost
