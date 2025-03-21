@@ -3,7 +3,7 @@ event.onDropLoot = function(self, corpse)
     if configManager.getNumber(configKeys.RATE_LOOT) == 0 then
         return
     end
-
+    
     local mType = self:getType()
     if mType:isRewardBoss() then
         corpse:registerReward()
@@ -13,15 +13,17 @@ event.onDropLoot = function(self, corpse)
     local player = Player(corpse:getCorpseOwner())
     local percent = 1.5
     local boostedBonusLoot = 0
+    local boostedType = ""
     
-    -- Boosted
-    if self:isBoosted() then
-        local storedValue = getGlobalStorageValueDB(GlobalStorage.BoostedLootBonus)
-        boostedBonusLoot = math.max(storedValue, 0)
-        -- Debug
-        if player then
-            player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, string.format("[DEBUG] Boosted loot bonus from storage: %s", tostring(storedValue)))
+    for _, boosted in ipairs(boostCreature) do
+        if self:getName():lower() == boosted.name then
+            boostedBonusLoot = boosted.loot
+            boostedType = boosted.category
+            break
         end
+    end
+    
+    if boostedBonusLoot > 0 then
         percent = percent + (boostedBonusLoot / 100)
     end
     
@@ -33,51 +35,48 @@ event.onDropLoot = function(self, corpse)
         local random = (player:getPreyBonusLoot(mType) >= math.random(100))
         if player:getPreyBonusLoot(mType) > 0 and random then
             bonusPrey = player:getPreyBonusLoot(mType)
-            percent = (bonusPrey/100) + percent
+            percent = (bonusPrey / 100) + percent
         end
-
+        
         if player:getClient().version >= 1200 then
             percent = percent + 0.05
         end
+        
         local g = player:getGuild()
         if g then
-            local rewards = {}
-            local number = false
-            rewards = getReward(player:getId())
+            local rewards = getReward(player:getId()) or {}
             for i = 1, #rewards do
                 if rewards[i].type == GUILD_LEVEL_BONUS_LOOT then
-                    number = rewards[i].quantity
+                    percent = percent + rewards[i].quantity
+                    break
                 end
             end
-            if number then
-                percent = percent + number
-            end
         end
-
+        
         -- charm
         local currentCharm = player:getMonsterCharm(mType:raceId())
         if currentCharm == 14 then
             percent = percent * 1.10
             hasCharm = true
         end
-
+        
         if player:getVipDays() > os.stime() then
             percent = percent * 1.05
         end
     end
-
+    
     if not player or player:getStamina() > 840 then
         local monsterLoot = mType:getLoot()
         for i = 1, #monsterLoot do
             corpse:createLootItem(monsterLoot[i], percent, self:isRaid())
         end
-
+        
         if player then
             local party = player:getParty()
             local lootMessage = corpse:getLoot(mType:getNameDescription(), player:getClient().version, bonusPrey, hasCharm)
             
-            if boostedBonusLoot > 0 and self:isBoosted() then
-                lootMessage = string.format("Boosted Loot +%d%%: %s", boostedBonusLoot, lootMessage)
+            if boostedBonusLoot > 0 then
+                lootMessage = string.format("Boosted (%s) Loot +%d%%: %s", boostedType, boostedBonusLoot, lootMessage)
             end
             
             if party then
@@ -100,5 +99,4 @@ event.onDropLoot = function(self, corpse)
         end
     end
 end
-
 event:register()

@@ -365,10 +365,21 @@ function Player:onGainExperience(source, exp, rawExp)
             self:addExpTicks(exp)
         end
         return exp
-    elseif source and source:isMonster() and source:isBoosted() then
-        exp = exp * 2
     end
-
+    
+    -- Boost Creature
+    local extraXp = 0
+    local initialExp = exp
+    for _, boosted in ipairs(boostCreature) do
+        if source:getName():lower() == boosted.name then
+            local extraPercent = boosted.exp
+            extraXp = exp * extraPercent / 100
+            self:sendTextMessage(MESSAGE_STATUS_DEFAULT, string.format("[Boosted Creature] You gained %d extra experience from a %s.", extraXp, boosted.category))
+            break
+        end
+    end
+    exp = exp + extraXp
+    
     -- Guild Level System
     if self:getGuild() then
         local rewards = getReward(self:getId()) or {}
@@ -379,28 +390,27 @@ function Player:onGainExperience(source, exp, rawExp)
             end
         end
     end
-
+    
     -- Soul Regeneration
     local vocation = self:getVocation()
     if self:getSoul() < vocation:getMaxSoul() and exp >= self:getLevel() then
         soulCondition:setParameter(CONDITION_PARAM_SOULTICKS, vocation:getSoulGainTicks() * 1000)
         self:addCondition(soulCondition)
     end
-
+    
     -- Experience Stage Multiplier
     exp = Game.getExperienceStage(self:getLevel()) * exp
     exp = sharedExpParty(self, exp)
-
+    
     -- Store Bonus and multipliers
     self:updateExpState()
     useStaminaXp(self)
-
     local grindingBoost = (self:getGrindingXpBoost() > 0) and (exp * 0.5) or 0
     local xpBoost = (self:getStoreXpBoost() > 0) and (exp * 0.5) or 0
     local staminaMultiplier = 1
-
     local isPremium = configManager.getBoolean(configKeys.FREE_PREMIUM) or self:isPremium()
     local staminaMinutes = self:getStamina()
+    
     if configManager.getBoolean(configKeys.STAMINA_SYSTEM) then
         useStamina(self)
         if staminaMinutes > 2400 and isPremium then
@@ -409,19 +419,18 @@ function Player:onGainExperience(source, exp, rawExp)
             staminaMultiplier = 0.5
         end
     end
-
+    
     local multiplier = (self:getPremiumDays() > os.stime()) and 1.10 or 1
-
     exp = multiplier * exp
     exp = exp + grindingBoost
     exp = exp + xpBoost
     exp = exp * staminaMultiplier
-
+    
     if self:getClient().version <= 1100 then
         self:addExpTicks(exp)
     end
-
-  return hasEvent.onGainExperience and Event.onGainExperience(self, source, exp, rawExp) or exp
+    
+    return hasEvent.onGainExperience and Event.onGainExperience(self, source, exp, rawExp) or exp
 end
 
 function Player:onLoseExperience(exp)

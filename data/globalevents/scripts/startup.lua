@@ -178,32 +178,6 @@ function onStartup()
 		print('[daily reward INFO] done falling back.')
 	end
 
-	Game.setStorageValue(GlobalStorage.LastServerSave, lastServerSave)
-	local stg = tonumber(getGlobalStorageValueDB(GlobalStorage.LastBoostTime))
-	if not stg then
-		stg = 1
-	end
-	local lastServerSave = math.max(stg,0)
-	if lastServerSave < dailytime then
-		Game.updateBoostMonster()
-		setGlobalStorageValueDB(GlobalStorage.LastBoostTime, dailytime + (24*60*60))
-	end
-
-	if BoostedCreature then
-		BoostedCreature:start()
-	end
-
-	if getGlobalStorageValueDB(GlobalStorage.BoostedLootBonus) == -1 then
-		local initialLootBonus = math.random(20, 45)
-		setGlobalStorageValueDB(GlobalStorage.BoostedLootBonus, initialLootBonus)
-		print(string.format(">> Initialized boosted loot bonus: +%d%%", initialLootBonus))
-	end
-
-	if getGlobalStorageValueDB(GlobalStorage.BoostedExpBonus) == -1 then
-		local initialExpBonus = math.random(20, 45)
-		setGlobalStorageValueDB(GlobalStorage.BoostedExpBonus, initialExpBonus)
-		print(string.format(">> Initialized boosted exp bonus: +%d%%", initialExpBonus))
-	end
 
 	-- Client XP Display Mode
 	-- 0 = ignore exp rate /stage
@@ -212,5 +186,4 @@ function onStartup()
 	Game.loadAutomation(false)
 
 	print(">> Start time: ".. os.sdate("%d.%m.%Y - %X"))
-
 end

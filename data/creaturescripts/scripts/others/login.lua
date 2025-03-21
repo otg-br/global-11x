@@ -192,16 +192,29 @@ function onLogin(player)
 	AutoLootList:onLogin(player:getId())
 	
 	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, loginStr)
-	if Game.getBoostMonster():lower() ~= 'none' and MonsterType(Game.getBoostMonster()) then
-		local expBonus = math.max(getGlobalStorageValueDB(GlobalStorage.BoostedExpBonus), 0)
-		local lootBonus = math.max(getGlobalStorageValueDB(GlobalStorage.BoostedLootBonus), 0)
-		
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 
-			string.format("Today's boosted creature: %s\nBoosted creatures yield +%d%% experience points, +%d%% loot and respawn at a faster rate.", 
-				MonsterType(Game.getBoostMonster()):getName(),
-				expBonus,
-				lootBonus))
-	end
+	
+	    local boostMessages = {}
+
+    for _, boosted in ipairs(boostCreature) do
+        local categoryMessage
+        if boosted.category == "normal" then
+            categoryMessage = "Monstro (fraco)"
+        elseif boosted.category == "second" then
+            categoryMessage = "Monstro (médio)"
+        elseif boosted.category == "third" then
+            categoryMessage = "Monstro (forte)"
+        elseif boosted.category == "boss" then
+            categoryMessage = "Boss"
+        end
+        table.insert(boostMessages, string.format("%s: %s [+%d%% exp, +%d%% loot]", 
+            categoryMessage, boosted.name, boosted.exp, boosted.loot))
+    end
+
+    if #boostMessages > 0 then
+        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "As seguintes criaturas estão boostadas:\n" ..
+            table.concat(boostMessages, "\n") ..
+            "\nMonstros boostados concedem mais loot, experiência e nascem mais rápido.")
+    end
 
 	if player:getClient().version == 1100 then
 		player:openChannel(10) -- LOOT CHANNEL
