@@ -48,18 +48,18 @@ BoostedCreature = {
             "flimsy lost soul"
         },
         boss = {
-			"ferumbras", "ghazbaran", "morgaroth", "orshabaal", "the handmaiden",
-			"demodras", "dharalion", "the imperor", "the old widow", "the plasmother",
-			"the maw", "bragrumol", "deathstrike", "the welter", "the many",
-			"zushuka", "zavarash", "zamulosh", "zugurosh", "mawhawk",
-			"tanjis", "jaul", "shardhead", "esmeralda", "leviathan",
-			"kerberos", "ethershreck", "ocyakao", "necropharus", "the horned fox",
-			"the evil eye", "the pale count", "massacre", "dracola", "zoralurk",
-			"hairman the huge", "hellgorak", "bibby bloodbath", "grimgor guteater",
-			"rocky", "tirecz", "bazir", "zomba", "countess sorrow", "mr. punish",
-			"the abomination", "the pit lord", "the voice of ruin", "grand master oberon",
-			"scarlett etzel", "the lord of the elements", "black bert", "undead cavebear"
-		}
+            "ferumbras", "ghazbaran", "morgaroth", "orshabaal", "the handmaiden",
+            "demodras", "dharalion", "the imperor", "the old widow", "the plasmother",
+            "the maw", "bragrumol", "deathstrike", "the welter", "the many",
+            "zushuka", "zavarash", "zamulosh", "zugurosh", "mawhawk",
+            "tanjis", "jaul", "shardhead", "esmeralda", "leviathan",
+            "kerberos", "ethershreck", "ocyakao", "necropharus", "the horned fox",
+            "the evil eye", "the pale count", "massacre", "dracola", "zoralurk",
+            "hairman the huge", "hellgorak", "bibby bloodbath", "grimgor guteater",
+            "rocky", "tirecz", "bazir", "zomba", "countess sorrow", "mr. punish",
+            "the abomination", "the pit lord", "the voice of ruin", "grand master oberon",
+            "scarlett etzel", "the lord of the elements", "black bert", "undead cavebear"
+        }
     },
     bonuses = {
         normal = { exp = {min = 30, max = 30}, loot = {min = 15, max = 45} },
@@ -78,27 +78,57 @@ BoostedCreature = {
         second = "The second chosen creature is %s. When killed, you receive +%d experience and +%d loot.",
         third = "The third chosen creature is %s. When killed, you receive +%d experience and +%d loot.",
         boss = "The boss chosen creature is %s. When killed, you receive +%d experience and +%d loot."
+    },
+    -- Dias da semana para cada tipo de criatura boosted
+    -- Em Lua, os.date("*t").wday retorna:
+    -- 1 = Domingo, 2 = Segunda, 3 = Terça, 4 = Quarta, 5 = Quinta, 6 = Sexta, 7 = Sábado
+    schedule = {
+        normal = {1, 2, 3, 4, 5, 6, 7}, -- Todos os dias
+        second = {1, 2, 3, 4, 5, 6, 7}, -- Todos os dias
+        third = {1, 2, 3, 4, 5, 6, 7},  -- Todos os dias
+        boss = {1, 4} -- Domingo (1) e quarta (4)
     }
 }
 
 function BoostedCreature:start()
+    math.randomseed(os.time())
+    for i = 1, 10 do
+        math.random()
+    end
+    
+    local currentDayOfWeek = os.date("*t").wday
+    
     local rand = math.random
     boostCreature = {}
+    
     for category, monsterList in pairs(self.monsters) do
-        local monsterRand = monsterList[rand(#monsterList)]
-        local expRand = rand(self.bonuses[category].exp.min, self.bonuses[category].exp.max)
-        local lootRand = rand(self.bonuses[category].loot.min, self.bonuses[category].loot.max)
-        table.insert(boostCreature, {name = monsterRand:lower(), exp = expRand, loot = lootRand, category = category})
-        local monster = Game.createMonster(boostCreature[#boostCreature].name, self.positions[category], false, true)
-        if monster then
-            monster:setDirection(SOUTH)
-        else
-            print(string.format("Failed to create monster: %s", boostCreature[#boostCreature].name))
+        local isDayScheduled = false
+        
+        for _, day in ipairs(self.schedule[category]) do
+            if day == currentDayOfWeek then
+                isDayScheduled = true
+                break
+            end
         end
-        print(string.format(self.messages[category], monsterRand, expRand, lootRand))
+        
+        if isDayScheduled then
+            local monsterRand = monsterList[rand(#monsterList)]
+            local expRand = rand(self.bonuses[category].exp.min, self.bonuses[category].exp.max)
+            local lootRand = rand(self.bonuses[category].loot.min, self.bonuses[category].loot.max)
+            table.insert(boostCreature, {name = monsterRand:lower(), exp = expRand, loot = lootRand, category = category})
+            
+            local monster = Game.createMonster(boostCreature[#boostCreature].name, self.positions[category], false, true)
+            if monster then
+                monster:setDirection(SOUTH)
+            end
+        end
     end
 end
 
 function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
+end
+
+function getBoostedCreature()
+    return boostCreature
 end

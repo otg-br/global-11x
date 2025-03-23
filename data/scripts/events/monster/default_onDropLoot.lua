@@ -12,20 +12,6 @@ event.onDropLoot = function(self, corpse)
     
     local player = Player(corpse:getCorpseOwner())
     local percent = 1.5
-    local boostedBonusLoot = 0
-    local boostedType = ""
-    
-    for _, boosted in ipairs(boostCreature) do
-        if self:getName():lower() == boosted.name then
-            boostedBonusLoot = boosted.loot
-            boostedType = boosted.category
-            break
-        end
-    end
-    
-    if boostedBonusLoot > 0 then
-        percent = percent + (boostedBonusLoot / 100)
-    end
     
     local bonusPrey = 0
     local hasCharm = false
@@ -74,10 +60,6 @@ event.onDropLoot = function(self, corpse)
         if player then
             local party = player:getParty()
             local lootMessage = corpse:getLoot(mType:getNameDescription(), player:getClient().version, bonusPrey, hasCharm)
-            
-            if boostedBonusLoot > 0 then
-                lootMessage = string.format("Boosted (%s) Loot +%d%%: %s", boostedType, boostedBonusLoot, lootMessage)
-            end
             
             if party then
                 party:broadcastPartyLoot(corpse, mType:getNameDescription(), bonusPrey, hasCharm)
