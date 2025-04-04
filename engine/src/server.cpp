@@ -35,14 +35,14 @@ ServiceManager::~ServiceManager()
 
 void ServiceManager::die()
 {
-	io_service.stop();
+	io_context.stop();
 }
 
 void ServiceManager::run()
 {
 	assert(!running);
 	running = true;
-	io_service.run();
+	io_context.run();
 }
 
 void ServiceManager::stop()
@@ -55,7 +55,7 @@ void ServiceManager::stop()
 
 	for (auto& servicePortIt : acceptors) {
 		try {
-			io_service.post(std::bind(&ServicePort::onStopServer, servicePortIt.second));
+			boost::asio::post(io_context.get_executor(), std::bind(&ServicePort::onStopServer, servicePortIt.second));
 		} catch (boost::system::system_error& e) {
 			std::cout << "[ServiceManager::stop] Network Error: " << e.what() << std::endl;
 		}
@@ -98,7 +98,7 @@ void ServicePort::accept()
 		return;
 	}
 
-	auto connection = ConnectionManager::getInstance().createConnection(io_service, shared_from_this());
+	auto connection = ConnectionManager::getInstance().createConnection(io_context, shared_from_this());
 	acceptor->async_accept(connection->getSocket(), std::bind(&ServicePort::onAccept, shared_from_this(), connection, std::placeholders::_1));
 }
 
@@ -168,10 +168,10 @@ void ServicePort::open(uint16_t port)
 
 	try {
 		if (g_config.getBoolean(ConfigManager::BIND_ONLY_GLOBAL_ADDRESS)) {
-			acceptor.reset(new boost::asio::ip::tcp::acceptor(io_service, boost::asio::ip::tcp::endpoint(
-						boost::asio::ip::address(boost::asio::ip::address_v4::from_string(g_config.getString(ConfigManager::IP))), serverPort)));
+			acceptor.reset(new boost::asio::ip::tcp::acceptor(io_context, boost::asio::ip::tcp::endpoint(
+				boost::asio::ip::address(boost::asio::ip::make_address_v4(g_config.getString(ConfigManager::IP))), serverPort)));
 		} else {
-			acceptor.reset(new boost::asio::ip::tcp::acceptor(io_service, boost::asio::ip::tcp::endpoint(
+			acceptor.reset(new boost::asio::ip::tcp::acceptor(io_context, boost::asio::ip::tcp::endpoint(
 						boost::asio::ip::address(boost::asio::ip::address_v4(INADDR_ANY)), serverPort)));
 		}
 

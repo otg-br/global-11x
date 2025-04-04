@@ -114,7 +114,7 @@ class Creature : virtual public Thing
 		Creature& operator=(const Creature&) = delete;
 
 		void setSpectatorId(uint32_t sid) {
-            spectatorId = sid;
+			spectatorId = static_cast<uint16_t>(sid);
         }
 
         uint16_t getSpectatorId() const {

@@ -29,11 +29,11 @@
 
 extern ConfigManager g_config;
 
-Connection_ptr ConnectionManager::createConnection(boost::asio::io_service& io_service, ConstServicePort_ptr servicePort)
+Connection_ptr ConnectionManager::createConnection(boost::asio::io_context& io_context, ConstServicePort_ptr servicePort)
 {
 	std::lock_guard<std::mutex> lockClass(connectionManagerLock);
 
-	auto connection = std::make_shared<Connection>(io_service, servicePort);
+	auto connection = std::make_shared<Connection>(io_context, servicePort);
 	connections.insert(connection);
 	return connection;
 }
@@ -355,14 +355,15 @@ uint32_t Connection::getIP()
 		return 0;
 	}
 
-	return htonl(endpoint.address().to_v4().to_ulong());
+	return htonl(endpoint.address().to_v4().to_uint());
 }
 
 void Connection::dispatchBroadcastMessage(const OutputMessage_ptr& msg)
 {
 	auto msgCopy = OutputMessagePool::getOutputMessage();
 	msgCopy->append(msg);
-	GET_IO_SERVICE(socket).dispatch(std::bind(&Connection::broadcastMessage, shared_from_this(), msgCopy)); // MUDAR ESSA LINHA
+	boost::asio::dispatch(GET_io_context(socket).get_executor(),
+		std::bind(&Connection::broadcastMessage, shared_from_this(), msgCopy));
 }
 
 void Connection::broadcastMessage(OutputMessage_ptr msg)

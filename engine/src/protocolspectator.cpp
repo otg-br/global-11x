@@ -410,6 +410,7 @@ void ProtocolSpectator::release()
 
 void ProtocolSpectator::writeToOutputBuffer(const NetworkMessage& msg, bool broadcast)
 {
+	(void)broadcast; // Marca o parâmetro como usado
 	OutputMessage_ptr out = getOutputBuffer(msg.getLength());
 	out->append(msg);
 }

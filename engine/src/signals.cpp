@@ -57,7 +57,7 @@ extern Modules* g_modules;
 
 using ErrorCode = boost::system::error_code;
 
-Signals::Signals(boost::asio::io_service& service) :
+Signals::Signals(boost::asio::io_context& service) :
 	set(service)
 {
 	set.add(SIGINT);

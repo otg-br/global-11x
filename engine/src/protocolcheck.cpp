@@ -27,7 +27,7 @@
 extern ConfigManager g_config;
 extern Game g_game;
 
-void ProtocolCheck::onRecvFirstMessage(NetworkMessage& msg)
+void ProtocolCheck::onRecvFirstMessage(NetworkMessage& /*msg*/)
 {
 	std::string ipStr = convertIPToString(getIP());
 	if (ipStr != g_config.getString(ConfigManager::IP)) {
