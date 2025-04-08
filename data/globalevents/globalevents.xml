@@ -2,6 +2,9 @@
 <globalevents>
 	<globalevent name="anuncios30" interval="1800000" script="anuncios30.lua" />
 
+	<!-- hirelings -->
+	<globalevent name="hirelingSave" type="shutdown" script="others/hireling_save.lua"/>
+	
 	<!-- Scarllet Etzel -->
 	<globalevent name="randomMirrors" interval="20000" script="quests/grave_danger/cobra_bastion/randomMirrors.lua" />
 

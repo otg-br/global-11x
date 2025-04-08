@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
+	<!-- Hireling Lamp -->
+	<action itemid="34875" script="others/hirelinglamp.lua" />
+	
 	<action itemid="33248" function="supply"/>
 	<action itemid="7735" script="others/spellwand.lua"/> <!-- Spellwand -->	
 	<action fromid="31719" toid="31720" script="others/consumables/cupcakes.lua"/> <!-- Cupcakes -->

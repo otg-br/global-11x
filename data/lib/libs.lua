@@ -15,6 +15,9 @@ dofile('data/lib/modalwindow.lua')
 
 dofile('data/lib/lionrock.lua')
 
+-- Tables library
+dofile('data/lib/tables/table.lua')
+
 -- dofile('data/lib/dailyRewardLib.lua')
 
 dofile('data/lib/customlib/custom.lua')

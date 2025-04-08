@@ -2,6 +2,9 @@
 <creaturescripts>
 	<event type="modalwindow" name="ModalWindow_Offers" script="playersell/playersell.lua" />
 	<event type="textedit" name="Text_Offers" script="playersell/playersell.lua" />
+	
+	<!-- Hirelings -->
+	<event type="logout" name="HirelingLogoutPlayer" script="others/hireling_logout.lua" />
     
 	<!-- AutoLoot Vankk Master -->
 	<event type="kill" name="AutoLoot" script="autoloot.lua" />
