@@ -1,14 +1,7 @@
 
 ![enter image description here](https://i.postimg.cc/MTGqtx4h/otgserver-logo-arte.png)
 
-# Otg Server - [![Windows](https://ci.appveyor.com/api/projects/status/y69059itp38j0u65?svg=true)](https://ci.appveyor.com/project/Johncorex/global) 
-
-### Repositorios:
-**Otg Server (CLEAN VERSION)**
-https://github.com/otg-br/otg-server
-
-**Otg Server RealMap 11x**
-https://github.com/otg-br/global-11x/wiki
+# Otg Server Global 11x 
 
 ### Informações PT:
 Bem vindos, somos uma comunidade seria, apaixonada, fundada por brasileiros que buscam uma base revisada, clean, limpa e com estabilidade, livre de Bugs maliciosos.
