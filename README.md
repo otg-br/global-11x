@@ -42,8 +42,8 @@ Usamos o [issue tracker no GitHub](https://github.com/otg-br/global/issues). Lem
 **ENGLISH**
 We use the [issue tracker no GitHub](https://github.com/otg-br/global/issues). Remember, everyone following the repository is notified by email when there is activity. Therefore, be careful and avoid writing comments that are not meaningful to an issue (e.g. "+1"). If you want an issue to be fixed faster, you should fix the issue and send a pull request or place a bounty on the issue.
 
-### Special Thanks
+### Special Credits
 
--   our crew (Erick Nunes, Johncore, Leonardo Pereira, worthdavi, marson schneider, LukST, guibruxo)
+-   our crew (Erick Nunes, Johncore, Matheus Roberto, Lostwalker, Leonardo Pereira, worthdavi, marson schneider, LukST, guibruxo)
 -   [our contributors](https://github.com/otg-br/global/graphs/contributors)
 -   otland/forgottenserver and contributors.
