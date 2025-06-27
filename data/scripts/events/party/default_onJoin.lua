@@ -4,10 +4,13 @@ event.onJoin = function(self, player, skill, tries)
 		return false
 	end
 
-	player:broadcastUpdateInfo(CONST_PARTY_BASICINFO, player:getId())
-	player:broadcastUpdateInfo(CONST_PARTY_MANA, player:getId())
-	player:broadcastUpdateInfo(CONST_PARTY_UNKNOW, player:getId())
-	player:broadcastInfo(true)
+	local party = player:getParty()
+	if party then
+		party:broadcastUpdateInfo(CONST_PARTY_BASICINFO, player:getId())
+		party:broadcastUpdateInfo(CONST_PARTY_MANA, player:getId())
+		party:broadcastUpdateInfo(CONST_PARTY_UNKNOW, player:getId())
+		party:broadcastInfo(true)
+	end
 
 	return true
 end
