@@ -62,6 +62,10 @@ clientVersionMin = 1100
 clientVersionMax = 1291
 clientVersionStr = "Only support outdated 10.00 and version 12.91"
 
+-- Anti Multi-Client System
+antiMultiClientEnabled = true
+antiMultiClientLimit = 2
+
 -- Depot Limit
 freeDepotLimit = 2000
 premiumDepotLimit = 10000

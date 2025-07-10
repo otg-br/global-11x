@@ -204,6 +204,7 @@ bool ConfigManager::load()
 	boolean[FORCE_MONSTERTYPE_LOAD] = getGlobalBoolean(L, "forceMonsterTypesOnLoad", true);
 	boolean[YELL_ALLOW_PREMIUM] = getGlobalBoolean(L, "yellAlwaysAllowPremium", false);
 	boolean[BLESS_RUNE] = getGlobalBoolean(L, "blessRune", true);
+	boolean[ANTI_MULTI_CLIENT_ENABLED] = getGlobalBoolean(L, "antiMultiClientEnabled", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");
@@ -257,6 +258,7 @@ bool ConfigManager::load()
 	integer[SERVER_SAVE_NOTIFY_DURATION] = getGlobalNumber(L, "serverSaveNotifyDuration", 5);
 	integer[YELL_MINIMUM_LEVEL] = getGlobalNumber(L, "yellMinimumLevel", 2);
 	integer[TIME_GMT] = getGlobalNumber(L, "timeGMT", -3 * 60 * 60);
+	integer[ANTI_MULTI_CLIENT_LIMIT] = getGlobalNumber(L, "antiMultiClientLimit", 4);
 
 	floating[RATE_MONSTER_HEALTH] = getGlobalFloat(L, "rateMonsterHealth", 1.0);
 	floating[RATE_MONSTER_ATTACK] = getGlobalFloat(L, "rateMonsterAttack", 1.0);

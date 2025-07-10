@@ -462,6 +462,10 @@ void Creature::onCreatureMove(Creature* creature, const Tile* newTile, const Pos
 			} else if (Position::getDistanceX(newPos, oldPos) >= 1 && Position::getDistanceY(newPos, oldPos) >= 1) {
 				//diagonal extra cost
 				lastStepCost = 3;
+				if (getPlayer())
+				{
+					lastStepCost -= 1;
+				}
 			}
 		} else {
 			stopEventWalk();
@@ -1396,47 +1400,34 @@ int64_t Creature::getStepDuration(Direction dir) const
 
 int64_t Creature::getStepDuration() const
 {
-	if (isRemoved()) {
-		return 0;
-	}
+    if (isRemoved()) {
+        return 0;
+    }
 
-	uint32_t calculatedStepSpeed;
-	uint32_t groundSpeed;
+    uint32_t groundSpeed;
+    int32_t stepSpeed = getStepSpeed();
+    Item* ground = tile->getGround();
+    if (ground) {
+        groundSpeed = Item::items[ground->getID()].speed;
+        if (groundSpeed == 0) {
+            groundSpeed = 150;
+        }
+    }
+    else {
+        groundSpeed = 150;
+    }
 
-	int32_t stepSpeed = getStepSpeed();
-	if (stepSpeed > -Creature::speedB) {
-		calculatedStepSpeed = floor((Creature::speedA * log((stepSpeed / 2) + Creature::speedB) + Creature::speedC) + 0.5);
-		if (calculatedStepSpeed <= 0) {
-			calculatedStepSpeed = 1;
-		}
-	} else {
-		calculatedStepSpeed = 1;
-	}
+    int64_t stepDuration = (1000 * static_cast<int64_t>(groundSpeed)) / stepSpeed;
+        if (stepDuration < 50) {
+            stepDuration = 50;
+        }
 
-	Item* ground = tile->getGround();
-	if (ground) {
-		groundSpeed = Item::items[ground->getID()].speed;
-		if (groundSpeed == 0) {
-			groundSpeed = 150;
-		}
-	} else {
-		groundSpeed = 150;
-	}
+    const Monster* monster = getMonster();
+    if (monster && monster->isTargetNearby() && !monster->isFleeing() && !monster->getMaster()) {
+        stepDuration *= 3;
+    }
 
-	// todos os grounds ficam com a msm velocidade, se levar paralyze
-	if (getPlayer() && hasCondition(CONDITION_PARALYZE)) {
-		groundSpeed = 100;
-	}
-
-	double duration = std::floor(1000 * groundSpeed / calculatedStepSpeed);
-	int64_t stepDuration = std::ceil(duration / 50) * 50;
-
-	const Monster* monster = getMonster();
-	if (monster && monster->isTargetNearby() && !monster->isFleeing() && !monster->getMaster()) {
-		stepDuration *= 2;
-	}
-
-	return stepDuration;
+    return stepDuration;
 }
 
 int64_t Creature::getEventStepTicks(bool onlyDelay) const

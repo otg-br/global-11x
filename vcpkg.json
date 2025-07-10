@@ -1,0 +1,19 @@
+{
+  "name": "otg-server",
+  "version": "1.0.0",
+  "dependencies": [
+    "boost-asio",
+    "boost-filesystem",
+    "boost-iostreams",
+    "boost-lexical-cast",
+    "boost-lockfree",
+    "boost-system",
+    "boost-variant",
+    "cryptopp",
+    "libmariadb",
+    "luajit",
+    "mpir",
+    "pugixml"
+  ],
+  "builtin-baseline": "215a2535590f1f63788ac9bd2ed58ad15e6afdff"
+} 

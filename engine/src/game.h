@@ -578,6 +578,7 @@ class Game
 		void sendOfflineTrainingDialog(Player* player);
 
 		const std::unordered_map<uint32_t, Player*>& getPlayers() const { return players; }
+		const std::map<uint32_t, Monster*>& getMonsters() const { return monsters; }
 		const std::map<uint32_t, Npc*>& getNpcs() const { return npcs; }
 
 		const std::map<uint16_t, uint32_t>& getItemsPrice() const { return itemsPriceMap; }

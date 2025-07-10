@@ -1,0 +1,43 @@
+# Visual Studio
+**/.vs
+**.vcxproj.user
+**x64
+**.dll
+**.exe
+
+# Build Output
+/build
+vcpkg_installed/
+
+# Personal Config Files
+config.lua
+client_assertions.txt
+bin/tfs
+/tfs
+*.otbm:Zone.Identifier
+otgmap.otbm
+
+# OTG Server specific
+theforgottenserver.exe
+*.otbm
+logs/
+data/reports/
+data/world/*.otbm
+data/world/*.otbm:Zone.Identifier
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini 

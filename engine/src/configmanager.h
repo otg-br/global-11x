@@ -65,6 +65,7 @@ class ConfigManager
 			FORCE_MONSTERTYPE_LOAD,
 			YELL_ALLOW_PREMIUM,
 			BLESS_RUNE,
+			ANTI_MULTI_CLIENT_ENABLED,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
@@ -149,6 +150,7 @@ class ConfigManager
 			SERVER_SAVE_NOTIFY_DURATION,
 			YELL_MINIMUM_LEVEL,
 			TIME_GMT,
+			ANTI_MULTI_CLIENT_LIMIT,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};

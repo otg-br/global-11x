@@ -166,6 +166,17 @@ void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingS
 
 		player->setOperatingSystem(operatingSystem);
 
+		// Anti Multi-Client System
+		if (g_config.getBoolean(ConfigManager::ANTI_MULTI_CLIENT_ENABLED)) {
+			int32_t ipsCounter = 0;
+			for (const auto& it : g_game.getPlayers()) {
+				if (player->getIP() == it.second->getIP() && ++ipsCounter >= g_config.getNumber(ConfigManager::ANTI_MULTI_CLIENT_LIMIT)) {
+					disconnectClient("You can only login " + std::to_string(g_config.getNumber(ConfigManager::ANTI_MULTI_CLIENT_LIMIT)) + " characters per IP, and you reached the limit.");
+					return;
+				}
+			}
+		}
+
 		if (!g_game.placeCreature(player, player->getLoginPosition())) {
 			if (!g_game.placeCreature(player, player->getTemplePosition(), false, true)) {
 				disconnectClient("Temple position is wrong. Contact the administrator.");
