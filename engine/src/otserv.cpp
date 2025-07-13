@@ -170,7 +170,21 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 	std::cout << ">> Establishing database connection..." << std::flush;
 
 	if (!Database::getInstance().connect()) {
-		startupErrorMessage("Failed to connect to database.");
+		startupErrorMessage(
+			"Failed to connect to the database.\n"
+			"Possible causes:\n"
+			"- The MySQL server is not running.\n"
+			"- The username or password in your config.lua is incorrect.\n"
+			"- The user does not have the necessary privileges or is blocked.\n"
+			"- The MySQL server is not accepting connections from 'localhost'.\n"
+			"\nTroubleshooting steps:\n"
+			"1. Make sure the MySQL service is running (e.g., 'systemctl status mysql' or 'service mysql status').\n"
+			"2. Check your config.lua for correct database credentials (username, password, host, port).\n"
+			"3. Try connecting manually using the same credentials: mysql -u <user> -p -h <host>\n"
+			"4. If you recently changed your MySQL password, update it in config.lua.\n"
+			"5. Check MySQL user privileges.\n"
+			"\nThe server is NOT online until this issue is resolved."
+		);
 		return;
 	}
 
