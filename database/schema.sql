@@ -1,3 +1,12 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1deb5ubuntu1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Tempo de geração: 07-Jul-2025 às 20:12
+-- Versão do servidor: 10.6.22-MariaDB-0ubuntu0.22.04.1
+-- versão do PHP: 8.1.2-1ubuntu2.21
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -9,203 +18,237 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `otservbr`
+-- Banco de dados: `otg_clean`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accounts`
+-- Estrutura da tabela `accounts`
 --
 
 CREATE TABLE `accounts` (
-	`id` int(11) NOT NULL,
-	`name` varchar(32) NOT NULL,
-	`password` char(40) NOT NULL,
-	`secret` char(16) DEFAULT NULL,
-	`type` int(11) NOT NULL DEFAULT 1,
-	`premdays` int(11) NOT NULL DEFAULT 0,
-	`coins` int(12) NOT NULL DEFAULT 0,
-	`lastday` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`proxy_id` int(11) NOT NULL DEFAULT 0,
-	`email` varchar(255) NOT NULL DEFAULT '',
-	`creation` bigint(20) NOT NULL DEFAULT 0,
-	`vote` int(11) NOT NULL DEFAULT 0,
-	`key` varchar(20) NOT NULL DEFAULT '0',
-	`email_new` varchar(255) NOT NULL DEFAULT '',
-	`email_new_time` int(11) NOT NULL DEFAULT 0,
-	`rlname` varchar(255) NOT NULL DEFAULT '',
-	`location` varchar(255) NOT NULL DEFAULT '',
-	`page_access` int(11) NOT NULL DEFAULT 0,
-	`email_code` varchar(255) NOT NULL DEFAULT '',
-	`next_email` int(11) NOT NULL DEFAULT 0,
-	`premium_points` int(11) NOT NULL DEFAULT 0,
-	`create_date` bigint(20) NOT NULL DEFAULT 0,
-	`create_ip` bigint(20) NOT NULL DEFAULT 0,
-	`last_post` int(11) NOT NULL DEFAULT 0,
-	`flag` varchar(80) NOT NULL DEFAULT '',
-	`vip_time` int(11) NOT NULL DEFAULT 0,
-	`guild_points` int(11) NOT NULL DEFAULT 0,
-	`guild_points_stats` int(11) NOT NULL DEFAULT 0,
-	`passed` int(11) NOT NULL DEFAULT 0,
-	`block` int(11) NOT NULL DEFAULT 0,
-	`refresh` int(11) NOT NULL DEFAULT 0,
-	`birth_date` varchar(50) NOT NULL DEFAULT '',
-	`gender` varchar(20) NOT NULL DEFAULT '',
-	`loyalty_points` bigint(20) NOT NULL DEFAULT 0,
-	`authToken` varchar(100) NOT NULL DEFAULT '',
-	`player_sell_bank` int(11) DEFAULT 0,
-	`secret_status` tinyint(1) NOT NULL DEFAULT 0,
-	`tournamentBalance` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `password` char(40) NOT NULL,
+  `secret` char(16) DEFAULT NULL,
+  `type` int(11) NOT NULL DEFAULT 1,
+  `premium_ends_at` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `coins` int(12) NOT NULL DEFAULT 0,
+  `proxy_id` int(11) NOT NULL DEFAULT 0,
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `creation` bigint(20) NOT NULL DEFAULT 0,
+  `vote` int(11) NOT NULL DEFAULT 0,
+  `key` varchar(20) NOT NULL DEFAULT '0',
+  `email_new` varchar(255) NOT NULL DEFAULT '',
+  `email_new_time` int(11) NOT NULL DEFAULT 0,
+  `rlname` varchar(255) NOT NULL DEFAULT '',
+  `location` varchar(255) NOT NULL DEFAULT '',
+  `page_access` int(11) NOT NULL DEFAULT 0,
+  `email_code` varchar(255) NOT NULL DEFAULT '',
+  `next_email` int(11) NOT NULL DEFAULT 0,
+  `premium_points` int(11) NOT NULL DEFAULT 0,
+  `create_date` bigint(20) NOT NULL DEFAULT 0,
+  `create_ip` bigint(20) NOT NULL DEFAULT 0,
+  `last_post` int(11) NOT NULL DEFAULT 0,
+  `flag` varchar(80) NOT NULL DEFAULT '',
+  `vip_time` int(11) NOT NULL DEFAULT 0,
+  `guild_points` int(11) NOT NULL DEFAULT 0,
+  `guild_points_stats` int(11) NOT NULL DEFAULT 0,
+  `passed` int(11) NOT NULL DEFAULT 0,
+  `block` int(11) NOT NULL DEFAULT 0,
+  `refresh` int(11) NOT NULL DEFAULT 0,
+  `birth_date` varchar(50) NOT NULL DEFAULT '',
+  `gender` varchar(20) NOT NULL DEFAULT '',
+  `loyalty_points` bigint(20) NOT NULL DEFAULT 0,
+  `authToken` varchar(100) NOT NULL DEFAULT '',
+  `player_sell_bank` int(11) DEFAULT 0,
+  `secret_status` tinyint(1) NOT NULL DEFAULT 0,
+  `tournamentBalance` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Table data `accounts`
+-- Extraindo dados da tabela `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `name`, `password`, `secret`, `type`, `premdays`, `coins`, `lastday`, `proxy_id`, `email`, `creation`, `vote`, `key`, `email_new`, `email_new_time`, `rlname`, `location`, `page_access`, `email_code`, `next_email`, `premium_points`, `create_date`, `create_ip`, `last_post`, `flag`, `vip_time`, `guild_points`, `guild_points_stats`, `passed`, `block`, `refresh`, `birth_date`, `gender`, `loyalty_points`, `authToken`, `player_sell_bank`, `secret_status`, `tournamentBalance`) VALUES
-(1, '1', '21298df8a3277357ee55b01df9530b535cf08ec1', NULL, 5, 0, 0, 0, 0, 'god@god', 0, 0, '0', '', 0, '', '', 0, '', 0, 0, 0, 0, 0, '', 1594492196, 0, 0, 0, 0, 0, '', '', 0, '', 0, 0, 0);
+INSERT INTO `accounts` (`id`, `name`, `password`, `secret`, `type`, `premium_ends_at`, `coins`, `proxy_id`, `email`, `creation`, `vote`, `key`, `email_new`, `email_new_time`, `rlname`, `location`, `page_access`, `email_code`, `next_email`, `premium_points`, `create_date`, `create_ip`, `last_post`, `flag`, `vip_time`, `guild_points`, `guild_points_stats`, `passed`, `block`, `refresh`, `birth_date`, `gender`, `loyalty_points`, `authToken`, `player_sell_bank`, `secret_status`, `tournamentBalance`) VALUES
+(1, '1', '21298df8a3277357ee55b01df9530b535cf08ec1', NULL, 6, 1759342628, 999249, 0, 'god@god', 0, 0, '0', '', 0, '', '', 0, '', 0, 0, 0, 0, 0, '', 1594492196, 0, 0, 0, 0, 0, '', '', 0, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accounts_storage`
+-- Estrutura da tabela `accounts_storage`
 --
 
 CREATE TABLE `accounts_storage` (
-	`account_id` int(11) NOT NULL DEFAULT 0,
-	`key` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`value` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `account_id` int(11) NOT NULL DEFAULT 0,
+  `key` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `value` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account_bans`
+-- Estrutura da tabela `account_bans`
 --
 
 CREATE TABLE `account_bans` (
-	`account_id` int(11) NOT NULL,
-	`reason` varchar(255) NOT NULL,
-	`banned_at` bigint(20) NOT NULL,
-	`expires_at` bigint(20) NOT NULL,
-	`banned_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `account_id` int(11) NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `banned_at` bigint(20) NOT NULL,
+  `expires_at` bigint(20) NOT NULL,
+  `banned_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account_ban_history`
+-- Estrutura da tabela `account_ban_history`
 --
 
 CREATE TABLE `account_ban_history` (
-	`id` int(10) UNSIGNED NOT NULL,
-	`account_id` int(11) NOT NULL,
-	`reason` varchar(255) NOT NULL,
-	`banned_at` bigint(20) NOT NULL,
-	`expired_at` bigint(20) NOT NULL,
-	`banned_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(10) UNSIGNED NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `banned_at` bigint(20) NOT NULL,
+  `expired_at` bigint(20) NOT NULL,
+  `banned_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account_character_sale`
+-- Estrutura da tabela `account_character_sale`
 --
 
 CREATE TABLE `account_character_sale` (
-	`id` int(11) NOT NULL,
-	`id_account` int(11) NOT NULL,
-	`id_player` int(11) NOT NULL,
-	`status` tinyint(1) NOT NULL DEFAULT 0,
-	`price_type` tinyint(4) NOT NULL,
-	`price_coins` int(11) DEFAULT NULL,
-	`price_gold` int(11) DEFAULT NULL,
-	`dta_insert` datetime NOT NULL,
-	`dta_valid` datetime NOT NULL,
-	`dta_sale` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL,
+  `id_account` int(11) NOT NULL,
+  `id_player` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `price_type` tinyint(4) NOT NULL,
+  `price_coins` int(11) DEFAULT NULL,
+  `price_gold` int(11) DEFAULT NULL,
+  `dta_insert` datetime NOT NULL,
+  `dta_valid` datetime NOT NULL,
+  `dta_sale` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account_viplist`
+-- Estrutura da tabela `account_viplist`
 --
 
 CREATE TABLE `account_viplist` (
-	`account_id` int(11) NOT NULL COMMENT 'id of account whose viplist entry it is',
-	`player_id` int(11) NOT NULL COMMENT 'id of target player of viplist entry',
-	`description` varchar(128) NOT NULL DEFAULT '',
-	`icon` tinyint(2) UNSIGNED NOT NULL DEFAULT 0,
-	`notify` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `account_id` int(11) NOT NULL COMMENT 'id of account whose viplist entry it is',
+  `player_id` int(11) NOT NULL COMMENT 'id of target player of viplist entry',
+  `description` varchar(128) NOT NULL DEFAULT '',
+  `icon` tinyint(2) UNSIGNED NOT NULL DEFAULT 0,
+  `notify` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `announcements`
+-- Estrutura da tabela `announcements`
 --
 
 CREATE TABLE `announcements` (
-	`id` int(10) NOT NULL,
-	`title` varchar(50) NOT NULL,
-	`text` varchar(255) NOT NULL,
-	`date` varchar(20) NOT NULL,
-	`author` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(10) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `author` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blessings_history`
+-- Estrutura da tabela `auto_loot_list`
+--
+
+CREATE TABLE `auto_loot_list` (
+  `id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `blessings_history`
 --
 
 CREATE TABLE `blessings_history` (
-	`id` int(11) NOT NULL,
-	`player_id` int(11) NOT NULL,
-	`blessing` tinyint(4) NOT NULL,
-	`loss` tinyint(1) NOT NULL,
-	`timestamp` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `blessing` tinyint(4) NOT NULL,
+  `loss` tinyint(1) NOT NULL,
+  `timestamp` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `daily_reward_history`
+-- Estrutura da tabela `boost_creature`
+--
+
+CREATE TABLE `boost_creature` (
+  `category` varchar(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `exp` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `loot` int(10) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `boost_creature`
+--
+
+INSERT INTO `boost_creature` (`category`, `name`, `exp`, `loot`) VALUES
+('boss', 'Leviathan', 30, 36),
+('normal', 'War wolf', 30, 42),
+('second', 'Ancient scarab', 30, 29),
+('third', 'Allukard', 30, 35);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `daily_reward_history`
 --
 
 CREATE TABLE `daily_reward_history` (
-	`id` int(10) UNSIGNED NOT NULL,
-	`streak` smallint(2) NOT NULL DEFAULT 0,
-	`player_id` int(11) NOT NULL,
-	`time` bigint(20) NOT NULL,
-	`event` varchar(255) DEFAULT NULL,
-	`instant` tinyint(3) UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(10) UNSIGNED NOT NULL,
+  `streak` smallint(2) NOT NULL DEFAULT 0,
+  `player_id` int(11) NOT NULL,
+  `time` bigint(20) NOT NULL,
+  `event` varchar(255) DEFAULT NULL,
+  `instant` tinyint(3) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `free_pass`
+-- Estrutura da tabela `free_pass`
 --
 
 CREATE TABLE `free_pass` (
-	`player_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `global_storage`
+-- Estrutura da tabela `global_storage`
 --
 
 CREATE TABLE `global_storage` (
-	`key` varchar(32) NOT NULL,
-	`value` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `key` varchar(32) NOT NULL,
+  `value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Table data `global_storage`
+-- Extraindo dados da tabela `global_storage`
 --
 
 INSERT INTO `global_storage` (`key`, `value`) VALUES
@@ -214,217 +257,266 @@ INSERT INTO `global_storage` (`key`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guilds`
+-- Estrutura da tabela `guilds`
 --
 
 CREATE TABLE `guilds` (
-	`id` int(11) NOT NULL,
-	`name` varchar(255) NOT NULL,
-	`ownerid` int(11) NOT NULL,
-	`creationdata` bigint(20) NOT NULL,
-	`motd` varchar(255) NOT NULL DEFAULT '',
-	`residence` int(11) NOT NULL,
-	`description` text NOT NULL,
-	`guild_logo` mediumblob DEFAULT NULL,
-	`create_ip` bigint(20) NOT NULL DEFAULT 0,
-	`balance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`last_execute_points` bigint(20) NOT NULL DEFAULT 0,
-	`logo_gfx_name` varchar(255) NOT NULL DEFAULT '',
-	`level` int(11) DEFAULT 1,
-	`points` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `ownerid` int(11) NOT NULL,
+  `creationdata` bigint(20) NOT NULL,
+  `motd` varchar(255) NOT NULL DEFAULT '',
+  `residence` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `guild_logo` mediumblob DEFAULT NULL,
+  `create_ip` bigint(20) NOT NULL DEFAULT 0,
+  `balance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `last_execute_points` bigint(20) NOT NULL DEFAULT 0,
+  `logo_gfx_name` varchar(255) NOT NULL DEFAULT '',
+  `level` int(11) DEFAULT 1,
+  `points` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guildwar_kills`
+-- Estrutura da tabela `guildwar_kills`
 --
 
 CREATE TABLE `guildwar_kills` (
-	`id` int(11) NOT NULL,
-	`killer` varchar(50) NOT NULL,
-	`target` varchar(50) NOT NULL,
-	`killerguild` int(11) NOT NULL DEFAULT 0,
-	`targetguild` int(11) NOT NULL DEFAULT 0,
-	`warid` int(11) NOT NULL DEFAULT 0,
-	`time` bigint(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `killer` varchar(50) NOT NULL,
+  `target` varchar(50) NOT NULL,
+  `killerguild` int(11) NOT NULL DEFAULT 0,
+  `targetguild` int(11) NOT NULL DEFAULT 0,
+  `warid` int(11) NOT NULL DEFAULT 0,
+  `time` bigint(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guild_actions_h`
+-- Estrutura da tabela `guild_actions_h`
 --
 
 CREATE TABLE `guild_actions_h` (
-	`id` int(6) UNSIGNED NOT NULL,
-	`guild_id` int(11) DEFAULT NULL,
-	`player_id` int(11) NOT NULL,
-	`value` int(11) NOT NULL,
-	`date` bigint(20) DEFAULT NULL,
-	`type` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(6) UNSIGNED NOT NULL,
+  `guild_id` int(11) DEFAULT NULL,
+  `player_id` int(11) NOT NULL,
+  `value` int(11) NOT NULL,
+  `date` bigint(20) DEFAULT NULL,
+  `type` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guild_invites`
+-- Estrutura da tabela `guild_invites`
 --
 
 CREATE TABLE `guild_invites` (
-	`player_id` int(11) NOT NULL DEFAULT 0,
-	`guild_id` int(11) NOT NULL DEFAULT 0,
-	`date` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL DEFAULT 0,
+  `guild_id` int(11) NOT NULL DEFAULT 0,
+  `date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guild_membership`
+-- Estrutura da tabela `guild_membership`
 --
 
 CREATE TABLE `guild_membership` (
-	`player_id` int(11) NOT NULL,
-	`guild_id` int(11) NOT NULL,
-	`rank_id` int(11) NOT NULL,
-	`nick` varchar(15) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `guild_id` int(11) NOT NULL,
+  `rank_id` int(11) NOT NULL,
+  `nick` varchar(15) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guild_ranks`
+-- Estrutura da tabela `guild_ranks`
 --
 
 CREATE TABLE `guild_ranks` (
-	`id` int(11) NOT NULL,
-	`guild_id` int(11) NOT NULL COMMENT 'guild',
-	`name` varchar(255) NOT NULL COMMENT 'rank name',
-	`level` int(11) NOT NULL COMMENT 'rank level - leader, vice, member, maybe something else'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `guild_id` int(11) NOT NULL COMMENT 'guild',
+  `name` varchar(255) NOT NULL COMMENT 'rank name',
+  `level` int(11) NOT NULL COMMENT 'rank level - leader, vice, member, maybe something else'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guild_transfer_h`
+-- Estrutura da tabela `guild_transfer_h`
 --
 
 CREATE TABLE `guild_transfer_h` (
-	`id` int(6) UNSIGNED NOT NULL,
-	`player_id` int(11) NOT NULL,
-	`from_guild_id` int(6) NOT NULL,
-	`to_guild_id` int(6) NOT NULL,
-	`value` int(11) NOT NULL,
-	`date` bigint(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(6) UNSIGNED NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `from_guild_id` int(6) NOT NULL,
+  `to_guild_id` int(6) NOT NULL,
+  `value` int(11) NOT NULL,
+  `date` bigint(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guild_wars`
+-- Estrutura da tabela `guild_wars`
 --
 
 CREATE TABLE `guild_wars` (
-	`id` int(11) NOT NULL,
-	`guild1` int(11) NOT NULL DEFAULT 0,
-	`guild2` int(11) NOT NULL DEFAULT 0,
-	`name1` varchar(255) NOT NULL,
-	`name2` varchar(255) NOT NULL,
-	`status` tinyint(2) NOT NULL DEFAULT 0,
-	`started` bigint(15) NOT NULL DEFAULT 0,
-	`ended` bigint(15) NOT NULL DEFAULT 0,
-	`frags_limit` int(10) DEFAULT 20
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `guild1` int(11) NOT NULL DEFAULT 0,
+  `guild2` int(11) NOT NULL DEFAULT 0,
+  `name1` varchar(255) NOT NULL,
+  `name2` varchar(255) NOT NULL,
+  `status` tinyint(2) NOT NULL DEFAULT 0,
+  `started` bigint(15) NOT NULL DEFAULT 0,
+  `ended` bigint(15) NOT NULL DEFAULT 0,
+  `frags_limit` int(10) DEFAULT 20
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `houses`
+-- Estrutura da tabela `houses`
 --
 
 CREATE TABLE `houses` (
-	`id` int(11) NOT NULL,
-	`owner` int(11) NOT NULL,
-	`paid` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`warnings` int(11) NOT NULL DEFAULT 0,
-	`name` varchar(255) NOT NULL,
-	`rent` int(11) NOT NULL DEFAULT 0,
-	`town_id` int(11) NOT NULL DEFAULT 0,
-	`bid` int(11) NOT NULL DEFAULT 0,
-	`bid_end` int(11) NOT NULL DEFAULT 0,
-	`last_bid` int(11) NOT NULL DEFAULT 0,
-	`highest_bidder` int(11) NOT NULL DEFAULT 0,
-	`size` int(11) NOT NULL DEFAULT 0,
-	`guildid` int(11) DEFAULT NULL,
-	`beds` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `owner` int(11) NOT NULL,
+  `paid` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `warnings` int(11) NOT NULL DEFAULT 0,
+  `name` varchar(255) NOT NULL,
+  `rent` int(11) NOT NULL DEFAULT 0,
+  `town_id` int(11) NOT NULL DEFAULT 0,
+  `bid` int(11) NOT NULL DEFAULT 0,
+  `bid_end` int(11) NOT NULL DEFAULT 0,
+  `last_bid` int(11) NOT NULL DEFAULT 0,
+  `highest_bidder` int(11) NOT NULL DEFAULT 0,
+  `size` int(11) NOT NULL DEFAULT 0,
+  `guildid` int(11) DEFAULT NULL,
+  `beds` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Table data `houses`
+-- Extraindo dados da tabela `houses`
 --
 
 INSERT INTO `houses` (`id`, `owner`, `paid`, `warnings`, `name`, `rent`, `town_id`, `bid`, `bid_end`, `last_bid`, `highest_bidder`, `size`, `guildid`, `beds`) VALUES
-(2, 0, 0, 0, 'Market Street 4 (Shop)', 5105, 1, 0, 0, 0, 0, 182, NULL, 3),
-(4, 0, 0, 0, 'Market Street 3', 3475, 1, 0, 0, 0, 0, 145, NULL, 2),
-(5, 0, 0, 0, 'Market Street 2', 4925, 1, 0, 0, 0, 0, 188, NULL, 3),
-(6, 0, 0, 0, 'Market Street 1', 6680, 1, 0, 0, 0, 0, 234, NULL, 3),
-(7, 0, 0, 0, 'Old Lighthouse', 3610, 1, 0, 0, 0, 0, 117, NULL, 2),
-(8, 0, 0, 0, 'Seagull Walk 1', 5095, 1, 0, 0, 0, 0, 186, NULL, 2),
-(9, 0, 0, 0, 'Seagull Walk 2', 2765, 1, 0, 0, 0, 0, 115, NULL, 3),
-(10, 0, 0, 0, 'Dream Street 4', 3765, 1, 0, 0, 0, 0, 137, NULL, 4),
-(11, 0, 0, 0, 'Elm Street 2', 2665, 1, 0, 0, 0, 0, 106, NULL, 2),
-(12, 0, 0, 0, 'Elm Street 1', 2710, 1, 0, 0, 0, 0, 109, NULL, 2),
-(13, 0, 0, 0, 'Elm Street 3', 2855, 1, 0, 0, 0, 0, 109, NULL, 3),
-(14, 0, 0, 0, 'Elm Street 4', 3765, 1, 0, 0, 0, 0, 113, NULL, 2),
-(15, 0, 0, 0, 'Dream Street 3', 2710, 1, 0, 0, 0, 0, 114, NULL, 2),
-(16, 0, 0, 0, 'Dream Street 2', 3340, 1, 0, 0, 0, 0, 127, NULL, 2),
-(18, 0, 0, 0, 'Paupers Palace, Flat 13', 450, 1, 0, 0, 0, 0, 16, NULL, 1),
-(19, 0, 0, 0, 'Paupers Palace, Flat 12', 685, 1, 0, 0, 0, 0, 27, NULL, 2),
-(23, 0, 0, 0, 'Paupers Palace, Flat 14', 585, 1, 0, 0, 0, 0, 23, NULL, 1),
-(24, 0, 0, 0, 'Paupers Palace, Flat 15', 450, 1, 0, 0, 0, 0, 12, NULL, 1),
-(25, 0, 0, 0, 'Paupers Palace, Flat 16', 585, 1, 0, 0, 0, 0, 19, NULL, 1),
-(26, 0, 0, 0, 'Paupers Palace, Flat 17', 450, 1, 0, 0, 0, 0, 16, NULL, 1),
-(27, 0, 0, 0, 'Paupers Palace, Flat 18', 315, 1, 0, 0, 0, 0, 16, NULL, 1),
-(28, 0, 0, 0, 'Paupers Palace, Flat 01', 405, 1, 0, 0, 0, 0, 15, NULL, 1),
-(29, 0, 0, 0, 'Paupers Palace, Flat 02', 450, 1, 0, 0, 0, 0, 19, NULL, 1),
-(30, 0, 0, 0, 'Paupers Palace, Flat 03', 405, 1, 0, 0, 0, 0, 15, NULL, 1),
-(31, 0, 0, 0, 'Paupers Palace, Flat 04', 450, 1, 0, 0, 0, 0, 16, NULL, 1),
-(32, 0, 0, 0, 'Paupers Palace, Flat 05', 315, 1, 0, 0, 0, 0, 12, NULL, 1),
-(33, 0, 0, 0, 'Paupers Palace, Flat 06', 450, 1, 0, 0, 0, 0, 16, NULL, 1),
-(34, 0, 0, 0, 'Paupers Palace, Flat 07', 685, 1, 0, 0, 0, 0, 23, NULL, 2),
-(35, 0, 0, 0, 'Paupers Palace, Flat 21', 315, 1, 0, 0, 0, 0, 12, NULL, 1),
-(36, 0, 0, 0, 'Paupers Palace, Flat 22', 450, 1, 0, 0, 0, 0, 16, NULL, 1),
-(37, 0, 0, 0, 'Paupers Palace, Flat 23', 585, 1, 0, 0, 0, 0, 23, NULL, 1),
-(38, 0, 0, 0, 'Paupers Palace, Flat 24', 450, 1, 0, 0, 0, 0, 16, NULL, 1),
-(39, 0, 0, 0, 'Paupers Palace, Flat 26', 450, 1, 0, 0, 0, 0, 16, NULL, 1),
-(40, 0, 0, 0, 'Paupers Palace, Flat 28', 315, 1, 0, 0, 0, 0, 15, NULL, 1),
-(41, 0, 0, 0, 'Paupers Palace, Flat 27', 685, 1, 0, 0, 0, 0, 24, NULL, 2),
-(42, 0, 0, 0, 'Paupers Palace, Flat 25', 585, 1, 0, 0, 0, 0, 24, NULL, 1),
-(43, 0, 0, 0, 'Paupers Palace, Flat 31', 855, 1, 0, 0, 0, 0, 28, NULL, 1),
-(44, 0, 0, 0, 'Paupers Palace, Flat 32', 1135, 1, 0, 0, 0, 0, 32, NULL, 2),
-(45, 0, 0, 0, 'Paupers Palace, Flat 33', 765, 1, 0, 0, 0, 0, 31, NULL, 1),
-(46, 0, 0, 0, 'Paupers Palace, Flat 34', 1675, 1, 0, 0, 0, 0, 51, NULL, 2),
-(47, 0, 0, 0, 'Salvation Street 1 (Shop)', 6240, 1, 0, 0, 0, 0, 200, NULL, 4),
-(49, 0, 0, 0, 'Dream Street 1 (Shop)', 4330, 1, 0, 0, 0, 0, 147, NULL, 2),
-(50, 0, 0, 0, 'Blessed Shield Guildhall', 8090, 1, 0, 0, 0, 0, 258, NULL, 9),
-(51, 0, 0, 0, 'Dagger Alley 1', 2665, 1, 0, 0, 0, 0, 93, NULL, 2),
-(52, 0, 0, 0, 'Steel Home', 13845, 1, 0, 0, 0, 0, 384, NULL, 13),
-(53, 0, 0, 0, 'Iron Alley 1', 3450, 1, 0, 0, 0, 0, 111, NULL, 4),
-(54, 0, 0, 0, 'Iron Alley 2', 3450, 1, 0, 0, 0, 0, 108, NULL, 4),
-(55, 0, 0, 0, 'Swamp Watch', 11090, 1, 0, 0, 0, 0, 347, NULL, 12),
-(57, 0, 0, 0, 'Salvation Street 2', 3790, 1, 0, 0, 0, 0, 123, NULL, 2),
-(60, 0, 0, 0, 'Salvation Street 3', 3790, 1, 0, 0, 0, 0, 129, NULL, 2),
-(61, 0, 0, 0, 'Silver Street 3', 1980, 1, 0, 0, 0, 0, 61, NULL, 1),
-(62, 0, 0, 0, 'Golden Axe Guildhall', 10485, 1, 0, 0, 0, 0, 381, NULL, 10),
-(63, 0, 0, 0, 'Silver Street 1', 2565, 1, 0, 0, 0, 0, 120, NULL, 1),
-(64, 0, 0, 0, 'Silver Street 2', 1980, 1, 0, 0, 0, 0, 66, NULL, 1),
-(66, 0, 0, 0, 'Silver Street 4', 3295, 1, 0, 0, 0, 0, 136, NULL, 2),
-(67, 0, 0, 0, 'Mystic Lane 2', 2980, 1, 0, 0, 0, 0, 99, NULL, 2),
-(69, 0, 0, 0, 'Mystic Lane 1', 2945, 1, 0, 0, 0, 0, 115, NULL, 3),
-(70, 0, 0, 0, 'Loot Lane 1 (Shop)', 4565, 1, 0, 0, 0, 0, 194, NULL, 3),
-(71, 0, 0, 0, 'Market Street 6', 5485, 1, 0, 0, 0, 0, 212, NULL, 5),
-(72, 0, 0, 0, 'Market Street 7', 2305, 1, 0, 0, 0, 0, 110, NULL, 2),
-(73, 0, 0, 0, 'Market Street 5 (Shop)', 6375, 1, 0, 0, 0, 0, 214, NULL, 4),
+(1, 0, 0, 0, 'Rhyves Flats 14', 0, 2, 0, 0, 0, 0, 25, NULL, 1),
+(2, 0, 0, 0, 'Rhyves Flats 15', 0, 2, 0, 0, 0, 0, 27, NULL, 1),
+(3, 0, 0, 0, 'Rhyves Flats 16', 0, 2, 0, 0, 0, 0, 20, NULL, 1),
+(4, 0, 0, 0, 'Baraganor Boulevard 1', 0, 3, 0, 0, 0, 0, 41, NULL, 1),
+(5, 0, 0, 0, 'Saund Top 1', 0, 5, 0, 0, 0, 0, 24, NULL, 1),
+(6, 0, 0, 0, 'Kazgal Close 1', 0, 3, 0, 0, 0, 0, 43, NULL, 1),
+(7, 0, 0, 0, 'Tower Flat', 0, 2, 0, 0, 0, 0, 19, NULL, 1),
+(8, 0, 0, 0, 'Castle Street 1', 0, 2, 0, 0, 0, 0, 40, NULL, 1),
+(9, 0, 0, 0, 'Seaview 2', 0, 2, 0, 0, 0, 0, 59, NULL, 2),
+(10, 0, 0, 0, 'Seaview 1', 0, 2, 0, 0, 0, 0, 40, NULL, 1),
+(11, 0, 0, 0, 'Hill Hut 1', 0, 2, 0, 0, 0, 0, 35, NULL, 1),
+(12, 0, 0, 0, 'Hill Hut 2', 0, 2, 0, 0, 0, 0, 35, NULL, 1),
+(13, 0, 0, 0, 'Farm Lane 1', 0, 2, 0, 0, 0, 0, 31, NULL, 1),
+(14, 0, 0, 0, 'Farm Lane 2', 0, 2, 0, 0, 0, 0, 54, NULL, 1),
+(15, 0, 0, 0, 'Church Avenue 1', 0, 2, 0, 0, 0, 0, 29, NULL, 1),
+(16, 0, 0, 0, 'Church Avenue 2', 0, 2, 0, 0, 0, 0, 29, NULL, 1),
+(17, 0, 0, 0, 'Church Avenue 3', 0, 2, 0, 0, 0, 0, 49, NULL, 1),
+(18, 0, 0, 0, 'Church Avenue 4', 0, 2, 0, 0, 0, 0, 36, NULL, 1),
+(19, 0, 0, 0, 'Church Avenue 5', 0, 2, 0, 0, 0, 0, 28, NULL, 1),
+(20, 0, 0, 0, 'Church Avenue 7', 0, 2, 0, 0, 0, 0, 32, NULL, 1),
+(23, 0, 0, 0, 'City Walls 1', 0, 2, 0, 0, 0, 0, 36, NULL, 1),
+(24, 0, 0, 0, 'City Walls 2', 0, 2, 0, 0, 0, 0, 36, NULL, 1),
+(25, 0, 0, 0, 'City Walls 3', 0, 2, 0, 0, 0, 0, 46, NULL, 1),
+(26, 0, 0, 0, 'City Walls 4', 0, 2, 0, 0, 0, 0, 46, NULL, 1),
+(27, 0, 0, 0, 'Hilltop 1', 0, 2, 0, 0, 0, 0, 42, NULL, 1),
+(28, 0, 0, 0, 'Hilltop 2', 0, 2, 0, 0, 0, 0, 48, NULL, 1),
+(29, 0, 0, 0, 'Hilltop 3', 0, 2, 0, 0, 0, 0, 62, NULL, 1),
+(30, 0, 0, 0, 'Hilltop Hall', 0, 2, 0, 0, 0, 0, 242, NULL, 2),
+(31, 0, 0, 0, 'Rhyves Flats 1', 0, 2, 0, 0, 0, 0, 20, NULL, 1),
+(32, 0, 0, 0, 'Rhyves Flats 2', 0, 2, 0, 0, 0, 0, 20, NULL, 1),
+(33, 0, 0, 0, 'Rhyves Flats 3', 0, 2, 0, 0, 0, 0, 20, NULL, 1),
+(34, 0, 0, 0, 'Rhyves Flats 4', 0, 2, 0, 0, 0, 0, 20, NULL, 1),
+(35, 0, 0, 0, 'Rhyves Flats 5', 0, 2, 0, 0, 0, 0, 19, NULL, 1),
+(36, 0, 0, 0, 'Rhyves Flats 6', 0, 2, 0, 0, 0, 0, 19, NULL, 1),
+(37, 0, 0, 0, 'Rhyves Flats 7', 0, 2, 0, 0, 0, 0, 19, NULL, 1),
+(38, 0, 0, 0, 'Rhyves Flats 8', 0, 2, 0, 0, 0, 0, 20, NULL, 1),
+(39, 0, 0, 0, 'Rhyves Flats 9', 0, 2, 0, 0, 0, 0, 19, NULL, 1),
+(40, 0, 0, 0, 'Rhyves Flats 10', 0, 2, 0, 0, 0, 0, 19, NULL, 1),
+(41, 0, 0, 0, 'Rhyves Flats 11', 0, 2, 0, 0, 0, 0, 19, NULL, 1),
+(42, 0, 0, 0, 'Rhyves Flats 13', 0, 2, 0, 0, 0, 0, 24, NULL, 1),
+(43, 0, 0, 0, 'Rhyves Flats 12', 0, 2, 0, 0, 0, 0, 20, NULL, 1),
+(44, 0, 0, 0, 'Baraganor Boulevard 2', 0, 3, 0, 0, 0, 0, 46, NULL, 1),
+(45, 0, 0, 0, 'Baraganor Boulevard 3', 0, 3, 0, 0, 0, 0, 44, NULL, 1),
+(46, 0, 0, 0, 'Baraganor Boulevard 4', 0, 3, 0, 0, 0, 0, 41, NULL, 1),
+(47, 0, 0, 0, 'Baraganor Boulevard 5', 0, 3, 0, 0, 0, 0, 41, NULL, 1),
+(48, 0, 0, 0, 'Baraganor Boulevard 6', 0, 3, 0, 0, 0, 0, 41, NULL, 1),
+(49, 0, 0, 0, 'Baraganor Boulevard 7', 0, 3, 0, 0, 0, 0, 43, NULL, 1),
+(50, 0, 0, 0, 'Baraganor Boulevard 8', 0, 3, 0, 0, 0, 0, 47, NULL, 1),
+(51, 0, 0, 0, 'Kazgal Close 2', 0, 3, 0, 0, 0, 0, 42, NULL, 1),
+(52, 0, 0, 0, 'Kazgal Close 3', 0, 3, 0, 0, 0, 0, 42, NULL, 1),
+(53, 0, 0, 0, 'Kazgal Close 4', 0, 3, 0, 0, 0, 0, 44, NULL, 1),
+(54, 0, 0, 0, 'Kazgal Close 5', 0, 3, 0, 0, 0, 0, 43, NULL, 1),
+(55, 0, 0, 0, 'Kazgal Close6', 0, 3, 0, 0, 0, 0, 43, NULL, 1),
+(56, 0, 0, 0, 'Kazgal Close 7', 0, 3, 0, 0, 0, 0, 43, NULL, 1),
+(57, 0, 0, 0, 'Kazgal Close 8', 0, 3, 0, 0, 0, 0, 43, NULL, 1),
+(58, 0, 0, 0, 'Hammersmith Hall', 0, 3, 0, 0, 0, 0, 278, NULL, 4),
+(59, 0, 0, 0, 'Varnack\'s Cavern', 0, 3, 0, 0, 0, 0, 289, NULL, 4),
+(60, 0, 0, 0, 'Saund Street 1', 0, 5, 0, 0, 0, 0, 20, NULL, 1),
+(61, 0, 0, 0, 'Saund Street 2', 0, 5, 0, 0, 0, 0, 25, NULL, 1),
+(62, 0, 0, 0, 'Saund Street 3', 0, 5, 0, 0, 0, 0, 19, NULL, 1),
+(63, 0, 0, 0, 'Saund Street 4', 0, 5, 0, 0, 0, 0, 25, NULL, 1),
+(64, 0, 0, 0, 'Saund Street 5', 0, 5, 0, 0, 0, 0, 19, NULL, 1),
+(65, 0, 0, 0, 'Saund Top 2', 0, 5, 0, 0, 0, 0, 24, NULL, 1),
+(66, 0, 0, 0, 'Saund Top 3', 0, 5, 0, 0, 0, 0, 24, NULL, 2),
+(67, 0, 0, 0, 'Dock Street 1', 0, 4, 0, 0, 0, 0, 30, NULL, 1),
+(68, 0, 0, 0, 'Dock Street 2', 0, 4, 0, 0, 0, 0, 35, NULL, 1),
+(69, 0, 0, 0, 'Dock Street 3', 0, 4, 0, 0, 0, 0, 68, NULL, 1),
+(70, 0, 0, 0, 'Nomad Hill 1', 0, 4, 0, 0, 0, 0, 27, NULL, 1),
+(71, 0, 0, 0, 'Nomad Hill 2', 0, 4, 0, 0, 0, 0, 31, NULL, 1),
+(72, 0, 0, 0, 'Nomad Hill 3', 0, 4, 0, 0, 0, 0, 52, NULL, 2),
+(73, 0, 0, 0, 'Great Hall 1', 0, 4, 0, 0, 0, 0, 38, NULL, 1),
+(74, 0, 0, 0, 'Great Hall 2', 0, 4, 0, 0, 0, 0, 43, NULL, 2),
+(75, 0, 0, 0, 'Tarat Road 1', 0, 4, 0, 0, 0, 0, 36, NULL, 1),
+(76, 0, 0, 0, 'Temple Terrace 1', 0, 4, 0, 0, 0, 0, 47, NULL, 1),
+(77, 0, 0, 0, 'Temple Terrace 2', 0, 4, 0, 0, 0, 0, 41, NULL, 1),
+(78, 0, 0, 0, 'Temple Terrace 3', 0, 4, 0, 0, 0, 0, 41, NULL, 1),
+(79, 0, 0, 0, 'Tarat Road 2', 0, 4, 0, 0, 0, 0, 36, NULL, 1),
+(80, 0, 0, 0, 'Tarat Road 3', 0, 4, 0, 0, 0, 0, 49, NULL, 1),
+(81, 0, 0, 0, 'Tarat Road 4', 0, 4, 0, 0, 0, 0, 35, NULL, 1),
+(82, 0, 0, 0, 'Tarat Road 6', 0, 4, 0, 0, 0, 0, 68, NULL, 2),
+(83, 0, 0, 0, 'Tarat Road 7', 0, 4, 0, 0, 0, 0, 24, NULL, 1),
+(84, 0, 0, 0, 'Tarat Road 8', 0, 4, 0, 0, 0, 0, 39, NULL, 1),
+(85, 0, 0, 0, 'Tarat Road 9', 0, 4, 0, 0, 0, 0, 35, NULL, 2),
+(86, 0, 0, 0, 'Smith Lane 1', 0, 4, 0, 0, 0, 0, 36, NULL, 1),
+(87, 0, 0, 0, 'Smith Lane 2', 0, 4, 0, 0, 0, 0, 42, NULL, 1),
+(88, 0, 0, 0, 'Smith Lane 3', 0, 4, 0, 0, 0, 0, 49, NULL, 2),
+(89, 0, 0, 0, 'Smith Lane 4', 0, 4, 0, 0, 0, 0, 40, NULL, 1),
+(90, 0, 0, 0, 'Smith Lane 5', 0, 4, 0, 0, 0, 0, 30, NULL, 1),
+(91, 0, 0, 0, 'Smith Lane 6', 0, 4, 0, 0, 0, 0, 44, NULL, 2),
+(92, 0, 0, 0, 'Smith Lane 7', 0, 4, 0, 0, 0, 0, 44, NULL, 1),
+(93, 0, 0, 0, 'Smith Lane Shop', 0, 4, 0, 0, 0, 0, 52, NULL, 1),
+(94, 0, 0, 0, 'Snowcapped Street 1', 0, 4, 0, 0, 0, 0, 35, NULL, 1),
+(95, 0, 0, 0, 'Snowcapped Street 2', 0, 4, 0, 0, 0, 0, 30, NULL, 1),
+(96, 0, 0, 0, 'Snowcapped Street 3', 0, 4, 0, 0, 0, 0, 30, NULL, 1),
+(97, 0, 0, 0, 'Wall Flat 1', 0, 4, 0, 0, 0, 0, 27, NULL, 1),
+(98, 0, 0, 0, 'Wall Flat 2', 0, 4, 0, 0, 0, 0, 27, NULL, 1),
+(99, 0, 0, 0, 'Wall Flat 3', 0, 4, 0, 0, 0, 0, 49, NULL, 1),
+(100, 0, 0, 0, 'Wall Flat 4', 0, 4, 0, 0, 0, 0, 19, NULL, 1),
+(101, 0, 0, 0, 'Farm Lane 3', 0, 2, 0, 0, 0, 0, 40, NULL, 2),
+(102, 0, 0, 0, 'Farm Lane 4', 0, 2, 0, 0, 0, 0, 54, NULL, 1),
+(103, 0, 0, 0, 'The Square 1', 0, 2, 0, 0, 0, 0, 35, NULL, 1),
+(104, 0, 0, 0, 'The Square 2 (Shop)', 0, 2, 0, 0, 0, 0, 52, NULL, 2),
+(105, 0, 0, 0, 'Central Hall', 0, 2, 0, 0, 0, 0, 236, NULL, 8),
+(106, 0, 0, 0, 'The Square 3', 0, 2, 0, 0, 0, 0, 29, NULL, 1),
+(107, 0, 0, 0, 'The Square 4 (Shop)', 0, 2, 0, 0, 0, 0, 61, NULL, 1),
+(108, 0, 0, 0, 'Church Avenue 6', 0, 2, 0, 0, 0, 0, 35, NULL, 1),
+(109, 0, 0, 0, 'Castle Street 2', 0, 2, 0, 0, 0, 0, 36, NULL, 1),
+(110, 0, 0, 0, 'Castle Street 3', 0, 2, 0, 0, 0, 0, 41, NULL, 1),
+(111, 0, 0, 0, 'Armory Flat 1', 0, 2, 0, 0, 0, 0, 35, NULL, 2),
+(112, 0, 0, 0, 'Armory Flat 2', 0, 2, 0, 0, 0, 0, 35, NULL, 1),
 (194, 0, 0, 0, 'Lucky Lane 1 (Shop)', 6960, 1, 0, 0, 0, 0, 211, NULL, 4),
 (208, 0, 0, 0, 'Underwood 1', 1495, 5, 0, 0, 0, 0, 41, NULL, 2),
 (209, 0, 0, 0, 'Underwood 2', 1495, 5, 0, 0, 0, 0, 41, NULL, 2),
@@ -1053,7 +1145,8 @@ INSERT INTO `houses` (`id`, `owner`, `paid`, `warnings`, `name`, `rent`, `town_i
 (2114, 0, 0, 0, 'Senja Village 1b', 1630, 4, 0, 0, 0, 0, 66, NULL, 2),
 (2115, 0, 0, 0, 'Senja Village 4', 765, 4, 0, 0, 0, 0, 30, NULL, 1),
 (2116, 0, 0, 0, 'Senja Village 3', 1765, 4, 0, 0, 0, 0, 72, NULL, 2),
-(2117, 0, 0, 0, 'Senja Village 6b', 765, 4, 0, 0, 0, 0, 30, NULL, 1),
+(2117, 0, 0, 0, 'Senja Village 6b', 765, 4, 0, 0, 0, 0, 30, NULL, 1);
+INSERT INTO `houses` (`id`, `owner`, `paid`, `warnings`, `name`, `rent`, `town_id`, `bid`, `bid_end`, `last_bid`, `highest_bidder`, `size`, `guildid`, `beds`) VALUES
 (2118, 0, 0, 0, 'Senja Village 6a', 765, 4, 0, 0, 0, 0, 30, NULL, 1),
 (2119, 0, 0, 0, 'Senja Village 5', 1225, 4, 0, 0, 0, 0, 48, NULL, 2),
 (2120, 0, 0, 0, 'Senja Village 10', 1485, 4, 0, 0, 0, 0, 72, NULL, 1),
@@ -1090,8 +1183,7 @@ INSERT INTO `houses` (`id`, `owner`, `paid`, `warnings`, `name`, `rent`, `town_i
 (2152, 0, 0, 0, 'Magician\'s Alley 1c', 500, 4, 0, 0, 0, 0, 20, NULL, 1),
 (2153, 0, 0, 0, 'Magician\'s Alley 5a', 350, 4, 0, 0, 0, 0, 14, NULL, 1),
 (2154, 0, 0, 0, 'Magician\'s Alley 5b', 500, 4, 0, 0, 0, 0, 25, NULL, 1),
-(2155, 0, 0, 0, 'Magician\'s Alley 5d', 500, 4, 0, 0, 0, 0, 20, NULL, 1);
-INSERT INTO `houses` (`id`, `owner`, `paid`, `warnings`, `name`, `rent`, `town_id`, `bid`, `bid_end`, `last_bid`, `highest_bidder`, `size`, `guildid`, `beds`) VALUES
+(2155, 0, 0, 0, 'Magician\'s Alley 5d', 500, 4, 0, 0, 0, 0, 20, NULL, 1),
 (2156, 0, 0, 0, 'Magician\'s Alley 5e', 500, 4, 0, 0, 0, 0, 25, NULL, 1),
 (2157, 0, 0, 0, 'Magician\'s Alley 5c', 1150, 4, 0, 0, 0, 0, 35, NULL, 2),
 (2158, 0, 0, 0, 'Magician\'s Alley 5f', 1150, 4, 0, 0, 0, 0, 42, NULL, 2),
@@ -1415,1331 +1507,2059 @@ INSERT INTO `houses` (`id`, `owner`, `paid`, `warnings`, `name`, `rent`, `town_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `house_lists`
+-- Estrutura da tabela `house_lists`
 --
 
 CREATE TABLE `house_lists` (
-	`house_id` int(11) NOT NULL,
-	`listid` int(11) NOT NULL,
-	`list` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `house_id` int(11) NOT NULL,
+  `listid` int(11) NOT NULL,
+  `list` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ip_bans`
+-- Estrutura da tabela `ip_bans`
 --
 
 CREATE TABLE `ip_bans` (
-	`ip` int(10) UNSIGNED NOT NULL,
-	`reason` varchar(255) NOT NULL,
-	`banned_at` bigint(20) NOT NULL,
-	`expires_at` bigint(20) NOT NULL,
-	`banned_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ip` int(10) UNSIGNED NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `banned_at` bigint(20) NOT NULL,
+  `expires_at` bigint(20) NOT NULL,
+  `banned_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `live_casts`
+-- Estrutura da tabela `live_casts`
 --
 
 CREATE TABLE `live_casts` (
-	`player_id` int(11) NOT NULL,
-	`cast_name` varchar(255) NOT NULL,
-	`password` tinyint(1) NOT NULL DEFAULT 0,
-	`description` varchar(255) DEFAULT NULL,
-	`spectators` smallint(5) DEFAULT 0,
-	`version` int(10) DEFAULT 1220
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `cast_name` varchar(255) NOT NULL,
+  `password` tinyint(1) NOT NULL DEFAULT 0,
+  `description` varchar(255) DEFAULT NULL,
+  `spectators` smallint(5) DEFAULT 0,
+  `version` int(10) DEFAULT 1220
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `market_history`
+-- Estrutura da tabela `market_history`
 --
 
 CREATE TABLE `market_history` (
-	`id` int(10) UNSIGNED NOT NULL,
-	`player_id` int(11) NOT NULL,
-	`sale` tinyint(1) NOT NULL DEFAULT 0,
-	`itemtype` int(10) UNSIGNED NOT NULL,
-	`amount` smallint(5) UNSIGNED NOT NULL,
-	`price` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`expires_at` bigint(20) UNSIGNED NOT NULL,
-	`inserted` bigint(20) UNSIGNED NOT NULL,
-	`state` tinyint(1) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(10) UNSIGNED NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `sale` tinyint(1) NOT NULL DEFAULT 0,
+  `itemtype` int(10) UNSIGNED NOT NULL,
+  `amount` smallint(5) UNSIGNED NOT NULL,
+  `price` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `expires_at` bigint(20) UNSIGNED NOT NULL,
+  `inserted` bigint(20) UNSIGNED NOT NULL,
+  `state` tinyint(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `market_offers`
+-- Estrutura da tabela `market_offers`
 --
 
 CREATE TABLE `market_offers` (
-	`id` int(10) UNSIGNED NOT NULL,
-	`player_id` int(11) NOT NULL,
-	`sale` tinyint(1) NOT NULL DEFAULT 0,
-	`itemtype` int(10) UNSIGNED NOT NULL,
-	`amount` smallint(5) UNSIGNED NOT NULL,
-	`created` bigint(20) UNSIGNED NOT NULL,
-	`anonymous` tinyint(1) NOT NULL DEFAULT 0,
-	`price` int(10) UNSIGNED NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(10) UNSIGNED NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `sale` tinyint(1) NOT NULL DEFAULT 0,
+  `itemtype` int(10) UNSIGNED NOT NULL,
+  `amount` smallint(5) UNSIGNED NOT NULL,
+  `created` bigint(20) UNSIGNED NOT NULL,
+  `anonymous` tinyint(1) NOT NULL DEFAULT 0,
+  `price` int(10) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `newsticker`
+-- Estrutura da tabela `newsticker`
 --
 
 CREATE TABLE `newsticker` (
-	`id` int(10) UNSIGNED NOT NULL,
-	`date` int(11) NOT NULL,
-	`text` mediumtext NOT NULL,
-	`icon` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(10) UNSIGNED NOT NULL,
+  `date` int(11) NOT NULL,
+  `text` mediumtext NOT NULL,
+  `icon` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pagseguro`
+-- Estrutura da tabela `pagseguro`
 --
 
 CREATE TABLE `pagseguro` (
-	`date` datetime NOT NULL,
-	`code` varchar(50) NOT NULL,
-	`reference` varchar(200) NOT NULL,
-	`type` int(11) NOT NULL,
-	`status` int(11) NOT NULL,
-	`lastEventDate` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `date` datetime NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `reference` varchar(200) NOT NULL,
+  `type` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `lastEventDate` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pagseguro_transactions`
+-- Estrutura da tabela `pagseguro_transactions`
 --
 
 CREATE TABLE `pagseguro_transactions` (
-	`transaction_code` varchar(36) NOT NULL,
-	`name` varchar(200) DEFAULT NULL,
-	`payment_method` varchar(50) NOT NULL,
-	`status` varchar(50) NOT NULL,
-	`item_count` int(11) NOT NULL,
-	`data` datetime NOT NULL,
-	`payment_amount` float DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `transaction_code` varchar(36) NOT NULL,
+  `name` varchar(200) DEFAULT NULL,
+  `payment_method` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `item_count` int(11) NOT NULL,
+  `data` datetime NOT NULL,
+  `payment_amount` float DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paypal_transactions`
+-- Estrutura da tabela `paypal_transactions`
 --
 
 CREATE TABLE `paypal_transactions` (
-	`id` int(11) NOT NULL,
-	`payment_status` varchar(70) NOT NULL DEFAULT '',
-	`date` datetime NOT NULL,
-	`payer_email` varchar(255) NOT NULL DEFAULT '',
-	`payer_id` varchar(255) NOT NULL DEFAULT '',
-	`item_number1` varchar(255) NOT NULL DEFAULT '',
-	`mc_gross` float NOT NULL,
-	`mc_currency` varchar(5) NOT NULL DEFAULT '',
-	`txn_id` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL,
+  `payment_status` varchar(70) NOT NULL DEFAULT '',
+  `date` datetime NOT NULL,
+  `payer_email` varchar(255) NOT NULL DEFAULT '',
+  `payer_id` varchar(255) NOT NULL DEFAULT '',
+  `item_number1` varchar(255) NOT NULL DEFAULT '',
+  `mc_gross` float NOT NULL,
+  `mc_currency` varchar(5) NOT NULL DEFAULT '',
+  `txn_id` varchar(255) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `players`
+-- Estrutura da tabela `players`
 --
 
 CREATE TABLE `players` (
-	`id` int(11) NOT NULL,
-	`name` varchar(255) NOT NULL,
-	`group_id` int(11) NOT NULL DEFAULT 1,
-	`account_id` int(11) NOT NULL DEFAULT 0,
-	`level` int(11) NOT NULL DEFAULT 1,
-	`vocation` int(11) NOT NULL DEFAULT 0,
-	`health` int(11) NOT NULL DEFAULT 150,
-	`healthmax` int(11) NOT NULL DEFAULT 150,
-	`experience` bigint(20) NOT NULL DEFAULT 0,
-	`exptoday` int(11) DEFAULT NULL,
-	`lookbody` int(11) NOT NULL DEFAULT 0,
-	`lookfeet` int(11) NOT NULL DEFAULT 0,
-	`lookhead` int(11) NOT NULL DEFAULT 0,
-	`looklegs` int(11) NOT NULL DEFAULT 0,
-	`looktype` int(11) NOT NULL DEFAULT 136,
-	`lookaddons` int(11) NOT NULL DEFAULT 0,
-	`maglevel` int(11) NOT NULL DEFAULT 0,
-	`mana` int(11) NOT NULL DEFAULT 0,
-	`manamax` int(11) NOT NULL DEFAULT 0,
-	`manaspent` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`soul` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`town_id` int(11) NOT NULL DEFAULT 0,
-	`posx` int(11) NOT NULL DEFAULT 0,
-	`posy` int(11) NOT NULL DEFAULT 0,
-	`posz` int(11) NOT NULL DEFAULT 0,
-	`conditions` blob NOT NULL,
-	`cap` int(11) NOT NULL DEFAULT 0,
-	`sex` int(11) NOT NULL DEFAULT 0,
-	`lastlogin` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`lastip` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`save` tinyint(1) NOT NULL DEFAULT 1,
-	`skull` tinyint(1) NOT NULL DEFAULT 0,
-	`skulltime` bigint(20) NOT NULL DEFAULT 0,
-	`lastlogout` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`blessings` tinyint(2) NOT NULL DEFAULT 0,
-	`blessings1` tinyint(4) NOT NULL DEFAULT 0,
-	`blessings2` tinyint(4) NOT NULL DEFAULT 0,
-	`blessings3` tinyint(4) NOT NULL DEFAULT 0,
-	`blessings4` tinyint(4) NOT NULL DEFAULT 0,
-	`blessings5` tinyint(4) NOT NULL DEFAULT 0,
-	`blessings6` tinyint(4) NOT NULL DEFAULT 0,
-	`blessings7` tinyint(4) NOT NULL DEFAULT 0,
-	`blessings8` tinyint(4) NOT NULL DEFAULT 0,
-	`onlinetime` bigint(20) NOT NULL DEFAULT 0,
-	`deletion` bigint(15) NOT NULL DEFAULT 0,
-	`balance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`bonusrerollcount` bigint(20) DEFAULT 0,
-	`quick_loot_fallback` tinyint(1) DEFAULT 0,
-	`offlinetraining_time` smallint(5) UNSIGNED NOT NULL DEFAULT 43200,
-	`offlinetraining_skill` int(11) NOT NULL DEFAULT -1,
-	`stamina` smallint(5) UNSIGNED NOT NULL DEFAULT 2520,
-	`skill_fist` int(10) UNSIGNED NOT NULL DEFAULT 10,
-	`skill_fist_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_club` int(10) UNSIGNED NOT NULL DEFAULT 10,
-	`skill_club_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_sword` int(10) UNSIGNED NOT NULL DEFAULT 10,
-	`skill_sword_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_axe` int(10) UNSIGNED NOT NULL DEFAULT 10,
-	`skill_axe_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_dist` int(10) UNSIGNED NOT NULL DEFAULT 10,
-	`skill_dist_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_shielding` int(10) UNSIGNED NOT NULL DEFAULT 10,
-	`skill_shielding_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_fishing` int(10) UNSIGNED NOT NULL DEFAULT 10,
-	`skill_fishing_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`deleted` tinyint(1) NOT NULL DEFAULT 0,
-	`description` varchar(255) NOT NULL DEFAULT '',
-	`comment` text NOT NULL,
-	`create_ip` bigint(20) NOT NULL DEFAULT 0,
-	`create_date` bigint(20) NOT NULL DEFAULT 0,
-	`hide_char` int(11) NOT NULL DEFAULT 0,
-	`skill_critical_hit_chance` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_critical_hit_chance_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_critical_hit_damage` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_critical_hit_damage_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_life_leech_chance` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_life_leech_chance_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_life_leech_amount` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_life_leech_amount_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_mana_leech_chance` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_mana_leech_chance_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_mana_leech_amount` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_mana_leech_amount_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_criticalhit_chance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_criticalhit_damage` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_lifeleech_chance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_lifeleech_amount` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_manaleech_chance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`skill_manaleech_amount` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`prey_stamina_1` int(11) DEFAULT NULL,
-	`prey_stamina_2` int(11) DEFAULT NULL,
-	`prey_stamina_3` int(11) DEFAULT NULL,
-	`prey_column` smallint(6) NOT NULL DEFAULT 1,
-	`xpboost_stamina` int(11) DEFAULT NULL,
-	`xpboost_value` int(10) DEFAULT NULL,
-	`marriage_status` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`hide_skills` int(11) DEFAULT NULL,
-	`hide_set` int(11) DEFAULT NULL,
-	`former` varchar(255) NOT NULL DEFAULT '-',
-	`signature` varchar(255) NOT NULL DEFAULT '',
-	`marriage_spouse` int(11) NOT NULL DEFAULT -1,
-	`loyalty_ranking` tinyint(1) NOT NULL DEFAULT 0,
-	`bonus_rerolls` bigint(21) NOT NULL DEFAULT 0,
-	`critical` int(20) DEFAULT 0,
-	`sbw_points` int(11) NOT NULL DEFAULT 0,
-	`instantrewardtokens` int(11) UNSIGNED NOT NULL DEFAULT 0,
-	`charmpoints` int(11) DEFAULT 0,
-	`direction` tinyint(1) DEFAULT 0,
-	`lookmount` int(11) DEFAULT 0,
-	`version` int(11) DEFAULT 1000,
-	`lootaction` tinyint(2) DEFAULT 0,
-	`spells` blob DEFAULT NULL,
-	`storages` mediumblob DEFAULT NULL,
-	`items` longblob DEFAULT NULL,
-	`depotitems` longblob DEFAULT NULL,
-	`inboxitems` longblob DEFAULT NULL,
-	`rewards` longblob DEFAULT NULL,
-	`varcap` int(11) NOT NULL DEFAULT 0,
-	`charmExpansion` tinyint(2) DEFAULT 0,
-	`bestiarykills` longblob DEFAULT NULL,
-	`charms` longblob DEFAULT NULL,
-	`bestiaryTracker` longblob DEFAULT NULL,
-	`autoloot` blob DEFAULT NULL,
-	`lastday` bigint(22) DEFAULT 0,
-	`bonus_reroll` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `group_id` int(11) NOT NULL DEFAULT 1,
+  `account_id` int(11) NOT NULL DEFAULT 0,
+  `level` int(11) NOT NULL DEFAULT 1,
+  `vocation` int(11) NOT NULL DEFAULT 0,
+  `health` int(11) NOT NULL DEFAULT 150,
+  `healthmax` int(11) NOT NULL DEFAULT 150,
+  `experience` bigint(20) NOT NULL DEFAULT 0,
+  `exptoday` int(11) DEFAULT NULL,
+  `lookbody` int(11) NOT NULL DEFAULT 0,
+  `lookfeet` int(11) NOT NULL DEFAULT 0,
+  `lookhead` int(11) NOT NULL DEFAULT 0,
+  `looklegs` int(11) NOT NULL DEFAULT 0,
+  `looktype` int(11) NOT NULL DEFAULT 136,
+  `lookaddons` int(11) NOT NULL DEFAULT 0,
+  `maglevel` int(11) NOT NULL DEFAULT 0,
+  `mana` int(11) NOT NULL DEFAULT 0,
+  `manamax` int(11) NOT NULL DEFAULT 0,
+  `manaspent` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `soul` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `town_id` int(11) NOT NULL DEFAULT 0,
+  `posx` int(11) NOT NULL DEFAULT 0,
+  `posy` int(11) NOT NULL DEFAULT 0,
+  `posz` int(11) NOT NULL DEFAULT 0,
+  `conditions` blob NOT NULL,
+  `cap` int(11) NOT NULL DEFAULT 0,
+  `sex` int(11) NOT NULL DEFAULT 0,
+  `lastlogin` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `lastip` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `save` tinyint(1) NOT NULL DEFAULT 1,
+  `skull` tinyint(1) NOT NULL DEFAULT 0,
+  `skulltime` bigint(20) NOT NULL DEFAULT 0,
+  `lastlogout` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `blessings` tinyint(2) NOT NULL DEFAULT 0,
+  `blessings1` tinyint(4) NOT NULL DEFAULT 0,
+  `blessings2` tinyint(4) NOT NULL DEFAULT 0,
+  `blessings3` tinyint(4) NOT NULL DEFAULT 0,
+  `blessings4` tinyint(4) NOT NULL DEFAULT 0,
+  `blessings5` tinyint(4) NOT NULL DEFAULT 0,
+  `blessings6` tinyint(4) NOT NULL DEFAULT 0,
+  `blessings7` tinyint(4) NOT NULL DEFAULT 0,
+  `blessings8` tinyint(4) NOT NULL DEFAULT 0,
+  `onlinetime` bigint(20) NOT NULL DEFAULT 0,
+  `deletion` bigint(15) NOT NULL DEFAULT 0,
+  `balance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `bonusrerollcount` bigint(20) DEFAULT 0,
+  `quick_loot_fallback` tinyint(1) DEFAULT 0,
+  `offlinetraining_time` smallint(5) UNSIGNED NOT NULL DEFAULT 43200,
+  `offlinetraining_skill` int(11) NOT NULL DEFAULT -1,
+  `stamina` smallint(5) UNSIGNED NOT NULL DEFAULT 2520,
+  `skill_fist` int(10) UNSIGNED NOT NULL DEFAULT 10,
+  `skill_fist_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_club` int(10) UNSIGNED NOT NULL DEFAULT 10,
+  `skill_club_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_sword` int(10) UNSIGNED NOT NULL DEFAULT 10,
+  `skill_sword_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_axe` int(10) UNSIGNED NOT NULL DEFAULT 10,
+  `skill_axe_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_dist` int(10) UNSIGNED NOT NULL DEFAULT 10,
+  `skill_dist_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_shielding` int(10) UNSIGNED NOT NULL DEFAULT 10,
+  `skill_shielding_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_fishing` int(10) UNSIGNED NOT NULL DEFAULT 10,
+  `skill_fishing_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `description` varchar(255) NOT NULL DEFAULT '',
+  `comment` text NOT NULL,
+  `create_ip` bigint(20) NOT NULL DEFAULT 0,
+  `create_date` bigint(20) NOT NULL DEFAULT 0,
+  `hide_char` int(11) NOT NULL DEFAULT 0,
+  `skill_critical_hit_chance` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_critical_hit_chance_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_critical_hit_damage` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_critical_hit_damage_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_life_leech_chance` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_life_leech_chance_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_life_leech_amount` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_life_leech_amount_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_mana_leech_chance` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_mana_leech_chance_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_mana_leech_amount` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_mana_leech_amount_tries` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_criticalhit_chance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_criticalhit_damage` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_lifeleech_chance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_lifeleech_amount` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_manaleech_chance` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `skill_manaleech_amount` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `prey_stamina_1` int(11) DEFAULT NULL,
+  `prey_stamina_2` int(11) DEFAULT NULL,
+  `prey_stamina_3` int(11) DEFAULT NULL,
+  `prey_column` smallint(6) NOT NULL DEFAULT 1,
+  `xpboost_stamina` int(11) DEFAULT NULL,
+  `xpboost_value` int(10) DEFAULT NULL,
+  `marriage_status` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `hide_skills` int(11) DEFAULT NULL,
+  `hide_set` int(11) DEFAULT NULL,
+  `former` varchar(255) NOT NULL DEFAULT '-',
+  `signature` varchar(255) NOT NULL DEFAULT '',
+  `marriage_spouse` int(11) NOT NULL DEFAULT -1,
+  `loyalty_ranking` tinyint(1) NOT NULL DEFAULT 0,
+  `bonus_rerolls` bigint(21) NOT NULL DEFAULT 0,
+  `critical` int(20) DEFAULT 0,
+  `sbw_points` int(11) NOT NULL DEFAULT 0,
+  `instantrewardtokens` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `charmpoints` int(11) DEFAULT 0,
+  `direction` tinyint(1) DEFAULT 0,
+  `lookmount` int(11) DEFAULT 0,
+  `version` int(11) DEFAULT 1000,
+  `lootaction` tinyint(2) DEFAULT 0,
+  `spells` blob DEFAULT NULL,
+  `storages` mediumblob DEFAULT NULL,
+  `items` longblob DEFAULT NULL,
+  `depotitems` longblob DEFAULT NULL,
+  `inboxitems` longblob DEFAULT NULL,
+  `rewards` longblob DEFAULT NULL,
+  `varcap` int(11) NOT NULL DEFAULT 0,
+  `charmExpansion` tinyint(2) DEFAULT 0,
+  `bestiarykills` longblob DEFAULT NULL,
+  `charms` longblob DEFAULT NULL,
+  `bestiaryTracker` longblob DEFAULT NULL,
+  `autoloot` blob DEFAULT NULL,
+  `lastday` bigint(22) DEFAULT 0,
+  `bonus_reroll` int(11) NOT NULL DEFAULT 0,
+  `lookmountbody` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `lookmountfeet` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `lookmounthead` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `lookmountlegs` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `lookfamiliarstype` int(11) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Table data `players`
+-- Extraindo dados da tabela `players`
 --
 
-INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `vocation`, `health`, `healthmax`, `experience`, `exptoday`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `town_id`, `posx`, `posy`, `posz`, `conditions`, `cap`, `sex`, `lastlogin`, `lastip`, `save`, `skull`, `skulltime`, `lastlogout`, `blessings`, `blessings1`, `blessings2`, `blessings3`, `blessings4`, `blessings5`, `blessings6`, `blessings7`, `blessings8`, `onlinetime`, `deletion`, `balance`, `bonusrerollcount`, `quick_loot_fallback`, `offlinetraining_time`, `offlinetraining_skill`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `deleted`, `description`, `comment`, `create_ip`, `create_date`, `hide_char`, `skill_critical_hit_chance`, `skill_critical_hit_chance_tries`, `skill_critical_hit_damage`, `skill_critical_hit_damage_tries`, `skill_life_leech_chance`, `skill_life_leech_chance_tries`, `skill_life_leech_amount`, `skill_life_leech_amount_tries`, `skill_mana_leech_chance`, `skill_mana_leech_chance_tries`, `skill_mana_leech_amount`, `skill_mana_leech_amount_tries`, `skill_criticalhit_chance`, `skill_criticalhit_damage`, `skill_lifeleech_chance`, `skill_lifeleech_amount`, `skill_manaleech_chance`, `skill_manaleech_amount`, `prey_stamina_1`, `prey_stamina_2`, `prey_stamina_3`, `prey_column`, `xpboost_stamina`, `xpboost_value`, `marriage_status`, `hide_skills`, `hide_set`, `former`, `signature`, `marriage_spouse`, `loyalty_ranking`, `bonus_rerolls`, `critical`, `sbw_points`, `instantrewardtokens`, `charmpoints`, `direction`, `lookmount`, `version`, `lootaction`, `spells`, `storages`, `items`, `depotitems`, `inboxitems`, `rewards`, `varcap`, `charmExpansion`, `bestiarykills`, `charms`, `bestiaryTracker`, `autoloot`, `lastday`, `bonus_reroll`) VALUES
-(1, 'Rook Sample', 1, 1, 1, 0, 150, 150, 0, NULL, 106, 76, 78, 58, 136, 0, 0, 5, 5, 0, 0, 6, 32097, 32205, 7, '', 400, 0, 1594061826, 16777343, 1, 0, 0, 1594062801, 0, 0, 1, 1, 1, 1, 1, 0, 0, 2936, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1230, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0, 0),
-(2, 'Sorcerer Sample', 1, 1, 8, 1, 185, 185, 4200, NULL, 44, 98, 15, 76, 128, 0, 0, 90, 90, 0, 100, 1, 0, 0, 0, '', 470, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0),
-(3, 'Druid Sample', 1, 1, 8, 2, 185, 185, 4200, NULL, 44, 98, 15, 76, 128, 0, 0, 90, 90, 0, 100, 1, 0, 0, 0, '', 470, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0),
-(4, 'Paladin Sample', 1, 1, 8, 3, 185, 185, 4200, NULL, 44, 98, 15, 76, 128, 0, 0, 90, 90, 0, 100, 1, 0, 0, 0, '', 470, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0),
-(5, 'Knight Sample', 1, 1, 8, 4, 185, 185, 4200, NULL, 44, 98, 15, 76, 128, 0, 0, 90, 90, 0, 100, 1, 0, 0, 0, '', 470, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0),
-(6, 'God', 5, 1, 1, 0, 185, 185, 4200, NULL, 44, 98, 15, 76, 128, 0, 0, 90, 90, 0, 100, 1, 0, 0, 0, '', 470, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0);
+INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `vocation`, `health`, `healthmax`, `experience`, `exptoday`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `town_id`, `posx`, `posy`, `posz`, `conditions`, `cap`, `sex`, `lastlogin`, `lastip`, `save`, `skull`, `skulltime`, `lastlogout`, `blessings`, `blessings1`, `blessings2`, `blessings3`, `blessings4`, `blessings5`, `blessings6`, `blessings7`, `blessings8`, `onlinetime`, `deletion`, `balance`, `bonusrerollcount`, `quick_loot_fallback`, `offlinetraining_time`, `offlinetraining_skill`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `deleted`, `description`, `comment`, `create_ip`, `create_date`, `hide_char`, `skill_critical_hit_chance`, `skill_critical_hit_chance_tries`, `skill_critical_hit_damage`, `skill_critical_hit_damage_tries`, `skill_life_leech_chance`, `skill_life_leech_chance_tries`, `skill_life_leech_amount`, `skill_life_leech_amount_tries`, `skill_mana_leech_chance`, `skill_mana_leech_chance_tries`, `skill_mana_leech_amount`, `skill_mana_leech_amount_tries`, `skill_criticalhit_chance`, `skill_criticalhit_damage`, `skill_lifeleech_chance`, `skill_lifeleech_amount`, `skill_manaleech_chance`, `skill_manaleech_amount`, `prey_stamina_1`, `prey_stamina_2`, `prey_stamina_3`, `prey_column`, `xpboost_stamina`, `xpboost_value`, `marriage_status`, `hide_skills`, `hide_set`, `former`, `signature`, `marriage_spouse`, `loyalty_ranking`, `bonus_rerolls`, `critical`, `sbw_points`, `instantrewardtokens`, `charmpoints`, `direction`, `lookmount`, `version`, `lootaction`, `spells`, `storages`, `items`, `depotitems`, `inboxitems`, `rewards`, `varcap`, `charmExpansion`, `bestiarykills`, `charms`, `bestiaryTracker`, `autoloot`, `lastday`, `bonus_reroll`, `lookmountbody`, `lookmountfeet`, `lookmounthead`, `lookmountlegs`, `lookfamiliarstype`) VALUES
+(1, 'Rook Sample', 1, 1, 1, 0, 150, 150, 0, NULL, 106, 76, 78, 58, 136, 0, 0, 5, 5, 0, 0, 6, 32097, 32205, 7, '', 400, 0, 1594061826, 16777343, 1, 0, 0, 1594062801, 0, 0, 1, 1, 1, 1, 1, 0, 0, 2936, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1230, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0, 0, 0, 0, 0, 0, 0),
+(2, 'Sorcerer Sample', 1, 1, 8, 1, 185, 185, 4200, NULL, 44, 98, 15, 76, 128, 0, 0, 90, 90, 0, 100, 1, 0, 0, 0, '', 470, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0),
+(3, 'Druid Sample', 1, 1, 8, 2, 185, 185, 4200, NULL, 44, 98, 15, 76, 128, 0, 0, 90, 90, 0, 100, 1, 0, 0, 0, '', 470, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0),
+(4, 'Paladin Sample', 1, 1, 8, 3, 185, 185, 4200, NULL, 44, 98, 15, 76, 128, 0, 0, 90, 90, 0, 100, 1, 0, 0, 0, '', 470, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, NULL, NULL, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0),
+(5, 'Knight Sample', 1, 1, 202, 4, 3095, 3095, 135017843, NULL, 106, 76, 78, 58, 136, 0, 1, 1060, 1060, 3196, 100, 1, 95, 117, 7, '', 5320, 0, 1751843320, 16777343, 1, 0, 0, 1751843373, 0, 0, 0, 0, 0, 0, 0, 0, 0, 312, 0, 0, 0, 0, 43200, -1, 2518, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0x010000000000000015000300000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0, 0, 0, 0, 0, 0, 0),
+(6, 'God', 6, 1, 1, 0, 185, 185, 0, NULL, 106, 76, 78, 58, 136, 0, 0, 90, 90, 0, 100, 1, 97, 122, 7, '', 470, 0, 1751843220, 16777343, 1, 0, 0, 1751843238, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10665, 0, 0, 0, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 1, 0, 1100, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0x0000000000000000, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `players_online`
+-- Estrutura da tabela `players_online`
 --
 
 CREATE TABLE `players_online` (
-	`player_id` int(11) NOT NULL
-) ENGINE=MEMORY DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL
+) ENGINE=MEMORY DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_binary_items`
+-- Estrutura da tabela `player_binary_items`
 --
 
 CREATE TABLE `player_binary_items` (
-	`player_id` int(11) NOT NULL,
-	`type` int(11) NOT NULL,
-	`items` longblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `player_id` int(11) NOT NULL,
+  `type` int(11) NOT NULL,
+  `items` longblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_deaths`
+-- Estrutura da tabela `player_deaths`
 --
 
 CREATE TABLE `player_deaths` (
-	`player_id` int(11) NOT NULL,
-	`time` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`level` int(11) NOT NULL DEFAULT 1,
-	`killed_by` varchar(255) NOT NULL,
-	`is_player` tinyint(1) NOT NULL DEFAULT 1,
-	`mostdamage_by` varchar(100) NOT NULL,
-	`mostdamage_is_player` tinyint(1) NOT NULL DEFAULT 0,
-	`unjustified` tinyint(1) NOT NULL DEFAULT 0,
-	`mostdamage_unjustified` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `level` int(11) NOT NULL DEFAULT 1,
+  `killed_by` varchar(255) NOT NULL,
+  `is_player` tinyint(1) NOT NULL DEFAULT 1,
+  `mostdamage_by` varchar(100) NOT NULL,
+  `mostdamage_is_player` tinyint(1) NOT NULL DEFAULT 0,
+  `unjustified` tinyint(1) NOT NULL DEFAULT 0,
+  `mostdamage_unjustified` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `player_deaths`
+--
+
+INSERT INTO `player_deaths` (`player_id`, `time`, `level`, `killed_by`, `is_player`, `mostdamage_by`, `mostdamage_is_player`, `unjustified`, `mostdamage_unjustified`) VALUES
+(5, 1751843025, 208, 'Demon', 0, 'Demon', 0, 0, 0),
+(5, 1751843287, 205, 'Dragon Lord', 0, 'Dragon Lord', 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_depotitems`
+-- Estrutura da tabela `player_depotitems`
 --
 
 CREATE TABLE `player_depotitems` (
-	`player_id` int(11) NOT NULL,
-	`sid` int(11) NOT NULL COMMENT 'any given range eg 0-100 will be reserved for depot lockers and all > 100 will be then normal items inside depots',
-	`pid` int(11) NOT NULL DEFAULT 0,
-	`itemtype` int(11) NOT NULL DEFAULT 0,
-	`count` int(11) NOT NULL DEFAULT 0,
-	`attributes` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `sid` int(11) NOT NULL COMMENT 'any given range eg 0-100 will be reserved for depot lockers and all > 100 will be then normal items inside depots',
+  `pid` int(11) NOT NULL DEFAULT 0,
+  `itemtype` int(11) NOT NULL DEFAULT 0,
+  `count` int(11) NOT NULL DEFAULT 0,
+  `attributes` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_former_names`
+-- Estrutura da tabela `player_former_names`
 --
 
 CREATE TABLE `player_former_names` (
-	`id` int(11) NOT NULL,
-	`player_id` int(11) NOT NULL,
-	`former_name` varchar(35) NOT NULL,
-	`date` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `former_name` varchar(35) NOT NULL,
+  `date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_inboxitems`
+-- Estrutura da tabela `player_hirelings`
+--
+
+CREATE TABLE `player_hirelings` (
+  `id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `active` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `sex` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `posx` int(11) NOT NULL DEFAULT 0,
+  `posy` int(11) NOT NULL DEFAULT 0,
+  `posz` int(11) NOT NULL DEFAULT 0,
+  `lookbody` int(11) NOT NULL DEFAULT 0,
+  `lookfeet` int(11) NOT NULL DEFAULT 0,
+  `lookhead` int(11) NOT NULL DEFAULT 0,
+  `looklegs` int(11) NOT NULL DEFAULT 0,
+  `looktype` int(11) NOT NULL DEFAULT 136
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `player_inboxitems`
 --
 
 CREATE TABLE `player_inboxitems` (
-	`player_id` int(11) NOT NULL,
-	`sid` int(11) NOT NULL,
-	`pid` int(11) NOT NULL DEFAULT 0,
-	`itemtype` int(11) NOT NULL DEFAULT 0,
-	`count` int(11) NOT NULL DEFAULT 0,
-	`attributes` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `sid` int(11) NOT NULL,
+  `pid` int(11) NOT NULL DEFAULT 0,
+  `itemtype` int(11) NOT NULL DEFAULT 0,
+  `count` int(11) NOT NULL DEFAULT 0,
+  `attributes` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_items`
+-- Estrutura da tabela `player_items`
 --
 
 CREATE TABLE `player_items` (
-	`player_id` int(11) NOT NULL DEFAULT 0,
-	`pid` int(11) NOT NULL DEFAULT 0,
-	`sid` int(11) NOT NULL DEFAULT 0,
-	`itemtype` int(11) NOT NULL DEFAULT 0,
-	`count` int(11) NOT NULL DEFAULT 0,
-	`attributes` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL DEFAULT 0,
+  `pid` int(11) NOT NULL DEFAULT 0,
+  `sid` int(11) NOT NULL DEFAULT 0,
+  `itemtype` int(11) NOT NULL DEFAULT 0,
+  `count` int(11) NOT NULL DEFAULT 0,
+  `attributes` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `player_items`
+--
+
+INSERT INTO `player_items` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `attributes`) VALUES
+(6, 3, 101, 1987, 1, 0x2601),
+(6, 4, 102, 2651, 1, ''),
+(6, 6, 103, 2382, 1, ''),
+(6, 10, 104, 2050, 1, ''),
+(6, 11, 105, 26052, 1, ''),
+(6, 101, 106, 7618, 1, 0x0f01),
+(6, 101, 107, 7589, 1, 0x0f01),
+(6, 101, 108, 7588, 1, 0x0f01),
+(6, 101, 109, 7588, 1, 0x0f01),
+(6, 101, 110, 2493, 1, ''),
+(6, 101, 111, 2674, 1, 0x0f01),
+(6, 105, 112, 16101, 1, 0x04d71b0744005573696e672074686973207363726f6c6c2077696c6c206164642033302064617973206f66207669702074696d6520746f20796f7572206163636f756e74206f6e63652e),
+(6, 105, 113, 16101, 1, 0x04d71b0744005573696e672074686973207363726f6c6c2077696c6c206164642033302064617973206f66207669702074696d6520746f20796f7572206163636f756e74206f6e63652e),
+(6, 105, 114, 16101, 1, 0x04d71b0744005573696e672074686973207363726f6c6c2077696c6c206164642033302064617973206f66207669702074696d6520746f20796f7572206163636f756e74206f6e63652e),
+(5, 3, 101, 1987, 1, ''),
+(5, 4, 102, 2651, 1, ''),
+(5, 6, 103, 2382, 1, ''),
+(5, 11, 104, 26052, 1, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_kills`
+-- Estrutura da tabela `player_kills`
 --
 
 CREATE TABLE `player_kills` (
-	`player_id` int(11) NOT NULL,
-	`time` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-	`target` int(11) NOT NULL,
-	`unavenged` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `time` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `target` int(11) NOT NULL,
+  `unavenged` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_misc`
+-- Estrutura da tabela `player_marketing`
+--
+
+CREATE TABLE `player_marketing` (
+  `player_id` int(11) NOT NULL DEFAULT 0,
+  `player_name` varchar(32) NOT NULL,
+  `uid` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `subitem` varchar(32) NOT NULL,
+  `itemtype` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
+  `count` smallint(6) NOT NULL DEFAULT 0,
+  `price` bigint(20) NOT NULL DEFAULT 0,
+  `rarity` smallint(6) NOT NULL DEFAULT 0,
+  `attributes` blob NOT NULL,
+  `completed` varchar(32) NOT NULL DEFAULT 'false'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `player_marketing_lua`
+--
+
+CREATE TABLE `player_marketing_lua` (
+  `player_name` varchar(32) NOT NULL,
+  `uid` varchar(32) NOT NULL,
+  `data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `player_marketing_reward`
+--
+
+CREATE TABLE `player_marketing_reward` (
+  `player_name` varchar(32) NOT NULL,
+  `uid` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `reward` bigint(20) NOT NULL DEFAULT 0,
+  `completed` varchar(32) NOT NULL DEFAULT 'false'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `player_marketing_reward_lua`
+--
+
+CREATE TABLE `player_marketing_reward_lua` (
+  `id` int(11) NOT NULL,
+  `player_name` varchar(32) NOT NULL,
+  `amount` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `player_misc`
 --
 
 CREATE TABLE `player_misc` (
-	`player_id` int(11) NOT NULL,
-	`info` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `info` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_namelocks`
+-- Estrutura da tabela `player_namelocks`
 --
 
 CREATE TABLE `player_namelocks` (
-	`player_id` int(11) NOT NULL,
-	`reason` varchar(255) NOT NULL,
-	`namelocked_at` bigint(20) NOT NULL,
-	`namelocked_by` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `namelocked_at` bigint(20) NOT NULL,
+  `namelocked_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_prey`
+-- Estrutura da tabela `player_prey`
 --
 
 CREATE TABLE `player_prey` (
-	`player_id` int(11) NOT NULL,
-	`name` varchar(50) NOT NULL,
-	`mindex` smallint(6) NOT NULL,
-	`mcolumn` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `mindex` smallint(6) NOT NULL,
+  `mcolumn` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_preydata`
+-- Estrutura da tabela `player_preydata`
 --
 
 CREATE TABLE `player_preydata` (
-	`player_id` int(11) NOT NULL,
-	`data` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `data` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `player_preydata`
+--
+
+INSERT INTO `player_preydata` (`player_id`, `data`) VALUES
+(5, 0x00000000000000000003090e00446565706c696e672047756172640f00446565706c696e6720547972616e740a00476c6f6f6d20576f6c6616004869676820566f6c7461676520456c656d656e74616c0a0049636520447261676f6e0800496e6b20426c6f620e0052697070657220537065637472650600536962616e670b005377616e204d616964656e0100000000000000000309150042617262617269616e20426c6f6f6477616c6b6572030042617416004372617a65642053756d6d65722056616e67756172640f00446565706c696e6720576f726b6572110044776f72632056656e6f6d736e697065720600456672656574100048756d6f6e676f75732046756e6775730e004c6f7374204265727365726b65720b0053616e64637261776c65720200000000000000000000),
+(6, 0x000000000000000000030903004261740d004272696d73746f6e6520427567110044776f726320466c65736868756e7465720a004669726520446576696c0c00496e73616e6520536972656e08004f6d6e69766f7261160052656e65676164652051756172612050696e636865720b005377616e204d616964656e120054686f726e6261636b20546f72746f69736501000000000000000003090e0041726163686e6f70686f626963610400426561720a00446561746820426c6f620f00446565706c696e6720576f726b65720e00476c6f6f746820426174746572790b004772696d205265617065720d0048697665204f766572736565721100496e737461626c6520537061726b696f6e0f00576174657220456c656d656e74616c0200000000000000000000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_preytimes`
+-- Estrutura da tabela `player_preytimes`
 --
 
 CREATE TABLE `player_preytimes` (
-	`player_id` int(11) NOT NULL,
-	`bonus_type1` int(11) NOT NULL,
-	`bonus_value1` int(11) NOT NULL,
-	`bonus_name1` varchar(50) NOT NULL,
-	`bonus_type2` int(11) NOT NULL,
-	`bonus_value2` int(11) NOT NULL,
-	`bonus_name2` varchar(50) NOT NULL,
-	`bonus_type3` int(11) NOT NULL,
-	`bonus_value3` int(11) NOT NULL,
-	`bonus_name3` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `bonus_type1` int(11) NOT NULL,
+  `bonus_value1` int(11) NOT NULL,
+  `bonus_name1` varchar(50) NOT NULL,
+  `bonus_type2` int(11) NOT NULL,
+  `bonus_value2` int(11) NOT NULL,
+  `bonus_name2` varchar(50) NOT NULL,
+  `bonus_type3` int(11) NOT NULL,
+  `bonus_value3` int(11) NOT NULL,
+  `bonus_name3` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_rewards`
+-- Estrutura da tabela `player_rewards`
 --
 
 CREATE TABLE `player_rewards` (
-	`player_id` int(11) NOT NULL,
-	`sid` int(11) NOT NULL,
-	`pid` int(11) NOT NULL DEFAULT 0,
-	`itemtype` int(11) NOT NULL DEFAULT 0,
-	`count` int(11) NOT NULL DEFAULT 0,
-	`attributes` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `sid` int(11) NOT NULL,
+  `pid` int(11) NOT NULL DEFAULT 0,
+  `itemtype` int(11) NOT NULL DEFAULT 0,
+  `count` int(11) NOT NULL DEFAULT 0,
+  `attributes` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_spells`
+-- Estrutura da tabela `player_spells`
 --
 
 CREATE TABLE `player_spells` (
-	`player_id` int(11) NOT NULL,
-	`name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `player_storage`
+-- Estrutura da tabela `player_storage`
 --
 
 CREATE TABLE `player_storage` (
-	`player_id` int(11) NOT NULL DEFAULT 0,
-	`key` int(10) UNSIGNED NOT NULL DEFAULT 0,
-	`value` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL DEFAULT 0,
+  `key` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `value` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prey_slots`
+-- Estrutura da tabela `prey_slots`
 --
 
 CREATE TABLE `prey_slots` (
-	`player_id` int(11) NOT NULL,
-	`num` smallint(2) NOT NULL,
-	`state` smallint(2) NOT NULL DEFAULT 1,
-	`unlocked` tinyint(1) NOT NULL DEFAULT 0,
-	`current` varchar(40) NOT NULL DEFAULT '',
-	`monster_list` varchar(360) NOT NULL,
-	`free_reroll_in` int(11) NOT NULL DEFAULT 0,
-	`time_left` smallint(5) NOT NULL DEFAULT 0,
-	`next_use` int(11) NOT NULL DEFAULT 0,
-	`bonus_type` smallint(3) NOT NULL,
-	`bonus_value` smallint(3) NOT NULL DEFAULT 0,
-	`bonus_grade` smallint(3) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `num` smallint(2) NOT NULL,
+  `state` smallint(2) NOT NULL DEFAULT 1,
+  `unlocked` tinyint(1) NOT NULL DEFAULT 0,
+  `current` varchar(40) NOT NULL DEFAULT '',
+  `monster_list` varchar(360) NOT NULL,
+  `free_reroll_in` int(11) NOT NULL DEFAULT 0,
+  `time_left` smallint(5) NOT NULL DEFAULT 0,
+  `next_use` int(11) NOT NULL DEFAULT 0,
+  `bonus_type` smallint(3) NOT NULL,
+  `bonus_value` smallint(3) NOT NULL DEFAULT 0,
+  `bonus_grade` smallint(3) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sellchar`
+-- Estrutura da tabela `sellchar`
 --
 
 CREATE TABLE `sellchar` (
-	`id` int(11) NOT NULL,
-	`name` varchar(40) NOT NULL,
-	`vocation` int(11) NOT NULL,
-	`price` int(11) NOT NULL,
-	`status` varchar(40) NOT NULL,
-	`oldid` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `vocation` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `status` varchar(40) NOT NULL,
+  `oldid` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sell_players`
+-- Estrutura da tabela `sell_players`
 --
 
 CREATE TABLE `sell_players` (
-	`player_id` int(11) NOT NULL,
-	`account` int(11) NOT NULL,
-	`create` bigint(20) NOT NULL,
-	`createip` bigint(20) NOT NULL,
-	`coin` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `account` int(11) NOT NULL,
+  `create` bigint(20) NOT NULL,
+  `createip` bigint(20) NOT NULL,
+  `coin` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sell_players_history`
+-- Estrutura da tabela `sell_players_history`
 --
 
 CREATE TABLE `sell_players_history` (
-	`player_id` int(11) NOT NULL,
-	`accountold` int(11) NOT NULL,
-	`accountnew` int(11) NOT NULL,
-	`create` bigint(20) NOT NULL,
-	`createip` bigint(20) NOT NULL,
-	`buytime` bigint(20) NOT NULL,
-	`buyip` bigint(20) NOT NULL,
-	`coin` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `player_id` int(11) NOT NULL,
+  `accountold` int(11) NOT NULL,
+  `accountnew` int(11) NOT NULL,
+  `create` bigint(20) NOT NULL,
+  `createip` bigint(20) NOT NULL,
+  `buytime` bigint(20) NOT NULL,
+  `buyip` bigint(20) NOT NULL,
+  `coin` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `server_config`
+-- Estrutura da tabela `server_config`
 --
 
 CREATE TABLE `server_config` (
-	`config` varchar(50) NOT NULL,
-	`value` varchar(256) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `config` varchar(50) NOT NULL,
+  `value` varchar(256) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Table data `server_config`
+-- Extraindo dados da tabela `server_config`
 --
 
 INSERT INTO `server_config` (`config`, `value`) VALUES
 ('boost_monster', '0'),
 ('boost_monster_name', ''),
 ('boost_monster_url', ''),
-('db_version', '35'),
-('motd_hash', ''),
-('motd_num', '1'),
-('players_record', '0');
+('db_version', '38'),
+('motd_hash', '815194dfb446b52a3e94f39defd8f2cef3fb2863'),
+('motd_num', '2'),
+('players_record', '2');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `snowballwar`
+-- Estrutura da tabela `snowballwar`
 --
 
 CREATE TABLE `snowballwar` (
-	`id` int(11) NOT NULL,
-	`name` varchar(255) NOT NULL,
-	`score` int(11) NOT NULL,
-	`data` varchar(255) NOT NULL,
-	`hora` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `score` int(11) NOT NULL,
+  `data` varchar(255) NOT NULL,
+  `hora` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `store_history`
+-- Estrutura da tabela `store_history`
 --
 
 CREATE TABLE `store_history` (
-	`accountid` int(11) NOT NULL,
-	`mode` tinyint(1) NOT NULL DEFAULT 0,
-	`amount` int(11) NOT NULL,
-	`coinMode` tinyint(2) NOT NULL DEFAULT 0,
-	`description` varchar(255) DEFAULT NULL,
-	`cust` int(11) NOT NULL,
-	`time` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `accountid` int(11) NOT NULL,
+  `mode` tinyint(1) NOT NULL DEFAULT 0,
+  `amount` int(11) NOT NULL,
+  `coinMode` tinyint(2) NOT NULL DEFAULT 0,
+  `description` varchar(255) DEFAULT NULL,
+  `cust` int(11) NOT NULL,
+  `time` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `store_history`
+--
+
+INSERT INTO `store_history` (`accountid`, `mode`, `amount`, `coinMode`, `description`, `cust`, `time`) VALUES
+(1, 0, 1, 0, '30 Days of VIP Time', -250, 1751562288),
+(1, 0, 1, 0, '30 Days of VIP Time', -250, 1751562292),
+(1, 0, 1, 0, '30 Days of VIP Time', -250, 1751565781);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `store_history_old`
+-- Estrutura da tabela `store_history_old`
 --
 
 CREATE TABLE `store_history_old` (
-	`account_id` int(11) NOT NULL,
-	`mode` smallint(2) NOT NULL DEFAULT 0,
-	`description` varchar(3500) NOT NULL,
-	`coin_amount` int(12) NOT NULL,
-	`time` bigint(20) UNSIGNED NOT NULL,
-	`timestamp` int(11) NOT NULL DEFAULT 0,
-	`id` int(11) NOT NULL,
-	`coins` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `account_id` int(11) NOT NULL,
+  `mode` smallint(2) NOT NULL DEFAULT 0,
+  `description` varchar(3500) NOT NULL,
+  `coin_amount` int(12) NOT NULL,
+  `time` bigint(20) UNSIGNED NOT NULL,
+  `timestamp` int(11) NOT NULL DEFAULT 0,
+  `id` int(11) NOT NULL,
+  `coins` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickets`
+-- Estrutura da tabela `tickets`
 --
 
 CREATE TABLE `tickets` (
-	`ticket_id` int(11) NOT NULL,
-	`ticket_subject` varchar(255) DEFAULT NULL,
-	`ticket_author` varchar(255) DEFAULT NULL,
-	`ticket_author_acc_id` int(11) NOT NULL,
-	`ticket_last_reply` varchar(11) DEFAULT NULL,
-	`ticket_admin_reply` int(11) DEFAULT NULL,
-	`ticket_date` varchar(255) DEFAULT NULL,
-	`ticket_ended` varchar(255) DEFAULT NULL,
-	`ticket_status` varchar(255) DEFAULT NULL,
-	`ticket_category` varchar(255) DEFAULT NULL,
-	`ticket_description` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ticket_id` int(11) NOT NULL,
+  `ticket_subject` varchar(255) DEFAULT NULL,
+  `ticket_author` varchar(255) DEFAULT NULL,
+  `ticket_author_acc_id` int(11) NOT NULL,
+  `ticket_last_reply` varchar(11) DEFAULT NULL,
+  `ticket_admin_reply` int(11) DEFAULT NULL,
+  `ticket_date` varchar(255) DEFAULT NULL,
+  `ticket_ended` varchar(255) DEFAULT NULL,
+  `ticket_status` varchar(255) DEFAULT NULL,
+  `ticket_category` varchar(255) DEFAULT NULL,
+  `ticket_description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickets_reply`
+-- Estrutura da tabela `tickets_reply`
 --
 
 CREATE TABLE `tickets_reply` (
-	`reply_id` int(11) NOT NULL,
-	`ticket_id` int(11) DEFAULT NULL,
-	`reply_author` varchar(255) DEFAULT NULL,
-	`reply_message` varchar(255) DEFAULT NULL,
-	`reply_date` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `reply_id` int(11) NOT NULL,
+  `ticket_id` int(11) DEFAULT NULL,
+  `reply_author` varchar(255) DEFAULT NULL,
+  `reply_message` varchar(255) DEFAULT NULL,
+  `reply_date` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tile_store`
+-- Estrutura da tabela `tile_store`
 --
 
 CREATE TABLE `tile_store` (
-	`house_id` int(11) NOT NULL,
-	`data` longblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `house_id` int(11) NOT NULL,
+  `data` longblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+--
+-- Extraindo dados da tabela `tile_store`
+--
+
+INSERT INTO `tile_store` (`house_id`, `data`) VALUES
+(1, 0xa50063010601000000de0600),
+(1, 0xa70062010601000000241900),
+(1, 0xa50064010601000000df0600),
+(1, 0xa70067010601000000c50400),
+(2, 0xa4006a010601000000c50400),
+(2, 0xa0006c010601000000251900),
+(2, 0xa1006d010601000000dc0600),
+(2, 0xa2006d010601000000dd0600),
+(3, 0xa10063010601000000de0600),
+(3, 0xa20062010601000000241900),
+(3, 0xa00065010601000000251900),
+(3, 0xa10064010601000000df0600),
+(3, 0xa30067010601000000c50400),
+(4, 0xfb00e1010c01000000f61300),
+(4, 0xfd00e1010b01000000f31300),
+(4, 0xff00e1010b01000000da0600),
+(4, 0xff00e2010b01000000db0600),
+(5, 0xdf002f020501000000de0600),
+(5, 0xde0030020501000000251900),
+(5, 0xdf0030020501000000df0600),
+(5, 0xe40030020501000000c30400),
+(6, 0xe400e1010b01000000da0600),
+(6, 0xe400e2010b01000000db0600),
+(6, 0xe600e1010b01000000f31300),
+(6, 0xe800e1010c01000000f61300),
+(7, 0x85005c0104010000002c1900),
+(7, 0x87005f010401000000da0600),
+(7, 0x8400600104010000006f1800),
+(7, 0x870060010401000000db0600),
+(8, 0x6f005e0107010000002d1900),
+(8, 0x72005b0107010000002c1900),
+(8, 0x70005c010701000000da0600),
+(8, 0x70005d010701000000db0600),
+(8, 0x74005d0107010000006f1800),
+(8, 0x6f00610107010000002d1900),
+(9, 0x6f005e0106010000002d1900),
+(9, 0x72005b0106010000002c1900),
+(9, 0x76005e0106010000002c1900),
+(9, 0x76005f010601000000e00600),
+(9, 0x77005f010601000000e10600),
+(9, 0x6f00610106010000002d1900),
+(9, 0x720063010601000000711800),
+(9, 0x740061010601000000691800),
+(9, 0x760062010601000000e00600),
+(9, 0x770062010601000000e10600),
+(10, 0x6f005e0105010000002d1900),
+(10, 0x72005b0105010000002c1900),
+(10, 0x70005c010501000000e00600),
+(10, 0x71005c010501000000e10600),
+(10, 0x6f00610105010000002d1900),
+(10, 0x7400610105010000006f1800),
+(11, 0x82006b0106010000006f1800),
+(11, 0x870069010601000000da0600),
+(11, 0x87006a010601000000db0600),
+(11, 0x82006c0106010000002d1900),
+(12, 0x82006b0105010000002d1900),
+(12, 0x8500680105010000002c1900),
+(12, 0x860068010501000000711800),
+(12, 0x83006d010501000000e00600),
+(12, 0x84006d010501000000e10600),
+(13, 0x6e0077010701000000dc0600),
+(13, 0x6f0077010701000000dd0600),
+(13, 0x710079010701000000bd0400),
+(13, 0x74007b010701000000c30400),
+(14, 0x6d0087010701000000251900),
+(14, 0x6b008b010601000000251900),
+(14, 0x6e0088010601000000bd0400),
+(14, 0x6d008c010601000000dc0600),
+(14, 0x6e008c010601000000dd0600),
+(14, 0x710085010601000000241900),
+(14, 0x700085010701000000241900),
+(14, 0x730087010701000000c30400),
+(15, 0x940077010701000000c30400),
+(15, 0x980075010701000000de0600),
+(15, 0x980076010701000000df0600),
+(15, 0x940078010701000000251900),
+(16, 0x94007d010701000000251900),
+(16, 0x94007e010701000000c30400),
+(16, 0x98007e010701000000de0600),
+(16, 0x98007f010701000000df0600),
+(17, 0x94008a010701000000251900),
+(17, 0x950089010701000000de0600),
+(17, 0x95008a010701000000df0600),
+(17, 0x94008e010701000000251900),
+(17, 0x97008f010701000000c50400),
+(18, 0x960095010701000000241900),
+(18, 0x970095010701000000c50400),
+(18, 0x940098010701000000dc0600),
+(18, 0x950098010701000000dd0600),
+(19, 0x9c008c010701000000de0600),
+(19, 0x9c008d010701000000df0600),
+(19, 0x9f008f010701000000c50400),
+(20, 0x9f0099010701000000de0600),
+(20, 0x9f009a010701000000df0600),
+(20, 0xa20095010701000000c50400),
+(20, 0xa30095010701000000241900),
+(23, 0x6f009a0107010000002c1900),
+(23, 0x6c009d010701000000da0600),
+(23, 0x6c009e010701000000db0600),
+(23, 0x70009a0107010000002c1900),
+(23, 0x72009e0107010000006f1800),
+(24, 0x6c009d010601000000da0600),
+(24, 0x6c009e010601000000db0600),
+(24, 0x72009e0106010000006f1800),
+(25, 0xbd0065010701000000da0600),
+(25, 0xbd0066010701000000db0600),
+(25, 0xc10069010701000000711800),
+(26, 0xbd0065010601000000da0600),
+(26, 0xbd0066010601000000db0600),
+(26, 0xc10069010601000000711800),
+(27, 0x9f0096010601000000dc0600),
+(27, 0x9e0099010601000000251900),
+(27, 0xa00096010601000000dd0600),
+(27, 0xa20095010601000000241900),
+(27, 0xa50099010601000000c30400),
+(28, 0xaf008a0106010000002d1900),
+(28, 0xaf008e0106010000002d1900),
+(28, 0xb300870106010000002c1900),
+(28, 0xb40088010601000000da0600),
+(28, 0xb40089010601000000db0600),
+(28, 0xb1008f010601000000711800),
+(29, 0xb3009b0105010000002d1900),
+(29, 0xb3009b0106010000002d1900),
+(29, 0xb500980105010000002c1900),
+(29, 0xb3009c0106010000006f1800),
+(29, 0xb4009d010501000000e00600),
+(29, 0xb5009d010501000000e10600),
+(30, 0xba00960104010000002c1900),
+(30, 0xbf00960105010000002c1900),
+(30, 0xb700980104010000001a0700),
+(30, 0xb700990104010000001a0700),
+(30, 0xb7009b0104010000002d1900),
+(30, 0xbc0098010401000000691800),
+(30, 0xbc009c010401000000691800),
+(30, 0xbe009e0105010000006c1800),
+(30, 0xbc00a1010501000000dc0600),
+(30, 0xbd00a1010501000000dd0600),
+(30, 0xbf00a1010501000000dc0600),
+(30, 0xc000960104010000002c1900),
+(30, 0xc10096010501000000711800),
+(30, 0xc3009b010401000000691800),
+(30, 0xc3009c0104010000002d1900),
+(30, 0xc000a1010501000000dd0600),
+(31, 0xa0006d010701000000251900),
+(31, 0xa1006d010701000000dc0600),
+(31, 0xa2006d010701000000dd0600),
+(31, 0xa5006c010701000000c30400),
+(32, 0xa10067010701000000dc0600),
+(32, 0xa20067010701000000dd0600),
+(32, 0xa00068010701000000251900),
+(32, 0xa50068010701000000c30400),
+(33, 0xa10063010701000000dc0600),
+(33, 0xa20063010701000000dd0600),
+(33, 0xa00064010701000000251900),
+(33, 0xa50065010701000000c30400),
+(34, 0xa90067010701000000de0600),
+(34, 0xa90068010701000000df0600),
+(34, 0xab006a010701000000c50400),
+(35, 0xb3006b010701000000dc0600),
+(35, 0xb4006b010701000000dd0600),
+(35, 0xb0006c010701000000c30400),
+(36, 0xb30067010701000000dc0600),
+(36, 0xb40067010701000000dd0600),
+(36, 0xb00068010701000000c30400),
+(37, 0xb30063010701000000dc0600),
+(37, 0xb40063010701000000dd0600),
+(37, 0xb00064010701000000c30400),
+(38, 0xa90063010701000000dc0600),
+(38, 0xaa0063010701000000dd0600),
+(38, 0xab0062010701000000241900),
+(38, 0xad0065010701000000c30400),
+(39, 0xb30062010601000000241900),
+(39, 0xb40063010601000000de0600),
+(39, 0xb00065010601000000c30400),
+(39, 0xb40064010601000000df0600),
+(40, 0xb40067010601000000de0600),
+(40, 0xb00068010601000000c30400),
+(40, 0xb40068010601000000df0600),
+(41, 0xb4006b010601000000de0600),
+(41, 0xb0006c010601000000c30400),
+(41, 0xb4006c010601000000df0600),
+(42, 0xaa006a010601000000c50400),
+(42, 0xa8006d010601000000dc0600),
+(42, 0xa9006d010601000000dd0600),
+(43, 0xaa0063010601000000de0600),
+(43, 0xab0062010601000000241900),
+(43, 0xaa0064010601000000df0600),
+(43, 0xab0067010601000000c50400),
+(44, 0x0401da010b01000000ea1300),
+(44, 0x0401d8010c01000000ed1300),
+(44, 0x0401dc010b01000000e00600),
+(44, 0x0501dc010b01000000e10600),
+(45, 0x0a01da010b01000000ea1300),
+(45, 0x0a01d8010c01000000ed1300),
+(45, 0x0a01dc010b01000000e00600),
+(45, 0x0b01dc010b01000000e10600),
+(46, 0x0f01d5010b01000000f31300),
+(46, 0x0d01d5010c01000000f61300),
+(46, 0x1101d5010b01000000da0600),
+(46, 0x1101d6010b01000000db0600),
+(47, 0x0f01cf010b01000000f31300),
+(47, 0x0d01cf010c01000000f61300),
+(47, 0x1101cf010b01000000da0600),
+(47, 0x1101d0010b01000000db0600),
+(48, 0x0f01c9010b01000000f31300),
+(48, 0x0d01c9010c01000000f61300),
+(48, 0x1101c9010b01000000da0600),
+(48, 0x1101ca010b01000000db0600),
+(49, 0x0a01c1010b01000000e00600),
+(49, 0x0a01c3010b01000000ea1300),
+(49, 0x0b01c1010b01000000e10600),
+(49, 0x0a01c5010c01000000ed1300),
+(50, 0x0401c1010b01000000e00600),
+(50, 0x0401c3010b01000000ea1300),
+(50, 0x0501c1010b01000000e10600),
+(50, 0x0401c5010c01000000ed1300),
+(51, 0xe000da010b01000000ea1300),
+(51, 0xe000d8010c01000000ed1300),
+(51, 0xe000dc010b01000000e00600),
+(51, 0xe100dc010b01000000e10600),
+(52, 0xda00da010b01000000ea1300),
+(52, 0xda00d8010c01000000ed1300),
+(52, 0xda00dc010b01000000e00600),
+(52, 0xdb00dc010b01000000e10600),
+(53, 0xd200d5010b01000000da0600),
+(53, 0xd200d6010b01000000db0600),
+(53, 0xd400d5010b01000000f31300),
+(53, 0xd600d5010c01000000f61300),
+(54, 0xd200cf010b01000000da0600),
+(54, 0xd400cf010b01000000f31300),
+(54, 0xd600cf010c01000000f61300),
+(54, 0xd200d0010b01000000db0600),
+(55, 0xd200c9010b01000000da0600),
+(55, 0xd200ca010b01000000db0600),
+(55, 0xd400c9010b01000000f31300),
+(55, 0xd600c9010c01000000f61300),
+(56, 0xda00c1010b01000000e00600),
+(56, 0xda00c3010b01000000ea1300),
+(56, 0xdb00c1010b01000000e10600),
+(56, 0xda00c5010c01000000ed1300),
+(57, 0xe000c1010b01000000e00600),
+(57, 0xe000c3010b01000000ea1300),
+(57, 0xe100c1010b01000000e10600),
+(57, 0xe000c5010c01000000ed1300),
+(58, 0xde00b6010c01000000b90400),
+(58, 0xdb00b8010b01000000bc0400),
+(58, 0xde00bb010c01000000b90400),
+(58, 0xd900bd010b01000000e00600),
+(58, 0xda00bd010b01000000e10600),
+(58, 0xdb00bd010b01000000e00600),
+(58, 0xdc00bd010b01000000e10600),
+(58, 0xde00bd010b01000000e00600),
+(58, 0xdf00bd010b01000000e10600),
+(58, 0xde00bc010c010000001a0700),
+(58, 0xe200b6010b01000000b90400),
+(58, 0xe500b7010c01000000c30400),
+(58, 0xe000b8010b01000000bc0400),
+(58, 0xe300b9010c01000000bc0400),
+(58, 0xe000bd010b01000000e00600),
+(58, 0xe100bd010b01000000e10600),
+(59, 0xfe00b5010c010000001a0700),
+(59, 0xfe00bc010c01000000c30400),
+(59, 0x0101b6010b01000000b90400),
+(59, 0x0401b5010c01000000b90400),
+(59, 0x0101b9010c01000000bc0400),
+(59, 0x0401b8010b01000000bc0400),
+(59, 0x0901b8010b01000000bc0400),
+(59, 0x0201bd010b01000000e00600),
+(59, 0x0301bd010b01000000e10600),
+(59, 0x0401bd010b01000000e00600),
+(59, 0x0501bd010b01000000e10600),
+(59, 0x0701bd010b01000000e00600),
+(59, 0x0401bc010c01000000b90400),
+(59, 0x0801bd010b01000000e10600),
+(59, 0x0a01bd010b01000000e00600),
+(59, 0x0b01bd010b01000000e10600),
+(60, 0xe50021020601000000dc0600),
+(60, 0xe60021020601000000dd0600),
+(60, 0xe70025020601000000c50400),
+(61, 0xe00021020601000000dc0600),
+(61, 0xe10021020601000000dd0600),
+(61, 0xe20020020601000000241900),
+(61, 0xe20025020601000000c50400),
+(62, 0xf2002a020601000000c30400),
+(62, 0xf50028020601000000241900),
+(62, 0xf60029020601000000de0600),
+(62, 0xf6002a020601000000df0600),
+(63, 0xeb002b020601000000241900),
+(63, 0xe9002f020601000000dc0600),
+(63, 0xea002f020601000000dd0600),
+(63, 0xed002e020601000000c30400),
+(64, 0xf2002e020601000000c30400),
+(64, 0xf5002d020601000000dc0600),
+(64, 0xf6002d020601000000dd0600),
+(65, 0xeb002b020501000000241900),
+(65, 0xe8002e020501000000c30400),
+(65, 0xec002c020501000000de0600),
+(65, 0xec002d020501000000df0600),
+(66, 0xdf002b020501000000dc0600),
+(66, 0xde002c020501000000251900),
+(66, 0xdf002d020501000000dc0600),
+(66, 0xe0002b020501000000dd0600),
+(66, 0xe1002a020501000000241900),
+(66, 0xe0002d020501000000dd0600),
+(66, 0xe4002d020501000000c30400),
+(67, 0xab01eb000601000000721b00),
+(67, 0xac01e9000601000000dc0600),
+(67, 0xad01e9000601000000dd0600),
+(67, 0xae01e8000601000000711b00),
+(67, 0xae01ed000601000000ee1a00),
+(68, 0x9b01e6000701000000de0600),
+(68, 0x9b01e7000701000000df0600),
+(68, 0x9b01eb000701000000eb1a00),
+(68, 0x9d01ed000701000000f71a00),
+(69, 0x9a01d1000601000000711b00),
+(69, 0x9c01d2000601000000dc0600),
+(69, 0x9d01d2000601000000dd0600),
+(69, 0x9c01d1000701000000711b00),
+(69, 0x9b01d5000601000000f41a00),
+(69, 0x9e01d4000701000000f71a00),
+(70, 0x9401d7000601000000dc0600),
+(70, 0x9501d6000601000000841a00),
+(70, 0x9501d7000601000000dd0600),
+(70, 0x9501d90006010000008b1a00),
+(70, 0x9601dd000601000000901b00),
+(71, 0x8701e6000601000000851a00),
+(71, 0x8801e7000601000000dc0600),
+(71, 0x8901e7000601000000dd0600),
+(71, 0x8b01e50006010000008d1a00),
+(71, 0x8f01e50006010000008e1b00),
+(72, 0x8601d7000501000000dc0600),
+(72, 0x8701d6000501000000841a00),
+(72, 0x8701d7000501000000dd0600),
+(72, 0x8501d9000501000000851a00),
+(72, 0x8601da000501000000dc0600),
+(72, 0x8701da000501000000dd0600),
+(72, 0x8a01da0005010000008d1a00),
+(72, 0x8e01da000501000000851a00),
+(72, 0x8c01dd000501000000841a00),
+(72, 0x8d01dd000501000000901b00),
+(73, 0xad01d2000601000000de0600),
+(73, 0xad01d3000601000000df0600),
+(73, 0xb101d3000601000000f41a00),
+(73, 0xb401d1000601000000ee1a00),
+(74, 0xb601cf000601000000f71a00),
+(74, 0xb701d3000601000000de0600),
+(74, 0xb901d1000601000000eb1a00),
+(74, 0xba01d3000601000000de0600),
+(74, 0xb701d4000601000000df0600),
+(74, 0xba01d4000601000000df0600),
+(75, 0xac01c1000701000000de0600),
+(75, 0xac01c2000701000000df0600),
+(75, 0xb101c3000701000000f71a00),
+(76, 0xdf01be000701000000f71a00),
+(76, 0xdf01bf000701000000721b00),
+(76, 0xe401bb000701000000de0600),
+(76, 0xe401bc000701000000df0600),
+(77, 0xe301b7000701000000f71a00),
+(77, 0xe301b8000701000000741b00),
+(77, 0xe601bb000701000000dc0600),
+(77, 0xe701bb000701000000dd0600),
+(78, 0xe701b1000601000000e00600),
+(78, 0xe801b1000601000000e10600),
+(78, 0xeb01b0000601000000851b00),
+(79, 0xb901bb000701000000de0600),
+(79, 0xb901bc000701000000df0600),
+(79, 0xb801c0000701000000ee1a00),
+(80, 0xbb01bb000701000000dc0600),
+(80, 0xbc01bb000701000000dd0600),
+(80, 0xbc01be000701000000eb1a00),
+(80, 0xbe01c3000701000000ee1a00),
+(81, 0xbf01bd000701000000dc0600),
+(81, 0xc001bd000701000000dd0600),
+(81, 0xc101bc000701000000f41a00),
+(81, 0xc301bf000701000000ee1a00),
+(82, 0xbe01cc000701000000721b00),
+(82, 0xc401c9000701000000ee1a00),
+(82, 0xc501c9000701000000711b00),
+(82, 0xc501ce000701000000eb1a00),
+(82, 0xc701cf000701000000de0600),
+(82, 0xc301d0000701000000721b00),
+(82, 0xc601d1000701000000dc0600),
+(82, 0xc701d0000701000000df0600),
+(82, 0xc701d1000701000000dd0600),
+(83, 0xc701ba000701000000dc0600),
+(83, 0xc801ba000701000000dd0600),
+(83, 0xc701bf000701000000ee1a00),
+(84, 0xce01c8000701000000f71a00),
+(84, 0xce01c9000701000000721b00),
+(84, 0xd201c5000701000000711b00),
+(84, 0xd401c8000701000000de0600),
+(84, 0xd401c9000701000000df0600),
+(85, 0xbb01bb000601000000dc0600),
+(85, 0xbc01bb000601000000dd0600),
+(85, 0xbe01ba000601000000711b00),
+(85, 0xbf01bb000601000000dc0600),
+(85, 0xbe01bf000601000000ee1a00),
+(85, 0xc001bb000601000000dd0600),
+(86, 0xd501b4000701000000dc0600),
+(86, 0xd601b4000701000000dd0600),
+(86, 0xda01b7000701000000f71a00),
+(87, 0xda01af000701000000f71a00),
+(87, 0xd501b2000701000000dc0600),
+(87, 0xd601b2000701000000dd0600),
+(88, 0xd201a6000701000000dc0600),
+(88, 0xd301a6000701000000dd0600),
+(88, 0xd201ab000701000000dc0600),
+(88, 0xd301ab000701000000dd0600),
+(88, 0xd801a8000701000000f71a00),
+(89, 0xd301a1000701000000de0600),
+(89, 0xd301a2000701000000df0600),
+(89, 0xda01a3000701000000f71a00),
+(90, 0xd5019c000701000000de0600),
+(90, 0xd5019d000701000000df0600),
+(90, 0xda019e000701000000f71a00),
+(91, 0xd301a6000601000000721b00),
+(91, 0xd801a4000601000000f71a00),
+(91, 0xd301aa000601000000721b00),
+(91, 0xd401aa000601000000de0600),
+(91, 0xd401ab000601000000df0600),
+(91, 0xd601a8000601000000eb1a00),
+(91, 0xd701aa000601000000de0600),
+(91, 0xd701ab000601000000df0600),
+(92, 0xd7019b000601000000711b00),
+(92, 0xd401a1000601000000de0600),
+(92, 0xd401a2000601000000df0600),
+(92, 0xd601a0000601000000eb1a00),
+(92, 0xd901a0000601000000ee1a00),
+(93, 0xe0019f000701000000721b00),
+(93, 0xe3019f000701000000620600),
+(93, 0xe6019f000701000000f41a00),
+(93, 0xe7019d000701000000dc0600),
+(93, 0xe8019d000701000000dd0600),
+(93, 0xe001a0000701000000f71a00),
+(94, 0xab01c3000601000000f71a00),
+(94, 0xaf01c0000601000000711b00),
+(94, 0xab01c4000601000000721b00),
+(94, 0xb001c4000601000000de0600),
+(94, 0xb001c5000601000000df0600),
+(95, 0xa901b9000601000000711b00),
+(95, 0xab01ba000601000000de0600),
+(95, 0xab01bb000601000000df0600),
+(95, 0xa901bf000601000000ee1a00),
+(96, 0xa301ba000601000000dc0600),
+(96, 0xa401ba000601000000dd0600),
+(96, 0xa501b9000601000000711b00),
+(96, 0xa201bc000601000000721b00),
+(96, 0xa501bf000601000000ee1a00),
+(97, 0xb401b3000701000000e00600),
+(97, 0xb501b3000701000000e10600),
+(97, 0xb401b5000701000000791b00),
+(97, 0xb601b7000701000000851b00),
+(98, 0xb401b6000601000000791b00),
+(98, 0xb501b7000601000000da0600),
+(98, 0xb601b5000601000000851b00),
+(98, 0xb501b8000601000000db0600),
+(99, 0xce01b3000501000000821b00),
+(99, 0xcc01b7000501000000791b00),
+(99, 0xce01b9000501000000851b00),
+(99, 0xd201b2000501000000da0600),
+(99, 0xd201b3000501000000db0600),
+(100, 0xce019b000601000000821b00),
+(100, 0xd10199000601000000da0600),
+(100, 0xd1019a000601000000db0600),
+(101, 0x6c0089010701000000e00600),
+(101, 0x6d0089010701000000e10600),
+(101, 0x6c008c010701000000e00600),
+(101, 0x6d008c010701000000e10600),
+(101, 0x73008b010701000000c30400),
+(102, 0x6d008f010701000000251900),
+(102, 0x720089010601000000da0600),
+(102, 0x72008a010601000000db0600),
+(102, 0x71008d010601000000bd0400),
+(102, 0x73008f010701000000c30400),
+(103, 0x7b00930107010000002d1900),
+(103, 0x7f0095010701000000711800),
+(103, 0x810091010701000000de0600),
+(103, 0x810092010701000000df0600),
+(104, 0x7a008d0107010000002d1900),
+(104, 0x7a008e0107010000006f1800),
+(104, 0x7d008d010701000000620600),
+(104, 0x81008b010701000000e00600),
+(104, 0x82008b010701000000e10600),
+(104, 0x80008d0107010000006a1800),
+(104, 0x81008f010701000000e00600),
+(104, 0x82008f010701000000e10600),
+(105, 0x7d007e010701000000711800),
+(105, 0x83007f0107010000002c1900),
+(105, 0x7a00820107010000002d1900),
+(105, 0x7d00840106010000006d1800),
+(105, 0x7d00840107010000006d1800),
+(105, 0x7b00880107010000002d1900),
+(105, 0x810080010501000000e00600),
+(105, 0x810083010501000000e00600),
+(105, 0x820080010501000000e10600),
+(105, 0x820083010501000000e10600),
+(105, 0x830083010501000000e00600),
+(105, 0x8000820106010000006a1800),
+(105, 0x800081010701000000691800),
+(105, 0x8000830107010000001a0700),
+(105, 0x840083010501000000e10600),
+(105, 0x8000870106010000006a1800),
+(105, 0x830085010601000000e00600),
+(105, 0x830086010601000000e00600),
+(105, 0x830087010601000000e00600),
+(105, 0x8300850107010000006d1800),
+(105, 0x840085010601000000e10600),
+(105, 0x840086010601000000e10600),
+(105, 0x840087010601000000e10600),
+(105, 0x830088010601000000e00600),
+(105, 0x830089010601000000e00600),
+(105, 0x8000880107010000006a1800),
+(105, 0x840088010601000000e10600),
+(105, 0x840089010601000000e10600),
+(106, 0x88007d010701000000711800),
+(106, 0x89007d0107010000002c1900),
+(106, 0x890081010701000000e00600),
+(106, 0x8a0081010701000000e10600),
+(107, 0x860083010701000000de0600),
+(107, 0x860084010701000000df0600),
+(107, 0x8800850107010000006d1800),
+(107, 0x8b00840107010000006a1800),
+(107, 0x8b0085010701000000130700),
+(107, 0x8d00850107010000006c1800),
+(107, 0x8e00870107010000006f1800),
+(108, 0x9c0094010701000000241900),
+(108, 0x9e0094010701000000c50400),
+(108, 0x9c0098010701000000bc0400),
+(108, 0x9c009a010701000000dc0600),
+(108, 0x9d009a010701000000dd0600),
+(109, 0x6b00570107010000002c1900),
+(109, 0x69005b0107010000002d1900),
+(109, 0x6a0058010701000000da0600),
+(109, 0x6a0059010701000000db0600),
+(109, 0x6f00590107010000006f1800),
+(110, 0x6f004f0107010000002c1900),
+(110, 0x6f00520107010000006d1800),
+(110, 0x6d00550107010000002d1900),
+(110, 0x700050010701000000da0600),
+(110, 0x700051010701000000db0600),
+(110, 0x7300550107010000006f1800),
+(111, 0xb5007b010601000000e00600),
+(111, 0xb6007b010601000000e10600),
+(111, 0xba007a010601000000711800),
+(111, 0xb5007e010601000000e00600),
+(111, 0xb6007e010601000000e10600),
+(111, 0xb7007d0106010000006a1800),
+(112, 0xb70073010601000000da0600),
+(112, 0xb400740106010000002d1900),
+(112, 0xb600750106010000006c1800),
+(112, 0xb70074010601000000db0600),
+(112, 0xb800780106010000006f1800);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_forum`
+-- Estrutura da tabela `z_forum`
 --
 
 CREATE TABLE `z_forum` (
-	`id` int(11) NOT NULL,
-	`first_post` int(11) NOT NULL DEFAULT 0,
-	`last_post` int(11) NOT NULL DEFAULT 0,
-	`section` int(3) NOT NULL DEFAULT 0,
-	`replies` int(20) NOT NULL DEFAULT 0,
-	`views` int(20) NOT NULL DEFAULT 0,
-	`author_aid` int(20) NOT NULL DEFAULT 0,
-	`author_guid` int(20) NOT NULL DEFAULT 0,
-	`post_text` text NOT NULL,
-	`post_topic` varchar(255) NOT NULL,
-	`post_smile` tinyint(1) NOT NULL DEFAULT 0,
-	`post_date` int(20) NOT NULL DEFAULT 0,
-	`last_edit_aid` int(20) NOT NULL DEFAULT 0,
-	`edit_date` int(20) NOT NULL DEFAULT 0,
-	`post_ip` varchar(15) NOT NULL DEFAULT '0.0.0.0',
-	`icon_id` int(11) NOT NULL,
-	`news_icon` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `first_post` int(11) NOT NULL DEFAULT 0,
+  `last_post` int(11) NOT NULL DEFAULT 0,
+  `section` int(3) NOT NULL DEFAULT 0,
+  `replies` int(20) NOT NULL DEFAULT 0,
+  `views` int(20) NOT NULL DEFAULT 0,
+  `author_aid` int(20) NOT NULL DEFAULT 0,
+  `author_guid` int(20) NOT NULL DEFAULT 0,
+  `post_text` text NOT NULL,
+  `post_topic` varchar(255) NOT NULL,
+  `post_smile` tinyint(1) NOT NULL DEFAULT 0,
+  `post_date` int(20) NOT NULL DEFAULT 0,
+  `last_edit_aid` int(20) NOT NULL DEFAULT 0,
+  `edit_date` int(20) NOT NULL DEFAULT 0,
+  `post_ip` varchar(15) NOT NULL DEFAULT '0.0.0.0',
+  `icon_id` int(11) NOT NULL,
+  `news_icon` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_network_box`
+-- Estrutura da tabela `z_network_box`
 --
 
 CREATE TABLE `z_network_box` (
-	`id` int(11) NOT NULL,
-	`network_name` varchar(10) NOT NULL,
-	`network_link` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `network_name` varchar(10) NOT NULL,
+  `network_link` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_news_tickers`
+-- Estrutura da tabela `z_news_tickers`
 --
 
 CREATE TABLE `z_news_tickers` (
-	`date` int(11) NOT NULL DEFAULT 1,
-	`author` int(11) NOT NULL,
-	`image_id` int(3) NOT NULL DEFAULT 0,
-	`text` text NOT NULL,
-	`hide_ticker` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `date` int(11) NOT NULL DEFAULT 1,
+  `author` int(11) NOT NULL,
+  `image_id` int(3) NOT NULL DEFAULT 0,
+  `text` text NOT NULL,
+  `hide_ticker` tinyint(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_ots_comunication`
+-- Estrutura da tabela `z_ots_comunication`
 --
 
 CREATE TABLE `z_ots_comunication` (
-	`id` int(11) NOT NULL,
-	`name` varchar(255) NOT NULL,
-	`type` varchar(255) NOT NULL,
-	`action` varchar(255) NOT NULL,
-	`param1` varchar(255) NOT NULL,
-	`param2` varchar(255) NOT NULL,
-	`param3` varchar(255) NOT NULL,
-	`param4` varchar(255) NOT NULL,
-	`param5` varchar(255) NOT NULL,
-	`param6` varchar(255) NOT NULL,
-	`param7` varchar(255) NOT NULL,
-	`delete_it` int(2) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `param1` varchar(255) NOT NULL,
+  `param2` varchar(255) NOT NULL,
+  `param3` varchar(255) NOT NULL,
+  `param4` varchar(255) NOT NULL,
+  `param5` varchar(255) NOT NULL,
+  `param6` varchar(255) NOT NULL,
+  `param7` varchar(255) NOT NULL,
+  `delete_it` int(2) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_ots_guildcomunication`
+-- Estrutura da tabela `z_ots_guildcomunication`
 --
 
 CREATE TABLE `z_ots_guildcomunication` (
-	`id` int(11) NOT NULL,
-	`name` varchar(255) NOT NULL,
-	`type` varchar(255) NOT NULL,
-	`action` varchar(255) NOT NULL,
-	`param1` varchar(255) NOT NULL,
-	`param2` varchar(255) NOT NULL,
-	`param3` varchar(255) NOT NULL,
-	`param4` varchar(255) NOT NULL,
-	`param5` varchar(255) NOT NULL,
-	`param6` varchar(255) NOT NULL,
-	`param7` varchar(255) NOT NULL,
-	`delete_it` int(2) NOT NULL DEFAULT 1
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `param1` varchar(255) NOT NULL,
+  `param2` varchar(255) NOT NULL,
+  `param3` varchar(255) NOT NULL,
+  `param4` varchar(255) NOT NULL,
+  `param5` varchar(255) NOT NULL,
+  `param6` varchar(255) NOT NULL,
+  `param7` varchar(255) NOT NULL,
+  `delete_it` int(2) NOT NULL DEFAULT 1
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_polls`
+-- Estrutura da tabela `z_polls`
 --
 
 CREATE TABLE `z_polls` (
-	`id` int(11) NOT NULL,
-	`question` varchar(255) NOT NULL,
-	`end` int(11) NOT NULL,
-	`start` int(11) NOT NULL,
-	`answers` int(11) NOT NULL,
-	`votes_all` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `end` int(11) NOT NULL,
+  `start` int(11) NOT NULL,
+  `answers` int(11) NOT NULL,
+  `votes_all` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_polls_answers`
+-- Estrutura da tabela `z_polls_answers`
 --
 
 CREATE TABLE `z_polls_answers` (
-	`poll_id` int(11) NOT NULL,
-	`answer_id` int(11) NOT NULL,
-	`answer` varchar(255) NOT NULL,
-	`votes` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `poll_id` int(11) NOT NULL,
+  `answer_id` int(11) NOT NULL,
+  `answer` varchar(255) NOT NULL,
+  `votes` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_replay`
+-- Estrutura da tabela `z_replay`
 --
 
 CREATE TABLE `z_replay` (
-	`title` varchar(255) DEFAULT NULL,
-	`version` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `title` varchar(255) DEFAULT NULL,
+  `version` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_shop_category`
+-- Estrutura da tabela `z_shop_category`
 --
 
 CREATE TABLE `z_shop_category` (
-	`id` int(11) NOT NULL,
-	`name` varchar(50) NOT NULL,
-	`desc` varchar(255) NOT NULL,
-	`button` varchar(50) NOT NULL,
-	`hide` int(11) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `desc` varchar(255) NOT NULL,
+  `button` varchar(50) NOT NULL,
+  `hide` int(11) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_shop_donates`
+-- Estrutura da tabela `z_shop_donates`
 --
 
 CREATE TABLE `z_shop_donates` (
-	`id` int(11) NOT NULL,
-	`date` bigint(20) NOT NULL,
-	`reference` varchar(50) NOT NULL,
-	`account_name` varchar(50) NOT NULL,
-	`method` varchar(50) NOT NULL,
-	`price` varchar(20) NOT NULL,
-	`coins` int(11) NOT NULL,
-	`status` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `date` bigint(20) NOT NULL,
+  `reference` varchar(50) NOT NULL,
+  `account_name` varchar(50) NOT NULL,
+  `method` varchar(50) NOT NULL,
+  `price` varchar(20) NOT NULL,
+  `coins` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_shop_donate_confirm`
+-- Estrutura da tabela `z_shop_donate_confirm`
 --
 
 CREATE TABLE `z_shop_donate_confirm` (
-	`id` int(11) NOT NULL,
-	`date` bigint(20) NOT NULL,
-	`account_name` varchar(50) NOT NULL,
-	`donate_id` int(11) NOT NULL,
-	`msg` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `date` bigint(20) NOT NULL,
+  `account_name` varchar(50) NOT NULL,
+  `donate_id` int(11) NOT NULL,
+  `msg` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_shop_history_item`
+-- Estrutura da tabela `z_shop_history_item`
 --
 
 CREATE TABLE `z_shop_history_item` (
-	`id` int(11) NOT NULL,
-	`to_name` varchar(255) NOT NULL DEFAULT '0',
-	`to_account` int(11) NOT NULL DEFAULT 0,
-	`from_nick` varchar(255) NOT NULL,
-	`from_account` int(11) NOT NULL DEFAULT 0,
-	`price` int(11) NOT NULL DEFAULT 0,
-	`offer_id` varchar(255) NOT NULL DEFAULT '',
-	`trans_state` varchar(255) NOT NULL,
-	`trans_start` int(11) NOT NULL DEFAULT 0,
-	`trans_real` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `to_name` varchar(255) NOT NULL DEFAULT '0',
+  `to_account` int(11) NOT NULL DEFAULT 0,
+  `from_nick` varchar(255) NOT NULL,
+  `from_account` int(11) NOT NULL DEFAULT 0,
+  `price` int(11) NOT NULL DEFAULT 0,
+  `offer_id` varchar(255) NOT NULL DEFAULT '',
+  `trans_state` varchar(255) NOT NULL,
+  `trans_start` int(11) NOT NULL DEFAULT 0,
+  `trans_real` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_shop_offer`
+-- Estrutura da tabela `z_shop_offer`
 --
 
 CREATE TABLE `z_shop_offer` (
-	`id` int(11) NOT NULL,
-	`category` int(11) NOT NULL,
-	`coins` int(11) NOT NULL DEFAULT 0,
-	`price` varchar(50) NOT NULL,
-	`itemid` int(11) NOT NULL DEFAULT 0,
-	`mount_id` varchar(100) NOT NULL,
-	`addon_name` varchar(100) NOT NULL,
-	`count` int(11) NOT NULL DEFAULT 0,
-	`offer_type` varchar(255) DEFAULT NULL,
-	`offer_description` text NOT NULL,
-	`offer_name` varchar(255) NOT NULL,
-	`offer_date` int(11) NOT NULL,
-	`default_image` varchar(50) NOT NULL,
-	`hide` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `category` int(11) NOT NULL,
+  `coins` int(11) NOT NULL DEFAULT 0,
+  `price` varchar(50) NOT NULL,
+  `itemid` int(11) NOT NULL DEFAULT 0,
+  `mount_id` varchar(100) NOT NULL,
+  `addon_name` varchar(100) NOT NULL,
+  `count` int(11) NOT NULL DEFAULT 0,
+  `offer_type` varchar(255) DEFAULT NULL,
+  `offer_description` text NOT NULL,
+  `offer_name` varchar(255) NOT NULL,
+  `offer_date` int(11) NOT NULL,
+  `default_image` varchar(50) NOT NULL,
+  `hide` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `z_shop_payment`
+-- Estrutura da tabela `z_shop_payment`
 --
 
 CREATE TABLE `z_shop_payment` (
-	`id` int(11) NOT NULL,
-	`ref` varchar(10) NOT NULL,
-	`account_name` varchar(50) NOT NULL,
-	`service_id` int(11) NOT NULL,
-	`service_category_id` int(11) NOT NULL,
-	`payment_method_id` int(11) NOT NULL,
-	`price` varchar(50) NOT NULL,
-	`coins` int(11) UNSIGNED NOT NULL,
-	`status` varchar(50) NOT NULL DEFAULT 'waiting',
-	`date` int(11) NOT NULL,
-	`gift` int(11) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `ref` varchar(10) NOT NULL,
+  `account_name` varchar(50) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `service_category_id` int(11) NOT NULL,
+  `payment_method_id` int(11) NOT NULL,
+  `price` varchar(50) NOT NULL,
+  `coins` int(11) UNSIGNED NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'waiting',
+  `date` int(11) NOT NULL,
+  `gift` int(11) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Table indexes `accounts`
+-- Índices para tabela `accounts`
 --
 ALTER TABLE `accounts`
-	ADD PRIMARY KEY (`id`),
-	ADD UNIQUE KEY `name` (`name`),
-	ADD UNIQUE KEY `name_2` (`name`),
-	ADD UNIQUE KEY `name_3` (`name`),
-	ADD UNIQUE KEY `name_4` (`name`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
+  ADD UNIQUE KEY `name_2` (`name`),
+  ADD UNIQUE KEY `name_3` (`name`),
+  ADD UNIQUE KEY `name_4` (`name`);
 
 --
--- Table indexes `accounts_storage`
+-- Índices para tabela `accounts_storage`
 --
 ALTER TABLE `accounts_storage`
-	ADD PRIMARY KEY (`account_id`,`key`);
+  ADD PRIMARY KEY (`account_id`,`key`);
 
 --
--- Table indexes `account_bans`
+-- Índices para tabela `account_bans`
 --
 ALTER TABLE `account_bans`
-	ADD PRIMARY KEY (`account_id`),
-	ADD KEY `banned_by` (`banned_by`);
+  ADD PRIMARY KEY (`account_id`),
+  ADD KEY `banned_by` (`banned_by`);
 
 --
--- Table indexes `account_ban_history`
+-- Índices para tabela `account_ban_history`
 --
 ALTER TABLE `account_ban_history`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `account_id` (`account_id`),
-	ADD KEY `banned_by` (`banned_by`),
-	ADD KEY `account_id_2` (`account_id`),
-	ADD KEY `account_id_3` (`account_id`),
-	ADD KEY `account_id_4` (`account_id`),
-	ADD KEY `account_id_5` (`account_id`),
-	ADD KEY `account_id_6` (`account_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `account_id` (`account_id`),
+  ADD KEY `banned_by` (`banned_by`),
+  ADD KEY `account_id_2` (`account_id`),
+  ADD KEY `account_id_3` (`account_id`),
+  ADD KEY `account_id_4` (`account_id`),
+  ADD KEY `account_id_5` (`account_id`),
+  ADD KEY `account_id_6` (`account_id`);
 
 --
--- Table indexes `account_character_sale`
+-- Índices para tabela `account_character_sale`
 --
 ALTER TABLE `account_character_sale`
-	ADD PRIMARY KEY (`id`),
-	ADD UNIQUE KEY `id_player_UNIQUE` (`id_player`),
-	ADD KEY `account_character_sale_ibfk_2` (`id_account`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_player_UNIQUE` (`id_player`),
+  ADD KEY `account_character_sale_ibfk_2` (`id_account`);
 
 --
--- Table indexes `account_viplist`
+-- Índices para tabela `account_viplist`
 --
 ALTER TABLE `account_viplist`
-	ADD UNIQUE KEY `account_player_index` (`account_id`,`player_id`),
-	ADD KEY `account_id` (`account_id`),
-	ADD KEY `player_id` (`player_id`);
+  ADD UNIQUE KEY `account_player_index` (`account_id`,`player_id`),
+  ADD KEY `account_id` (`account_id`),
+  ADD KEY `player_id` (`player_id`);
 
 --
--- Table indexes `blessings_history`
+-- Índices para tabela `auto_loot_list`
+--
+ALTER TABLE `auto_loot_list`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `player_id` (`player_id`);
+
+--
+-- Índices para tabela `blessings_history`
 --
 ALTER TABLE `blessings_history`
-	ADD KEY `blessings_history_ibfk_1` (`player_id`);
+  ADD KEY `blessings_history_ibfk_1` (`player_id`);
 
 --
--- Table indexes `daily_reward_history`
+-- Índices para tabela `boost_creature`
+--
+ALTER TABLE `boost_creature`
+  ADD PRIMARY KEY (`category`,`name`);
+
+--
+-- Índices para tabela `daily_reward_history`
 --
 ALTER TABLE `daily_reward_history`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `player_id` (`player_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `player_id` (`player_id`);
 
 --
--- Table indexes `free_pass`
+-- Índices para tabela `free_pass`
 --
 ALTER TABLE `free_pass`
-	ADD KEY `free_pass_ibfk_1` (`player_id`);
+  ADD KEY `free_pass_ibfk_1` (`player_id`);
 
 --
--- Table indexes `global_storage`
+-- Índices para tabela `global_storage`
 --
 ALTER TABLE `global_storage`
-	ADD UNIQUE KEY `key` (`key`);
+  ADD UNIQUE KEY `key` (`key`);
 
 --
--- Table indexes `guilds`
+-- Índices para tabela `guilds`
 --
 ALTER TABLE `guilds`
-	ADD PRIMARY KEY (`id`),
-	ADD UNIQUE KEY `name` (`name`),
-	ADD UNIQUE KEY `ownerid` (`ownerid`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
+  ADD UNIQUE KEY `ownerid` (`ownerid`);
 
 --
--- Table indexes `guildwar_kills`
+-- Índices para tabela `guildwar_kills`
 --
 ALTER TABLE `guildwar_kills`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `warid` (`warid`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `warid` (`warid`);
 
 --
--- Table indexes `guild_actions_h`
+-- Índices para tabela `guild_actions_h`
 --
 ALTER TABLE `guild_actions_h`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `guild_invites`
+-- Índices para tabela `guild_invites`
 --
 ALTER TABLE `guild_invites`
-	ADD PRIMARY KEY (`player_id`,`guild_id`),
-	ADD KEY `guild_id` (`guild_id`);
+  ADD PRIMARY KEY (`player_id`,`guild_id`),
+  ADD KEY `guild_id` (`guild_id`);
 
 --
--- Table indexes `guild_membership`
+-- Índices para tabela `guild_membership`
 --
 ALTER TABLE `guild_membership`
-	ADD PRIMARY KEY (`player_id`),
-	ADD KEY `guild_id` (`guild_id`),
-	ADD KEY `rank_id` (`rank_id`);
+  ADD PRIMARY KEY (`player_id`),
+  ADD KEY `guild_id` (`guild_id`),
+  ADD KEY `rank_id` (`rank_id`);
 
 --
--- Table indexes `guild_ranks`
+-- Índices para tabela `guild_ranks`
 --
 ALTER TABLE `guild_ranks`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `guild_id` (`guild_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `guild_id` (`guild_id`);
 
 --
--- Table indexes `guild_transfer_h`
+-- Índices para tabela `guild_transfer_h`
 --
 ALTER TABLE `guild_transfer_h`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `guild_wars`
+-- Índices para tabela `guild_wars`
 --
 ALTER TABLE `guild_wars`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `guild1` (`guild1`),
-	ADD KEY `guild2` (`guild2`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `guild1` (`guild1`),
+  ADD KEY `guild2` (`guild2`);
 
 --
--- Table indexes `houses`
+-- Índices para tabela `houses`
 --
 ALTER TABLE `houses`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `owner` (`owner`),
-	ADD KEY `town_id` (`town_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `owner` (`owner`),
+  ADD KEY `town_id` (`town_id`);
 
 --
--- Table indexes `house_lists`
+-- Índices para tabela `house_lists`
 --
 ALTER TABLE `house_lists`
-	ADD KEY `house_id` (`house_id`);
+  ADD KEY `house_id` (`house_id`);
 
 --
--- Table indexes `ip_bans`
+-- Índices para tabela `ip_bans`
 --
 ALTER TABLE `ip_bans`
-	ADD PRIMARY KEY (`ip`),
-	ADD KEY `banned_by` (`banned_by`);
+  ADD PRIMARY KEY (`ip`),
+  ADD KEY `banned_by` (`banned_by`);
 
 --
--- Table indexes `live_casts`
+-- Índices para tabela `live_casts`
 --
 ALTER TABLE `live_casts`
-	ADD UNIQUE KEY `player_id_2` (`player_id`);
+  ADD UNIQUE KEY `player_id_2` (`player_id`);
 
 --
--- Table indexes `market_history`
+-- Índices para tabela `market_history`
 --
 ALTER TABLE `market_history`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `player_id` (`player_id`,`sale`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `player_id` (`player_id`,`sale`);
 
 --
--- Table indexes `market_offers`
+-- Índices para tabela `market_offers`
 --
 ALTER TABLE `market_offers`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `sale` (`sale`,`itemtype`),
-	ADD KEY `created` (`created`),
-	ADD KEY `player_id` (`player_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sale` (`sale`,`itemtype`),
+  ADD KEY `created` (`created`),
+  ADD KEY `player_id` (`player_id`);
 
 --
--- Table indexes `newsticker`
+-- Índices para tabela `newsticker`
 --
 ALTER TABLE `newsticker`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `pagseguro_transactions`
+-- Índices para tabela `pagseguro_transactions`
 --
 ALTER TABLE `pagseguro_transactions`
-	ADD UNIQUE KEY `transaction_code` (`transaction_code`,`status`),
-	ADD KEY `name` (`name`),
-	ADD KEY `status` (`status`);
+  ADD UNIQUE KEY `transaction_code` (`transaction_code`,`status`),
+  ADD KEY `name` (`name`),
+  ADD KEY `status` (`status`);
 
 --
--- Table indexes `players`
+-- Índices para tabela `players`
 --
 ALTER TABLE `players`
-	ADD PRIMARY KEY (`id`),
-	ADD UNIQUE KEY `name` (`name`),
-	ADD KEY `account_id` (`account_id`),
-	ADD KEY `vocation` (`vocation`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`),
+  ADD KEY `account_id` (`account_id`),
+  ADD KEY `vocation` (`vocation`);
 
 --
--- Table indexes `players_online`
+-- Índices para tabela `players_online`
 --
 ALTER TABLE `players_online`
-	ADD PRIMARY KEY (`player_id`);
+  ADD PRIMARY KEY (`player_id`);
 
 --
--- Table indexes `player_binary_items`
+-- Índices para tabela `player_binary_items`
 --
 ALTER TABLE `player_binary_items`
-	ADD UNIQUE KEY `player_id_2` (`player_id`,`type`);
+  ADD UNIQUE KEY `player_id_2` (`player_id`,`type`);
 
 --
--- Table indexes `player_deaths`
+-- Índices para tabela `player_deaths`
 --
 ALTER TABLE `player_deaths`
-	ADD KEY `player_id` (`player_id`),
-	ADD KEY `killed_by` (`killed_by`),
-	ADD KEY `mostdamage_by` (`mostdamage_by`);
+  ADD KEY `player_id` (`player_id`),
+  ADD KEY `killed_by` (`killed_by`),
+  ADD KEY `mostdamage_by` (`mostdamage_by`);
 
 --
--- Table indexes `player_depotitems`
+-- Índices para tabela `player_depotitems`
 --
 ALTER TABLE `player_depotitems`
-	ADD UNIQUE KEY `player_id_2` (`player_id`,`sid`);
+  ADD UNIQUE KEY `player_id_2` (`player_id`,`sid`);
 
 --
--- Table indexes `player_former_names`
+-- Índices para tabela `player_former_names`
 --
 ALTER TABLE `player_former_names`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `player_id` (`player_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `player_id` (`player_id`);
 
 --
--- Table indexes `player_inboxitems`
+-- Índices para tabela `player_hirelings`
+--
+ALTER TABLE `player_hirelings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `player_id` (`player_id`);
+
+--
+-- Índices para tabela `player_inboxitems`
 --
 ALTER TABLE `player_inboxitems`
-	ADD UNIQUE KEY `player_id_2` (`player_id`,`sid`);
+  ADD UNIQUE KEY `player_id_2` (`player_id`,`sid`);
 
 --
--- Table indexes `player_items`
+-- Índices para tabela `player_items`
 --
 ALTER TABLE `player_items`
-	ADD KEY `player_id` (`player_id`),
-	ADD KEY `sid` (`sid`);
+  ADD KEY `player_id` (`player_id`),
+  ADD KEY `sid` (`sid`);
 
 --
--- Table indexes `player_kills`
+-- Índices para tabela `player_kills`
 --
 ALTER TABLE `player_kills`
-	ADD KEY `player_kills_ibfk_1` (`player_id`),
-	ADD KEY `player_kills_ibfk_2` (`target`);
+  ADD KEY `player_kills_ibfk_1` (`player_id`),
+  ADD KEY `player_kills_ibfk_2` (`target`);
 
 --
--- Table indexes `player_namelocks`
+-- Índices para tabela `player_marketing`
+--
+ALTER TABLE `player_marketing`
+  ADD KEY `player_id` (`player_id`);
+
+--
+-- Índices para tabela `player_marketing_lua`
+--
+ALTER TABLE `player_marketing_lua`
+  ADD PRIMARY KEY (`player_name`,`uid`);
+
+--
+-- Índices para tabela `player_marketing_reward_lua`
+--
+ALTER TABLE `player_marketing_reward_lua`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `player_namelocks`
 --
 ALTER TABLE `player_namelocks`
-	ADD PRIMARY KEY (`player_id`),
-	ADD KEY `namelocked_by` (`namelocked_by`);
+  ADD PRIMARY KEY (`player_id`),
+  ADD KEY `namelocked_by` (`namelocked_by`);
 
 --
--- Table indexes `player_preydata`
+-- Índices para tabela `player_preydata`
 --
 ALTER TABLE `player_preydata`
-	ADD PRIMARY KEY (`player_id`);
+  ADD PRIMARY KEY (`player_id`);
 
 --
--- Table indexes `player_rewards`
+-- Índices para tabela `player_rewards`
 --
 ALTER TABLE `player_rewards`
-	ADD UNIQUE KEY `player_id_2` (`player_id`,`sid`);
+  ADD UNIQUE KEY `player_id_2` (`player_id`,`sid`);
 
 --
--- Table indexes `player_spells`
+-- Índices para tabela `player_spells`
 --
 ALTER TABLE `player_spells`
-	ADD KEY `player_id` (`player_id`);
+  ADD KEY `player_id` (`player_id`);
 
 --
--- Table indexes `player_storage`
+-- Índices para tabela `player_storage`
 --
 ALTER TABLE `player_storage`
-	ADD PRIMARY KEY (`player_id`,`key`);
+  ADD PRIMARY KEY (`player_id`,`key`);
 
 --
--- Table indexes `prey_slots`
+-- Índices para tabela `prey_slots`
 --
 ALTER TABLE `prey_slots`
-	ADD KEY `player_id` (`player_id`);
+  ADD KEY `player_id` (`player_id`);
 
 --
--- Table indexes `sellchar`
+-- Índices para tabela `sellchar`
 --
 ALTER TABLE `sellchar`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `sell_players`
+-- Índices para tabela `sell_players`
 --
 ALTER TABLE `sell_players`
-	ADD PRIMARY KEY (`player_id`);
+  ADD PRIMARY KEY (`player_id`);
 
 --
--- Table indexes `sell_players_history`
+-- Índices para tabela `sell_players_history`
 --
 ALTER TABLE `sell_players_history`
-	ADD PRIMARY KEY (`player_id`,`buytime`) USING BTREE;
+  ADD PRIMARY KEY (`player_id`,`buytime`) USING BTREE;
 
 --
--- Table indexes `server_config`
+-- Índices para tabela `server_config`
 --
 ALTER TABLE `server_config`
-	ADD PRIMARY KEY (`config`);
+  ADD PRIMARY KEY (`config`);
 
 --
--- Table indexes `snowballwar`
+-- Índices para tabela `snowballwar`
 --
 ALTER TABLE `snowballwar`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `id` (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
 
 --
--- Table indexes `store_history`
+-- Índices para tabela `store_history`
 --
 ALTER TABLE `store_history`
-	ADD KEY `store_history_ibfk_1` (`accountid`);
+  ADD KEY `store_history_ibfk_1` (`accountid`);
 
 --
--- Table indexes `store_history_old`
+-- Índices para tabela `store_history_old`
 --
 ALTER TABLE `store_history_old`
-	ADD KEY `account_id` (`account_id`);
+  ADD KEY `account_id` (`account_id`);
 
 --
--- Table indexes `tickets`
+-- Índices para tabela `tickets`
 --
 ALTER TABLE `tickets`
-	ADD PRIMARY KEY (`ticket_id`),
-	ADD KEY `tickets_ibfk_1` (`ticket_author_acc_id`);
+  ADD PRIMARY KEY (`ticket_id`),
+  ADD KEY `tickets_ibfk_1` (`ticket_author_acc_id`);
 
 --
--- Table indexes `tickets_reply`
+-- Índices para tabela `tickets_reply`
 --
 ALTER TABLE `tickets_reply`
-	ADD PRIMARY KEY (`reply_id`),
-	ADD KEY `tickets_reply_ibfk_1` (`ticket_id`);
+  ADD PRIMARY KEY (`reply_id`),
+  ADD KEY `tickets_reply_ibfk_1` (`ticket_id`);
 
 --
--- Table indexes `tile_store`
+-- Índices para tabela `tile_store`
 --
 ALTER TABLE `tile_store`
-	ADD KEY `house_id` (`house_id`);
+  ADD KEY `house_id` (`house_id`);
 
 --
--- Table indexes `z_forum`
+-- Índices para tabela `z_forum`
 --
 ALTER TABLE `z_forum`
-	ADD PRIMARY KEY (`id`),
-	ADD KEY `section` (`section`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `section` (`section`);
 
 --
--- Table indexes `z_ots_comunication`
+-- Índices para tabela `z_ots_comunication`
 --
 ALTER TABLE `z_ots_comunication`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `z_ots_guildcomunication`
+-- Índices para tabela `z_ots_guildcomunication`
 --
 ALTER TABLE `z_ots_guildcomunication`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `z_shop_category`
+-- Índices para tabela `z_shop_category`
 --
 ALTER TABLE `z_shop_category`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `z_shop_donates`
+-- Índices para tabela `z_shop_donates`
 --
 ALTER TABLE `z_shop_donates`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `z_shop_donate_confirm`
+-- Índices para tabela `z_shop_donate_confirm`
 --
 ALTER TABLE `z_shop_donate_confirm`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `z_shop_offer`
+-- Índices para tabela `z_shop_offer`
 --
 ALTER TABLE `z_shop_offer`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table indexes `z_shop_payment`
+-- Índices para tabela `z_shop_payment`
 --
 ALTER TABLE `z_shop_payment`
-	ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -2749,414 +3569,450 @@ ALTER TABLE `z_shop_payment`
 -- AUTO_INCREMENT de tabela `accounts`
 --
 ALTER TABLE `accounts`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8421;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8421;
 
 --
 -- AUTO_INCREMENT de tabela `account_ban_history`
 --
 ALTER TABLE `account_ban_history`
-	MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `account_character_sale`
 --
 ALTER TABLE `account_character_sale`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=563;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=563;
+
+--
+-- AUTO_INCREMENT de tabela `auto_loot_list`
+--
+ALTER TABLE `auto_loot_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `daily_reward_history`
 --
 ALTER TABLE `daily_reward_history`
-	MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75041;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75041;
 
 --
 -- AUTO_INCREMENT de tabela `guilds`
 --
 ALTER TABLE `guilds`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT de tabela `guildwar_kills`
 --
 ALTER TABLE `guildwar_kills`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
 
 --
 -- AUTO_INCREMENT de tabela `guild_actions_h`
 --
 ALTER TABLE `guild_actions_h`
-	MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `guild_ranks`
 --
 ALTER TABLE `guild_ranks`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
 
 --
 -- AUTO_INCREMENT de tabela `guild_transfer_h`
 --
 ALTER TABLE `guild_transfer_h`
-	MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `guild_wars`
 --
 ALTER TABLE `guild_wars`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `houses`
 --
 ALTER TABLE `houses`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2501;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2501;
 
 --
 -- AUTO_INCREMENT de tabela `market_history`
 --
 ALTER TABLE `market_history`
-	MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201750;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201750;
 
 --
 -- AUTO_INCREMENT de tabela `market_offers`
 --
 ALTER TABLE `market_offers`
-	MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63544;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63544;
 
 --
 -- AUTO_INCREMENT de tabela `newsticker`
 --
 ALTER TABLE `newsticker`
-	MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de tabela `players`
 --
 ALTER TABLE `players`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11910;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11910;
 
 --
 -- AUTO_INCREMENT de tabela `player_former_names`
 --
 ALTER TABLE `player_former_names`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `player_hirelings`
+--
+ALTER TABLE `player_hirelings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `player_marketing_reward_lua`
+--
+ALTER TABLE `player_marketing_reward_lua`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `sellchar`
 --
 ALTER TABLE `sellchar`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `snowballwar`
 --
 ALTER TABLE `snowballwar`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tickets`
 --
 ALTER TABLE `tickets`
-	MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=443;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=443;
 
 --
 -- AUTO_INCREMENT de tabela `tickets_reply`
 --
 ALTER TABLE `tickets_reply`
-	MODIFY `reply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=408;
+  MODIFY `reply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=408;
 
 --
 -- AUTO_INCREMENT de tabela `z_forum`
 --
 ALTER TABLE `z_forum`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de tabela `z_ots_comunication`
 --
 ALTER TABLE `z_ots_comunication`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `z_ots_guildcomunication`
 --
 ALTER TABLE `z_ots_guildcomunication`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `z_shop_category`
 --
 ALTER TABLE `z_shop_category`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `z_shop_donates`
 --
 ALTER TABLE `z_shop_donates`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=878;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=878;
 
 --
 -- AUTO_INCREMENT de tabela `z_shop_donate_confirm`
 --
 ALTER TABLE `z_shop_donate_confirm`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT de tabela `z_shop_offer`
 --
 ALTER TABLE `z_shop_offer`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `z_shop_payment`
 --
 ALTER TABLE `z_shop_payment`
-	MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas
 --
 
 --
--- Limiters for the table `accounts_storage`
+-- Limitadores para a tabela `accounts_storage`
 --
 ALTER TABLE `accounts_storage`
-	ADD CONSTRAINT `accounts_storage_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `accounts_storage_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `account_bans`
+-- Limitadores para a tabela `account_bans`
 --
 ALTER TABLE `account_bans`
-	ADD CONSTRAINT `account_bans_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-	ADD CONSTRAINT `account_bans_ibfk_2` FOREIGN KEY (`banned_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `account_bans_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_bans_ibfk_2` FOREIGN KEY (`banned_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiters for the table `account_ban_history`
+-- Limitadores para a tabela `account_ban_history`
 --
 ALTER TABLE `account_ban_history`
-	ADD CONSTRAINT `account_ban_history_ibfk_2` FOREIGN KEY (`banned_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-	ADD CONSTRAINT `account_ban_history_ibfk_3` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-	ADD CONSTRAINT `account_ban_history_ibfk_4` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-	ADD CONSTRAINT `account_ban_history_ibfk_5` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-	ADD CONSTRAINT `account_ban_history_ibfk_6` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-	ADD CONSTRAINT `account_ban_history_ibfk_7` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `account_ban_history_ibfk_2` FOREIGN KEY (`banned_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_ban_history_ibfk_3` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_ban_history_ibfk_4` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_ban_history_ibfk_5` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_ban_history_ibfk_6` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_ban_history_ibfk_7` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiters for the table `account_character_sale`
+-- Limitadores para a tabela `account_character_sale`
 --
 ALTER TABLE `account_character_sale`
-	ADD CONSTRAINT `account_character_sale_ibfk_1` FOREIGN KEY (`id_player`) REFERENCES `players` (`id`) ON DELETE CASCADE,
-	ADD CONSTRAINT `account_character_sale_ibfk_2` FOREIGN KEY (`id_account`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `account_character_sale_ibfk_1` FOREIGN KEY (`id_player`) REFERENCES `players` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `account_character_sale_ibfk_2` FOREIGN KEY (`id_account`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `account_viplist`
+-- Limitadores para a tabela `account_viplist`
 --
 ALTER TABLE `account_viplist`
-	ADD CONSTRAINT `account_viplist_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE,
-	ADD CONSTRAINT `account_viplist_ibfk_2` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `account_viplist_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `account_viplist_ibfk_2` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `blessings_history`
+-- Limitadores para a tabela `auto_loot_list`
+--
+ALTER TABLE `auto_loot_list`
+  ADD CONSTRAINT `auto_loot_list_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `blessings_history`
 --
 ALTER TABLE `blessings_history`
-	ADD CONSTRAINT `blessings_history_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `blessings_history_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `free_pass`
+-- Limitadores para a tabela `free_pass`
 --
 ALTER TABLE `free_pass`
-	ADD CONSTRAINT `free_pass_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `free_pass_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `guilds`
+-- Limitadores para a tabela `guilds`
 --
 ALTER TABLE `guilds`
-	ADD CONSTRAINT `guilds_ibfk_1` FOREIGN KEY (`ownerid`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `guilds_ibfk_1` FOREIGN KEY (`ownerid`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `guildwar_kills`
+-- Limitadores para a tabela `guildwar_kills`
 --
 ALTER TABLE `guildwar_kills`
-	ADD CONSTRAINT `guildwar_kills_ibfk_1` FOREIGN KEY (`warid`) REFERENCES `guild_wars` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `guildwar_kills_ibfk_1` FOREIGN KEY (`warid`) REFERENCES `guild_wars` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `guild_invites`
+-- Limitadores para a tabela `guild_invites`
 --
 ALTER TABLE `guild_invites`
-	ADD CONSTRAINT `guild_invites_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE,
-	ADD CONSTRAINT `guild_invites_ibfk_2` FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `guild_invites_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `guild_invites_ibfk_2` FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `guild_membership`
+-- Limitadores para a tabela `guild_membership`
 --
 ALTER TABLE `guild_membership`
-	ADD CONSTRAINT `guild_membership_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-	ADD CONSTRAINT `guild_membership_ibfk_2` FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-	ADD CONSTRAINT `guild_membership_ibfk_3` FOREIGN KEY (`rank_id`) REFERENCES `guild_ranks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `guild_membership_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `guild_membership_ibfk_2` FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `guild_membership_ibfk_3` FOREIGN KEY (`rank_id`) REFERENCES `guild_ranks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiters for the table `guild_ranks`
+-- Limitadores para a tabela `guild_ranks`
 --
 ALTER TABLE `guild_ranks`
-	ADD CONSTRAINT `guild_ranks_ibfk_1` FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `guild_ranks_ibfk_1` FOREIGN KEY (`guild_id`) REFERENCES `guilds` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `house_lists`
+-- Limitadores para a tabela `house_lists`
 --
 ALTER TABLE `house_lists`
-	ADD CONSTRAINT `house_lists_ibfk_1` FOREIGN KEY (`house_id`) REFERENCES `houses` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `house_lists_ibfk_1` FOREIGN KEY (`house_id`) REFERENCES `houses` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `ip_bans`
+-- Limitadores para a tabela `ip_bans`
 --
 ALTER TABLE `ip_bans`
-	ADD CONSTRAINT `ip_bans_ibfk_1` FOREIGN KEY (`banned_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ip_bans_ibfk_1` FOREIGN KEY (`banned_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiters for the table `live_casts`
+-- Limitadores para a tabela `live_casts`
 --
 ALTER TABLE `live_casts`
-	ADD CONSTRAINT `live_casts_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `live_casts_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `market_history`
+-- Limitadores para a tabela `market_history`
 --
 ALTER TABLE `market_history`
-	ADD CONSTRAINT `market_history_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `market_history_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `market_offers`
+-- Limitadores para a tabela `market_offers`
 --
 ALTER TABLE `market_offers`
-	ADD CONSTRAINT `market_offers_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `market_offers_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `players`
+-- Limitadores para a tabela `players`
 --
 ALTER TABLE `players`
-	ADD CONSTRAINT `players_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `players_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `player_binary_items`
+-- Limitadores para a tabela `player_binary_items`
 --
 ALTER TABLE `player_binary_items`
-	ADD CONSTRAINT `player_binary_items_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `player_binary_items_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `player_deaths`
+-- Limitadores para a tabela `player_deaths`
 --
 ALTER TABLE `player_deaths`
-	ADD CONSTRAINT `player_deaths_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `player_deaths_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `player_depotitems`
+-- Limitadores para a tabela `player_depotitems`
 --
 ALTER TABLE `player_depotitems`
-	ADD CONSTRAINT `player_depotitems_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `player_depotitems_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `player_inboxitems`
+-- Limitadores para a tabela `player_hirelings`
+--
+ALTER TABLE `player_hirelings`
+  ADD CONSTRAINT `player_hirelings_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `player_inboxitems`
 --
 ALTER TABLE `player_inboxitems`
-	ADD CONSTRAINT `player_inboxitems_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `player_inboxitems_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `player_items`
+-- Limitadores para a tabela `player_items`
 --
 ALTER TABLE `player_items`
-	ADD CONSTRAINT `player_items_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `player_items_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `player_kills`
+-- Limitadores para a tabela `player_kills`
 --
 ALTER TABLE `player_kills`
-	ADD CONSTRAINT `player_kills_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE,
-	ADD CONSTRAINT `player_kills_ibfk_2` FOREIGN KEY (`target`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `player_kills_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `player_kills_ibfk_2` FOREIGN KEY (`target`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `player_namelocks`
+-- Limitadores para a tabela `player_marketing`
+--
+ALTER TABLE `player_marketing`
+  ADD CONSTRAINT `player_marketing_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `player_namelocks`
 --
 ALTER TABLE `player_namelocks`
-	ADD CONSTRAINT `player_namelocks_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-	ADD CONSTRAINT `player_namelocks_ibfk_2` FOREIGN KEY (`namelocked_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `player_namelocks_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `player_namelocks_ibfk_2` FOREIGN KEY (`namelocked_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiters for the table `player_preydata`
+-- Limitadores para a tabela `player_preydata`
 --
 ALTER TABLE `player_preydata`
-	ADD CONSTRAINT `player_preydata_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `player_preydata_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiters for the table `player_rewards`
+-- Limitadores para a tabela `player_rewards`
 --
 ALTER TABLE `player_rewards`
-	ADD CONSTRAINT `player_rewards_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `player_rewards_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `player_spells`
+-- Limitadores para a tabela `player_spells`
 --
 ALTER TABLE `player_spells`
-	ADD CONSTRAINT `player_spells_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `player_spells_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `player_storage`
+-- Limitadores para a tabela `player_storage`
 --
 ALTER TABLE `player_storage`
-	ADD CONSTRAINT `player_storage_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `player_storage_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `prey_slots`
+-- Limitadores para a tabela `prey_slots`
 --
 ALTER TABLE `prey_slots`
-	ADD CONSTRAINT `prey_slots_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `prey_slots_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `sellchar`
+-- Limitadores para a tabela `sellchar`
 --
 ALTER TABLE `sellchar`
-	ADD CONSTRAINT `sellchar_ibfk_1` FOREIGN KEY (`id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `sellchar_ibfk_1` FOREIGN KEY (`id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `sell_players`
+-- Limitadores para a tabela `sell_players`
 --
 ALTER TABLE `sell_players`
-	ADD CONSTRAINT `sell_players_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `sell_players_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `sell_players_history`
+-- Limitadores para a tabela `sell_players_history`
 --
 ALTER TABLE `sell_players_history`
-	ADD CONSTRAINT `sell_players_history_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `sell_players_history_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `store_history`
+-- Limitadores para a tabela `store_history`
 --
 ALTER TABLE `store_history`
-	ADD CONSTRAINT `store_history_ibfk_1` FOREIGN KEY (`accountid`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `store_history_ibfk_1` FOREIGN KEY (`accountid`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `store_history_old`
+-- Limitadores para a tabela `store_history_old`
 --
 ALTER TABLE `store_history_old`
-	ADD CONSTRAINT `store_history_old_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `store_history_old_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE;
 
 --
--- Limiters for the table `tickets`
+-- Limitadores para a tabela `tickets`
 --
 ALTER TABLE `tickets`
-	ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`ticket_author_acc_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`ticket_author_acc_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiters for the table `tickets_reply`
+-- Limitadores para a tabela `tickets_reply`
 --
 ALTER TABLE `tickets_reply`
-	ADD CONSTRAINT `tickets_reply_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`ticket_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tickets_reply_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`ticket_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiters for the table `tile_store`
+-- Limitadores para a tabela `tile_store`
 --
 ALTER TABLE `tile_store`
-	ADD CONSTRAINT `tile_store_ibfk_1` FOREIGN KEY (`house_id`) REFERENCES `houses` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `tile_store_ibfk_1` FOREIGN KEY (`house_id`) REFERENCES `houses` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
