@@ -112,6 +112,22 @@ enum AttrTypes_t {
 	ATTR_DECAYTO = 39,
 	ATTR_IMBUED = 40,
 	ATTR_WRAPID = 41,
+	ATTR_CLASSIFICATION = 42,
+	ATTR_TIER = 43,
+	ATTR_ELEMENTICE = 44,
+	ATTR_ELEMENTEARTH = 45,
+	ATTR_ELEMENTFIRE = 46,
+	ATTR_ELEMENTENERGY = 47,
+	ATTR_ELEMENTDEATH = 48,
+	ATTR_ELEMENTHOLY = 49,
+	
+	// Dynamic absorb percent attributes for serialization
+	ATTR_ABSORBICE = 50,
+	ATTR_ABSORBEARTH = 51,
+	ATTR_ABSORBFIRE = 52,
+	ATTR_ABSORBENERGY = 53,
+	ATTR_ABSORBDEATH = 54,
+	ATTR_ABSORBHOLY = 55,
 };
 
 enum Attr_ReadValue {
@@ -426,7 +442,7 @@ class ItemAttributes
 		};
 
 		std::forward_list<Attribute> attributes;
-		uint32_t attributeBits = 0;
+		uint64_t attributeBits = 0;
 
 		const std::string& getStrAttr(itemAttrTypes type) const;
 		void setStrAttr(itemAttrTypes type, const std::string& value);
@@ -509,13 +525,17 @@ class ItemAttributes
 			return false;
 		}
 
-		const static uint32_t intAttributeTypes = ITEM_ATTRIBUTE_ACTIONID | ITEM_ATTRIBUTE_UNIQUEID | ITEM_ATTRIBUTE_DATE
+		const static uint64_t intAttributeTypes = ITEM_ATTRIBUTE_ACTIONID | ITEM_ATTRIBUTE_UNIQUEID | ITEM_ATTRIBUTE_DATE
 			| ITEM_ATTRIBUTE_WEIGHT | ITEM_ATTRIBUTE_ATTACK | ITEM_ATTRIBUTE_DEFENSE | ITEM_ATTRIBUTE_EXTRADEFENSE
 			| ITEM_ATTRIBUTE_ARMOR | ITEM_ATTRIBUTE_HITCHANCE | ITEM_ATTRIBUTE_SHOOTRANGE | ITEM_ATTRIBUTE_OWNER
 			| ITEM_ATTRIBUTE_DURATION | ITEM_ATTRIBUTE_DECAYSTATE | ITEM_ATTRIBUTE_CORPSEOWNER | ITEM_ATTRIBUTE_CHARGES
 			| ITEM_ATTRIBUTE_FLUIDTYPE | ITEM_ATTRIBUTE_DOORID | ITEM_ATTRIBUTE_DECAYTO | ITEM_ATTRIBUTE_IMBUINGSLOTS
-			| ITEM_ATTRIBUTE_OPENED | ITEM_ATTRIBUTE_QUICKLOOTCONTAINER | ITEM_ATTRIBUTE_IMBUED | ITEM_ATTRIBUTE_WRAPID;
-		const static uint32_t stringAttributeTypes = ITEM_ATTRIBUTE_DESCRIPTION | ITEM_ATTRIBUTE_TEXT | ITEM_ATTRIBUTE_WRITER
+			| ITEM_ATTRIBUTE_OPENED | ITEM_ATTRIBUTE_QUICKLOOTCONTAINER | ITEM_ATTRIBUTE_IMBUED | ITEM_ATTRIBUTE_WRAPID
+			| ITEM_ATTRIBUTE_CLASSIFICATION | ITEM_ATTRIBUTE_TIER | ITEM_ATTRIBUTE_ELEMENTICE | ITEM_ATTRIBUTE_ELEMENTEARTH
+			| ITEM_ATTRIBUTE_ELEMENTFIRE | ITEM_ATTRIBUTE_ELEMENTENERGY | ITEM_ATTRIBUTE_ELEMENTDEATH | ITEM_ATTRIBUTE_ELEMENTHOLY
+			| ITEM_ATTRIBUTE_ABSORBICE | ITEM_ATTRIBUTE_ABSORBEARTH | ITEM_ATTRIBUTE_ABSORBFIRE | ITEM_ATTRIBUTE_ABSORBENERGY
+			| ITEM_ATTRIBUTE_ABSORBDEATH | ITEM_ATTRIBUTE_ABSORBHOLY;
+		const static uint64_t stringAttributeTypes = ITEM_ATTRIBUTE_DESCRIPTION | ITEM_ATTRIBUTE_TEXT | ITEM_ATTRIBUTE_WRITER
 			| ITEM_ATTRIBUTE_NAME | ITEM_ATTRIBUTE_ARTICLE | ITEM_ATTRIBUTE_PLURALNAME | ITEM_ATTRIBUTE_SPECIAL;
 
 	public:
@@ -892,6 +912,111 @@ class Item : virtual public Thing
 				return static_cast<uint8_t>(getIntAttr(ITEM_ATTRIBUTE_HITCHANCE));
 			}
 			return items[id].hitChance;
+		}
+		uint32_t getClassification() const {
+			if (hasAttribute(ITEM_ATTRIBUTE_CLASSIFICATION)) {
+				return getIntAttr(ITEM_ATTRIBUTE_CLASSIFICATION);
+			}
+			return items[id].classification;
+		}
+		uint32_t getTier() const {
+			if (hasAttribute(ITEM_ATTRIBUTE_TIER)) {
+				return getIntAttr(ITEM_ATTRIBUTE_TIER);
+			}
+			return items[id].tier;
+		}
+		
+		// Dynamic element functions (following same pattern as getAttack)
+		uint16_t getElementDamage(CombatType_t combatType) const {
+			switch (combatType) {
+				case COMBAT_ICEDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTICE)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTICE));
+					}
+					break;
+				case COMBAT_EARTHDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTEARTH)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTEARTH));
+					}
+					break;
+				case COMBAT_FIREDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTFIRE)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTFIRE));
+					}
+					break;
+				case COMBAT_ENERGYDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTENERGY)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTENERGY));
+					}
+					break;
+				case COMBAT_DEATHDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTDEATH)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTDEATH));
+					}
+					break;
+				case COMBAT_HOLYDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTHOLY)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTHOLY));
+					}
+					break;
+				default:
+					break;
+			}
+			
+			// Fallback to static element from ItemType
+			const ItemType& it = items[id];
+			if (it.abilities && it.abilities->elementType == combatType) {
+				return it.abilities->elementDamage;
+			}
+			return 0;
+		}
+		
+		// Dynamic absorb percent functions (following same pattern as getElementDamage)
+		uint16_t getAbsorbPercent(CombatType_t combatType) const {
+			switch (combatType) {
+				case COMBAT_ICEDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBICE)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBICE));
+					}
+					break;
+				case COMBAT_EARTHDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBEARTH)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBEARTH));
+					}
+					break;
+				case COMBAT_FIREDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBFIRE)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBFIRE));
+					}
+					break;
+				case COMBAT_ENERGYDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBENERGY)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBENERGY));
+					}
+					break;
+				case COMBAT_DEATHDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBDEATH)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBDEATH));
+					}
+					break;
+				case COMBAT_HOLYDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBHOLY)) {
+						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBHOLY));
+					}
+					break;
+				default:
+					break;
+			}
+			
+			// Fallback to static absorb from ItemType abilities
+			const ItemType& it = items[id];
+			if (it.abilities) {
+				size_t index = combatTypeToIndex(combatType);
+				if (index < COMBAT_COUNT) {
+					return it.abilities->absorbPercent[index];
+				}
+			}
+			return 0;
 		}
 
 		uint32_t getWorth() const;

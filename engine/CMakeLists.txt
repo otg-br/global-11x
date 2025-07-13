@@ -57,6 +57,20 @@ add_executable(tfs ${tfs_SRC})
 include_directories(${MYSQL_INCLUDE_DIR} ${LUA_INCLUDE_DIR} ${Boost_INCLUDE_DIRS} ${PUGIXML_INCLUDE_DIR} ${Crypto++_INCLUDE_DIR})
 target_link_libraries(tfs ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${Boost_LIBRARIES} ${Boost_FILESYSTEM_LIBRARY} ${PUGIXML_LIBRARIES} ${Crypto++_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
-set_target_properties(tfs PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "src/otpch.h")
-set_target_properties(tfs PROPERTIES COTIRE_ADD_UNITY_BUILD FALSE)
-cotire(tfs)
+# Precompiled header
+# Note: cotire() must be called last on a target
+if (${CMAKE_VERSION} VERSION_GREATER "3.16.0")
+    target_precompile_headers(tfs PUBLIC src/otpch.h)
+else ()
+    include(cotire)
+    set_target_properties(tfs PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "src/otpch.h")
+    set_target_properties(tfs PROPERTIES COTIRE_ADD_UNITY_BUILD FALSE)
+    cotire(tfs)
+endif ()
+
+# Option to disable unity builds
+option(ENABLE_UNITY_BUILD "Enable unity build" ON)
+
+if(ENABLE_UNITY_BUILD)
+    set_target_properties(tfs PROPERTIES UNITY_BUILD ON)
+endif()

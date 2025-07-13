@@ -87,6 +87,7 @@ class Weapon : public Event
 		virtual int32_t getWeaponDamage(const Player* player, const Creature* target, const Item* item, bool maxDamage = false) const = 0;
 		virtual int32_t getElementDamage(const Player* player, const Creature* target, const Item* item) const = 0;
 		virtual CombatType_t getElementType() const = 0;
+		virtual CombatType_t getDynamicElementType(const Item* item) const = 0;
 
 		uint16_t getID() const {
 			return id;
@@ -245,6 +246,7 @@ class WeaponMelee final : public Weapon
 		int32_t getWeaponDamage(const Player* player, const Creature* target, const Item* item, bool maxDamage = false) const final;
 		int32_t getElementDamage(const Player* player, const Creature* target, const Item* item) const final;
 		CombatType_t getElementType() const final { return elementType; }
+		CombatType_t getDynamicElementType(const Item* item) const;
 
 	protected:
 		bool getSkillType(const Player* player, const Item* item, skills_t& skill, uint32_t& skillpoint) const final;
@@ -268,6 +270,7 @@ class WeaponDistance final : public Weapon
 		int32_t getWeaponDamage(const Player* player, const Creature* target, const Item* item, bool maxDamage = false) const final;
 		int32_t getElementDamage(const Player* player, const Creature* target, const Item* item) const final;
 		CombatType_t getElementType() const final { return elementType; }
+		CombatType_t getDynamicElementType(const Item* item) const;
 
 	protected:
 		bool getSkillType(const Player* player, const Item* item, skills_t& skill, uint32_t& skillpoint) const final;
@@ -287,6 +290,7 @@ class WeaponWand final : public Weapon
 		int32_t getWeaponDamage(const Player* player, const Creature* target, const Item* item, bool maxDamage = false) const final;
 		int32_t getElementDamage(const Player*, const Creature*, const Item*) const final { return 0; }
 		CombatType_t getElementType() const final { return COMBAT_NONE; }
+		CombatType_t getDynamicElementType(const Item*) const final { return COMBAT_NONE; }
 		
 		void setMinChange(int32_t change) {
 			minChange = change;

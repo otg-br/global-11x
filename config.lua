@@ -66,6 +66,11 @@ clientVersionStr = "Only support outdated 10.00 and version 12.91"
 antiMultiClientEnabled = true
 antiMultiClientLimit = 2
 
+-- Configuração para permitir mount em Protection Zone (PZ)
+-- true = permite mount em PZ
+-- false = não permite mount em PZ (comportamento padrão)
+allowMountInPz = true 
+
 -- Depot Limit
 freeDepotLimit = 2000
 premiumDepotLimit = 10000

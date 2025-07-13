@@ -1048,6 +1048,34 @@ itemAttrTypes stringToItemAttribute(const std::string& str)
 		return ITEM_ATTRIBUTE_DOORID;
 	} else if (str == "wrapid") {
 		return ITEM_ATTRIBUTE_WRAPID;
+	} else if (str == "classification") {
+		return ITEM_ATTRIBUTE_CLASSIFICATION;
+	} else if (str == "tier") {
+		return ITEM_ATTRIBUTE_TIER;
+	} else if (str == "elementice") {
+		return ITEM_ATTRIBUTE_ELEMENTICE;
+	} else if (str == "elementearth") {
+		return ITEM_ATTRIBUTE_ELEMENTEARTH;
+	} else if (str == "elementfire") {
+		return ITEM_ATTRIBUTE_ELEMENTFIRE;
+	} else if (str == "elementenergy") {
+		return ITEM_ATTRIBUTE_ELEMENTENERGY;
+	} else if (str == "elementdeath") {
+		return ITEM_ATTRIBUTE_ELEMENTDEATH;
+	} else if (str == "elementholy") {
+		return ITEM_ATTRIBUTE_ELEMENTHOLY;
+	} else if (str == "absorbice") {
+		return ITEM_ATTRIBUTE_ABSORBICE;
+	} else if (str == "absorbearth") {
+		return ITEM_ATTRIBUTE_ABSORBEARTH;
+	} else if (str == "absorbfire") {
+		return ITEM_ATTRIBUTE_ABSORBFIRE;
+	} else if (str == "absorbenergy") {
+		return ITEM_ATTRIBUTE_ABSORBENERGY;
+	} else if (str == "absorbdeath") {
+		return ITEM_ATTRIBUTE_ABSORBDEATH;
+	} else if (str == "absorbholy") {
+		return ITEM_ATTRIBUTE_ABSORBHOLY;
 	}
 	return ITEM_ATTRIBUTE_NONE;
 }
@@ -1069,7 +1097,7 @@ const char* getReturnMessage(ReturnValue value)
 {
 	switch (value) {
 		case RETURNVALUE_REWARDCHESTISEMPTY:
-		return "The chest is currently empty. You did not\ntake part in any battles in the last seven\ndays or already claimed your reward.";
+			return "The chest is currently empty. You did not\ntake part in any battles in the last seven\ndays or already claimed your reward.";
 
 		case RETURNVALUE_DESTINATIONOUTOFREACH:
 			return "Destination is out of reach.";

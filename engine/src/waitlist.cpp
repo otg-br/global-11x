@@ -27,7 +27,7 @@ extern ConfigManager g_config;
 extern Game g_game;
 
 
-namespace {
+namespace waitlist_internal {
 
 struct Wait
 {
@@ -60,8 +60,6 @@ std::size_t getTimeout(std::size_t slot)
 	return WaitingList::getTime(slot) + 15;
 }
 
-} // namespace
-
 struct WaitListInfo
 {
 	WaitList priorityWaitList;
@@ -83,6 +81,8 @@ struct WaitListInfo
 		return {waitList.end(), slot};
 	}
 };
+
+} // namespace waitlist_internal
 
 WaitingList& WaitingList::getInstance()
 {
@@ -116,11 +116,11 @@ bool WaitingList::clientLogin(const Player* player)
 		return true;
 	}
 
-	cleanupList(info->priorityWaitList);
-	cleanupList(info->waitList);
+	waitlist_internal::cleanupList(info->priorityWaitList);
+	waitlist_internal::cleanupList(info->waitList);
 
-	WaitList::iterator it;
-	WaitList::size_type slot;
+	waitlist_internal::WaitList::iterator it;
+	waitlist_internal::WaitList::size_type slot;
 	std::tie(it, slot) = info->findClient(player);
 	if (it != info->waitList.end()) {
 		if ((g_game.getPlayersOnline() + slot) <= maxPlayers) {
@@ -130,24 +130,24 @@ bool WaitingList::clientLogin(const Player* player)
 		}
 
 		//let them wait a bit longer
-		it->timeout = OTSYS_TIME() + (getTimeout(slot) * 1000);
+		it->timeout = OTSYS_TIME() + (waitlist_internal::getTimeout(slot) * 1000);
 		return false;
 	}
 
 	slot = info->priorityWaitList.size();
 	if (player->isPremium()) {
-		info->priorityWaitList.emplace_back(OTSYS_TIME() + (getTimeout(slot + 1) * 1000), player->getGUID());
+		info->priorityWaitList.emplace_back(OTSYS_TIME() + (waitlist_internal::getTimeout(slot + 1) * 1000), player->getGUID());
 	} else {
 		slot += info->waitList.size();
-		info->waitList.emplace_back(OTSYS_TIME() + (getTimeout(slot + 1) * 1000), player->getGUID());
+		info->waitList.emplace_back(OTSYS_TIME() + (waitlist_internal::getTimeout(slot + 1) * 1000), player->getGUID());
 	}
 	return false;
 }
 
 std::size_t WaitingList::getClientSlot(const Player* player)
 {
-	WaitList::iterator it;
-	WaitList::size_type slot;
+	waitlist_internal::WaitList::iterator it;
+	waitlist_internal::WaitList::size_type slot;
 	std::tie(it, slot) = info->findClient(player);
 	if (it == info->waitList.end()) {
 		return 0;
@@ -155,4 +155,4 @@ std::size_t WaitingList::getClientSlot(const Player* player)
 	return slot;
 }
 
-WaitingList::WaitingList() : info(new WaitListInfo) {}
+WaitingList::WaitingList() : info(new waitlist_internal::WaitListInfo) {}

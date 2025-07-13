@@ -46,7 +46,7 @@ event.onDropLoot = function(self, corpse)
             hasCharm = true
         end
         
-        if player:getVipDays() > os.stime() then
+        if player:getPremiumEndsAt() > os.time() then
             percent = percent * 1.05
         end
     end

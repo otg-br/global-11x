@@ -12,7 +12,7 @@ local function addQuickItem(playerId, itemId, itemName)
     end
 
     -- Caso você tenha sistema de VIP // 25 é para VIP e 15 para Free.
-    local maxItem = player:getVipDays() > 0 and 25 or 15
+    local maxItem = player:isPremium() and 25 or 15
     --local maxItem = 15
     local itemId = itemType:getId()
     if AutoLootList:itemInList(playerId, itemId) then

@@ -136,7 +136,7 @@ function onLogin(player)
 		113, 114, 115
 	}
 
-	if player:getVipDays() > os.stime() then
+	if player:isPremium() then
 		for _, mount in pairs(vipMounts) do
 			if not player:hasMount(mount) then
 				player:addMount(mount)
@@ -149,7 +149,7 @@ function onLogin(player)
 		1202, 1203, 1204, 1205, 1206, 1207
 	}
 
-	if player:getVipDays() > os.stime() then
+	if player:isPremium() then
 		for _, outfit in pairs(vipOutfits) do
 			-- entregando o outfit
 			player:addOutfit(outfit)
@@ -317,7 +317,7 @@ function onLogin(player)
 
 	-- vip devido ao bug la
 	if player:getAccountStorageValue(2) <= 0 then
-		player:addVipDays(3)
+		player:setPremiumEndsAt(player:getPremiumEndsAt() + 259200) -- 3 dias em segundos (3 * 24 * 60 * 60)
 		player:setAccountStorageValue(2, os.stime())
 		-- if table.contains({SKULL_RED, SKULL_BLACK}, player:getSkull()) then
 			-- player:setSkull(SKULL_NONE)
@@ -331,15 +331,15 @@ function onLogin(player)
 		player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("You are logged in using the %s server.", proxy.name))
 	end
 
-	local days = math.max(0, math.ceil((player:getVipDays() - os.stime())  / 86400 ))
-	if player:getVipDays() > os.stime() then
+	local days = math.max(0, math.ceil((player:getPremiumEndsAt() - os.stime()) / 86400))
+	if player:isPremium() then
 		player:setStorageValue(Storage.VipSystem, 1)
 	end
 
 	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("You have %d day%s vip.", days, (days > 1 and "s" or "")))
 
 	if player:getStorageValue(Storage.VipSystem) > -1 then
-		if player:getVipDays() <= os.stime() then
+		if not player:isPremium() then
 			player:setStorageValue(Storage.VipSystem, -1)
 
 			if player:getSex() == 1 then

@@ -81,7 +81,7 @@ void Party::disband()
 	delete this;
 }
 
-bool Party::leaveParty(Player* player)
+bool Party::leaveParty(Player* player, bool forceRemove /* = false */)
 {
 	if (!player) {
 		return false;
@@ -91,7 +91,8 @@ bool Party::leaveParty(Player* player)
 		return false;
 	}
 
-	if (!g_events->eventPartyOnLeave(this, player)) {
+	bool canRemove = g_events->eventPartyOnLeave(this, player);
+	if (!forceRemove && !canRemove) {
 		return false;
 	}
 
@@ -128,6 +129,11 @@ bool Party::leaveParty(Player* player)
 	leader->sendCreatureSkull(player);
 	player->sendCreatureSkull(player);
 	player->sendPlayerPartyIcons(leader);
+
+	// remove pending invitation icons from the screen
+	for (Player* invitee : inviteList) {
+		player->sendCreatureShield(invitee);
+	}
 
 	player->sendTextMessage(MESSAGE_INFO_DESCR, "You have left the party.");
 
@@ -188,23 +194,29 @@ bool Party::passPartyLeadership(Player* player)
 
 bool Party::joinParty(Player& player)
 {
+	// check if lua scripts allow the player to join
 	if (!g_events->eventPartyOnJoin(this, &player)) {
 		return false;
 	}
 
-	auto it = std::find(inviteList.begin(), inviteList.end(), &player);
-	if (it == inviteList.end()) {
-		return false;
+	// first player accepted the invitation
+	// the party gets officially formed
+	// the leader can no longer take invitations from others
+	if (memberList.empty()) {
+		leader->clearPartyInvitations();
 	}
 
-	inviteList.erase(it);
+	// add player to the party
+	memberList.push_back(&player);
+	player.setParty(this);
 
 	std::ostringstream ss;
 	ss << player.getName() << " has joined the party.";
 	broadcastPartyMessage(MESSAGE_INFO_DESCR, ss.str());
 
-	player.setParty(this);
-
+	// remove player pending invitations to this and other parties
+	player.clearPartyInvitations();
+	// update player icon on the screen
 	g_game.updatePlayerShield(&player);
 
 	for (Player* member : memberList) {
@@ -212,11 +224,17 @@ bool Party::joinParty(Player& player)
 		player.sendPlayerPartyIcons(member);
 	}
 
-	player.sendCreatureSkull(&player);
+	// update player-leader party icons
 	leader->sendCreatureSkull(&player);
 	player.sendPlayerPartyIcons(leader);
 
-	memberList.push_back(&player);
+	// update player own skull
+	player.sendCreatureSkull(&player);
+
+	// show the new member who else is invited
+	for (Player* invitee : inviteList) {
+		player.sendCreatureShield(invitee);
+	}
 
 	g_game.updatePlayerHelpers(player);
 
@@ -290,7 +308,9 @@ bool Party::invitePlayer(Player& player)
 
 	leader->sendTextMessage(MESSAGE_INFO_DESCR, ss.str());
 
+	// add player to invite lists
 	inviteList.push_back(&player);
+	player.addPartyInvitation(this);
 
 	for (Player* member : memberList) {
 		g_game.updatePlayerHelpers(*member);
@@ -300,7 +320,10 @@ bool Party::invitePlayer(Player& player)
 	leader->sendCreatureShield(&player);
 	player.sendCreatureShield(leader);
 
-	player.addPartyInvitation(this);
+	// update the invitation status for other members
+	for (Player* member : memberList) {
+		member->sendCreatureShield(&player);
+	}
 
 	ss.str(std::string());
 	ss << leader->getName() << " has invited you to " << (leader->getSex() == PLAYERSEX_FEMALE ? "her" : "his") << " party.";

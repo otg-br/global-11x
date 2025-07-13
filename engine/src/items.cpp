@@ -140,7 +140,7 @@ FILELOADER_ERRORS Items::loadFromOtb(const std::string& file)
 		}
 	}
 
-	if (majorVersion == 0xFFFFFFFF) {
+	/*if (majorVersion == 0xFFFFFFFF) {
 		std::cout << "[Warning - Items::loadFromOtb] items.otb using generic client version." << std::endl;
 	} else if (majorVersion != 3) {
 		std::cout << "Old version detected, a newer version of items.otb is required." << std::endl;
@@ -148,7 +148,7 @@ FILELOADER_ERRORS Items::loadFromOtb(const std::string& file)
 	} else if (minorVersion < CLIENT_VERSION_1140) {
 		std::cout << "A newer version of items.otb is required." << std::endl;
 		return ERROR_INVALID_FORMAT;
-	}
+	}}*/
 
 	for (auto & itemNode : root.children) {
 		PropStream stream;
@@ -535,6 +535,10 @@ void Items::parseItemNode(const pugi::xml_node& itemNode, uint16_t id)
 			it.wrapContainer = valueAttribute.as_bool();
 		} else if (tmpStrValue == "imbuingslots") {
 			it.imbuingSlots = pugi::cast<int32_t>(valueAttribute.value());
+		} else if (tmpStrValue == "classification") {
+			it.classification = pugi::cast<uint32_t>(valueAttribute.value());
+		} else if (tmpStrValue == "tier") {
+			it.tier = pugi::cast<uint32_t>(valueAttribute.value());
 		} else if (tmpStrValue == "wrapableto" || tmpStrValue == "unwrapableto") {
 			it.wrapableTo = pugi::cast<int32_t>(valueAttribute.value());
 			it.wrapable = true;

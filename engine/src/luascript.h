@@ -758,12 +758,14 @@ class LuaScriptInterface
 		static int luaItemGetTile(lua_State* L);
 
 		static int luaItemHasAttribute(lua_State* L);
-		static int luaItemGetAttribute(lua_State* L);
-		static int luaItemSetAttribute(lua_State* L);
-		static int luaItemRemoveAttribute(lua_State* L);
+			static int luaItemGetAttribute(lua_State* L);
+	static int luaItemSetAttribute(lua_State* L);
+	static int luaItemRemoveAttribute(lua_State* L);
+	static int luaItemGetAbsorbPercent(lua_State* L);
 		static int luaItemGetCustomAttribute(lua_State* L);
 		static int luaItemSetCustomAttribute(lua_State* L);
 		static int luaItemRemoveCustomAttribute(lua_State* L);
+
 
 		static int luaItemMoveTo(lua_State* L);
 		static int luaItemTransform(lua_State* L);
@@ -1024,13 +1026,8 @@ class LuaScriptInterface
 		static int luaPlayerRemoveMount(lua_State* L);
 		static int luaPlayerHasMount(lua_State* L);
 
-		static int luaPlayerGetPremiumDays(lua_State* L);
-		static int luaPlayerAddPremiumDays(lua_State* L);
-		static int luaPlayerRemovePremiumDays(lua_State* L);
-
-		static int luaPlayerGetVipDays(lua_State* L);
-		static int luaPlayerAddVipDays(lua_State* L);
-		static int luaPlayerRemoveVipDays(lua_State* L);
+		static int luaPlayerGetPremiumEndsAt(lua_State* L);
+		static int luaPlayerSetPremiumEndsAt(lua_State* L);
 
 		static int luaPlayerGetTibiaCoins(lua_State* L);
 		static int luaPlayerAddTibiaCoins(lua_State* L);
@@ -1322,13 +1319,16 @@ class LuaScriptInterface
 		static int luaItemTypeGetHitChance(lua_State* L);
 		static int luaItemTypeGetShootRange(lua_State* L);
 		static int luaItemTypeGetAttack(lua_State* L);
+		static int luaItemTypeGetClassification(lua_State* L);
+		static int luaItemTypeGetTier(lua_State* L);
 		static int luaItemTypeGetDefense(lua_State* L);
 		static int luaItemTypeGetExtraDefense(lua_State* L);
 		static int luaItemTypeGetImbuingSlots(lua_State* L);
 		static int luaItemTypeGetArmor(lua_State* L);
 		static int luaItemTypeGetWeaponType(lua_State* L);
 
-		static int luaItemTypeGetElementType(lua_State* L);
+		static int luaItemTypeGetAbsorbPercent(lua_State* L);
+	static int luaItemTypeGetElementType(lua_State* L);
 		static int luaItemTypeGetElementDamage(lua_State* L);
 
 		static int luaItemTypeGetTransformEquipId(lua_State* L);

@@ -1393,7 +1393,7 @@ int64_t Creature::getStepDuration(Direction dir) const
 {
 	int64_t stepDuration = getStepDuration();
 	if ((dir & DIRECTION_DIAGONAL_MASK) != 0) {
-		stepDuration *= 3;
+		stepDuration = 2;
 	}
 	return stepDuration;
 }

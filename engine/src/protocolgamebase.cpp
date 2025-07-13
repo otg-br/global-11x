@@ -872,39 +872,6 @@ void ProtocolGameBase::sendAddCreature(const Creature* creature, const Position&
 		msg.add<uint16_t>(23373);
 		msg.addString("an ultimate mana potion");
 		msg.add<uint32_t>(310);
-		msg.addByte(0x1);
-		msg.addByte(0x5);
-		msg.addByte(0x4);
-		msg.add<uint16_t>(266);
-		msg.addString("a health potion");
-		msg.add<uint32_t>(270);
-		msg.add<uint16_t>(268);
-		msg.addString("a mana potion");
-		msg.add<uint32_t>(270);
-		msg.add<uint16_t>(237);
-		msg.addString("a strong mana potion");
-		msg.add<uint32_t>(290);
-		msg.add<uint16_t>(238);
-		msg.addString("a great mana potion");
-		msg.add<uint32_t>(310);
-		msg.addByte(0x1);
-		msg.addByte(10);
-		msg.addByte(0x5);
-		msg.add<uint16_t>(266);
-		msg.addString("a health potion");
-		msg.add<uint32_t>(270);
-		msg.add<uint16_t>(268);
-		msg.addString("a mana potion");
-		msg.add<uint32_t>(270);
-		msg.add<uint16_t>(237);
-		msg.addString("a strong mana potion");
-		msg.add<uint32_t>(290);
-		msg.add<uint16_t>(238);
-		msg.addString("a great mana potion");
-		msg.add<uint32_t>(310);
-		msg.add<uint16_t>(23373);
-		msg.addString("an ultimate mana potion");
-		msg.add<uint32_t>(310);
 		msg.addByte(0x2);
 		msg.addByte(0x1);
 		msg.addByte(0x2);
@@ -1119,7 +1086,7 @@ void ProtocolGameBase::sendBasicData()
 	msg.addByte(0x9F);
 	if (player->isPremium()) {
 		msg.addByte(1);
-		msg.add<uint32_t>(OS_TIME(nullptr) + (player->premiumDays * 86400));
+		msg.add<uint32_t>(player->premiumEndsAt);
 	} else {
 		msg.addByte(0);
 		msg.add<uint32_t>(0);

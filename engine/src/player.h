@@ -509,7 +509,7 @@ class Player final : public Creature, public Cylinder
 		}
 
 		bool isPremium() const;
-		void setPremiumDays(int32_t v);
+		void setPremiumTime(time_t premiumEndsAt);
 
 		void setTibiaCoins(int32_t v, CoinType_t coinType = COIN_TYPE_DEFAULT);
 		bool canRemoveCoins(int32_t v, CoinType_t coinType = COIN_TYPE_DEFAULT);
@@ -1824,6 +1824,7 @@ class Player final : public Creature, public Cylinder
 		time_t lastday = 0;
 		time_t lastLoginSaved = 0;
 		time_t lastLogout = 0;
+		time_t premiumEndsAt = 0;
 
 		uint32_t lastupdatecoin = OTSYS_TIME();
 
@@ -1848,6 +1849,8 @@ class Player final : public Creature, public Cylinder
 		int64_t bonusRerollCount = 0;
 		int64_t lastQuickLootNotification = 0;
 		uint32_t myPet = 0;
+
+		uint32_t lastProgressMessageLevel[SKILL_LAST + 1] = {0};
 
 		std::vector<Kill> unjustifiedKills;
 
@@ -1897,7 +1900,6 @@ class Player final : public Creature, public Cylinder
 		int32_t purchaseCallback = -1;
 		int32_t saleCallback = -1;
 		int32_t MessageBufferCount = 0;
-		int32_t premiumDays = 0;
 		uint32_t viptime = 0;
 		int32_t bloodHitCount = 0;
 		int32_t shieldBlockCount = 0;

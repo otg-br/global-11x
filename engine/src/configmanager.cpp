@@ -205,6 +205,7 @@ bool ConfigManager::load()
 	boolean[YELL_ALLOW_PREMIUM] = getGlobalBoolean(L, "yellAlwaysAllowPremium", false);
 	boolean[BLESS_RUNE] = getGlobalBoolean(L, "blessRune", true);
 	boolean[ANTI_MULTI_CLIENT_ENABLED] = getGlobalBoolean(L, "antiMultiClientEnabled", true);
+	boolean[ALLOW_MOUNT_IN_PZ] = getGlobalBoolean(L, "allowMountInPz", false);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");

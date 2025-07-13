@@ -59,12 +59,13 @@ class IOLoginData
 		static void editVIPEntry(uint32_t accountId, uint32_t guid, const std::string& description, uint32_t icon, bool notify);
 		static void removeVIPEntry(uint32_t accountId, uint32_t guid);
 
-		static void addPremiumDays(uint32_t accountId, int32_t addDays);
-		static void removePremiumDays(uint32_t accountId, int32_t removeDays);
+		static void updatePremiumTime(uint32_t accountId, time_t endTime);
 
 		static void setVipDays(uint32_t accountId, int32_t addDays);
 
 		static bool loadAccountStoreHistory(uint32_t accountId);
+
+		static bool setPremiumEndsAt(uint32_t accountId, time_t endTime);
 
 	protected:
 		using ItemMap = std::map<uint32_t, std::pair<Item*, uint32_t>>;

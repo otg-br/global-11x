@@ -23,7 +23,7 @@
 static constexpr auto STATUS_SERVER_NAME = "Otg Server";
 static constexpr auto STATUS_SERVER_VERSION = "1.4";
 static constexpr auto STATUS_SERVER_CREDITS = "TFS Team, Erick Nunes, Leo Pereira, Marson Schneider, LukST, worthdavi, OTX Team, OTG Team";
-static constexpr auto STATUS_SERVER_CONTRIBUTORS = "Johncore and Mark Samman";
+static constexpr auto STATUS_SERVER_CONTRIBUTORS = "Johncore, Mark Samman and Mateuskl (Mateus Roberto)";
 
 static constexpr auto CLIENT_VERSION_MIN = 1100;
 static constexpr auto CLIENT_VERSION_MAX = 1235;

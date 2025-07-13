@@ -1299,7 +1299,7 @@ void Player::onCreatureAppear(Creature* creature, bool isLogin)
 			bed->wakeUp(this);
 		}
 
-		std::cout << name << " has logged in." << std::endl;
+		//std::cout << name << " has logged in." << std::endl;
 
 		if (guild) {
 			guild->addMember(this);
@@ -1361,7 +1361,7 @@ void Player::onChangeZone(ZoneType_t zone)
 			onAttackedCreatureDisappear(false);
 		}
 
-		if (!group->access && isMounted()) {
+		if (!group->access && isMounted() && !g_config.getBoolean(ConfigManager::ALLOW_MOUNT_IN_PZ)) {
 			dismount();
 			g_game.internalCreatureChangeOutfit(this, defaultOutfit);
 			wasMounted = true;
@@ -1426,12 +1426,12 @@ void Player::onRemoveCreature(Creature* creature, bool isLogout)
 		clearPartyInvitations();
 
 		if (party) {
-			party->leaveParty(this);
+			party->leaveParty(this, true);
 		}
 
 		g_chat->removeUserFromAllChannels(*this);
 
-		std::cout << getName() << " has logged out." << std::endl;
+		//std::cout << getName() << " has logged out." << std::endl;
 
 		if (guild) {
 			guild->removeMember(this);
@@ -2234,16 +2234,18 @@ BlockType_t Player::blockHit(Creature* attacker, CombatType_t combatType, int32_
 			}
 
 			const ItemType& it = Item::items[item->getID()];
-			if (it.abilities) {
-				const int16_t& absorbPercent = it.abilities->absorbPercent[combatTypeToIndex(combatType)];
-				if (absorbPercent != 0) {
-					damage -= std::round(damage * (absorbPercent / 100.));
+			// Use our new dynamic absorb function that checks custom attributes first
+			const int16_t absorbPercent = item->getAbsorbPercent(combatType);
+			if (absorbPercent != 0) {
+				damage -= std::round(damage * (absorbPercent / 100.));
 
-					uint16_t charges = item->getCharges();
-					if (charges != 0) {
-						g_game.transformItem(item, item->getID(), charges - 1);
-					}
+				uint16_t charges = item->getCharges();
+				if (charges != 0) {
+					g_game.transformItem(item, item->getID(), charges - 1);
 				}
+			}
+			
+			if (it.abilities) {
 
 				if (field) {
 					const int16_t& fieldAbsorbPercent = it.abilities->fieldAbsorbPercent[combatTypeToIndex(combatType)];
@@ -4647,12 +4649,12 @@ bool Player::isPremium() const
 		return true;
 	}
 
-	return premiumDays > 0;
+	return premiumEndsAt > time(nullptr);
 }
 
-void Player::setPremiumDays(int32_t v)
+void Player::setPremiumTime(time_t premiumEndsAt)
 {
-	premiumDays = v;
+	this->premiumEndsAt = premiumEndsAt;
 	sendBasicData();
 }
 
@@ -4751,7 +4753,8 @@ PartyShields_t Player::getPartyShield(const Player* player) const
 			return SHIELD_BLUE;
 		}
 
-		if (isInviting(player)) {
+		// isInviting(player) if members aren't supposed to see the invited player emblem
+		if (party->isPlayerInvited(player)) {
 			return SHIELD_WHITEBLUE;
 		}
 	}
@@ -4910,7 +4913,7 @@ bool Player::toggleMount(bool mount)
 			return false;
 		}
 
-		if (!group->access && tile->hasFlag(TILESTATE_PROTECTIONZONE)) {
+		if (!group->access && tile->hasFlag(TILESTATE_PROTECTIONZONE) && !g_config.getBoolean(ConfigManager::ALLOW_MOUNT_IN_PZ)) {
 			sendCancelMessage(RETURNVALUE_ACTIONNOTPERMITTEDINPROTECTIONZONE);
 			return false;
 		}
@@ -5055,135 +5058,139 @@ void Player::dismount()
 
 bool Player::addOfflineTrainingTries(skills_t skill, uint64_t tries)
 {
-	if (tries == 0 || skill == SKILL_LEVEL) {
-		return false;
-	}
+    if (tries == 0 || skill == SKILL_LEVEL) {
+        return false;
+    }
 
-	bool sendUpdate = false;
-	uint32_t oldSkillValue, newSkillValue;
-	long double oldPercentToNextLevel, newPercentToNextLevel;
+    bool sendUpdate = false;
 
-	if (skill == SKILL_MAGLEVEL) {
-		uint64_t currReqMana = vocation->getReqMana(magLevel);
-		uint64_t nextReqMana = vocation->getReqMana(magLevel + 1);
+    if (skill == SKILL_MAGLEVEL) {
+        uint64_t currReqMana = vocation->getReqMana(magLevel);
+        uint64_t nextReqMana = vocation->getReqMana(magLevel + 1);
 
-		if (currReqMana >= nextReqMana) {
-			return false;
-		}
+        if (currReqMana >= nextReqMana) {
+            return false;
+        }
 
-		oldSkillValue = magLevel;
-		oldPercentToNextLevel = static_cast<long double>(manaSpent * 100) / nextReqMana;
+        g_events->eventPlayerOnGainSkillTries(this, SKILL_MAGLEVEL, tries);
+        uint32_t currMagLevel = magLevel;
 
-		g_events->eventPlayerOnGainSkillTries(this, SKILL_MAGLEVEL, tries);
-		uint32_t currMagLevel = magLevel;
+        while ((manaSpent + tries) >= nextReqMana) {
+            tries -= nextReqMana - manaSpent;
 
-		while ((manaSpent + tries) >= nextReqMana) {
-			tries -= nextReqMana - manaSpent;
+            magLevel++;
+            manaSpent = 0;
 
-			magLevel++;
-			manaSpent = 0;
+            g_creatureEvents->playerAdvance(this, SKILL_MAGLEVEL, magLevel - 1, magLevel);
 
-			g_creatureEvents->playerAdvance(this, SKILL_MAGLEVEL, magLevel - 1, magLevel);
+            sendUpdate = true;
+            currReqMana = nextReqMana;
+            nextReqMana = vocation->getReqMana(magLevel + 1);
 
-			sendUpdate = true;
-			currReqMana = nextReqMana;
-			nextReqMana = vocation->getReqMana(magLevel + 1);
+            if (currReqMana >= nextReqMana) {
+                tries = 0;
+                break;
+            }
+        }
 
-			if (currReqMana >= nextReqMana) {
-				tries = 0;
-				break;
-			}
-		}
+        manaSpent += tries;
 
-		manaSpent += tries;
+        if (magLevel != currMagLevel) {
+            std::ostringstream ss;
+            ss << "You advanced to magic level " << magLevel << '.';
+            sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
 
-		if (magLevel != currMagLevel) {
-			std::ostringstream ss;
-			ss << "You advanced to magic level " << magLevel << '.';
-			sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
-		}
+            // Verificar se o novo nível é divisível por 5 e se a mensagem ainda não foi exibida para esse nível divisível
+            uint32_t currentMilestone = (magLevel / 5) * 5; // Ex.: 62 -> 60, 65 -> 65
+            if (magLevel % 5 == 0 && lastProgressMessageLevel[SKILL_MAGLEVEL] != currentMilestone) {
+                std::ostringstream ssProgress;
+                ssProgress << std::fixed << std::setprecision(2)
+                           << "Your " << ucwords(getSkillName(skill)) << " skill has reached level " << magLevel
+                           << ", with " << static_cast<long double>(manaSpent * 100) / nextReqMana << "% progress towards level " << (magLevel + 1) << '.';
+                sendTextMessage(MESSAGE_EVENT_ADVANCE, ssProgress.str());
+                lastProgressMessageLevel[SKILL_MAGLEVEL] = currentMilestone;
+            }
+        }
 
-		uint8_t newPercent;
-		if (nextReqMana > currReqMana) {
-			newPercent = Player::getPercentLevel(manaSpent, nextReqMana);
-			newPercentToNextLevel = static_cast<long double>(manaSpent * 100) / nextReqMana;
-		} else {
-			newPercent = 0;
-			newPercentToNextLevel = 0;
-		}
+        uint8_t newPercent;
+        if (nextReqMana > currReqMana) {
+            newPercent = Player::getPercentLevel(manaSpent, nextReqMana);
+        } else {
+            newPercent = 0;
+        }
 
-		if (newPercent != magLevelPercent) {
-			magLevelPercent = newPercent;
-			sendUpdate = true;
-		}
+        if (newPercent != magLevelPercent) {
+            magLevelPercent = newPercent;
+            sendUpdate = true;
+        }
+    } else {
+        uint64_t currReqTries = vocation->getReqSkillTries(skill, skills[skill].level);
+        uint64_t nextReqTries = vocation->getReqSkillTries(skill, skills[skill].level + 1);
+        if (currReqTries >= nextReqTries) {
+            return false;
+        }
 
-		newSkillValue = magLevel;
-	} else {
-		uint64_t currReqTries = vocation->getReqSkillTries(skill, skills[skill].level);
-		uint64_t nextReqTries = vocation->getReqSkillTries(skill, skills[skill].level + 1);
-		if (currReqTries >= nextReqTries) {
-			return false;
-		}
+        g_events->eventPlayerOnGainSkillTries(this, skill, tries);
+        uint32_t currSkillLevel = skills[skill].level;
 
-		oldSkillValue = skills[skill].level;
-		oldPercentToNextLevel = static_cast<long double>(skills[skill].tries * 100) / nextReqTries;
+        while ((skills[skill].tries + tries) >= nextReqTries) {
+            tries -= nextReqTries - skills[skill].tries;
 
-		g_events->eventPlayerOnGainSkillTries(this, skill, tries);
-		uint32_t currSkillLevel = skills[skill].level;
+            skills[skill].level++;
+            skills[skill].tries = 0;
+            skills[skill].percent = 0;
 
-		while ((skills[skill].tries + tries) >= nextReqTries) {
-			tries -= nextReqTries - skills[skill].tries;
+            g_creatureEvents->playerAdvance(this, skill, (skills[skill].level - 1), skills[skill].level);
 
-			skills[skill].level++;
-			skills[skill].tries = 0;
-			skills[skill].percent = 0;
+            sendUpdate = true;
+            currReqTries = nextReqTries;
+            nextReqTries = vocation->getReqSkillTries(skill, skills[skill].level + 1);
 
-			g_creatureEvents->playerAdvance(this, skill, (skills[skill].level - 1), skills[skill].level);
+            if (currReqTries >= nextReqTries) {
+                tries = 0;
+                break;
+            }
+        }
 
-			sendUpdate = true;
-			currReqTries = nextReqTries;
-			nextReqTries = vocation->getReqSkillTries(skill, skills[skill].level + 1);
+        skills[skill].tries += tries;
 
-			if (currReqTries >= nextReqTries) {
-				tries = 0;
-				break;
-			}
-		}
+        if (currSkillLevel != skills[skill].level) {
+            std::ostringstream ss;
+            ss << "You advanced to " << getSkillName(skill) << " level " << skills[skill].level << '.';
+            sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
 
-		skills[skill].tries += tries;
+            // Check if the new level is divisible by 5 and if the message has not already been displayed for this divisible level
+            uint32_t currentMilestone = (skills[skill].level / 5) * 5; // Ex.: 62 -> 60, 65 -> 65
+            if (skills[skill].level % 5 == 0 && lastProgressMessageLevel[skill] != currentMilestone) {
+                uint64_t nextReqTriesForMessage = vocation->getReqSkillTries(skill, skills[skill].level + 1);
+                std::ostringstream ssProgress;
+                ssProgress << std::fixed << std::setprecision(2)
+                           << "Your " << ucwords(getSkillName(skill)) << " skill has reached level " << skills[skill].level
+                           << ", with " << static_cast<long double>(skills[skill].tries * 100) / nextReqTriesForMessage << "% progress towards level " << (skills[skill].level + 1) << '.';
+                sendTextMessage(MESSAGE_EVENT_ADVANCE, ssProgress.str());
+                lastProgressMessageLevel[skill] = currentMilestone;
+            }
+        }
 
-		if (currSkillLevel != skills[skill].level) {
-			std::ostringstream ss;
-			ss << "You advanced to " << getSkillName(skill) << " level " << skills[skill].level << '.';
-			sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
-		}
+        uint8_t newPercent;
+        if (nextReqTries > currReqTries) {
+            newPercent = Player::getPercentLevel(skills[skill].tries, nextReqTries);
+        } else {
+            newPercent = 0;
+        }
 
-		uint8_t newPercent;
-		if (nextReqTries > currReqTries) {
-			newPercent = Player::getPercentLevel(skills[skill].tries, nextReqTries);
-			newPercentToNextLevel = static_cast<long double>(skills[skill].tries * 100) / nextReqTries;
-		} else {
-			newPercent = 0;
-			newPercentToNextLevel = 0;
-		}
+        if (newPercent != skills[skill].percent) {
+            skills[skill].percent = newPercent;
+            sendUpdate = true;
+        }
+    }
 
-		if (skills[skill].percent != newPercent) {
-			skills[skill].percent = newPercent;
-			sendUpdate = true;
-		}
+    if (sendUpdate) {
+        sendStats();
+        sendSkills();
+    }
 
-		newSkillValue = skills[skill].level;
-	}
-
-	if (sendUpdate) {
-		sendStats();
-		sendSkills();
-	}
-
-	std::ostringstream ss;
-	ss << std::fixed << std::setprecision(2) << "Your " << ucwords(getSkillName(skill)) << " skill changed from level " << oldSkillValue << " (with " << oldPercentToNextLevel << "% progress towards level " << (oldSkillValue + 1) << ") to level " << newSkillValue << " (with " << newPercentToNextLevel << "% progress towards level " << (newSkillValue + 1) << ')';
-	sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
-	return sendUpdate;
+    return sendUpdate;
 }
 
 bool Player::hasModalWindowOpen(uint32_t modalWindowId) const

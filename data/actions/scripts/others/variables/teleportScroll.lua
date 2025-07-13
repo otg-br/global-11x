@@ -36,7 +36,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		item:remove(1)
 		return true
 	else
-		if player:getVipDays() > os.stime() then
+		if player:isPremium() then
 			player:say("*using premium teleport scroll*")
 			player:getPosition():sendMagicEffect(CONST_ME_TUTORIALSQUARE)
 			sendModal(player:getId())

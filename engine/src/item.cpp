@@ -554,6 +554,26 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream& propStream)
 			break;
 		}
 
+		case ATTR_CLASSIFICATION: {
+			uint32_t classification;
+			if (!propStream.read<uint32_t>(classification)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_CLASSIFICATION, classification);
+			break;
+		}
+
+		case ATTR_TIER: {
+			uint32_t tier;
+			if (!propStream.read<uint32_t>(tier)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_TIER, tier);
+			break;
+		}
+
 		case ATTR_DEFENSE: {
 			int32_t defense;
 			if (!propStream.read<int32_t>(defense)) {
@@ -739,6 +759,128 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream& propStream)
 			break;
 		}
 
+		// Dynamic element attributes for upgrade system
+		case ATTR_ELEMENTICE: {
+			uint16_t elementDamage;
+			if (!propStream.read<uint16_t>(elementDamage)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ELEMENTICE, elementDamage);
+			break;
+		}
+
+		case ATTR_ELEMENTEARTH: {
+			uint16_t elementDamage;
+			if (!propStream.read<uint16_t>(elementDamage)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ELEMENTEARTH, elementDamage);
+			break;
+		}
+
+		case ATTR_ELEMENTFIRE: {
+			uint16_t elementDamage;
+			if (!propStream.read<uint16_t>(elementDamage)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ELEMENTFIRE, elementDamage);
+			break;
+		}
+
+		case ATTR_ELEMENTENERGY: {
+			uint16_t elementDamage;
+			if (!propStream.read<uint16_t>(elementDamage)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ELEMENTENERGY, elementDamage);
+			break;
+		}
+
+		case ATTR_ELEMENTDEATH: {
+			uint16_t elementDamage;
+			if (!propStream.read<uint16_t>(elementDamage)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ELEMENTDEATH, elementDamage);
+			break;
+		}
+
+		case ATTR_ELEMENTHOLY: {
+			uint16_t elementDamage;
+			if (!propStream.read<uint16_t>(elementDamage)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ELEMENTHOLY, elementDamage);
+			break;
+		}
+
+		// Dynamic absorb percent attributes for upgrade system
+		case ATTR_ABSORBICE: {
+			uint16_t absorbPercent;
+			if (!propStream.read<uint16_t>(absorbPercent)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ABSORBICE, absorbPercent);
+			break;
+		}
+
+		case ATTR_ABSORBEARTH: {
+			uint16_t absorbPercent;
+			if (!propStream.read<uint16_t>(absorbPercent)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ABSORBEARTH, absorbPercent);
+			break;
+		}
+
+		case ATTR_ABSORBFIRE: {
+			uint16_t absorbPercent;
+			if (!propStream.read<uint16_t>(absorbPercent)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ABSORBFIRE, absorbPercent);
+			break;
+		}
+
+		case ATTR_ABSORBENERGY: {
+			uint16_t absorbPercent;
+			if (!propStream.read<uint16_t>(absorbPercent)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ABSORBENERGY, absorbPercent);
+			break;
+		}
+
+		case ATTR_ABSORBDEATH: {
+			uint16_t absorbPercent;
+			if (!propStream.read<uint16_t>(absorbPercent)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ABSORBDEATH, absorbPercent);
+			break;
+		}
+
+		case ATTR_ABSORBHOLY: {
+			uint16_t absorbPercent;
+			if (!propStream.read<uint16_t>(absorbPercent)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ABSORBHOLY, absorbPercent);
+			break;
+		}
+
 		default:
 			return ATTR_READ_ERROR;
 	}
@@ -847,6 +989,16 @@ void Item::serializeAttr(PropWriteStream& propWriteStream) const
 		propWriteStream.write<int32_t>(getIntAttr(ITEM_ATTRIBUTE_ATTACK));
 	}
 
+	if (hasAttribute(ITEM_ATTRIBUTE_CLASSIFICATION)) {
+		propWriteStream.write<uint8_t>(ATTR_CLASSIFICATION);
+		propWriteStream.write<uint32_t>(getIntAttr(ITEM_ATTRIBUTE_CLASSIFICATION));
+	}
+
+	if (hasAttribute(ITEM_ATTRIBUTE_TIER)) {
+		propWriteStream.write<uint8_t>(ATTR_TIER);
+		propWriteStream.write<uint32_t>(getIntAttr(ITEM_ATTRIBUTE_TIER));
+	}
+
 	if (hasAttribute(ITEM_ATTRIBUTE_DEFENSE)) {
 		propWriteStream.write<uint8_t>(ATTR_DEFENSE);
 		propWriteStream.write<int32_t>(getIntAttr(ITEM_ATTRIBUTE_DEFENSE));
@@ -904,6 +1056,68 @@ void Item::serializeAttr(PropWriteStream& propWriteStream) const
 	if (hasAttribute(ITEM_ATTRIBUTE_WRAPID)) {
 		propWriteStream.write<uint8_t>(ATTR_WRAPID);
 		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_WRAPID));
+	}
+
+	// Dynamic element attributes for upgrade system
+	if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTICE)) {
+		propWriteStream.write<uint8_t>(ATTR_ELEMENTICE);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTICE));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTEARTH)) {
+		propWriteStream.write<uint8_t>(ATTR_ELEMENTEARTH);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTEARTH));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTFIRE)) {
+		propWriteStream.write<uint8_t>(ATTR_ELEMENTFIRE);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTFIRE));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTENERGY)) {
+		propWriteStream.write<uint8_t>(ATTR_ELEMENTENERGY);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTENERGY));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTDEATH)) {
+		propWriteStream.write<uint8_t>(ATTR_ELEMENTDEATH);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTDEATH));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ELEMENTHOLY)) {
+		propWriteStream.write<uint8_t>(ATTR_ELEMENTHOLY);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ELEMENTHOLY));
+	}
+
+	// Dynamic absorb percent attributes for upgrade system
+	if (hasAttribute(ITEM_ATTRIBUTE_ABSORBICE)) {
+		propWriteStream.write<uint8_t>(ATTR_ABSORBICE);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBICE));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ABSORBEARTH)) {
+		propWriteStream.write<uint8_t>(ATTR_ABSORBEARTH);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBEARTH));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ABSORBFIRE)) {
+		propWriteStream.write<uint8_t>(ATTR_ABSORBFIRE);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBFIRE));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ABSORBENERGY)) {
+		propWriteStream.write<uint8_t>(ATTR_ABSORBENERGY);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBENERGY));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ABSORBDEATH)) {
+		propWriteStream.write<uint8_t>(ATTR_ABSORBDEATH);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBDEATH));
+	}
+	
+	if (hasAttribute(ITEM_ATTRIBUTE_ABSORBHOLY)) {
+		propWriteStream.write<uint8_t>(ATTR_ABSORBHOLY);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBHOLY));
 	}
 
 	if (hasAttribute(ITEM_ATTRIBUTE_CUSTOM)) {
@@ -1038,6 +1252,14 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 				s << ", Hit% " << std::showpos << static_cast<int16_t>(hitChance) << std::noshowpos;
 			}
 
+			// Show Classification and Tier on item 
+			uint32_t classification = item ? item->getClassification() : it.classification;
+			uint32_t tier = item ? item->getTier() : it.tier;
+
+			if (classification) {
+				s << "\nClassification: " << classification << " Tier: " << tier;
+			}
+			
 			if (it.abilities) {
 				for (uint8_t i = SKILL_FIRST; i <= SKILL_FISHING; i++) {
 					if (!it.abilities->skills[i]) {
@@ -1187,7 +1409,85 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 			if (!begin) {
 			s << ')';
 			}
-		} else if (it.weaponType != WEAPON_AMMO) {
+		} else if (it.weaponType == WEAPON_AMMO) {
+			bool begin = true;
+			
+			int32_t attack = item ? item->getAttack() : it.attack;
+			if (attack != 0) {
+				begin = false;
+				s << " (Atk:" << attack;
+
+				// Show dynamic elements (priority over static)
+				std::vector<std::pair<CombatType_t, uint16_t>> dynamicElements;
+				if (item) {
+					dynamicElements.push_back({COMBAT_ICEDAMAGE, item->getElementDamage(COMBAT_ICEDAMAGE)});
+					dynamicElements.push_back({COMBAT_EARTHDAMAGE, item->getElementDamage(COMBAT_EARTHDAMAGE)});
+					dynamicElements.push_back({COMBAT_FIREDAMAGE, item->getElementDamage(COMBAT_FIREDAMAGE)});
+					dynamicElements.push_back({COMBAT_ENERGYDAMAGE, item->getElementDamage(COMBAT_ENERGYDAMAGE)});
+					dynamicElements.push_back({COMBAT_DEATHDAMAGE, item->getElementDamage(COMBAT_DEATHDAMAGE)});
+					dynamicElements.push_back({COMBAT_HOLYDAMAGE, item->getElementDamage(COMBAT_HOLYDAMAGE)});
+				}
+				
+				bool hasAnyDynamicElement = false;
+				if (item) {
+					for (const auto& element : dynamicElements) {
+						if (element.second > 0) {
+							hasAnyDynamicElement = true;
+							break;
+						}
+					}
+				}
+				
+				if (hasAnyDynamicElement) {
+					// Show physical + dynamic elements
+					s << " physical";
+					for (const auto& element : dynamicElements) {
+						if (element.second > 0) {
+							const char* elementName = "unknown";
+							switch (element.first) {
+								case COMBAT_ICEDAMAGE: elementName = "ice"; break;
+								case COMBAT_FIREDAMAGE: elementName = "fire"; break;
+								case COMBAT_ENERGYDAMAGE: elementName = "energy"; break;
+								case COMBAT_EARTHDAMAGE: elementName = "earth"; break;
+								case COMBAT_DEATHDAMAGE: elementName = "death"; break;
+								case COMBAT_HOLYDAMAGE: elementName = "holy"; break;
+								default: break;
+							}
+							s << " + " << element.second << ' ' << elementName;
+						}
+					}
+				} else if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0) {
+					// Fallback to static element from XML
+					const char* elementName = "unknown";
+					switch (it.abilities->elementType) {
+						case COMBAT_ICEDAMAGE: elementName = "ice"; break;
+						case COMBAT_FIREDAMAGE: elementName = "fire"; break;
+						case COMBAT_ENERGYDAMAGE: elementName = "energy"; break;
+						case COMBAT_EARTHDAMAGE: elementName = "earth"; break;
+						case COMBAT_DEATHDAMAGE: elementName = "death"; break;
+						case COMBAT_HOLYDAMAGE: elementName = "holy"; break;
+						default: break;
+					}
+					s << " physical + " << it.abilities->elementDamage << ' ' << elementName;
+				}
+			}
+
+			// Show max hit chance if available
+			int32_t maxHitChance = it.maxHitChance;
+			if (maxHitChance > 0) {
+				if (begin) {
+					begin = false;
+					s << " (";
+				} else {
+					s << ", ";
+				}
+				s << "Max Hit%+" << maxHitChance;
+			}
+
+			if (!begin) {
+				s << ')';
+			}
+		} else if (it.weaponType != WEAPON_NONE) {
 			bool begin = true;
 
 			int32_t attack, defense, extraDefense;
@@ -1205,8 +1505,58 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 				begin = false;
 				s << " (Atk:" << attack;
 
-				if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0) {
-					s << " physical + " << it.abilities->elementDamage << ' ' << getCombatName(it.abilities->elementType);
+				// Show dynamic elements (priority over static)
+				std::vector<std::pair<CombatType_t, uint16_t>> dynamicElements;
+				if (item) {
+					dynamicElements.push_back({COMBAT_ICEDAMAGE, item->getElementDamage(COMBAT_ICEDAMAGE)});
+					dynamicElements.push_back({COMBAT_EARTHDAMAGE, item->getElementDamage(COMBAT_EARTHDAMAGE)});
+					dynamicElements.push_back({COMBAT_FIREDAMAGE, item->getElementDamage(COMBAT_FIREDAMAGE)});
+					dynamicElements.push_back({COMBAT_ENERGYDAMAGE, item->getElementDamage(COMBAT_ENERGYDAMAGE)});
+					dynamicElements.push_back({COMBAT_DEATHDAMAGE, item->getElementDamage(COMBAT_DEATHDAMAGE)});
+					dynamicElements.push_back({COMBAT_HOLYDAMAGE, item->getElementDamage(COMBAT_HOLYDAMAGE)});
+				}
+				
+				bool hasAnyDynamicElement = false;
+				if (item) {
+					for (const auto& element : dynamicElements) {
+						if (element.second > 0) {
+							hasAnyDynamicElement = true;
+							break;
+						}
+					}
+				}
+				
+				if (hasAnyDynamicElement) {
+					// Show physical + dynamic elements
+					s << " physical";
+					for (const auto& element : dynamicElements) {
+						if (element.second > 0) {
+							const char* elementName = "unknown";
+							switch (element.first) {
+								case COMBAT_ICEDAMAGE: elementName = "ice"; break;
+								case COMBAT_FIREDAMAGE: elementName = "fire"; break;
+								case COMBAT_ENERGYDAMAGE: elementName = "energy"; break;
+								case COMBAT_EARTHDAMAGE: elementName = "earth"; break;
+								case COMBAT_DEATHDAMAGE: elementName = "death"; break;
+								case COMBAT_HOLYDAMAGE: elementName = "holy"; break;
+								default: break;
+							}
+							s << " + " << element.second << ' ' << elementName;
+						}
+					}
+				} else if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0) {
+					// Fallback to static element from XML
+					const char* elementName = "unknown";
+					switch (it.abilities->elementType) {
+						case COMBAT_ICEDAMAGE: elementName = "ice"; break;
+						case COMBAT_FIREDAMAGE: elementName = "fire"; break;
+						case COMBAT_ENERGYDAMAGE: elementName = "energy"; break;
+						case COMBAT_EARTHDAMAGE: elementName = "earth"; break;
+						case COMBAT_DEATHDAMAGE: elementName = "death"; break;
+						case COMBAT_HOLYDAMAGE: elementName = "holy"; break;
+						default: break;
+					}
+					s << " physical + " << it.abilities->elementDamage << ' ' << elementName;
 				}
 			}
 
@@ -1383,6 +1733,14 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 			begin = false;
 		}
 
+		// Show Classification and Tier on item 
+		uint32_t classification = item ? item->getClassification() : it.classification;
+		uint32_t tier = item ? item->getTier() : it.tier;
+
+		if (classification) {
+			s << "\nClassification: " << classification << " Tier: " << tier;
+		}
+
 		if (it.abilities) {
 			for (uint8_t i = SKILL_FIRST; i <= SKILL_FISHING; i++) {
 				if (!it.abilities->skills[i]) {
@@ -1438,6 +1796,8 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 
 			if (!show) {
 				bool protectionBegin = true;
+				
+				// First show static absorptions from ItemType
 				for (size_t i = 0; i < COMBAT_COUNT; ++i) {
 					if (it.abilities->absorbPercent[i] == 0) {
 						continue;
@@ -1458,8 +1818,66 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 						s << ", ";
 					}
 
-					s << getCombatName(indexToCombatType(i)) << ' ' << std::showpos << it.abilities->absorbPercent[i] << std::noshowpos << '%';
+					// Check if this element has dynamic bonus and combine values
+					CombatType_t combatType = indexToCombatType(i);
+					int32_t totalAbsorb = it.abilities->absorbPercent[i];
+					
+					// Add dynamic absorb if item exists
+					if (item) {
+						itemAttrTypes dynamicAttr = ITEM_ATTRIBUTE_NONE;
+						switch (combatType) {
+							case COMBAT_ICEDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORBICE; break;
+							case COMBAT_EARTHDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORBEARTH; break;
+							case COMBAT_FIREDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORBFIRE; break;
+							case COMBAT_ENERGYDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORBENERGY; break;
+							case COMBAT_DEATHDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORBDEATH; break;
+							case COMBAT_HOLYDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORBHOLY; break;
+							default: break;
+						}
+						
+						if (dynamicAttr != ITEM_ATTRIBUTE_NONE && item->hasAttribute(dynamicAttr)) {
+							totalAbsorb += item->getIntAttr(dynamicAttr);
+						}
+					}
+					
+					s << getCombatName(combatType) << ' ' << std::showpos << totalAbsorb << std::noshowpos << '%';
 				}
+				
+				// Now show ONLY dynamic absorptions that don't have static counterparts
+				if (item) {
+					std::vector<std::pair<itemAttrTypes, CombatType_t>> dynamicAttributes = {
+						{ITEM_ATTRIBUTE_ABSORBICE, COMBAT_ICEDAMAGE},
+						{ITEM_ATTRIBUTE_ABSORBEARTH, COMBAT_EARTHDAMAGE},
+						{ITEM_ATTRIBUTE_ABSORBFIRE, COMBAT_FIREDAMAGE},
+						{ITEM_ATTRIBUTE_ABSORBENERGY, COMBAT_ENERGYDAMAGE},
+						{ITEM_ATTRIBUTE_ABSORBDEATH, COMBAT_DEATHDAMAGE},
+						{ITEM_ATTRIBUTE_ABSORBHOLY, COMBAT_HOLYDAMAGE}
+					};
+					
+					for (const auto& attr : dynamicAttributes) {
+						// Only show if item has dynamic absorb BUT no static absorb for this element
+						if (item->hasAttribute(attr.first) && it.abilities->absorbPercent[combatTypeToIndex(attr.second)] == 0) {
+							int32_t dynamicValue = item->getIntAttr(attr.first);
+							if (dynamicValue > 0) {
+								if (protectionBegin) {
+									protectionBegin = false;
+									if (begin) {
+										begin = false;
+										s << " (";
+									} else {
+										s << ", ";
+									}
+									s << "protection ";
+								} else {
+									s << ", ";
+								}
+								
+								s << getCombatName(attr.second) << ' ' << std::showpos << dynamicValue << std::noshowpos << '%';
+							}
+						}
+					}
+				}
+				
 			} else {
 				if (begin) {
 					begin = false;

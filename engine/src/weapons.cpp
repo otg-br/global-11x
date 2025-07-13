@@ -394,7 +394,7 @@ void Weapon::internalUseWeapon(Player* player, Item* item, Creature* target, int
 		}
 		damage.primary.type = params.combatType;
 		damage.primary.value = (getWeaponDamage(player, target, item) * damageModifier) / 100;
-		damage.secondary.type = getElementType();
+		damage.secondary.type = getDynamicElementType(item);
 		damage.secondary.value = getElementDamage(player, target, item);
 		Combat::doTargetCombat(player, target, damage, params);
 	}
@@ -595,16 +595,55 @@ bool WeaponMelee::getSkillType(const Player* player, const Item* item,
 
 int32_t WeaponMelee::getElementDamage(const Player* player, const Creature*, const Item* item) const
 {
+	// First check ALL dynamic elements (priority over static)
+	std::vector<CombatType_t> elements = {
+		COMBAT_ICEDAMAGE, COMBAT_EARTHDAMAGE, COMBAT_FIREDAMAGE,
+		COMBAT_ENERGYDAMAGE, COMBAT_DEATHDAMAGE, COMBAT_HOLYDAMAGE
+	};
+	
+	int32_t attackSkill = player->getWeaponSkill(item);
+	float attackFactor = player->getAttackFactor();
+	
+	// Check for dynamic elements first
+	for (CombatType_t type : elements) {
+		int32_t dynamicDamage = item->getElementDamage(type);
+		if (dynamicDamage > 0) {
+			// Found dynamic element! Use it.
+			int32_t maxValue = Weapons::getMaxWeaponDamage(player->getLevel(), attackSkill, dynamicDamage, attackFactor);
+			return -normal_random(0, static_cast<int32_t>(maxValue * player->getVocation()->meleeDamageMultiplier));
+		}
+	}
+	
+	// No dynamic element found, try static element
 	if (elementType == COMBAT_NONE) {
 		return 0;
 	}
 
-	int32_t attackSkill = player->getWeaponSkill(item);
+	// Use static element from XML
 	int32_t attackValue = elementDamage;
-	float attackFactor = player->getAttackFactor();
-
 	int32_t maxValue = Weapons::getMaxWeaponDamage(player->getLevel(), attackSkill, attackValue, attackFactor);
 	return -normal_random(0, static_cast<int32_t>(maxValue * player->getVocation()->meleeDamageMultiplier));
+}
+
+CombatType_t WeaponMelee::getDynamicElementType(const Item* item) const
+{
+	if (item) {
+		// Check for dynamic elements first (priority)
+		std::vector<CombatType_t> elements = {
+			COMBAT_ICEDAMAGE, COMBAT_EARTHDAMAGE, COMBAT_FIREDAMAGE,
+			COMBAT_ENERGYDAMAGE, COMBAT_DEATHDAMAGE, COMBAT_HOLYDAMAGE
+		};
+		
+		for (CombatType_t type : elements) {
+			int32_t damage = item->getElementDamage(type);
+			if (damage > 0) {
+				return type; // Found dynamic element!
+			}
+		}
+	}
+	
+	// No dynamic element found, return static element
+	return elementType;
 }
 
 int32_t WeaponMelee::getWeaponDamage(const Player* player, const Creature*, const Item* item, bool maxDamage /*= false*/) const
@@ -806,10 +845,49 @@ bool WeaponDistance::useWeapon(Player* player, Item* item, Creature* target) con
 
 int32_t WeaponDistance::getElementDamage(const Player* player, const Creature* target, const Item* item) const
 {
+	// First check ALL dynamic elements (priority over static)
+	std::vector<CombatType_t> elements = {
+		COMBAT_ICEDAMAGE, COMBAT_EARTHDAMAGE, COMBAT_FIREDAMAGE,
+		COMBAT_ENERGYDAMAGE, COMBAT_DEATHDAMAGE, COMBAT_HOLYDAMAGE
+	};
+	
+	int32_t attackSkill = player->getSkillLevel(SKILL_DISTANCE);
+	float attackFactor = player->getAttackFactor();
+	
+	// Check for dynamic elements first
+	for (CombatType_t type : elements) {
+		int32_t dynamicDamage = item->getElementDamage(type);
+		if (dynamicDamage > 0) {
+			// Found dynamic element! Use it.
+			int32_t attackValue = dynamicDamage;
+			
+			if (item->getWeaponType() == WEAPON_AMMO) {
+				Item* weapon = player->getWeapon(true);
+				if (weapon) {
+					attackValue += weapon->getAttack();
+				}
+			}
+
+			int32_t minValue = 0;
+			int32_t maxValue = Weapons::getMaxWeaponDamage(player->getLevel(), attackSkill, attackValue, attackFactor);
+			if (target) {
+				if (target->getPlayer()) {
+					minValue = static_cast<int32_t>(std::ceil(player->getLevel() * 0.1));
+				} else {
+					minValue = static_cast<int32_t>(std::ceil(player->getLevel() * 0.2));
+				}
+			}
+
+			return -normal_random(minValue, static_cast<int32_t>(maxValue * player->getVocation()->distDamageMultiplier));
+		}
+	}
+	
+	// No dynamic element found, try static element
 	if (elementType == COMBAT_NONE) {
 		return 0;
 	}
 
+	// Use static element from XML
 	int32_t attackValue = elementDamage;
 	if (item->getWeaponType() == WEAPON_AMMO) {
 		Item* weapon = player->getWeapon(true);
@@ -817,9 +895,6 @@ int32_t WeaponDistance::getElementDamage(const Player* player, const Creature* t
 			attackValue += weapon->getAttack();
 		}
 	}
-
-	int32_t attackSkill = player->getSkillLevel(SKILL_DISTANCE);
-	float attackFactor = player->getAttackFactor();
 
 	int32_t minValue = 0;
 	int32_t maxValue = Weapons::getMaxWeaponDamage(player->getLevel(), attackSkill, attackValue, attackFactor);
@@ -832,6 +907,27 @@ int32_t WeaponDistance::getElementDamage(const Player* player, const Creature* t
 	}
 
 	return -normal_random(minValue, static_cast<int32_t>(maxValue * player->getVocation()->distDamageMultiplier));
+}
+
+CombatType_t WeaponDistance::getDynamicElementType(const Item* item) const
+{
+	if (item) {
+		// Check for dynamic elements first (priority)
+		std::vector<CombatType_t> elements = {
+			COMBAT_ICEDAMAGE, COMBAT_EARTHDAMAGE, COMBAT_FIREDAMAGE,
+			COMBAT_ENERGYDAMAGE, COMBAT_DEATHDAMAGE, COMBAT_HOLYDAMAGE
+		};
+		
+		for (CombatType_t type : elements) {
+			int32_t damage = item->getElementDamage(type);
+			if (damage > 0) {
+				return type; // Found dynamic element!
+			}
+		}
+	}
+	
+	// No dynamic element found, return static element
+	return elementType;
 }
 
 int32_t WeaponDistance::getWeaponDamage(const Player* player, const Creature* target, const Item* item, bool maxDamage /*= false*/) const

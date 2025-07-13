@@ -740,7 +740,7 @@ CombatDamage LuaScriptInterface::getCombatDamage(lua_State* L)
 	damage.primary.value = getNumber<int32_t>(L, -4);
 	damage.primary.type = getNumber<CombatType_t>(L, -3);
 	damage.secondary.value = getNumber<int32_t>(L, -2);
-	damage.secondary.type = getNumber<CombatType_t>(L, -1);
+					damage.secondary.type = getNumber<CombatType_t>(L, -1);
 
 	lua_pop(L, 4);
 	return damage;
@@ -1594,6 +1594,23 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(ITEM_ATTRIBUTE_PLURALNAME)
 	registerEnum(ITEM_ATTRIBUTE_WEIGHT)
 	registerEnum(ITEM_ATTRIBUTE_ATTACK)
+	registerEnum(ITEM_ATTRIBUTE_ELEMENTICE)
+	registerEnum(ITEM_ATTRIBUTE_ELEMENTEARTH)
+	registerEnum(ITEM_ATTRIBUTE_ELEMENTFIRE)
+	registerEnum(ITEM_ATTRIBUTE_ELEMENTENERGY)
+	registerEnum(ITEM_ATTRIBUTE_ELEMENTDEATH)
+	registerEnum(ITEM_ATTRIBUTE_ELEMENTHOLY)
+	
+	// Dynamic absorb percent attributes
+	registerEnum(ITEM_ATTRIBUTE_ABSORBICE)
+	registerEnum(ITEM_ATTRIBUTE_ABSORBEARTH)
+	registerEnum(ITEM_ATTRIBUTE_ABSORBFIRE)
+	registerEnum(ITEM_ATTRIBUTE_ABSORBENERGY)
+	registerEnum(ITEM_ATTRIBUTE_ABSORBDEATH)
+	registerEnum(ITEM_ATTRIBUTE_ABSORBHOLY)
+	
+	registerEnum(ITEM_ATTRIBUTE_CLASSIFICATION)
+	registerEnum(ITEM_ATTRIBUTE_TIER)
 	registerEnum(ITEM_ATTRIBUTE_DEFENSE)
 	registerEnum(ITEM_ATTRIBUTE_EXTRADEFENSE)
 	registerEnum(ITEM_ATTRIBUTE_ARMOR)
@@ -2102,6 +2119,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::REMOVE_POTION_CHARGES)
 	registerEnumIn("configKeys", ConfigManager::STOREMODULES)
 	registerEnumIn("configKeys", ConfigManager::QUEST_LUA)
+	registerEnumIn("configKeys", ConfigManager::ALLOW_MOUNT_IN_PZ)
 
 	registerEnumIn("configKeys", ConfigManager::MAP_NAME)
 	registerEnumIn("configKeys", ConfigManager::HOUSE_RENT_PERIOD)
@@ -2409,9 +2427,11 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Item", "getAttribute", LuaScriptInterface::luaItemGetAttribute);
 	registerMethod("Item", "setAttribute", LuaScriptInterface::luaItemSetAttribute);
 	registerMethod("Item", "removeAttribute", LuaScriptInterface::luaItemRemoveAttribute);
+	registerMethod("Item", "getAbsorbPercent", LuaScriptInterface::luaItemGetAbsorbPercent);
 	registerMethod("Item", "getCustomAttribute", LuaScriptInterface::luaItemGetCustomAttribute);
 	registerMethod("Item", "setCustomAttribute", LuaScriptInterface::luaItemSetCustomAttribute);
 	registerMethod("Item", "removeCustomAttribute", LuaScriptInterface::luaItemRemoveCustomAttribute);
+
 
 	registerMethod("Item", "moveTo", LuaScriptInterface::luaItemMoveTo);
 	registerMethod("Item", "transform", LuaScriptInterface::luaItemTransform);
@@ -2673,13 +2693,8 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Player", "removeMount", LuaScriptInterface::luaPlayerRemoveMount);
 	registerMethod("Player", "hasMount", LuaScriptInterface::luaPlayerHasMount);
 
-	registerMethod("Player", "getPremiumDays", LuaScriptInterface::luaPlayerGetPremiumDays);
-	registerMethod("Player", "addPremiumDays", LuaScriptInterface::luaPlayerAddPremiumDays);
-	registerMethod("Player", "removePremiumDays", LuaScriptInterface::luaPlayerRemovePremiumDays);
-
-	registerMethod("Player", "getVipDays", LuaScriptInterface::luaPlayerGetVipDays);
-	registerMethod("Player", "addVipDays", LuaScriptInterface::luaPlayerAddVipDays);
-	registerMethod("Player", "removeVipDays", LuaScriptInterface::luaPlayerRemoveVipDays);
+	registerMethod("Player", "getPremiumEndsAt", LuaScriptInterface::luaPlayerGetPremiumEndsAt);
+	registerMethod("Player", "setPremiumEndsAt", LuaScriptInterface::luaPlayerSetPremiumEndsAt);
 
 	registerMethod("Player", "getTibiaCoins", LuaScriptInterface::luaPlayerGetTibiaCoins);
 	registerMethod("Player", "getCoinsBalance", LuaScriptInterface::luaPlayerGetTibiaCoins);
@@ -3005,11 +3020,14 @@ void LuaScriptInterface::registerFunctions()
 
 	registerMethod("ItemType", "getAttack", LuaScriptInterface::luaItemTypeGetAttack);
 	registerMethod("ItemType", "getDefense", LuaScriptInterface::luaItemTypeGetDefense);
+	registerMethod("ItemType", "getClassification", LuaScriptInterface::luaItemTypeGetClassification);
+	registerMethod("ItemType", "getTier", LuaScriptInterface::luaItemTypeGetTier);
 	registerMethod("ItemType", "getExtraDefense", LuaScriptInterface::luaItemTypeGetExtraDefense);
 	registerMethod("ItemType", "getImbuingSlots", LuaScriptInterface::luaItemTypeGetImbuingSlots);
 	registerMethod("ItemType", "getArmor", LuaScriptInterface::luaItemTypeGetArmor);
 	registerMethod("ItemType", "getWeaponType", LuaScriptInterface::luaItemTypeGetWeaponType);
 
+	registerMethod("ItemType", "getAbsorbPercent", LuaScriptInterface::luaItemTypeGetAbsorbPercent);
 	registerMethod("ItemType", "getElementType", LuaScriptInterface::luaItemTypeGetElementType);
 	registerMethod("ItemType", "getElementDamage", LuaScriptInterface::luaItemTypeGetElementDamage);
 
@@ -7206,7 +7224,28 @@ int LuaScriptInterface::luaItemSetAttribute(lua_State* L)
 	}
 
 	if (ItemAttributes::isIntAttrType(attribute)) {
-		item->setIntAttr(attribute, getNumber<int32_t>(L, 3));
+		int32_t value = getNumber<int32_t>(L, 3);
+		
+		// Check if this is an absorb percent attribute - make it cumulative
+		switch (attribute) {
+			case ITEM_ATTRIBUTE_ABSORBICE:
+			case ITEM_ATTRIBUTE_ABSORBEARTH:
+			case ITEM_ATTRIBUTE_ABSORBFIRE:
+			case ITEM_ATTRIBUTE_ABSORBENERGY:
+			case ITEM_ATTRIBUTE_ABSORBDEATH:
+			case ITEM_ATTRIBUTE_ABSORBHOLY:
+			{
+				// Add to existing value instead of overwriting
+				int32_t currentValue = item->getIntAttr(attribute);
+				value += currentValue;
+				break;
+			}
+			default:
+				// Normal behavior for other attributes
+				break;
+		}
+		
+		item->setIntAttr(attribute, value);
 		pushBoolean(L, true);
 	} else if (ItemAttributes::isStrAttrType(attribute)) {
 		item->setStrAttr(attribute, getString(L, 3));
@@ -7242,6 +7281,20 @@ int LuaScriptInterface::luaItemRemoveAttribute(lua_State* L)
 		reportErrorFunc("Attempt to erase protected key \"uid\"");
 	}
 	pushBoolean(L, ret);
+	return 1;
+}
+
+int LuaScriptInterface::luaItemGetAbsorbPercent(lua_State* L)
+{
+	// item:getAbsorbPercent(combatType)
+	Item* item = getUserdata<Item>(L, 1);
+	if (!item) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	CombatType_t combatType = getNumber<CombatType_t>(L, 2);
+	lua_pushnumber(L, item->getAbsorbPercent(combatType));
 	return 1;
 }
 
@@ -7328,6 +7381,8 @@ int LuaScriptInterface::luaItemRemoveCustomAttribute(lua_State* L) {
 	}
 	return 1;
 }
+
+
 
 int LuaScriptInterface::luaItemSerializeAttributes(lua_State* L)
 {
@@ -10592,118 +10647,31 @@ int LuaScriptInterface::luaPlayerHasMount(lua_State* L) {
 	return 1;
 }
 
-int LuaScriptInterface::luaPlayerGetPremiumDays(lua_State* L)
+int LuaScriptInterface::luaPlayerGetPremiumEndsAt(lua_State* L)
 {
-	// player:getPremiumDays()
+	// player:getPremiumEndsAt()
 	Player* player = getUserdata<Player>(L, 1);
 	if (player) {
-		lua_pushnumber(L, player->premiumDays);
+		lua_pushnumber(L, player->premiumEndsAt);
 	} else {
 		lua_pushnil(L);
 	}
 	return 1;
 }
 
-int LuaScriptInterface::luaPlayerAddPremiumDays(lua_State* L)
+int LuaScriptInterface::luaPlayerSetPremiumEndsAt(lua_State* L)
 {
-	// player:addPremiumDays(days)
+	// player:setPremiumEndsAt(timestamp)
 	Player* player = getUserdata<Player>(L, 1);
 	if (!player) {
 		lua_pushnil(L);
 		return 1;
 	}
 
-	if (player->premiumDays != std::numeric_limits<uint16_t>::max()) {
-		uint16_t days = getNumber<uint16_t>(L, 2);
-		int32_t addDays = std::min<int32_t>(0xFFFE - player->premiumDays, days);
-		if (addDays > 0) {
-			player->setPremiumDays(player->premiumDays + addDays);
-			IOLoginData::addPremiumDays(player->getAccount(), addDays);
-		}
-	}
-	pushBoolean(L, true);
-	return 1;
-}
+	time_t timestamp = getNumber<time_t>(L, 2);
 
-int LuaScriptInterface::luaPlayerRemovePremiumDays(lua_State* L)
-{
-	// player:removePremiumDays(days)
-	Player* player = getUserdata<Player>(L, 1);
-	if (!player) {
-		lua_pushnil(L);
-		return 1;
-	}
-
-	if (player->premiumDays != std::numeric_limits<uint16_t>::max()) {
-		uint16_t days = getNumber<uint16_t>(L, 2);
-		int32_t removeDays = std::min<int32_t>(player->premiumDays, days);
-		if (removeDays > 0) {
-			player->setPremiumDays(player->premiumDays - removeDays);
-			IOLoginData::removePremiumDays(player->getAccount(), removeDays);
-		}
-	}
-	pushBoolean(L, true);
-	return 1;
-}
-
-int LuaScriptInterface::luaPlayerGetVipDays(lua_State* L)
-{
-	// player:getVipDays()
-	Player* player = getUserdata<Player>(L, 1);
-	if (player) {
-		lua_pushnumber(L, player->viptime);
-	} else {
-		lua_pushnil(L);
-	}
-	return 1;
-}
-
-int LuaScriptInterface::luaPlayerAddVipDays(lua_State* L)
-{
-	// player:addVipDays(days)
-	Player* player = getUserdata<Player>(L, 1);
-	if (!player) {
-		lua_pushnil(L);
-		return 1;
-	}
-
-	if (player->viptime != std::numeric_limits<uint32_t>::max()) {
-		uint32_t days = (getNumber<uint32_t>(L, 2) * 86400);
-		uint32_t addDays = OS_TIME(nullptr);
-		if (player->viptime > addDays) {
-			addDays = player->viptime + days;
-		} else {
-			addDays += days;
-		}
-
-		player->setVipDays(addDays);
-		IOLoginData::setVipDays(player->getAccount(), addDays);
-	}
-	pushBoolean(L, true);
-	return 1;
-}
-
-int LuaScriptInterface::luaPlayerRemoveVipDays(lua_State* L)
-{
-	// player:removeVipDays(days)
-	Player* player = getUserdata<Player>(L, 1);
-	if (!player) {
-		lua_pushnil(L);
-		return 1;
-	}
-
-	if (player->viptime != std::numeric_limits<uint32_t>::max()) {
-		uint32_t days = (getNumber<uint32_t>(L, 2) * 86400);
-		uint32_t removeDays = OS_TIME(nullptr);
-		if (player->viptime > removeDays) {
-			removeDays = player->viptime - days;
-		} else {
-			removeDays -= days;
-		}
-
-		player->setVipDays(removeDays);
-		IOLoginData::setVipDays(player->getAccount(), removeDays);
-	}
+	player->setPremiumTime(timestamp);
+	IOLoginData::updatePremiumTime(player->getAccount(), timestamp);
 	pushBoolean(L, true);
 	return 1;
 }
@@ -14119,6 +14087,32 @@ int LuaScriptInterface::luaItemTypeGetAttack(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaItemTypeGetClassification(lua_State* L)
+{
+	// itemType:getClassification()
+	const ItemType* itemType = getUserdata<const ItemType>(L, 1);
+	if (itemType) {
+		lua_pushnumber(L, itemType->classification);
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaItemTypeGetTier(lua_State* L)
+{
+	// itemType:getTier()
+	const ItemType* itemType = getUserdata<const ItemType>(L, 1);
+	if (itemType) {
+		lua_pushnumber(L, itemType->tier);
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int LuaScriptInterface::luaItemTypeGetDefense(lua_State* L)
 {
 	// itemType:getDefense()
@@ -14274,6 +14268,36 @@ int LuaScriptInterface::luaItemTypeGetAbilities(lua_State* L)
 			lua_rawseti(L, -2, i + 1);
 		}
 		lua_setfield(L, -2, "reflectPercent");
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaItemTypeGetAbsorbPercent(lua_State* L)
+{
+	// itemType:getAbsorbPercent()
+	const ItemType* itemType = getUserdata<const ItemType>(L, 1);
+	if (!itemType) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	auto& abilities = itemType->abilities;
+	if (abilities) {
+		lua_createtable(L, COMBAT_COUNT, 0);
+		int index = 0;
+
+		for (size_t i = 0; i < COMBAT_COUNT; ++i) {
+			if (abilities->absorbPercent[i] == 0) {
+				continue;
+			}
+			lua_createtable(L, 0, 3);
+			setField(L, "combattype", indexToCombatType(i));
+			setField(L, "combatname", getCombatName(indexToCombatType(i)));
+			setField(L, "absorbpercent", abilities->absorbPercent[i]);
+			lua_rawseti(L, -2, ++index);
+		}
+	} else {
+		lua_pushnil(L);
 	}
 	return 1;
 }

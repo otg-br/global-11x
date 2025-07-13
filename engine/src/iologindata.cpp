@@ -68,7 +68,7 @@ Account IOLoginData::loadAccount(uint32_t accno)
 	Database& db = Database::getInstance();
 
 	std::ostringstream query;
-	query << "SELECT `id`, `coins`, `tournamentBalance`, `proxy_id`, `name`, `password`, `type`, `premdays`, `vip_time`, `lastday` FROM `accounts` WHERE `id` = " << accno;
+	query << "SELECT `id`, `coins`, `tournamentBalance`, `proxy_id`, `name`, `password`, `type`, `premium_ends_at`, `vip_time` FROM `accounts` WHERE `id` = " << accno;
 	DBResult_ptr result = db.storeQuery(query.str());
 	if (!result) {
 		return account;
@@ -77,9 +77,7 @@ Account IOLoginData::loadAccount(uint32_t accno)
 	account.id = result->getNumber<uint32_t>("id");
 	account.name = result->getString("name");
 	account.accountType = static_cast<AccountType_t>(result->getNumber<int32_t>("type"));
-	account.premiumDays = result->getNumber<uint16_t>("premdays");
 	account.viptime = result->getNumber<uint32_t>("vip_time");
-	account.lastDay = result->getNumber<time_t>("lastday");
 	account.coinBalance = result->getNumber<uint32_t>("coins");
 	account.tournamentCoinBalance = result->getNumber<uint32_t>("tournamentBalance");
 	account.proxyId = result->getNumber<uint16_t>("proxy_id");
@@ -89,7 +87,7 @@ Account IOLoginData::loadAccount(uint32_t accno)
 bool IOLoginData::saveAccount(const Account& acc)
 {
 	std::ostringstream query;
-	query << "UPDATE `accounts` SET `premdays` = " << acc.premiumDays << ", `vip_time` = " << acc.viptime << ", `lastday` = " << acc.lastDay << " WHERE `id` = " << acc.id;
+	query << "UPDATE `accounts` SET `premium_ends_at` = " << acc.premiumEndsAt << ", `vip_time` = " << acc.viptime << " WHERE `id` = " << acc.id;
 	return Database::getInstance().executeQuery(query.str());
 }
 
@@ -127,7 +125,7 @@ bool IOLoginData::loginserverAuthentication(const std::string& name, const std::
 	Database& db = Database::getInstance();
 
 	std::ostringstream query;
-	query << "SELECT `id`, `name`, `email`, `password`, `secret`, `type`, `proxy_id`, `premdays`, `vip_time`, `lastday` FROM `accounts` WHERE `name` = " << db.escapeString(name);
+	query << "SELECT `id`, `name`, `email`, `password`, `secret`, `type`, `proxy_id`, `premium_ends_at`, `vip_time` FROM `accounts` WHERE `name` = " << db.escapeString(name);
 	DBResult_ptr result = db.storeQuery(query.str());
 	if (!result) {
 		return false;
@@ -141,9 +139,8 @@ bool IOLoginData::loginserverAuthentication(const std::string& name, const std::
 	account.name = result->getString("name");
 	account.key = decodeSecret(result->getString("secret"));
 	account.accountType = static_cast<AccountType_t>(result->getNumber<int32_t>("type"));
-	account.premiumDays = result->getNumber<uint16_t>("premdays");
+	account.premiumEndsAt = result->getNumber<time_t>("premium_ends_at");
 	account.viptime = result->getNumber<uint32_t>("vip_time");
-	account.lastDay = result->getNumber<time_t>("lastday");
 	account.proxyId = result->getNumber<uint16_t>("proxy_id");
 
 	query.str(std::string());
@@ -165,7 +162,7 @@ bool IOLoginData::loginserverAuthenticationEmail(const std::string& name, const 
 	Database& db = Database::getInstance();
 
 	std::ostringstream query;
-	query << "SELECT `id`, `name`, `email`, `password`, `secret`, `type`, `premdays`, `vip_time`, `lastday` FROM `accounts` WHERE `email` = " << db.escapeString(name);
+	query << "SELECT `id`, `name`, `email`, `password`, `secret`, `type`, `premium_ends_at`, `vip_time` FROM `accounts` WHERE `email` = " << db.escapeString(name);
 	DBResult_ptr result = db.storeQuery(query.str());
 	if (!result) {
 		return false;
@@ -179,9 +176,9 @@ bool IOLoginData::loginserverAuthenticationEmail(const std::string& name, const 
 	account.name = result->getString("name");
 	account.key = decodeSecret(result->getString("secret"));
 	account.accountType = static_cast<AccountType_t>(result->getNumber<int32_t>("type"));
-	account.premiumDays = result->getNumber<uint16_t>("premdays");
+	account.premiumEndsAt = result->getNumber<time_t>("premium_ends_at");
 	account.viptime = result->getNumber<uint32_t>("vip_time");
-	account.lastDay = result->getNumber<time_t>("lastday");
+	
 
 	query.str(std::string());
 	query << "SELECT `name`, `deletion` FROM `players` WHERE `account_id` = " << account.id;
@@ -330,7 +327,7 @@ bool IOLoginData::preloadPlayer(Player* player, const std::string& name)
 	std::ostringstream query;
 	query << "SELECT `id`, `account_id`, `group_id`, `deletion`, (SELECT `type` FROM `accounts` WHERE `accounts`.`id` = `account_id`) AS `account_type`, (SELECT `coins` FROM `accounts` WHERE `accounts`.`id` = `account_id`) AS `coinbalance`, (SELECT `tournamentBalance` FROM `accounts` WHERE `accounts`.`id` = `account_id`) AS `tournamentBalance`";
 	if (!g_config.getBoolean(ConfigManager::FREE_PREMIUM)) {
-		query << ", (SELECT `premdays` FROM `accounts` WHERE `accounts`.`id` = `account_id`) AS `premium_days`";
+		query << ", (SELECT `premium_ends_at` FROM `accounts` WHERE `accounts`.`id` = `account_id`) AS `premium_ends_at`";
 	}
 	query << ", (SELECT `vip_time` FROM `accounts` WHERE `accounts`.`id` = `account_id`) AS `vip_time`";
 	query << " FROM `players` WHERE `name` = " << db.escapeString(name);
@@ -355,9 +352,9 @@ bool IOLoginData::preloadPlayer(Player* player, const std::string& name)
 	player->coinBalance = result->getNumber<uint32_t>("coinbalance");
 	player->tournamentCoinBalance = result->getNumber<uint32_t>("tournamentBalance");
 	if (!g_config.getBoolean(ConfigManager::FREE_PREMIUM)) {
-		player->premiumDays = result->getNumber<uint16_t>("premium_days");
+		player->premiumEndsAt = result->getNumber<time_t>("premium_ends_at");
 	} else {
-		player->premiumDays = std::numeric_limits<uint16_t>::max();
+		player->premiumEndsAt = 0;
 	}
 	player->viptime = result->getNumber<uint32_t>("vip_time");
 	query.str(std::string());
@@ -449,11 +446,7 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
 
 	std::cout << "Loading " << player->getName() << "..." << std::endl;
 
-	if (g_config.getBoolean(ConfigManager::FREE_PREMIUM)) {
-		player->premiumDays = std::numeric_limits<uint16_t>::max();
-	} else {
-		player->premiumDays = acc.premiumDays;
-	}
+	player->premiumEndsAt = acc.premiumEndsAt;
 
 	player->viptime = acc.viptime;
 	player->coinBalance = IOAccount::getCoinBalance(player->getAccount());
@@ -1717,21 +1710,12 @@ void IOLoginData::removeVIPEntry(uint32_t accountId, uint32_t guid)
 	db.executeQuery(query.str());
 }
 
-void IOLoginData::addPremiumDays(uint32_t accountId, int32_t addDays)
+void IOLoginData::updatePremiumTime(uint32_t accountId, time_t endTime)
 {
 	Database& db = Database::getInstance();
 
 	std::ostringstream query;
-	query << "UPDATE `accounts` SET `premdays` = `premdays` + " << addDays << " WHERE `id` = " << accountId;
-	db.executeQuery(query.str());
-}
-
-void IOLoginData::removePremiumDays(uint32_t accountId, int32_t removeDays)
-{
-	Database& db = Database::getInstance();
-
-	std::ostringstream query;
-	query << "UPDATE `accounts` SET `premdays` = `premdays` - " << removeDays << " WHERE `id` = " << accountId;
+	query << "UPDATE `accounts` SET `premium_ends_at` = " << endTime << " WHERE `id` = " << accountId;
 	db.executeQuery(query.str());
 }
 
@@ -1742,4 +1726,11 @@ void IOLoginData::setVipDays(uint32_t accountId, int32_t addDays)
 	std::ostringstream query;
 	query << "UPDATE `accounts` SET `vip_time` = " << addDays << " WHERE `id` = " << accountId;
 	db.executeQuery(query.str());
+}
+
+bool IOLoginData::setPremiumEndsAt(uint32_t accountId, time_t endTime)
+{
+    std::ostringstream query;
+    query << "UPDATE `accounts` SET `premium_ends_at` = " << endTime << " WHERE `id` = " << accountId;
+    return Database::getInstance().executeQuery(query.str());
 }

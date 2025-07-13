@@ -80,7 +80,7 @@ function onModalWindow(player, modalWindowId, buttonId, choiceId)
 				player:teleportTo(Position(33036, 31536, 10))
 				player:sendCancelMessage("You were teleported to Esrik.")
 			elseif choiceId == 6 then
-				if player:getVipDays() > os.stime() then
+				if player:isPremium() then
 					player:teleportTo(Position(31330, 32613, 7))
 					player:sendCancelMessage("You were teleported to premium plaza.")
 				else

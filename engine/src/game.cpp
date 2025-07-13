@@ -733,7 +733,7 @@ void Game::playerMoveThing(uint32_t playerId, const Position& fromPos,
 		}
 
 		if (Position::areInRange<1, 1, 0>(movingCreature->getPosition(), player->getPosition())) {
-			SchedulerTask* task = createSchedulerTask(1200,
+			SchedulerTask* task = createSchedulerTask(MOVE_CREATURE_INTERVAL,
 								  std::bind(&Game::playerMoveCreatureByID, this, player->getID(),
 											  movingCreature->getID(), movingCreature->getPosition(), tile->getPosition()));
 			player->setNextActionPushTask(task);
@@ -778,7 +778,7 @@ void Game::playerMoveCreatureByID(uint32_t playerId, uint32_t movingCreatureId, 
 void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Position& movingCreatureOrigPos, Tile* toTile)
 {
 	if (!player->canDoAction()) {
-		uint32_t delay = 600; 
+		uint32_t delay = player->getNextActionTime();
 		SchedulerTask* task = createSchedulerTask(delay, std::bind(&Game::playerMoveCreatureByID,
 			this, player->getID(), movingCreature->getID(), movingCreatureOrigPos, toTile->getPosition()));
 
@@ -795,7 +795,7 @@ void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Po
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 											this, player->getID(), listDir)));
 
-			SchedulerTask* task = createSchedulerTask(600, std::bind(&Game::playerMoveCreatureByID, this,
+			SchedulerTask* task = createSchedulerTask(RANGE_MOVE_CREATURE_INTERVAL, std::bind(&Game::playerMoveCreatureByID, this,
 				player->getID(), movingCreature->getID(), movingCreatureOrigPos, toTile->getPosition()));
 
 			player->pushEvent(true);
@@ -1047,7 +1047,7 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 											this, player->getID(), listDir)));
 
-			SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerMoveItemByPlayerID, this,
+			SchedulerTask* task = createSchedulerTask(RANGE_MOVE_ITEM_INTERVAL, std::bind(&Game::playerMoveItemByPlayerID, this,
 								  player->getID(), fromPos, spriteId, fromStackPos, toPos, count));
 			player->setNextWalkActionTask(task);
 		} else {
@@ -1106,7 +1106,7 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 												this, player->getID(), listDir)));
 
-				SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerMoveItemByPlayerID, this,
+				SchedulerTask* task = createSchedulerTask(RANGE_MOVE_ITEM_INTERVAL, std::bind(&Game::playerMoveItemByPlayerID, this,
 									  player->getID(), itemPos, spriteId, itemStackPos, toPos, count));
 				player->setNextWalkActionTask(task);
 			} else {
@@ -2546,7 +2546,7 @@ void Game::playerUseItemEx(uint32_t playerId, const Position& fromPos, uint8_t f
 			if (player->getPathTo(walkToPos, listDir, 0, 1, true, true)) {
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk, this, player->getID(), listDir)));
 
-				SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerUseItemEx, this,
+				SchedulerTask* task = createSchedulerTask(RANGE_USE_ITEM_EX_INTERVAL, std::bind(&Game::playerUseItemEx, this,
 									  playerId, itemPos, itemStackPos, fromSpriteId, toPos, toStackPos, toSpriteId));
 				if (it.isRune() || it.type == ITEM_TYPE_POTION) {
 					player->setNextPotionActionTask(task);
@@ -2633,7 +2633,7 @@ void Game::playerUseItem(uint32_t playerId, const Position& pos, uint8_t stackPo
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 												this, player->getID(), listDir)));
 
-				SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerUseItem, this,
+				SchedulerTask* task = createSchedulerTask(RANGE_USE_ITEM_INTERVAL, std::bind(&Game::playerUseItem, this,
 									  playerId, pos, stackPos, index, spriteId));
 				if (it.isRune() || it.type == ITEM_TYPE_POTION) {
 					player->setNextPotionActionTask(task);
@@ -2751,7 +2751,7 @@ void Game::playerUseWithCreature(uint32_t playerId, const Position& fromPos, uin
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 												this, player->getID(), listDir)));
 
-				SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerUseWithCreature, this,
+				SchedulerTask* task = createSchedulerTask(RANGE_USE_WITH_CREATURE_INTERVAL, std::bind(&Game::playerUseWithCreature, this,
 									  playerId, itemPos, itemStackPos, creatureId, spriteId));
 				if (it.isRune() || it.type == ITEM_TYPE_POTION) {
 					player->setNextPotionActionTask(task);
@@ -2891,7 +2891,7 @@ void Game::playerRotateItem(uint32_t playerId, const Position& pos, uint8_t stac
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 											this, player->getID(), listDir)));
 
-			SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerRotateItem, this,
+			SchedulerTask* task = createSchedulerTask(RANGE_ROTATE_ITEM_INTERVAL, std::bind(&Game::playerRotateItem, this,
 								  playerId, pos, stackPos, spriteId));
 			player->setNextWalkActionTask(task);
 		} else {
@@ -3489,14 +3489,16 @@ void Game::playerBuyStoreOffer(uint32_t playerId, const StoreOffer& offer, std::
 		successfully = true;
 		returnmessage << "You have purchased " << std::to_string(thisOffer->getCount()) << "x " << thisOffer->getName() << " for " << thisOffer->getPrice(player) <<" coins";
 	} else if (offerType == OFFER_TYPE_PREMIUM) {
-		if (player->premiumDays != std::numeric_limits<uint16_t>::max()) {
+		if (player->premiumEndsAt != std::numeric_limits<time_t>::max()) {
 			player->sendStoreError(STORE_ERROR_PURCHASE, "You have reached the maximum premium limit");
 			return;
 		}
 
-		int32_t addDays = std::min<int32_t>(0xFFFE - player->premiumDays, thisOffer->getCount(true));
-		player->setPremiumDays(player->premiumDays + addDays);
-		IOLoginData::addPremiumDays(player->getAccount(), addDays);
+		time_t now = time(nullptr);
+		time_t addTime = thisOffer->getCount(true) * 86400;
+		time_t endTime = std::min<time_t>(now + static_cast<time_t>(0xFFFE) * 86400, player->premiumEndsAt + addTime);
+		player->premiumEndsAt = endTime;
+		IOLoginData::setPremiumEndsAt(player->getAccount(), endTime);
 		successfully = true;
 		returnmessage << "You have purchased " << thisOffer->getName() << " for " << thisOffer->getPrice(player) <<" coins";
 	} else if (offerType == OFFER_TYPE_VIP) {
@@ -3994,7 +3996,7 @@ void Game::playerRequestTrade(uint32_t playerId, const Position& pos, uint8_t st
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 											this, player->getID(), listDir)));
 
-			SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerRequestTrade, this,
+			SchedulerTask* task = createSchedulerTask(RANGE_REQUEST_TRADE_INTERVAL, std::bind(&Game::playerRequestTrade, this,
 								  playerId, pos, stackPos, tradePlayerId, spriteId));
 			player->setNextWalkActionTask(task);
 		} else {
@@ -6886,40 +6888,6 @@ void Game::updateCreatureType(Creature* creature)
 	}
 }
 
-void Game::updatePremium(Account& account)
-{
-	bool save = false;
-	time_t timeNow = OS_TIME(nullptr);
-
-	if (account.premiumDays != 0 && account.premiumDays != std::numeric_limits<uint16_t>::max()) {
-		if (account.lastDay == 0) {
-			account.lastDay = timeNow;
-			save = true;
-		} else {
-			uint32_t days = (timeNow - account.lastDay) / 86400;
-			if (days > 0) {
-				if (days >= account.premiumDays) {
-					account.premiumDays = 0;
-					account.lastDay = 0;
-				} else {
-					account.premiumDays -= days;
-					time_t remainder = (timeNow - account.lastDay) % 86400;
-					account.lastDay = timeNow - remainder;
-				}
-
-				save = true;
-			}
-		}
-	} else if (account.lastDay != 0) {
-		account.lastDay = 0;
-		save = true;
-	}
-
-	if (save && !IOLoginData::saveAccount(account)) {
-		std::cout << "> ERROR: Failed to save account: " << account.name << "!" << std::endl;
-	}
-}
-
 void Game::loadMotdNum()
 {
 	Database& db = Database::getInstance();
@@ -8519,7 +8487,7 @@ bool Game::hasDistanceEffect(uint8_t effectId) {
 
 bool Game::isExpertPvpEnabled()
 {
-	return g_config.getBoolean(ConfigManager::EXPERT_PVP);
+    return g_config.getBoolean(ConfigManager::EXPERT_PVP);
 }
 
 void Game::updateSpectatorsPvp(Thing* thing)

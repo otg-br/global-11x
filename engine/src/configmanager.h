@@ -66,6 +66,7 @@ class ConfigManager
 			YELL_ALLOW_PREMIUM,
 			BLESS_RUNE,
 			ANTI_MULTI_CLIENT_ENABLED,
+			ALLOW_MOUNT_IN_PZ,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};

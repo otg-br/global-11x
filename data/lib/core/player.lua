@@ -175,6 +175,42 @@ function Player.getLossPercent(self)
 	return lossPercent[self:getBlessings()]
 end
 
+function Player.getPremiumTime(self)
+	return math.max(0, self:getPremiumEndsAt() - os.time())
+end
+
+function Player.setPremiumTime(self, seconds)
+	self:setPremiumEndsAt(os.time() + seconds)
+	return true
+end
+
+function Player.addPremiumTime(self, seconds)
+	self:setPremiumTime(self:getPremiumTime() + seconds)
+	return true
+end
+
+function Player.removePremiumTime(self, seconds)
+	local currentTime = self:getPremiumTime()
+	if currentTime < seconds then
+		return false
+	end
+
+	self:setPremiumTime(currentTime - seconds)
+	return true
+end
+
+function Player.getPremiumDays(self)
+	return math.floor(self:getPremiumTime() / 86400)
+end
+
+function Player.addPremiumDays(self, days)
+	return self:addPremiumTime(days * 86400)
+end
+
+function Player.removePremiumDays(self, days)
+	return self:removePremiumTime(days * 86400)
+end
+
 function Player.hasAllowMovement(self)
 	return self:getStorageValue(STORAGE.blockMovementStorage) ~= 1
 end
@@ -209,7 +245,7 @@ function Player.isSorcerer(self)
 end
 
 function Player.isPremium(self)
-	return self:getPremiumDays() > 0 or configManager.getBoolean(configKeys.FREE_PREMIUM)
+	return self:getPremiumTime() > 0 or configManager.getBoolean(configKeys.FREE_PREMIUM)
 end
 
 function Player.isPromoted(self)

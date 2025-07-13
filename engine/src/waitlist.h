@@ -22,7 +22,9 @@
 
 #include "player.h"
 
-struct WaitListInfo;
+namespace waitlist_internal {
+	struct WaitListInfo;
+}
 
 class WaitingList
 {
@@ -36,7 +38,7 @@ class WaitingList
 	private:
 		WaitingList();
 
-		std::unique_ptr<WaitListInfo> info;
+		std::unique_ptr<waitlist_internal::WaitListInfo> info;
 };
 
 #endif

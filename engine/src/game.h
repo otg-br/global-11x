@@ -79,6 +79,17 @@ static constexpr int32_t EVENT_DECAY_BUCKETS = 4;
 static constexpr int32_t EVENT_IMBUEMENTINTERVAL = 250;
 static constexpr int32_t EVENT_IMBUEMENT_BUCKETS = 4;
 
+static constexpr int32_t MOVE_CREATURE_INTERVAL = 1000;
+static constexpr int32_t RANGE_MOVE_CREATURE_INTERVAL = 0;
+static constexpr int32_t RANGE_MOVE_ITEM_INTERVAL = 400;
+static constexpr int32_t RANGE_USE_ITEM_INTERVAL = 400;
+static constexpr int32_t RANGE_USE_ITEM_EX_INTERVAL = 400;
+static constexpr int32_t RANGE_USE_WITH_CREATURE_INTERVAL = 400;
+static constexpr int32_t RANGE_ROTATE_ITEM_INTERVAL = 400;
+static constexpr int32_t RANGE_BROWSE_FIELD_INTERVAL = 400;
+static constexpr int32_t RANGE_WRAP_ITEM_INTERVAL = 400;
+static constexpr int32_t RANGE_REQUEST_TRADE_INTERVAL = 400;
+
 /**
   * Main Game class.
   * This class is responsible to control everything that happens
@@ -493,8 +504,6 @@ class Game
 
 		std::forward_list<Item*> getMarketItemList(uint16_t wareId, uint16_t sufficientCount, DepotLocker* depotLocker);
 
-		static void updatePremium(Account& account);
-
 		// Store
 		void playerOpenStore(uint32_t playerId, bool openStore, StoreOffers* offers = nullptr);
 		void playerBuyStoreOffer(uint32_t playerId, const StoreOffer& offer, std::string& param);
@@ -578,8 +587,8 @@ class Game
 		void sendOfflineTrainingDialog(Player* player);
 
 		const std::unordered_map<uint32_t, Player*>& getPlayers() const { return players; }
-		const std::map<uint32_t, Monster*>& getMonsters() const { return monsters; }
 		const std::map<uint32_t, Npc*>& getNpcs() const { return npcs; }
+		const std::map<uint32_t, Monster*>& getMonsters() const { return monsters; }
 
 		const std::map<uint16_t, uint32_t>& getItemsPrice() const { return itemsPriceMap; }
 

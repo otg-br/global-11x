@@ -63,7 +63,7 @@ CombatDamage Combat::getCombatDamage(Creature* creature, Creature* target) const
 						static_cast<int32_t>(weapon->getWeaponDamage(player, target, tool, true) * maxa + maxb)
 					);
 
-					damage.secondary.type = weapon->getElementType();
+					damage.secondary.type = weapon->getDynamicElementType(tool);
 					damage.secondary.value = weapon->getElementDamage(player, target, tool);
 				} else {
 					damage.primary.value = normal_random(
@@ -1165,7 +1165,7 @@ void ValueCallback::getMinMaxValues(Player* player, CombatDamage& damage) const
 					}
 				}
 
-				damage.secondary.type = weapon->getElementType();
+				damage.secondary.type = weapon->getDynamicElementType(tool);
 				damage.secondary.value = weapon->getElementDamage(player, nullptr, tool);
 			}
 
@@ -1188,7 +1188,8 @@ void ValueCallback::getMinMaxValues(Player* player, CombatDamage& damage) const
 					}
 				}
 
-				damage.secondary.type = weapon->getElementType();
+				damage.secondary.type = weapon->getDynamicElementType(tool);
+				damage.secondary.value = weapon->getElementDamage(player, nullptr, tool);
 			}
 
 			lua_pushnumber(L, player->getWeaponSkill(tool));
