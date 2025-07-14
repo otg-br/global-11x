@@ -44,6 +44,10 @@ class DepotChest final : public Container
 			return false;
 		}
 
+		bool isRemoved() const override {
+			return false;
+		}
+
 		Cylinder* getParent() const;
 		Cylinder* getRealParent() const {
 			return parent;

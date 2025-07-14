@@ -19,6 +19,7 @@ set(tfs_SRC
 	${CMAKE_CURRENT_LIST_DIR}/database.cpp
 	${CMAKE_CURRENT_LIST_DIR}/databasemanager.cpp
 	${CMAKE_CURRENT_LIST_DIR}/databasetasks.cpp
+	${CMAKE_CURRENT_LIST_DIR}/decay.cpp
 	${CMAKE_CURRENT_LIST_DIR}/definitions.h
 	${CMAKE_CURRENT_LIST_DIR}/depotchest.cpp
 	${CMAKE_CURRENT_LIST_DIR}/depotlocker.cpp

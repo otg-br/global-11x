@@ -42,6 +42,10 @@ class Inbox final : public Container
 		bool canRemove() const final {
 			return false;
 		}
+		
+		bool isRemoved() const override {
+			return false;
+		}
 
 		Cylinder* getParent() const final;
 		Cylinder* getRealParent() const final {
