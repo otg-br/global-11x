@@ -727,6 +727,7 @@ ReturnValue MoveEvent::EquipItem(MoveEvent* moveEvent, Player* player, Item* ite
 				player->onEquipImbueItem(ib);
 			}
 		}
+		player->updateImbuementTrackerStats();
 	}
 
 	if (!it.abilities) {
@@ -840,6 +841,7 @@ ReturnValue MoveEvent::DeEquipItem(MoveEvent*, Player* player, Item* item, slots
 				player->onDeEquipImbueItem(ib);
 			}
 		}
+		player->updateImbuementTrackerStats();
 	}
 
 	if (!it.abilities) {

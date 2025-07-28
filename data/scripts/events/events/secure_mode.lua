@@ -1,7 +1,7 @@
 -- Secure Mode System using EventCallback
 -- Simple secure mode protection for PvP
 
-local ec = Events()
+local ec = Event()
 ec.onTargetCombat = function(self, target)
     if self and self:isMonster() then
         return true

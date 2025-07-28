@@ -1382,6 +1382,7 @@ void Player::onChangeZone(ZoneType_t zone)
 
 	g_game.updateCreatureWalkthrough(this);
 	sendIcons();
+	updateImbuementTrackerStats();
 }
 
 void Player::onAttackedCreatureChangeZone(ZoneType_t zone)
@@ -2562,6 +2563,7 @@ void Player::addInFightTicks(bool pzlock /*= false*/)
 	if (pzlock) {
 		pzLocked = true;
 		sendIcons();
+		updateImbuementTrackerStats();
 	}
 
 	Condition* condition = Condition::createCondition(CONDITIONID_DEFAULT, CONDITION_INFIGHT, g_config.getNumber(ConfigManager::PZ_LOCKED), 0);
@@ -3851,6 +3853,7 @@ void Player::onAddCondition(ConditionType_t type)
 	}
 
 	sendIcons();
+	updateImbuementTrackerStats();
 }
 
 void Player::onAddCombatCondition(ConditionType_t type)
@@ -3913,6 +3916,7 @@ void Player::onEndCondition(ConditionType_t type)
 	}
 
 	sendIcons();
+	updateImbuementTrackerStats();
 }
 
 void Player::onCombatRemoveCondition(Condition* condition)
@@ -3975,6 +3979,7 @@ void Player::onAttackedCreature(Creature* target, bool addFightTicks /* = true *
 			setPvpSituation(true);
 			targetPlayer->setPvpSituation(true);
 			sendIcons();
+			updateImbuementTrackerStats();
 		}
 
 		targetPlayer->addInFightTicks();
@@ -3986,6 +3991,7 @@ void Player::onAttackedCreature(Creature* target, bool addFightTicks /* = true *
 			if (!pzLocked) {
 				pzLocked = true;
 				sendIcons();
+				updateImbuementTrackerStats();
 			}
 
 			if (!Combat::isInPvpZone(this, targetPlayer) && !isInWar(targetPlayer)) {
@@ -4472,7 +4478,7 @@ void Player::addUnjustifiedDead(const Player* attacked)
 		return;
 	}
 
-	if (attacked && attacked->getLevel() <= 50) {
+	if (attacked && attacked->getLevel() <= static_cast<uint32_t>(g_config.getNumber(ConfigManager::PVP_PROTECTION_LEVEL))) {
 		return;
 	}
 
@@ -6165,6 +6171,12 @@ void Player::sendPvpSquare(Creature* target, SquareColor_t squareColor)
 
 	if (squareColor == SQ_COLOR_YELLOW) {
 		sendCreatureSquare(this, squareColor, 2); // Only add to self if it's yellow.
+	}
+}
+
+void Player::updateImbuementTrackerStats() const {
+	if (imbuementTrackerWindowOpen) {
+		g_game.playerRequestInventoryImbuements(getID(), true);
 	}
 }
 

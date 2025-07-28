@@ -758,10 +758,15 @@ class LuaScriptInterface
 		static int luaItemGetTile(lua_State* L);
 
 		static int luaItemHasAttribute(lua_State* L);
-			static int luaItemGetAttribute(lua_State* L);
-	static int luaItemSetAttribute(lua_State* L);
-	static int luaItemRemoveAttribute(lua_State* L);
-	static int luaItemGetAbsorbPercent(lua_State* L);
+		static int luaItemGetAttribute(lua_State* L);
+		static int luaItemSetAttribute(lua_State* L);
+		static int luaItemRemoveAttribute(lua_State* L);
+		static int luaItemGetAbsorbPercent(lua_State* L);
+		static int luaItemSetAbsorbPercent(lua_State* L);
+		static int luaItemIncreaseAbsorbPercent(lua_State* L);
+		static int luaItemGetElementDamage(lua_State* L);
+		static int luaItemSetElementDamage(lua_State* L);
+		static int luaItemIncreaseElementDamage(lua_State* L);
 		static int luaItemGetCustomAttribute(lua_State* L);
 		static int luaItemSetCustomAttribute(lua_State* L);
 		static int luaItemRemoveCustomAttribute(lua_State* L);

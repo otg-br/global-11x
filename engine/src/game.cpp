@@ -6468,14 +6468,14 @@ void Game::addCreatureHealth(const SpectatorHashSet& spectators, const Creature*
 	}
 }
 
-void Game::addMagicEffect(const Position& pos, uint8_t effect)
+void Game::addMagicEffect(const Position& pos, uint16_t effect)
 {
 	SpectatorHashSet spectators;
 	map.getSpectators(spectators, pos, true, true);
 	addMagicEffect(spectators, pos, effect);
 }
 
-void Game::addMagicEffect(const SpectatorHashSet& spectators, const Position& pos, uint8_t effect)
+void Game::addMagicEffect(const SpectatorHashSet& spectators, const Position& pos, uint16_t effect)
 {
 	for (Creature* spectator : spectators) {
 		if (Player* tmpPlayer = spectator->getPlayer()) {
@@ -8503,8 +8503,8 @@ void Game::updateSpectatorsPvp(Thing* thing)
 	}
 }
 
-bool Game::hasLootType(uint8_t lootTypeId) {
-	for (uint8_t i = LOOT_ARMOR; i <= LOOT_LAST; i++) {
+bool Game::hasLootType(uint16_t lootTypeId) {
+	for (uint16_t i = LOOT_ARMOR; i <= LOOT_LAST; i++) {
 		LootType_t loottype = static_cast<LootType_t>(i);
 		if (loottype == lootTypeId) {
 			return true;
@@ -8809,4 +8809,31 @@ void Game::saveServeMessage()
 		}		
 		fclose(file);
 	}	
+}
+
+void Game::playerRequestInventoryImbuements(uint32_t playerId, bool isTrackerOpen) {
+	Player* player = getPlayerByID(playerId);
+	if (!player || player->isRemoved()) {
+		return;
+	}
+
+	player->imbuementTrackerWindowOpen = isTrackerOpen;
+	if (!player->imbuementTrackerWindowOpen) {
+		return;
+	}
+
+	std::map<slots_t, Item*> itemsWithImbueSlotMap;
+	for (uint8_t inventorySlot = CONST_SLOT_FIRST; inventorySlot <= CONST_SLOT_LAST; ++inventorySlot) {
+		auto item = player->getInventoryItem(static_cast<slots_t>(inventorySlot));
+		if (!item) {
+			continue;
+		}
+
+		uint8_t imbuementSlot = item->getImbuingSlots();
+		if (imbuementSlot > 0) {
+			itemsWithImbueSlotMap[static_cast<slots_t>(inventorySlot)] = item;
+		}
+	}
+
+	player->sendInventoryImbuements(itemsWithImbueSlotMap);
 }

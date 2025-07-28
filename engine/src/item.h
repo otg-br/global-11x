@@ -128,6 +128,7 @@ enum AttrTypes_t {
 	ATTR_ABSORBENERGY = 53,
 	ATTR_ABSORBDEATH = 54,
 	ATTR_ABSORBHOLY = 55,
+	ATTR_ABSORB_PHYSICAL = 56,
 };
 
 enum Attr_ReadValue {
@@ -542,7 +543,7 @@ class ItemAttributes
 			| ITEM_ATTRIBUTE_CLASSIFICATION | ITEM_ATTRIBUTE_TIER | ITEM_ATTRIBUTE_ELEMENTICE | ITEM_ATTRIBUTE_ELEMENTEARTH
 			| ITEM_ATTRIBUTE_ELEMENTFIRE | ITEM_ATTRIBUTE_ELEMENTENERGY | ITEM_ATTRIBUTE_ELEMENTDEATH | ITEM_ATTRIBUTE_ELEMENTHOLY
 			| ITEM_ATTRIBUTE_ABSORBICE | ITEM_ATTRIBUTE_ABSORBEARTH | ITEM_ATTRIBUTE_ABSORBFIRE | ITEM_ATTRIBUTE_ABSORBENERGY
-			| ITEM_ATTRIBUTE_ABSORBDEATH | ITEM_ATTRIBUTE_ABSORBHOLY;
+			| ITEM_ATTRIBUTE_ABSORBDEATH | ITEM_ATTRIBUTE_ABSORBHOLY | ITEM_ATTRIBUTE_ABSORB_PHYSICAL;
 		const static uint64_t stringAttributeTypes = ITEM_ATTRIBUTE_DESCRIPTION | ITEM_ATTRIBUTE_TEXT | ITEM_ATTRIBUTE_WRITER
 			| ITEM_ATTRIBUTE_NAME | ITEM_ATTRIBUTE_ARTICLE | ITEM_ATTRIBUTE_PLURALNAME | ITEM_ATTRIBUTE_SPECIAL;
 
@@ -977,50 +978,124 @@ class Item : virtual public Thing
 		
 		// Dynamic absorb percent functions (following same pattern as getElementDamage)
 		uint16_t getAbsorbPercent(CombatType_t combatType) const {
+			uint16_t totalAbsorb = 0;
+			
+			// Get static absorb from ItemType abilities
+			const ItemType& it = items[id];
+			if (it.abilities) {
+				size_t index = combatTypeToIndex(combatType);
+				if (index < COMBAT_COUNT) {
+					totalAbsorb += it.abilities->absorbPercent[index];
+				}
+			}
+			
+			// Add dynamic absorb if item has the attribute
 			switch (combatType) {
 				case COMBAT_ICEDAMAGE:
 					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBICE)) {
-						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBICE));
+						totalAbsorb += static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBICE));
 					}
 					break;
 				case COMBAT_EARTHDAMAGE:
 					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBEARTH)) {
-						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBEARTH));
+						totalAbsorb += static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBEARTH));
 					}
 					break;
 				case COMBAT_FIREDAMAGE:
 					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBFIRE)) {
-						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBFIRE));
+						totalAbsorb += static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBFIRE));
 					}
 					break;
 				case COMBAT_ENERGYDAMAGE:
 					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBENERGY)) {
-						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBENERGY));
+						totalAbsorb += static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBENERGY));
 					}
 					break;
 				case COMBAT_DEATHDAMAGE:
 					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBDEATH)) {
-						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBDEATH));
+						totalAbsorb += static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBDEATH));
 					}
 					break;
 				case COMBAT_HOLYDAMAGE:
 					if (hasAttribute(ITEM_ATTRIBUTE_ABSORBHOLY)) {
-						return static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBHOLY));
+						totalAbsorb += static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBHOLY));
+					}
+					break;
+				case COMBAT_PHYSICALDAMAGE:
+					if (hasAttribute(ITEM_ATTRIBUTE_ABSORB_PHYSICAL)) {
+						totalAbsorb += static_cast<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORB_PHYSICAL));
 					}
 					break;
 				default:
 					break;
 			}
 			
-			// Fallback to static absorb from ItemType abilities
-			const ItemType& it = items[id];
-			if (it.abilities) {
-				size_t index = combatTypeToIndex(combatType);
-				if (index < COMBAT_COUNT) {
-					return it.abilities->absorbPercent[index];
-				}
+			return totalAbsorb;
+		}
+
+		// Setter functions for elemental attributes
+		void setElementDamage(CombatType_t combatType, uint16_t value) {
+			switch (combatType) {
+				case COMBAT_ICEDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ELEMENTICE, value);
+					break;
+				case COMBAT_EARTHDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ELEMENTEARTH, value);
+					break;
+				case COMBAT_FIREDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ELEMENTFIRE, value);
+					break;
+				case COMBAT_ENERGYDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ELEMENTENERGY, value);
+					break;
+				case COMBAT_DEATHDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ELEMENTDEATH, value);
+					break;
+				case COMBAT_HOLYDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ELEMENTHOLY, value);
+					break;
+				default:
+					break;
 			}
-			return 0;
+		}
+
+		void setAbsorbPercent(CombatType_t combatType, uint16_t value) {
+			switch (combatType) {
+				case COMBAT_ICEDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ABSORBICE, value);
+					break;
+				case COMBAT_EARTHDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ABSORBEARTH, value);
+					break;
+				case COMBAT_FIREDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ABSORBFIRE, value);
+					break;
+				case COMBAT_ENERGYDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ABSORBENERGY, value);
+					break;
+				case COMBAT_DEATHDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ABSORBDEATH, value);
+					break;
+				case COMBAT_HOLYDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ABSORBHOLY, value);
+					break;
+				case COMBAT_PHYSICALDAMAGE:
+					setIntAttr(ITEM_ATTRIBUTE_ABSORB_PHYSICAL, value);
+					break;
+				default:
+					break;
+			}
+		}
+
+		// Helper functions to increase elemental attributes
+		void increaseElementDamage(CombatType_t combatType, uint16_t value) {
+			uint16_t current = getElementDamage(combatType);
+			setElementDamage(combatType, current + value);
+		}
+
+		void increaseAbsorbPercent(CombatType_t combatType, uint16_t value) {
+			uint16_t current = getAbsorbPercent(combatType);
+			setAbsorbPercent(combatType, current + value);
 		}
 
 		uint32_t getWorth() const;

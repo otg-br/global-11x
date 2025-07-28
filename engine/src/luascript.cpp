@@ -1608,6 +1608,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(ITEM_ATTRIBUTE_ABSORBENERGY)
 	registerEnum(ITEM_ATTRIBUTE_ABSORBDEATH)
 	registerEnum(ITEM_ATTRIBUTE_ABSORBHOLY)
+	registerEnum(ITEM_ATTRIBUTE_ABSORB_PHYSICAL)
 	
 	registerEnum(ITEM_ATTRIBUTE_CLASSIFICATION)
 	registerEnum(ITEM_ATTRIBUTE_TIER)
@@ -2429,6 +2430,11 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Item", "setAttribute", LuaScriptInterface::luaItemSetAttribute);
 	registerMethod("Item", "removeAttribute", LuaScriptInterface::luaItemRemoveAttribute);
 	registerMethod("Item", "getAbsorbPercent", LuaScriptInterface::luaItemGetAbsorbPercent);
+	registerMethod("Item", "setAbsorbPercent", LuaScriptInterface::luaItemSetAbsorbPercent);
+	registerMethod("Item", "increaseAbsorbPercent", LuaScriptInterface::luaItemIncreaseAbsorbPercent);
+	registerMethod("Item", "getElementDamage", LuaScriptInterface::luaItemGetElementDamage);
+	registerMethod("Item", "setElementDamage", LuaScriptInterface::luaItemSetElementDamage);
+	registerMethod("Item", "increaseElementDamage", LuaScriptInterface::luaItemIncreaseElementDamage);
 	registerMethod("Item", "getCustomAttribute", LuaScriptInterface::luaItemGetCustomAttribute);
 	registerMethod("Item", "setCustomAttribute", LuaScriptInterface::luaItemSetCustomAttribute);
 	registerMethod("Item", "removeCustomAttribute", LuaScriptInterface::luaItemRemoveCustomAttribute);
@@ -3746,7 +3752,7 @@ int LuaScriptInterface::luaDoAreaCombat(lua_State* L)
 
 		CombatParams params;
 		params.combatType = combatType;
-		params.impactEffect = getNumber<uint8_t>(L, 7);
+		params.impactEffect = getNumber<uint16_t>(L, 7);
 
 		CombatDamage damage;
 		damage.origin = getNumber<CombatOrigin>(L, 8, ORIGIN_SPELL);
@@ -3783,7 +3789,7 @@ int LuaScriptInterface::luaDoTargetCombat(lua_State* L)
 
 	CombatParams params;
 	params.combatType = combatType;
-	params.impactEffect = getNumber<uint8_t>(L, 6);
+	params.impactEffect = getNumber<uint16_t>(L, 6);
 
 	CombatDamage damage;
 	damage.origin = getNumber<CombatOrigin>(L, 7, ORIGIN_SPELL);
@@ -7269,6 +7275,7 @@ int LuaScriptInterface::luaItemSetAttribute(lua_State* L)
 			case ITEM_ATTRIBUTE_ABSORBENERGY:
 			case ITEM_ATTRIBUTE_ABSORBDEATH:
 			case ITEM_ATTRIBUTE_ABSORBHOLY:
+			case ITEM_ATTRIBUTE_ABSORB_PHYSICAL:
 			{
 				// Add to existing value instead of overwriting
 				int32_t currentValue = item->getIntAttr(attribute);
@@ -7334,6 +7341,88 @@ int LuaScriptInterface::luaItemGetAbsorbPercent(lua_State* L)
 	
 	CombatType_t combatType = getNumber<CombatType_t>(L, 2);
 	lua_pushnumber(L, item->getAbsorbPercent(combatType));
+	return 1;
+}
+
+int LuaScriptInterface::luaItemSetAbsorbPercent(lua_State* L)
+{
+	// item:setAbsorbPercent(combatType, value)
+	Item* item = getUserdata<Item>(L, 1);
+	if (!item) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	CombatType_t combatType = getNumber<CombatType_t>(L, 2);
+	uint16_t value = getNumber<uint16_t>(L, 3);
+	
+	item->setAbsorbPercent(combatType, value);
+	pushBoolean(L, true);
+	return 1;
+}
+
+int LuaScriptInterface::luaItemIncreaseAbsorbPercent(lua_State* L)
+{
+	// item:increaseAbsorbPercent(combatType, value)
+	Item* item = getUserdata<Item>(L, 1);
+	if (!item) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	CombatType_t combatType = getNumber<CombatType_t>(L, 2);
+	uint16_t value = getNumber<uint16_t>(L, 3);
+	
+	item->increaseAbsorbPercent(combatType, value);
+	pushBoolean(L, true);
+	return 1;
+}
+
+int LuaScriptInterface::luaItemGetElementDamage(lua_State* L)
+{
+	// item:getElementDamage(combatType)
+	Item* item = getUserdata<Item>(L, 1);
+	if (!item) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	CombatType_t combatType = getNumber<CombatType_t>(L, 2);
+	lua_pushnumber(L, item->getElementDamage(combatType));
+	return 1;
+}
+
+int LuaScriptInterface::luaItemSetElementDamage(lua_State* L)
+{
+	// item:setElementDamage(combatType, value)
+	Item* item = getUserdata<Item>(L, 1);
+	if (!item) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	CombatType_t combatType = getNumber<CombatType_t>(L, 2);
+	uint16_t value = getNumber<uint16_t>(L, 3);
+	
+	item->setElementDamage(combatType, value);
+	pushBoolean(L, true);
+	return 1;
+}
+
+int LuaScriptInterface::luaItemIncreaseElementDamage(lua_State* L)
+{
+	// item:increaseElementDamage(combatType, value)
+	Item* item = getUserdata<Item>(L, 1);
+	if (!item) {
+		lua_pushnil(L);
+		return 1;
+	}
+	
+	CombatType_t combatType = getNumber<CombatType_t>(L, 2);
+	uint16_t value = getNumber<uint16_t>(L, 3);
+	
+	item->increaseElementDamage(combatType, value);
+	pushBoolean(L, true);
 	return 1;
 }
 

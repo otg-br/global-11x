@@ -1130,7 +1130,7 @@ class Player final : public Creature, public Cylinder
 				client->sendGameNews();
 			}
 		}
-		void sendMagicEffect(const Position& pos, uint8_t type) const {
+		void sendMagicEffect(const Position& pos, uint16_t type) const {
 			if (client) {
 				client->sendMagicEffect(pos, type);
 			}
@@ -1723,6 +1723,12 @@ class Player final : public Creature, public Cylinder
 		void setWalkExhaust(int64_t value) {
 			lastWalking = OTSYS_TIME() + value;
 		}
+		void updateImbuementTrackerStats() const;
+		void sendInventoryImbuements(const std::map<slots_t, Item*> items) const {
+			if (client) {
+				client->sendInventoryImbuements(items);
+			}
+		}
 	protected:
 		std::forward_list<Condition*> getMuteConditions() const;
 
@@ -1955,6 +1961,7 @@ class Player final : public Creature, public Cylinder
 		bool updatingSaleItemList = false;
 		bool logged = false;
 		bool inventoryAbilities[CONST_SLOT_LAST + 1] = {};
+		bool imbuementTrackerWindowOpen = false;
 
 		static uint32_t playerCombatAutoID;
 		static uint32_t playerAutoID;

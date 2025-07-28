@@ -635,6 +635,7 @@ void ProtocolGame::parsePacket(NetworkMessage& msg)
 		//g_dispatcher.addTask(createTask(std::bind(&Modules::executeOnRecvbyte, g_modules, player, msg, recvbyte)));
 		case 0xD3: g_dispatcher.addTask(createTask(std::bind(&ProtocolGame::parseSetOutfit, this, msg))); break;
 		case 0xD4: parseToggleMount(msg); break;
+		case 0x60: parseInventoryImbuements(msg); break;
 		case 0xD5: parseApplyImbuemente(msg); break;
 		case 0xD6: parseClearingImbuement(msg); break;
 		case 0xD7: parseCloseImbuingWindow(msg); break;
@@ -796,6 +797,12 @@ void ProtocolGame::parseToggleMount(NetworkMessage& msg)
 {
 	bool mount = msg.getByte() != 0;
 	addGameTask(&Game::playerToggleMount, player->getID(), mount);
+}
+
+void ProtocolGame::parseInventoryImbuements(NetworkMessage& msg)
+{
+	bool isTrackerOpen = msg.getByte(); // Window is opened or closed
+	addGameTask(&Game::playerRequestInventoryImbuements, player->getID(), isTrackerOpen);
 }
 
 void ProtocolGame::parseApplyImbuemente(NetworkMessage& msg)
@@ -4213,6 +4220,60 @@ void ProtocolGame::sendLockerItems(std::map<uint16_t, uint16_t> itemMap, uint16_
 	for (const auto& it : itemMap) {
 		msg.addItemId(it.first);
 		msg.add<uint16_t>(it.second);
+	}
+
+	writeToOutputBuffer(msg);
+}
+
+void ProtocolGame::sendInventoryImbuements(const std::map<slots_t, Item*> items)
+{
+	NetworkMessage msg;
+	msg.addByte(0x5D);
+
+	msg.addByte(static_cast<uint8_t>(items.size()));
+	for (const auto& pair : items) {
+		slots_t slot = pair.first;
+		Item* item = pair.second;
+		msg.addByte(slot);
+		AddItem(msg, item);
+
+		uint8_t slots = item->getImbuingSlots();
+		msg.addByte(slots);
+		if (slots == 0) {
+			continue;
+		}
+
+		for (uint8_t imbueSlot = 0; imbueSlot < slots; imbueSlot++) {
+			uint32_t imbuementId = item->getImbuement(imbueSlot);
+			if (imbuementId == 0) {
+				msg.addByte(0x00);
+				continue;
+			}
+
+			auto imbuement = g_imbuements.getImbuement(imbuementId & 0xFF);
+			if (!imbuement) {
+				msg.addByte(0x00);
+				continue;
+			}
+
+			msg.addByte(0x01);
+			msg.addString(imbuement->getName());
+			msg.add<uint16_t>(imbuement->getIconID());
+			msg.add<uint32_t>(0); // Duration placeholder
+
+			const Tile* playerTile = player->getTile();
+			// Check if the player is in a protection zone
+			bool isInProtectionZone = playerTile && playerTile->hasFlag(TILESTATE_PROTECTIONZONE);
+			// Check if the player is in fight mode
+			bool isInFightMode = player->hasCondition(CONDITION_INFIGHT);
+			// Simple check for aggressive imbuements
+			if (isInProtectionZone || !isInFightMode) {
+				msg.addByte(0);
+				continue;
+			}
+
+			msg.addByte(1);
+		}
 	}
 
 	writeToOutputBuffer(msg);

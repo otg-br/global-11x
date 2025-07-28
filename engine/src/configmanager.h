@@ -152,6 +152,7 @@ class ConfigManager
 			YELL_MINIMUM_LEVEL,
 			TIME_GMT,
 			ANTI_MULTI_CLIENT_LIMIT,
+			PVP_PROTECTION_LEVEL,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};

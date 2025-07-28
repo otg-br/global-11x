@@ -27,6 +27,7 @@
 #include "configmanager.h"
 #include "spells.h"
 #include "store.h"
+#include <cstdint>
 
 extern Game g_game;
 extern ConfigManager g_config;
@@ -747,7 +748,7 @@ void ProtocolGameBase::sendChannel(uint16_t channelId, const std::string& channe
 	writeToOutputBuffer(msg);
 }
 
-void ProtocolGameBase::sendMagicEffect(const Position& pos, uint8_t type)
+void ProtocolGameBase::sendMagicEffect(const Position& pos, uint16_t type)
 {
 	if (!canSee(pos)) {
 		return;
@@ -757,7 +758,7 @@ void ProtocolGameBase::sendMagicEffect(const Position& pos, uint8_t type)
 	msg.addByte(0x83);
 	msg.addPosition(pos);
 	if(version < 1220) {
-		msg.addByte(type);
+		msg.add<uint16_t>(type);
 	} else {
 		msg.addByte(0x83);
 		msg.addByte(0x1);

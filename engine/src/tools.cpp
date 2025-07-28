@@ -1076,6 +1076,8 @@ itemAttrTypes stringToItemAttribute(const std::string& str)
 		return ITEM_ATTRIBUTE_ABSORBDEATH;
 	} else if (str == "absorbholy") {
 		return ITEM_ATTRIBUTE_ABSORBHOLY;
+	} else if (str == "absorbphysical") {
+		return ITEM_ATTRIBUTE_ABSORB_PHYSICAL;
 	}
 	return ITEM_ATTRIBUTE_NONE;
 }

@@ -29,6 +29,11 @@ redSkullDuration = 2
 blackSkullDuration = 3
 orangeSkullDuration = 3
 blessRune = false
+
+-- PvP Protection Level
+-- NOTE: Players with level 50 or below are protected from unjustified PvP
+pvpProtectionLevel = 50
+
 -- Connection Config
 -- NOTE: maxPlayers set to 0 means no limit
 -- NOTE: MaxPacketsPerSeconds if you change you will be subject to bugs by WPE, keep the default value of 25

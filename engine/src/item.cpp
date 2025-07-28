@@ -874,6 +874,16 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream& propStream)
 			break;
 		}
 
+		case ATTR_ABSORB_PHYSICAL: {
+			uint16_t absorbPercent;
+			if (!propStream.read<uint16_t>(absorbPercent)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_ABSORB_PHYSICAL, absorbPercent);
+			break;
+		}
+
 		default:
 			return ATTR_READ_ERROR;
 	}
@@ -1108,6 +1118,11 @@ void Item::serializeAttr(PropWriteStream& propWriteStream) const
 		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORBHOLY));
 	}
 
+	if (hasAttribute(ITEM_ATTRIBUTE_ABSORB_PHYSICAL)) {
+		propWriteStream.write<uint8_t>(ATTR_ABSORB_PHYSICAL);
+		propWriteStream.write<uint16_t>(getIntAttr(ITEM_ATTRIBUTE_ABSORB_PHYSICAL));
+	}
+
 	if (hasAttribute(ITEM_ATTRIBUTE_CUSTOM)) {
 		const ItemAttributes::CustomAttributeMap* customAttrMap = attributes->getCustomAttributeMap();
 		propWriteStream.write<uint8_t>(ATTR_CUSTOM_ATTRIBUTES);
@@ -1304,26 +1319,27 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 					bool tmp = true;
 
 					for (size_t i = 0; i < COMBAT_COUNT; ++i) {
-						if (it.abilities->absorbPercent[i] == 0) {
+						CombatType_t combatType = indexToCombatType(i);
+						uint16_t absorbPercent = it.abilities->absorbPercent[i];
+						if (item) {
+							absorbPercent = item->getAbsorbPercent(combatType);
+						}
+						if (absorbPercent == 0) {
 							continue;
 						}
-
 						if (tmp) {
 							tmp = false;
-
 							if (begin) {
 								begin = false;
 								s << " (";
 							} else {
 								s << ", ";
 							}
-
 							s << "protection ";
 						} else {
 							s << ", ";
 						}
-
-						s << getCombatName(indexToCombatType(i)) << ' ' << std::showpos << it.abilities->absorbPercent[i] << std::noshowpos << '%';
+						s << getCombatName(combatType) << ' ' << std::showpos << absorbPercent << std::noshowpos << '%';
 					}
 				} else {
 					if (begin) {
@@ -1618,26 +1634,27 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 					bool tmp = true;
 
 					for (size_t i = 0; i < COMBAT_COUNT; ++i) {
-						if (it.abilities->absorbPercent[i] == 0) {
+						CombatType_t combatType = indexToCombatType(i);
+						uint16_t absorbPercent = it.abilities->absorbPercent[i];
+						if (item) {
+							absorbPercent = item->getAbsorbPercent(combatType);
+						}
+						if (absorbPercent == 0) {
 							continue;
 						}
-
 						if (tmp) {
 							tmp = false;
-
 							if (begin) {
 								begin = false;
 								s << " (";
 							} else {
 								s << ", ";
 							}
-
 							s << "protection ";
 						} else {
 							s << ", ";
 						}
-
-						s << getCombatName(indexToCombatType(i)) << ' ' << std::showpos << it.abilities->absorbPercent[i] << std::noshowpos << '%';
+						s << getCombatName(combatType) << ' ' << std::showpos << absorbPercent << std::noshowpos << '%';
 					}
 				} else {
 					if (begin) {
@@ -1820,6 +1837,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 							case COMBAT_ENERGYDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORBENERGY; break;
 							case COMBAT_DEATHDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORBDEATH; break;
 							case COMBAT_HOLYDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORBHOLY; break;
+							case COMBAT_PHYSICALDAMAGE: dynamicAttr = ITEM_ATTRIBUTE_ABSORB_PHYSICAL; break;
 							default: break;
 						}
 						
@@ -1839,7 +1857,8 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 						{ITEM_ATTRIBUTE_ABSORBFIRE, COMBAT_FIREDAMAGE},
 						{ITEM_ATTRIBUTE_ABSORBENERGY, COMBAT_ENERGYDAMAGE},
 						{ITEM_ATTRIBUTE_ABSORBDEATH, COMBAT_DEATHDAMAGE},
-						{ITEM_ATTRIBUTE_ABSORBHOLY, COMBAT_HOLYDAMAGE}
+						{ITEM_ATTRIBUTE_ABSORBHOLY, COMBAT_HOLYDAMAGE},
+						{ITEM_ATTRIBUTE_ABSORB_PHYSICAL, COMBAT_PHYSICALDAMAGE}
 					};
 					
 					for (const auto& attr : dynamicAttributes) {
@@ -2476,6 +2495,15 @@ bool Item::hasMarketAttributes() const
 			if (duration != getDefaultDuration()) {
 				return false;
 			}
+		} else if (attr.type == ITEM_ATTRIBUTE_ABSORBICE || 
+				   attr.type == ITEM_ATTRIBUTE_ABSORBEARTH || 
+				   attr.type == ITEM_ATTRIBUTE_ABSORBFIRE || 
+				   attr.type == ITEM_ATTRIBUTE_ABSORBENERGY || 
+				   attr.type == ITEM_ATTRIBUTE_ABSORBDEATH || 
+				   attr.type == ITEM_ATTRIBUTE_ABSORBHOLY ||
+				   attr.type == ITEM_ATTRIBUTE_ABSORB_PHYSICAL) {
+			// Allow absorb attributes for refinement system
+			continue;
 		} else {
 			return false;
 		}

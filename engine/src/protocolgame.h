@@ -248,6 +248,7 @@ class ProtocolGame final : public ProtocolGameBase
 		void parseToggleMount(NetworkMessage& msg);
 
 		// Imbuements
+		void parseInventoryImbuements(NetworkMessage& msg);
 		void parseApplyImbuemente(NetworkMessage& msg);
 		void parseClearingImbuement(NetworkMessage& msg);
 		void parseCloseImbuingWindow(NetworkMessage& msg);
@@ -330,6 +331,7 @@ class ProtocolGame final : public ProtocolGameBase
 		void sendFYIBox(const std::string& message);
 
 		void sendImbuementWindow(Item* item);
+		void sendInventoryImbuements(const std::map<slots_t, Item*> items);
 
 		void sendBestiaryGroups();
 		void sendBestiaryOverview(std::string raceName);
