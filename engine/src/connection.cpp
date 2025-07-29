@@ -92,7 +92,7 @@ void Connection::closeSocket()
 			socket.shutdown(boost::asio::ip::tcp::socket::shutdown_both, error);
 			socket.close(error);
 		} catch (boost::system::system_error& e) {
-			std::cout << "[Network error - Connection::closeSocket] " << e.what() << std::endl;
+			console::print(CONSOLEMESSAGE_TYPE_ERROR, std::string("[Network error - Connection::closeSocket] ") + e.what());
 		}
 	}
 }
@@ -133,7 +133,7 @@ void Connection::accept()
 				std::bind(&Connection::parseHeader, shared_from_this(), std::placeholders::_1));
 		}
 	} catch (boost::system::system_error& e) {
-		std::cout << "[Network error - Connection::accept] " << e.what() << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, std::string("[Network error - Connection::accept] ") + e.what());
 		close(FORCE_CLOSE);
 	}
 }
@@ -154,7 +154,7 @@ void Connection::parseHeader(const boost::system::error_code& error)
 	if ((++packetsSent / timePassed) > static_cast<uint32_t>(g_config.getNumber(ConfigManager::MAX_PACKETS_PER_SECOND))) {
 		const auto client = std::dynamic_pointer_cast<ProtocolGame>(protocol);
 		if (client) {
-			std::cout << convertIPToString(getIP()) << " disconnected for exceeding packet per second limit." << std::endl;
+			console::print(CONSOLEMESSAGE_TYPE_WARNING, convertIPToString(getIP()) + " disconnected for exceeding packet per second limit.");
 			close();
 			return;
 		}
@@ -176,7 +176,7 @@ void Connection::parseHeader(const boost::system::error_code& error)
 					accept();
 					return;
 				} else {
-					std::cout << "[Network error - Connection::parseHeader] Invalid Client Login" << std::endl;
+					console::print(CONSOLEMESSAGE_TYPE_ERROR, "[Network error - Connection::parseHeader] Invalid Client Login");
 					close(FORCE_CLOSE);
 					return;
 				}
@@ -191,7 +191,7 @@ void Connection::parseHeader(const boost::system::error_code& error)
 				accept();
 				return;
 			} else {
-				std::cout << "[Network error - Connection::parseHeader] Invalid Client Login" << std::endl;
+				console::print(CONSOLEMESSAGE_TYPE_ERROR, "[Network error - Connection::parseHeader] Invalid Client Login");
 				close(FORCE_CLOSE);
 				return;
 			}
@@ -224,7 +224,7 @@ void Connection::parseHeader(const boost::system::error_code& error)
 		boost::asio::async_read(socket, boost::asio::buffer(msg.getBodyBuffer(), size),
 			std::bind(&Connection::parsePacket, shared_from_this(), std::placeholders::_1));
 	} catch (boost::system::system_error& e) {
-		std::cout << "[Network error - Connection::parseHeader] " << e.what() << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, std::string("[Network error - Connection::parseHeader] ") + e.what());
 		close(FORCE_CLOSE);
 	}
 }
@@ -290,7 +290,7 @@ void Connection::parsePacket(const boost::system::error_code& error)
 			boost::asio::buffer(msg.getBuffer(), NetworkMessage::HEADER_LENGTH),
 			std::bind(&Connection::parseHeader, shared_from_this(), std::placeholders::_1));
 	} catch (boost::system::system_error& e) {
-		std::cout << "[Network error - Connection::parsePacket] " << e.what() << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, std::string("[Network error - Connection::parsePacket] ") + e.what());
 		close(FORCE_CLOSE);
 	}
 }
@@ -339,7 +339,7 @@ void Connection::internalSend(const OutputMessage_ptr& msg)
 			boost::asio::buffer(msg->getOutputBuffer(), msg->getLength()),
 			std::bind(&Connection::onWriteOperation, shared_from_this(), std::placeholders::_1));
 	} catch (boost::system::system_error& e) {
-		std::cout << "[Network error - Connection::internalSend] " << e.what() << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, std::string("[Network error - Connection::internalSend] ") + e.what());
 		close(FORCE_CLOSE);
 	}
 }

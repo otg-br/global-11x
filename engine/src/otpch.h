@@ -44,4 +44,10 @@
 
 #include <pugixml.hpp>
 
+#include <fmt/core.h>
+#include <fmt/color.h>
+
+// Console handler
+#include "consolemanager.h"
+
 #endif

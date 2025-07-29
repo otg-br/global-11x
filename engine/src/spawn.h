@@ -94,6 +94,11 @@ class Spawns
 			return spawnList;
 		}
 
+		size_t size() { return std::distance(spawnList.begin(), spawnList.end()); }
+		uint32_t getMonsterCount() { return monsterCount; }
+		uint32_t getNpcCount() { return npcCount; }
+		size_t getSpawnCount() const;
+
 		bool loadCustomSpawnXml(const std::string& _filename, const Position& relativePosition = Position());
 	private:
 		std::forward_list<Npc*> npcList;
@@ -101,6 +106,8 @@ class Spawns
 		std::string filename;
 		bool loaded = false;
 		bool started = false;
+		uint32_t monsterCount = 0;
+		uint32_t npcCount = 0;
 
 		std::forward_list<Spawn> customSpawnList;
 };

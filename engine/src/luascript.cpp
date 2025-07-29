@@ -1168,6 +1168,13 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(COMBAT_FORMULA_SKILL_EXTENDED)
 	registerEnum(COMBAT_FORMULA_DAMAGE)
 
+	registerEnum(CONSOLEMESSAGE_TYPE_INFO)
+	registerEnum(CONSOLEMESSAGE_TYPE_STARTUP)
+	registerEnum(CONSOLEMESSAGE_TYPE_STARTUP_SPECIAL)
+	registerEnum(CONSOLEMESSAGE_TYPE_WARNING)
+	registerEnum(CONSOLEMESSAGE_TYPE_ERROR)
+	registerEnum(CONSOLEMESSAGE_TYPE_BROADCAST)
+
 	registerEnum(DIRECTION_NORTH)
 	registerEnum(DIRECTION_EAST)
 	registerEnum(DIRECTION_SOUTH)
@@ -2268,6 +2275,9 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Game", "insertPlayerSell", LuaScriptInterface::luaGameInsertPlayerSell);
 	registerMethod("Game", "getPlayersSell", LuaScriptInterface::luaGameGetPlayersSell);
 	registerMethod("Game", "getPlayerSellById", LuaScriptInterface::luaGameGetPlayerSellById);
+
+	registerMethod("Game", "sendConsoleMessage", LuaScriptInterface::luaGameSendConsoleMessage);
+	registerMethod("Game", "getLastConsoleMessage", LuaScriptInterface::luaGameGetLastConsoleMessage);
 
 	// Variant
 	registerClass("Variant", "", LuaScriptInterface::luaVariantCreate);
@@ -5333,6 +5343,38 @@ int LuaScriptInterface::luaGameGetOfflinePlayer(lua_State* L)
 	}
 
 	return 1;
+}
+
+// Game.sendConsoleMessage(text[, type])
+int LuaScriptInterface::luaGameSendConsoleMessage(lua_State* L)
+{
+    // Game.sendConsoleMessage(text[, type = CONSOLEMESSAGE_TYPE_INFO])
+    int params = lua_gettop(L);
+    if (params < 1 || params > 2) {
+        pushBoolean(L, false);
+        return 1;
+    }
+
+    const std::string& text = getString(L, 1);
+    uint16_t msgType = (params == 2)
+        ? getNumber<uint16_t>(L, 2)
+        : CONSOLEMESSAGE_TYPE_INFO;
+
+    if (msgType >= CONSOLEMESSAGE_TYPE_LAST) {
+        pushBoolean(L, false);
+        return 1;
+    }
+
+    console::print(static_cast<ConsoleMessageType>(msgType), text);
+    pushBoolean(L, true);
+    return 1;
+}
+
+int LuaScriptInterface::luaGameGetLastConsoleMessage(lua_State* L)
+{
+    // Game.getLastConsoleMessage()
+    pushString(L, console::getLastMessage());
+    return 1;
 }
 
 // Variant

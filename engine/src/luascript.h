@@ -589,6 +589,9 @@ class LuaScriptInterface
 		static int luaGameGetItemByClientId(lua_State* L);
 		static int luaGameGetOfflinePlayer(lua_State* L);
 
+		static int luaGameSendConsoleMessage(lua_State* L);
+		static int luaGameGetLastConsoleMessage(lua_State* L);
+
 		static int luaGameHasEffect(lua_State* L);
 		static int luaGameHasDistanceEffect(lua_State* L);
 		static int luaGameItemidHasMoveevent(lua_State* L);

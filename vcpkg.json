@@ -10,10 +10,17 @@
     "boost-system",
     "boost-variant",
     "cryptopp",
+    "fmt",
     "libmariadb",
     "luajit",
     "mpir",
     "pugixml"
   ],
-  "builtin-baseline": "215a2535590f1f63788ac9bd2ed58ad15e6afdff"
-} 
+  "builtin-baseline": "b5dbd3abb2c9a06c10d777185ee089a06757d48e",
+  "overrides": [
+    {
+      "name": "boost",
+      "version": "1.84.0"
+    }
+  ]
+}

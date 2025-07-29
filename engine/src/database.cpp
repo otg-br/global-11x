@@ -38,7 +38,7 @@ bool Database::connect()
 	// connection handle initialization
 	handle = mysql_init(nullptr);
 	if (!handle) {
-		std::cout << std::endl << "Failed to initialize MySQL connection handle." << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, "Failed to initialize MySQL connection handle.");
 		return false;
 	}
 
@@ -46,10 +46,13 @@ bool Database::connect()
 	bool reconnect = true;
 	mysql_options(handle, MYSQL_OPT_RECONNECT, &reconnect);
 
+	uint8_t ssl_disabled = 0;
+    mysql_options(handle, MYSQL_OPT_SSL_VERIFY_SERVER_CERT, &ssl_disabled);
+
 
 	// connects to database
 	if (!mysql_real_connect(handle, g_config.getString(ConfigManager::MYSQL_HOST).c_str(), g_config.getString(ConfigManager::MYSQL_USER).c_str(), g_config.getString(ConfigManager::MYSQL_PASS).c_str(), g_config.getString(ConfigManager::MYSQL_DB).c_str(), g_config.getNumber(ConfigManager::SQL_PORT), g_config.getString(ConfigManager::MYSQL_SOCK).c_str(), 0)) {
-		std::cout << std::endl << "MySQL Error Message: " << mysql_error(handle) << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, "MySQL Error Message: " + std::string(mysql_error(handle)));
 		return false;
 	}
 
@@ -73,7 +76,7 @@ bool Database::beginTransaction()
 bool Database::rollback()
 {
 	if (mysql_rollback(handle) != 0) {
-		std::cout << "[Error - mysql_rollback] Message: " << mysql_error(handle) << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, "[Error - mysql_rollback] Message: " + std::string(mysql_error(handle)));
 		databaseLock.unlock();
 		return false;
 	}
@@ -85,7 +88,7 @@ bool Database::rollback()
 bool Database::commit()
 {
 	if (mysql_commit(handle) != 0) {
-		std::cout << "[Error - mysql_commit] Message: " << mysql_error(handle) << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, "[Error - mysql_commit] Message: " + std::string(mysql_error(handle)));
 		databaseLock.unlock();
 		return false;
 	}
@@ -102,7 +105,7 @@ bool Database::executeQuery(const std::string& query)
 	databaseLock.lock();
 
 	while (mysql_real_query(handle, query.c_str(), query.length()) != 0) {
-		std::cout << "[Error - mysql_real_query] Query: " << query.substr(0, 256) << std::endl << "Message: " << mysql_error(handle) << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, "[Error - mysql_real_query] Query: " + query.substr(0, 256) + " Message: " + std::string(mysql_error(handle)));
 		auto error = mysql_errno(handle);
 		if (error != CR_SERVER_LOST && error != CR_SERVER_GONE_ERROR && error != CR_CONN_HOST_ERROR && error != 1053/*ER_SERVER_SHUTDOWN*/ && error != CR_CONNECTION_ERROR) {
 			success = false;

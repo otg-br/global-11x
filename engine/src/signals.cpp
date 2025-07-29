@@ -107,77 +107,77 @@ void Signals::dispatchSignalHandler(int signal)
 void Signals::sigtermHandler()
 {
 	//Dispatcher thread
-	std::cout << "SIGTERM received, shutting game server down..." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "SIGTERM received, shutting game server down...");
 	g_game.setGameState(GAME_STATE_SHUTDOWN);
 }
 
 void Signals::sigusr1Handler()
 {
 	//Dispatcher thread
-	std::cout << "SIGUSR1 received, saving the game state..." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "SIGUSR1 received, saving the game state...");
 	g_game.saveGameState();
 }
 
 void Signals::sighupHandler()
 {
 	//Dispatcher thread
-	std::cout << "SIGHUP received, reloading config files..." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "SIGHUP received, reloading config files...");
 
 	g_actions->reload();
-	std::cout << "Reloaded actions." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded actions.");
 
 	g_config.reload();
-	std::cout << "Reloaded config." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded config.");
 
 	g_creatureEvents->reload();
-	std::cout << "Reloaded creature scripts." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded creature scripts.");
 
 	g_moveEvents->reload();
-	std::cout << "Reloaded movements." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded movements.");
 
 	Npcs::reload();
-	std::cout << "Reloaded npcs." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded npcs.");
 
 	g_game.raids.reload();
 	g_game.raids.startup();
-	std::cout << "Reloaded raids." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded raids.");
 
 	g_spells->reload();
-	std::cout << "Reloaded monsters." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded monsters.");
 
 	g_monsters.reload();
-	std::cout << "Reloaded spells." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded spells.");
 
 	g_talkActions->reload();
-	std::cout << "Reloaded talk actions." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded talk actions.");
 
 	Item::items.reload();
-	std::cout << "Reloaded items." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded items.");
 
 	g_weapons->reload();
 	g_weapons->loadDefaults();
-	std::cout << "Reloaded weapons." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded weapons.");
 
 	g_game.quests.reload();
-	std::cout << "Reloaded quests." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded quests.");
 
 	g_game.mounts.reload();
-	std::cout << "Reloaded mounts." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded mounts.");
 
 	g_globalEvents->reload();
-	std::cout << "Reloaded globalevents." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded globalevents.");
 
 	g_events->load();
-	std::cout << "Reloaded events." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded events.");
 
 	g_chat->load();
-	std::cout << "Reloaded chatchannels." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded chatchannels.");
 
 	g_luaEnvironment.loadFile("data/global.lua");
-	std::cout << "Reloaded global.lua." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded global.lua.");
 
 	g_modules->reload();
-	std::cout << "Reloaded modules." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloaded modules.");
 
 	lua_gc(g_luaEnvironment.getLuaState(), LUA_GCCOLLECT, 0);
 }
@@ -185,6 +185,6 @@ void Signals::sighupHandler()
 void Signals::sigintHandler()
 {
 	//Dispatcher thread
-	std::cout << "SIGINT received, shutting game server down..." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "SIGINT received, shutting game server down...");
 	g_game.setGameState(GAME_STATE_SHUTDOWN);
 }

@@ -179,7 +179,8 @@ void ServicePort::open(uint16_t port)
 
 		accept();
 	} catch (boost::system::system_error& e) {
-		std::cout << "[ServicePort::open] Error: " << e.what() << std::endl;
+		console::printResult(CONSOLE_LOADING_ERROR);
+		console::reportError("ServicePort::open", e.what());
 
 		pendingStart = true;
 		g_scheduler.addEvent(createSchedulerTask(15000,

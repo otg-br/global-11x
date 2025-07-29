@@ -20,9 +20,14 @@
 #ifndef FS_CONFIGMANAGER_H_6BDD23BD0B8344F4B7C40E8BE6AF6F39
 #define FS_CONFIGMANAGER_H_6BDD23BD0B8344F4B7C40E8BE6AF6F39
 
+#include <string>
+#include <unordered_map>
+
 class ConfigManager
 {
 	public:
+		ConfigManager();
+		~ConfigManager() = default;
 		struct ProxyInfo {
 			std::string ip;
 			uint16_t port;
@@ -72,6 +77,7 @@ class ConfigManager
 		};
 
 		enum string_config_t {
+			CONFIG_FILE,
 			MAP_NAME,
 			HOUSE_RENT_PERIOD,
 			SERVER_NAME,
@@ -181,6 +187,9 @@ class ConfigManager
 		float getFloat(floating_config_t what) const;
 		double getDouble(doubling_config_t what) const;
 		std::pair<bool, const ConfigManager::ProxyInfo&> getProxyInfo(uint16_t proxyId);
+
+		void setString(string_config_t what, const std::string& value);
+		void setNumber(integer_config_t what, int32_t value);
 
 		std::string const& setConfigFileLua(const std::string& what) {
 			configFileLua = { what };

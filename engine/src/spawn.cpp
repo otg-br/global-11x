@@ -41,6 +41,8 @@ bool Spawns::loadFromXml(const std::string& filename)
 		return true;
 	}
 
+	monsterCount = 0;
+	npcCount = 0;
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file(filename.c_str());
 	if (!result) {
@@ -93,8 +95,9 @@ bool Spawns::loadFromXml(const std::string& filename)
 				uint32_t interval = pugi::cast<uint32_t>(childNode.attribute("spawntime").value()) * 1000;
 				if (interval > MINSPAWN_INTERVAL) {
 					spawn.addMonster(nameAttribute.as_string(), pos, dir, interval);
+					++monsterCount;
 				} else {
-					std::cout << "[Warning - Spawns::loadFromXml] " << nameAttribute.as_string() << ' ' << pos << " spawntime can not be less than " << MINSPAWN_INTERVAL / 1000 << " seconds." << std::endl;
+					console::reportWarning("Spawns::loadFromXml", fmt::format("{} {} spawntime can not be less than {} seconds.", nameAttribute.as_string(), fmt::format("({},{},{})", pos.getX(), pos.getY(), pos.getZ()), MINSPAWN_INTERVAL / 1000));
 				}
 			} else if (strcasecmp(childNode.name(), "npc") == 0) {
 				pugi::xml_attribute nameAttribute = childNode.attribute("name");
@@ -123,6 +126,7 @@ bool Spawns::loadFromXml(const std::string& filename)
 					centerPos.z
 				), radius);
 				npcList.push_front(npc);
+				++npcCount;
 			}
 		}
 	}
@@ -132,7 +136,7 @@ bool Spawns::loadFromXml(const std::string& filename)
 bool Spawns::loadCustomSpawnXml(const std::string& _filename, const Position& relativePosition)
 {
 	if (!loaded) {
-		std::cout << "Error - Spawns::loadCustomSpawnXml - trying to load custom spawn xml before game startup. FileName: " << _filename << std::endl;
+		console::reportError("Spawns::loadCustomSpawnXml", fmt::format("Trying to load custom spawn xml before game startup. FileName: {}", _filename));
 		return false;
 	}
 
@@ -188,8 +192,9 @@ bool Spawns::loadCustomSpawnXml(const std::string& _filename, const Position& re
 				uint32_t interval = pugi::cast<uint32_t>(childNode.attribute("spawntime").value()) * 1000;
 				if (interval > MINSPAWN_INTERVAL) {
 					spawn.addMonster(nameAttribute.as_string(), pos, dir, interval);
+					++monsterCount;
 				} else {
-					std::cout << "[Warning - Spawns::loadCustomSpawnXml - '" << _filename.c_str() << "'] " << nameAttribute.as_string() << ' ' << pos << " spawntime can not be less than " << MINSPAWN_INTERVAL / 1000 << " seconds." << std::endl;
+					console::reportWarning("Spawns::loadCustomSpawnXml", fmt::format("'{}' {} {} spawntime can not be less than {} seconds.", _filename, nameAttribute.as_string(), fmt::format("({},{},{})", pos.getX(), pos.getY(), pos.getZ()), MINSPAWN_INTERVAL / 1000));
 				}
 			} else if (strcasecmp(childNode.name(), "npc") == 0) {
 				pugi::xml_attribute nameAttribute = childNode.attribute("name");
@@ -219,6 +224,7 @@ bool Spawns::loadCustomSpawnXml(const std::string& _filename, const Position& re
 					), radius);
 
 				tmpNpcList.push_front(npc);
+				++npcCount;
 			}
 		}
 
@@ -239,7 +245,13 @@ void Spawns::startup()
 	}
 
 	for (Npc* npc : npcList) {
-		g_game.placeCreature(npc, npc->getMasterPos(), false, true);
+		if (!g_game.placeCreature(npc, npc->getMasterPos(), false, true)) {
+			std::ostringstream warnMsg;
+			warnMsg << "Couldn't spawn NPC \"" << npc->getName() << "\"";
+			warnMsg << " on position: " << npc->getMasterPos() << "!";
+			console::reportWarning("Spawns::startup", warnMsg.str());
+			delete npc;
+		}
 	}
 	npcList.clear();
 
@@ -260,6 +272,8 @@ void Spawns::clear()
 	loaded = false;
 	started = false;
 	filename.clear();
+	monsterCount = 0;
+	npcCount = 0;
 }
 
 bool Spawns::isInZone(const Position& centerPos, int32_t radius, const Position& pos)
@@ -311,10 +325,18 @@ bool Spawn::spawnMonster(uint32_t spawnId, MonsterType* mType, const Position& p
 	if (startup) {
 		//No need to send out events to the surrounding since there is no one out there to listen!
 		if (!g_game.internalPlaceCreature(monster_ptr.get(), pos, true)) {
+			std::ostringstream warnMsg;
+			warnMsg << "Couldn't spawn monster \"" << monster_ptr->getName() << "\"";
+			warnMsg << " on position: " << pos << "!";
+			console::reportWarning("Spawns::startup", warnMsg.str());
 			return false;
 		}
 	} else {
 		if (!g_game.placeCreature(monster_ptr.get(), pos, false, true)) {
+			std::ostringstream warnMsg;
+			warnMsg << "Couldn't spawn monster \"" << monster_ptr->getName() << "\"";
+			warnMsg << " on position: " << pos << "!";
+			console::reportWarning("Spawns::startup", warnMsg.str());
 			return false;
 		}
 	}
@@ -428,7 +450,10 @@ bool Spawn::addMonster(const std::string& name, const Position& pos, Direction d
 {
 	MonsterType* mType = g_monsters.getMonsterType(name);
 	if (!mType) {
-		std::cout << "[Spawn::addMonster] Can not find " << name << std::endl;
+		std::ostringstream warnMsg;
+		warnMsg << pos << " unknown monster type \"";
+		warnMsg << name << "\"!";
+		console::reportWarning("Spawn::addMonster", warnMsg.str());
 		return false;
 	}
 
@@ -470,4 +495,8 @@ void Spawn::stopEvent()
 
 uint32_t Spawn::getInterval() const {
 	return interval / g_config.getDouble(ConfigManager::SPAWN_SPEED);
+}
+
+size_t Spawns::getSpawnCount() const {
+	return std::distance(spawnList.begin(), spawnList.end());
 }

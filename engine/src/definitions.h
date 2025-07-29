@@ -21,13 +21,13 @@
 #define FS_DEFINITIONS_H_877452FEC245450C9F96B8FD268D8963
 
 static constexpr auto STATUS_SERVER_NAME = "Otg Server";
-static constexpr auto STATUS_SERVER_VERSION = "1.4";
+static constexpr auto STATUS_SERVER_VERSION = "1.4 (Protocol 1100)";
 static constexpr auto STATUS_SERVER_CREDITS = "TFS Team, Erick Nunes, Leo Pereira, Marson Schneider, LukST, worthdavi, OTX Team, OTG Team";
 static constexpr auto STATUS_SERVER_CONTRIBUTORS = "Johncore, Mark Samman and Mateuskl (Mateus Roberto)";
 
 static constexpr auto CLIENT_VERSION_MIN = 1100;
-static constexpr auto CLIENT_VERSION_MAX = 1235;
-static constexpr auto CLIENT_VERSION_STR = "12.35";
+static constexpr auto CLIENT_VERSION_MAX = 1100;
+static constexpr auto CLIENT_VERSION_STR = "1100";
 
 static constexpr auto AUTHENTICATOR_DIGITS = 6U;
 static constexpr auto AUTHENTICATOR_PERIOD = 30U;

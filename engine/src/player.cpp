@@ -1306,7 +1306,7 @@ void Player::onCreatureAppear(Creature* creature, bool isLogin)
 			bed->wakeUp(this);
 		}
 
-		//std::cout << name << " has logged in." << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_INFO, name + " has logged in.", true);
 
 		if (guild) {
 			guild->addMember(this);
@@ -1439,7 +1439,7 @@ void Player::onRemoveCreature(Creature* creature, bool isLogout)
 
 		g_chat->removeUserFromAllChannels(*this);
 
-		//std::cout << getName() << " has logged out." << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, getName() + " has logged out.", true);
 
 		if (guild) {
 			guild->removeMember(this);

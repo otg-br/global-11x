@@ -18,6 +18,14 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     add_compile_options(-fno-strict-aliasing)
 endif()
 
+# Add UTF-8 support for MSVC
+if(MSVC)
+    add_compile_options(/utf-8)
+    # Add Boost compatibility definitions for MSVC
+    add_definitions(-DBOOST_CONFIG_SUPPRESS_DEPRECATED)
+    add_definitions(-DBOOST_PREDEF_DISABLED)
+endif()
+
 include(FindCXX11)
 include(FindLTO)
 
@@ -26,6 +34,7 @@ find_package(Crypto++ REQUIRED)
 find_package(PugiXML REQUIRED)
 find_package(MySQL REQUIRED)
 find_package(Threads)
+find_package(fmt REQUIRED)
 
 set (protoc_cmd "${PROJECT_SOURCE_DIR}/proto/generate.sh")
  
@@ -54,8 +63,8 @@ find_package(Boost 1.53.0 COMPONENTS system filesystem iostreams REQUIRED)
 add_subdirectory(src)
 add_executable(tfs ${tfs_SRC})
 
-include_directories(${MYSQL_INCLUDE_DIR} ${LUA_INCLUDE_DIR} ${Boost_INCLUDE_DIRS} ${PUGIXML_INCLUDE_DIR} ${Crypto++_INCLUDE_DIR})
-target_link_libraries(tfs ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${Boost_LIBRARIES} ${Boost_FILESYSTEM_LIBRARY} ${PUGIXML_LIBRARIES} ${Crypto++_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+include_directories(${MYSQL_INCLUDE_DIR} ${LUA_INCLUDE_DIR} ${Boost_INCLUDE_DIRS} ${PUGIXML_INCLUDE_DIR} ${Crypto++_INCLUDE_DIR} ${fmt_INCLUDE_DIRS})
+target_link_libraries(tfs ${MYSQL_CLIENT_LIBS} ${LUA_LIBRARIES} ${Boost_LIBRARIES} ${Boost_FILESYSTEM_LIBRARY} ${PUGIXML_LIBRARIES} ${Crypto++_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} fmt::fmt)
 
 # Precompiled header
 # Note: cotire() must be called last on a target

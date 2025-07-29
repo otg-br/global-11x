@@ -105,6 +105,12 @@ double getGlobalDouble(lua_State* L, const char* identifier, const double defaul
 	return val;
 }
 
+} // namespace
+
+ConfigManager::ConfigManager()
+{
+	string [CONFIG_FILE] = "config.lua";
+	loaded = false;
 }
 
 bool ConfigManager::load()
@@ -117,7 +123,7 @@ bool ConfigManager::load()
 	luaL_openlibs(L);
 
 	if (luaL_dofile(L, configFileLua.c_str())) {
-		std::cout << "[Error - ConfigManager::load] " << lua_tostring(L, -1) << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, "[Error - ConfigManager::load] " + std::string(lua_tostring(L, -1)));
 		lua_close(L);
 		return false;
 	}
@@ -157,7 +163,7 @@ bool ConfigManager::load()
 				uint16_t port = std::stoi(info[2]);
 				auto it = proxyList.emplace(std::piecewise_construct, std::forward_as_tuple(proxyId), std::forward_as_tuple(ip, port, name));
 				if (it.second) {
-					std::cout << "> Loaded proxy with id: " << proxyId << ", ip: " << ip << ", port: " << port << ", name: " << name << std::endl;
+					console::print(CONSOLEMESSAGE_TYPE_INFO, "> Loaded proxy with id: " + std::to_string(proxyId) + ", ip: " + ip + ", port: " + std::to_string(port) + ", name: " + name);
 				}
 			}
 		}
@@ -287,7 +293,7 @@ static std::string dummyStr;
 const std::string& ConfigManager::getString(string_config_t what) const
 {
 	if (what >= LAST_STRING_CONFIG) {
-		std::cout << "[Warning - ConfigManager::getString] Accessing invalid index: " << what << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_WARNING, "[Warning - ConfigManager::getString] Accessing invalid index: " + std::to_string(what));
 		return dummyStr;
 	}
 	return string[what];
@@ -296,7 +302,7 @@ const std::string& ConfigManager::getString(string_config_t what) const
 int32_t ConfigManager::getNumber(integer_config_t what) const
 {
 	if (what >= LAST_INTEGER_CONFIG) {
-		std::cout << "[Warning - ConfigManager::getNumber] Accessing invalid index: " << what << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_WARNING, "[Warning - ConfigManager::getNumber] Accessing invalid index: " + std::to_string(what));
 		return 0;
 	}
 	return integer[what];
@@ -315,7 +321,7 @@ std::pair<bool, const ConfigManager::ProxyInfo&> ConfigManager::getProxyInfo(uin
 bool ConfigManager::getBoolean(boolean_config_t what) const
 {
 	if (what >= LAST_BOOLEAN_CONFIG) {
-		std::cout << "[Warning - ConfigManager::getBoolean] Accessing invalid index: " << what << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_WARNING, "[Warning - ConfigManager::getBoolean] Accessing invalid index: " + std::to_string(what));
 		return false;
 	}
 	return boolean[what];
@@ -324,7 +330,7 @@ bool ConfigManager::getBoolean(boolean_config_t what) const
 float ConfigManager::getFloat(floating_config_t what) const
 {
 	if (what >= LAST_FLOATING_CONFIG) {
-		std::cout << "[Warning - ConfigManager::getFLoat] Accessing invalid index: " << what << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_WARNING, "[Warning - ConfigManager::getFLoat] Accessing invalid index: " + std::to_string(what));
 		return 0;
 	}
 	return floating[what];
@@ -333,8 +339,26 @@ float ConfigManager::getFloat(floating_config_t what) const
 double ConfigManager::getDouble(doubling_config_t what) const
 {
 	if (what >= LAST_DOUBLING_CONFIG) {
-		std::cout << "[Warning - ConfigManager::getDouble] Accessing invalid index: " << what << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_WARNING, "[Warning - ConfigManager::getDouble] Accessing invalid index: " + std::to_string(what));
 		return 0;
 	}
 	return doubling[what];
+}
+
+void ConfigManager::setString(string_config_t what, const std::string& value)
+{
+	if (what >= LAST_STRING_CONFIG) {
+		console::print(CONSOLEMESSAGE_TYPE_WARNING, "[Warning - ConfigManager::setString] Accessing invalid index: " + std::to_string(what));
+		return;
+	}
+	string[what] = value;
+}
+
+void ConfigManager::setNumber(integer_config_t what, int32_t value)
+{
+	if (what >= LAST_INTEGER_CONFIG) {
+		console::print(CONSOLEMESSAGE_TYPE_WARNING, "[Warning - ConfigManager::setNumber] Accessing invalid index: " + std::to_string(what));
+		return;
+	}
+	integer[what] = value;
 }

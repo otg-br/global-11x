@@ -38,15 +38,15 @@ bool DatabaseManager::optimizeTables()
 
 	do {
 		std::string tableName = result->getString("TABLE_NAME");
-		std::cout << "> Optimizing table " << tableName << "..." << std::flush;
+		console::print(CONSOLEMESSAGE_TYPE_INFO, "Optimizing table " + tableName + "...", false);
 
 		query.str(std::string());
 		query << "OPTIMIZE TABLE `" << tableName << '`';
 
 		if (db.executeQuery(query.str())) {
-			std::cout << " [success]" << std::endl;
+			console::printResult(CONSOLE_LOADING_OK);
 		} else {
-			std::cout << " [failed]" << std::endl;
+									console::printResult(CONSOLE_LOADING_ERROR);
 		}
 	} while (result->next());
 	return true;
@@ -107,12 +107,15 @@ void DatabaseManager::updateDatabase()
 	//result table
 	luaL_register(L, "result", LuaScriptInterface::luaResultTable);
 
+	console::print(CONSOLEMESSAGE_TYPE_STARTUP, "Checking database migrations ...", false);
+
 	int32_t version = getDatabaseVersion();
+	console::printResultText(console::getColumns("Version:", std::to_string(version)));
 	do {
 		std::ostringstream ss;
 		ss << "data/migrations/" << version << ".lua";
 		if (luaL_dofile(L, ss.str().c_str()) != 0) {
-			std::cout << "[Error - DatabaseManager::updateDatabase - Version: " << version << "] " << lua_tostring(L, -1) << std::endl;
+			console::reportError("DatabaseManager::updateDatabase - Version " + version, lua_tostring(L, -1));
 			break;
 		}
 
@@ -123,7 +126,7 @@ void DatabaseManager::updateDatabase()
 		lua_getglobal(L, "onUpdateDatabase");
 		if (lua_pcall(L, 0, 1, 0) != 0) {
 			LuaScriptInterface::resetScriptEnv();
-			std::cout << "[Error - DatabaseManager::updateDatabase - Version: " << version << "] " << lua_tostring(L, -1) << std::endl;
+			console::reportError("DatabaseManager::updateDatabase - Version " + version, lua_tostring(L, -1));
 			break;
 		}
 
@@ -133,7 +136,7 @@ void DatabaseManager::updateDatabase()
 		}
 
 		version++;
-		std::cout << "> Database has been updated to version " << version << '.' << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_INFO, fmt::format("Database has been updated to version {:d}.", version));
 		registerDatabaseConfig("db_version", version);
 
 		LuaScriptInterface::resetScriptEnv();
@@ -144,10 +147,8 @@ void DatabaseManager::updateDatabase()
 bool DatabaseManager::getDatabaseConfig(const std::string& config, int32_t& value)
 {
 	Database& db = Database::getInstance();
-	std::ostringstream query;
-	query << "SELECT `value` FROM `server_config` WHERE `config` = " << db.escapeString(config);
 
-	DBResult_ptr result = db.storeQuery(query.str());
+	DBResult_ptr result = db.storeQuery(fmt::format("SELECT `value` FROM `server_config` WHERE `config` = {:s}", db.escapeString(config)));
 	if (!result) {
 		return false;
 	}

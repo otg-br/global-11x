@@ -23,6 +23,8 @@
 
 #include "bed.h"
 #include "teleport.h"
+#include "game.h"
+#include "protocolgame.h"
 
 /*
 	OTBM_ROOTV1
@@ -70,6 +72,9 @@ Tile* IOMap::createTile(Item*& ground, Item* item, uint16_t x, uint16_t y, uint8
 bool IOMap::loadMap(Map* map, const std::string& fileName, const Position& relativePosition)
 {
     int64_t start = OTSYS_TIME();
+    // console output
+    bool isStartup = g_game.getGameState() == GAME_STATE_STARTUP;
+
     try {
         OTB::Loader loader{fileName, OTB::Identifier{{'O', 'T', 'B', 'M'}}};
         auto& root = loader.parseTree();
@@ -116,7 +121,7 @@ bool IOMap::loadMap(Map* map, const std::string& fileName, const Position& relat
             std::cout << "[Warning - IOMap::loadMap] This map needs an updated items.otb." << std::endl;
         }
 
-        std::cout << "> Map size: " << root_header.width << "x" << root_header.height << '.' << std::endl;
+        console::printWorldInfo("Map size", fmt::format("{:d}x{:d}", root_header.width, root_header.height), isStartup);
         map->width = root_header.width;
         map->height = root_header.height;
 
@@ -149,7 +154,7 @@ bool IOMap::loadMap(Map* map, const std::string& fileName, const Position& relat
             }
         }
 
-        std::cout << "> Map loading time: " << (OTSYS_TIME() - start) / (1000.) << " seconds." << std::endl;
+        console::printWorldInfo("Loaded in", fmt::format("{} seconds", (OTSYS_TIME() - start) / (1000.)), isStartup);
         return true;
     } catch (const std::ios_base::failure& e) {
         setLastErrorString(std::string("Failed to open map file: ") + fileName + ". Please check if the file exists in the data/world/ directory and verify your config.lua settings.");
@@ -171,6 +176,10 @@ bool IOMap::parseMapDataAttributes(OTB::Loader& loader, const OTB::Node& mapNode
 	std::string mapDescription;
 	std::string tmp;
 
+	// description field, console output
+	bool isStartup = g_game.getGameState() == GAME_STATE_STARTUP;
+	uint32_t descId = 0;
+
 	uint8_t attribute;
 	while (propStream.read<uint8_t>(attribute)) {
 		switch (attribute) {
@@ -179,6 +188,8 @@ bool IOMap::parseMapDataAttributes(OTB::Loader& loader, const OTB::Node& mapNode
 					setLastErrorString("Invalid description tag.");
 					return false;
 				}
+
+				console::printWorldInfo(fmt::format("Descr. {:d}", ++descId), mapDescription, isStartup);
 				break;
 
 			case OTBM_ATTR_EXT_SPAWN_FILE:

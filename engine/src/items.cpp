@@ -83,8 +83,9 @@ ItemTypes_t Items::getLootType(const std::string& strValue)
 
 bool Items::reload()
 {
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Reloading items ...", false);
 	clear();
-	loadFromOtb("data/items/items.otb");
+	loadFromOtb("data/items/items.otb", true);
 
 	if (!loadFromXml()) {
 		return false;
@@ -98,9 +99,10 @@ bool Items::reload()
 
 constexpr auto OTBI = OTB::Identifier{{'O','T', 'B', 'I'}};
 
-FILELOADER_ERRORS Items::loadFromOtb(const std::string& file)
+FILELOADER_ERRORS Items::loadFromOtb(const std::string& file, bool isReload)
 {
 	OTB::Loader loader{file, OTBI};
+
 
 	auto& root = loader.parseTree();
 
@@ -140,15 +142,17 @@ FILELOADER_ERRORS Items::loadFromOtb(const std::string& file)
 		}
 	}
 
-	/*if (majorVersion == 0xFFFFFFFF) {
-		std::cout << "[Warning - Items::loadFromOtb] items.otb using generic client version." << std::endl;
+	if (majorVersion == 0xFFFFFFFF) {
+		// (pode adicionar um warning se necessário)
 	} else if (majorVersion != 3) {
-		std::cout << "Old version detected, a newer version of items.otb is required." << std::endl;
+		console::printResult(CONSOLE_LOADING_ERROR);
+		console::reportError("Items::loadFromOtb", fmt::format("Unsupported items.otb major version {:d}!", majorVersion));
 		return ERROR_INVALID_FORMAT;
-	} else if (minorVersion < CLIENT_VERSION_1140) {
-		std::cout << "A newer version of items.otb is required." << std::endl;
+	} else if (minorVersion < CLIENT_VERSION_860_OLD) {
+		console::printResult(CONSOLE_LOADING_ERROR);
+		console::reportError("Items::loadFromOtb", "A newer version of items.otb is required!");
 		return ERROR_INVALID_FORMAT;
-	}}*/
+	}
 
 	for (auto & itemNode : root.children) {
 		PropStream stream;
@@ -329,6 +333,24 @@ FILELOADER_ERRORS Items::loadFromOtb(const std::string& file)
 	}
 
 	items.shrink_to_fit();
+
+	// show how many items loaded
+	console::printResultText(console::getColumns("Items:", std::to_string(items.size())));
+	console::print(isReload ? CONSOLEMESSAGE_TYPE_INFO : CONSOLEMESSAGE_TYPE_STARTUP, "", false);
+	console::printResultText(console::getColumns("OTB:", fmt::format("v{:d}.{:d}", majorVersion, minorVersion)));
+
+	if (majorVersion == 0xFFFFFFFF) {
+		// (pode adicionar um warning se necessário)
+	} else if (majorVersion != 3) {
+		console::printResult(CONSOLE_LOADING_ERROR);
+		console::reportError("Items::loadFromOtb", fmt::format("Unsupported items.otb major version {:d}!", majorVersion));
+		return ERROR_INVALID_FORMAT;
+	} else if (minorVersion < CLIENT_VERSION_860_OLD) {
+		console::printResult(CONSOLE_LOADING_ERROR);
+		console::reportError("Items::loadFromOtb", "A newer version of items.otb is required!");
+		return ERROR_INVALID_FORMAT;
+	}
+
 	return ERROR_NONE;
 }
 

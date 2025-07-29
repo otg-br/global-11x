@@ -141,7 +141,7 @@ void Game::setGameState(GameState_t newState)
 			g_chat->load();
 			uint64_t starttime = OTSYS_TIME(true);
 			map.spawns.startup();
-			std::cout << "> Loaded spawns in " << (OTSYS_TIME(true) - starttime) / (1000.) << " seconds." << std::endl;
+			console::printResultText(fmt::format("Loaded spawns in {:.3f} seconds.", (OTSYS_TIME(true) - starttime) / (1000.)), console::Color(0x800080));
 			raids.loadFromXml();
 			raids.startup();
 
@@ -207,13 +207,13 @@ void Game::saveGameState(bool crash /*= false*/)
 		setGameState(GAME_STATE_MAINTAIN);
 	}
 
-	std::cout << "Saving server..." << " " << formatDate(OS_TIME(nullptr)) << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Saving server...");
 
 	for (const auto& it : players) {
 		if (crash) {
 			// // caso precise
 			// it.second->loginPosition = it.second->getTown()->getTemplePosition();
-			std::cout << it.second->getName() << " Position: " << it.second->getPosition().getX() << ", " << it.second->getPosition().getY() << ", " << it.second->getPosition().getZ() << std::endl;
+			console::print(CONSOLEMESSAGE_TYPE_INFO, it.second->getName() + " Position: " + std::to_string(it.second->getPosition().getX()) + ", " + std::to_string(it.second->getPosition().getY()) + ", " + std::to_string(it.second->getPosition().getZ()));
 			it.second->loginPosition = it.second->getPosition();
 		} else {
 			it.second->loginPosition = it.second->getPosition();
@@ -229,6 +229,8 @@ void Game::saveGameState(bool crash /*= false*/)
 	if (gameState == GAME_STATE_MAINTAIN) {
 		setGameState(GAME_STATE_NORMAL);
 	}
+
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Server save complete!");
 }
 
 bool Game::loadMainMap(const std::string& filename)
@@ -2296,7 +2298,7 @@ bool Game::playerBroadcastMessage(Player* player, const std::string& text) const
 		return false;
 	}
 
-	std::cout << "> " << player->getName() << " broadcasted: \"" << text << "\"." << std::endl;
+			console::print(CONSOLEMESSAGE_TYPE_INFO, "> " + player->getName() + " broadcasted: \"" + text + "\".");
 
 	for (const auto& it : players) {
 		it.second->sendPrivateMessage(player, TALKTYPE_BROADCAST, text);
@@ -3560,7 +3562,7 @@ void Game::playerBuyStoreOffer(uint32_t playerId, const StoreOffer& offer, std::
 			guild->setPoints((guild->getPoints() + 10000));
 			std::ostringstream broadcastedMessage;
 			broadcastedMessage << "The player " << player->getName() << " just bought an outfit on the store and earned 10000 points for your guild!";
-			std::cout << "//" << guild->getName() << " guild: " << broadcastedMessage.str() << "//" << std::endl;
+			console::print(CONSOLEMESSAGE_TYPE_INFO, "//" + guild->getName() + " guild: " + broadcastedMessage.str() + "//");
 			const auto& members = guild->getMembersOnline();
 			for (Player* tmpplayer : members) {
 				tmpplayer->sendTextMessage(MESSAGE_EVENT_ADVANCE, broadcastedMessage.str());
@@ -3592,7 +3594,7 @@ void Game::playerBuyStoreOffer(uint32_t playerId, const StoreOffer& offer, std::
 			guild->setPoints((guild->getPoints() + 10000));
 			std::ostringstream broadcastedMessage;
 			broadcastedMessage << "The player " << player->getName() << " just bought an mount on the store and earned 10000 points for your guild!";
-			std::cout << "//" << guild->getName() << " guild: " << broadcastedMessage.str() << "//" << std::endl;
+			console::print(CONSOLEMESSAGE_TYPE_INFO, "//" + guild->getName() + " guild: " + broadcastedMessage.str() + "//");
 			const auto& members = guild->getMembersOnline();
 			for (Player* tmpplayer : members) {
 				tmpplayer->sendTextMessage(MESSAGE_EVENT_ADVANCE, broadcastedMessage.str());
@@ -6727,7 +6729,7 @@ bool Game::gameIsDay()
 
 void Game::shutdown()
 {
-	std::cout << "Shutting down..." << std::flush;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Shutting down ...");
 
 	saveGameState();
 	g_scheduler.shutdown();
@@ -6744,7 +6746,7 @@ void Game::shutdown()
 
 	ConnectionManager::getInstance().closeAll();
 
-	std::cout << " done!" << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Shutdown complete!");
 }
 
 void Game::cleanup()
@@ -6778,7 +6780,7 @@ void Game::ReleaseItem(Item* item)
 
 void Game::broadcastMessage(const std::string& text, MessageClasses type) const
 {
-	std::cout << "> Broadcasted message: \"" << text << "\"." << std::endl;
+			console::print(CONSOLEMESSAGE_TYPE_INFO, "> Broadcasted message: \"" + text + "\".");
 	for (const auto& it : players) {
 		it.second->sendTextMessage(type, text);
 	}
@@ -8307,23 +8309,14 @@ Item* Game::getUniqueItem(uint16_t uniqueId)
 
 bool Game::addUniqueItem(uint16_t uniqueId, Item* item)
 {
-	Item* tempItem = nullptr;
 	auto it = uniqueItems.find(uniqueId);
 	if (it != uniqueItems.end()) {
-		tempItem = it->second;
+		// Item already exists with this unique ID
 	}
 
 	auto result = uniqueItems.emplace(uniqueId, item);
 	if (!result.second) {
-		const Position& pos = item->getPosition();
-		const Position& pos2 = tempItem ? tempItem->getPosition() : item->getPosition();
-		std::cout << "Duplicate unique id: " << static_cast<uint16_t>(uniqueId) <<
-						". Position: (" << pos.getX() <<
-									 ", " << pos.getY() <<
-									 ", " << pos.getZ() << ") " <<
-		 std::endl << "Old Item Position: (" << pos2.getX() <<
-									 ", " << pos2.getY() <<
-									 ", " << pos2.getZ() << ")" << std::endl;
+		console::reportWarning("", fmt::format("Duplicate unique id: {:d}!", uniqueId));
 	}
 	return result.second;
 }
@@ -8406,7 +8399,10 @@ bool Game::reload(ReloadTypes_t reloadType)
 			g_config.reload();
 			g_bestiaries.reload();
 			g_creatureEvents->reload();
-			g_monsters.reload();
+			if (!g_monsters.reload()) {
+				console::reportError("Game::reload", "Failed to reload monsters!");
+				std::terminate();
+			}
 			g_moveEvents->reload();
 			g_store.reload();
 			Npcs::reload();
@@ -8798,7 +8794,7 @@ ServerMessage* Game::getMessageByStatement(uint32_t id)
 
 void Game::saveServeMessage()
 {
-	std::cout << "Saving logs..." << std::endl;
+	console::print(CONSOLEMESSAGE_TYPE_INFO, "Saving logs...");
 
 	std::string data = formatDateShort(OS_TIME(nullptr));
 	std::string fileName = "data/logs/servermessages/" + data + ".txt";

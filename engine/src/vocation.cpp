@@ -29,14 +29,17 @@ bool Vocations::loadFromXml()
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file("data/XML/vocations.xml");
 	if (!result) {
-		printXMLError("Error - Vocations::loadFromXml", "data/XML/vocations.xml", result);
+		console::printResult(CONSOLE_LOADING_ERROR);
+		printXMLError("Vocations::loadFromXml", "data/XML/vocations.xml", result);
 		return false;
 	}
+
+	std::vector<std::string> warnings;
 
 	for (auto vocationNode : doc.child("vocations").children()) {
 		pugi::xml_attribute attr;
 		if (!(attr = vocationNode.attribute("id"))) {
-			std::cout << "[Warning - Vocations::loadFromXml] Missing vocation id" << std::endl;
+			warnings.push_back("Missing vocation id");
 			continue;
 		}
 
@@ -146,6 +149,17 @@ bool Vocations::loadFromXml()
 			}
 		}
 	}
+
+	// show how many loaded
+	console::printResultText(console::getColumns("Vocations:", std::to_string(vocationsMap.size())));
+
+	// show warnings
+	if (!warnings.empty()) {
+		for (const auto& warning : warnings) {
+			console::reportWarning("Vocations::loadFromXml", warning);
+		}
+	}
+
 	return true;
 }
 

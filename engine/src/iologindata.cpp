@@ -444,8 +444,6 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
 	player->coinBalance = acc.coinBalance;
 	player->tournamentCoinBalance = acc.tournamentCoinBalance;
 
-	std::cout << "Loading " << player->getName() << "..." << std::endl;
-
 	player->premiumEndsAt = acc.premiumEndsAt;
 
 	player->viptime = acc.viptime;

@@ -126,7 +126,7 @@ bool TalkAction::configureEvent(const pugi::xml_node& node)
 {
 	pugi::xml_attribute wordsAttribute = node.attribute("words");
 	if (!wordsAttribute) {
-		std::cout << "[Error - TalkAction::configureEvent] Missing words for talk action or spell" << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, "[Error - TalkAction::configureEvent] Missing words for talk action or spell");
 		return false;
 	}
 
@@ -148,7 +148,7 @@ bool TalkAction::executeSay(Player* player, const std::string& param, SpeakClass
 {
 	//onSay(player, words, param, type)
 	if (!scriptInterface->reserveScriptEnv()) {
-		std::cout << "[Error - TalkAction::executeSay] Call stack overflow" << std::endl;
+		console::print(CONSOLEMESSAGE_TYPE_ERROR, "[Error - TalkAction::executeSay] Call stack overflow");
 		return false;
 	}
 
