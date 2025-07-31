@@ -9,7 +9,7 @@ function onStartup()
 	
 	for i = 1, #config do
 		Game.loadMap('data/world/worldchanges/additionals/' .. config[i].map ..'.otbm')
-		print('>> ['..config[i].event..'] Map ' .. config[i].map .. ' loaded.')
+		Game.sendConsoleMessage('>> ['..config[i].event..'] Map ' .. config[i].map .. ' loaded.', CONSOLEMESSAGE_TYPE_STARTUP)
 	end
 	return true
 end

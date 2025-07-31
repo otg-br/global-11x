@@ -1,5 +1,5 @@
-function onUpdateDatabase()
-	print("> Updating database to version 35 (Mount Colors and familiars)")
+﻿function onUpdateDatabase()
+	Game.sendConsoleMessage("> Updating database to version 35 (Mount Colors and familiars)", CONSOLEMESSAGE_TYPE_STARTUP)
 	db.query("ALTER TABLE `players` ADD `lookmountbody` tinyint(3) unsigned NOT NULL DEFAULT '0'")
 	db.query("ALTER TABLE `players` ADD `lookmountfeet` tinyint(3) unsigned NOT NULL DEFAULT '0'")
 	db.query("ALTER TABLE `players` ADD `lookmounthead` tinyint(3) unsigned NOT NULL DEFAULT '0'")

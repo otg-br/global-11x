@@ -1,5 +1,5 @@
-function onUpdateDatabase()
-	print("> Updating database to version 32 (Binary Save)")
+﻿function onUpdateDatabase()
+	Game.sendConsoleMessage("> Updating database to version 32 (Binary Save)", CONSOLEMESSAGE_TYPE_STARTUP)
 	db.query("ALTER TABLE `players` ADD `spells` blob DEFAULT NULL")
 	db.query("ALTER TABLE `players` ADD `storages` mediumblob DEFAULT NULL")
 	db.query("ALTER TABLE `players` ADD `items` longblob DEFAULT NULL")
@@ -16,3 +16,4 @@ function onUpdateDatabase()
 	]]
 	return true
 end
+

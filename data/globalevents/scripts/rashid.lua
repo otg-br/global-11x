@@ -16,7 +16,7 @@ function onStartup()
    if days[day] then
       doCreateNpc("Rashid", days[day])
    else
-      print("[!] -> Cannot create Rashid. Day: " .. day .. ".")
+      Game.sendConsoleMessage("[!] -> Cannot create Rashid. Day: " .. day .. ".", CONSOLEMESSAGE_TYPE_ERROR)
    end
    return true
 end

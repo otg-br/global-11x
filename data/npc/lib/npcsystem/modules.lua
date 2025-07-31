@@ -1,4 +1,4 @@
--- Advanced NPC System by Jiddo
+﻿-- Advanced NPC System by Jiddo
 
 if Modules == nil then
 	-- default words for greeting and ungreeting the npc. Should be a table containing all such words.
@@ -87,8 +87,8 @@ if Modules == nil then
 	end
 
 	-- local node1 = keywordHandler:addKeyword({"promot"}, StdModule.say, {npcHandler = npcHandler, text = "I can promote you for 20000 gold coins. Do you want me to promote you?"})
-		-- node1:addChildKeyword({"yes"}, StdModule.promotePlayer, {npcHandler = npcHandler, cost = 20000, level = 20}, text = "Congratulations! You are now promoted.")
-		-- node1:addChildKeyword({"no"}, StdModule.say, {npcHandler = npcHandler, text = "Allright then. Come back when you are ready."}, reset = true)
+		-- node1:addChildKeywordKeyword({"yes"}, StdModule.promotePlayer, {npcHandler = npcHandler, cost = 20000, level = 20}, text = "Congratulations! You are now promoted.")
+		-- node1:addChildKeywordKeyword({"no"}, StdModule.say, {npcHandler = npcHandler, text = "Allright then. Come back when you are ready."}, reset = true)
 	function StdModule.promotePlayer(cid, message, keywords, parameters, node)
 		local npcHandler = parameters.npcHandler
 		if npcHandler == nil then
@@ -410,10 +410,10 @@ if Modules == nil then
 				if reply ~= nil then
 					self:addKeyword(keywords, reply)
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter '" .. "keyword_reply" .. n .. "' missing. Skipping...")
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Parameter '" .. "keyword_reply" .. n .. "' missing. Skipping...", CONSOLEMESSAGE_TYPE_WARNING)
 				end
 			else
-				print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "No keywords found for keyword set #" .. n .. ". Skipping...")
+				Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: No keywords found for keyword set #" .. n .. ". Skipping...", CONSOLEMESSAGE_TYPE_WARNING)
 			end
 
 			n = n + 1
@@ -487,7 +487,7 @@ if Modules == nil then
 				elseif i == 6 then
 					premium = temp == "true"
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in travel destination parameter.", temp, destination)
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Unknown parameter found in travel destination parameter.", CONSOLEMESSAGE_TYPE_WARNING)
 				end
 				i = i + 1
 			end
@@ -495,7 +495,7 @@ if Modules == nil then
 			if name ~= nil and x ~= nil and y ~= nil and z ~= nil and cost ~= nil then
 				self:addDestination(name, {x=x, y=y, z=z}, cost, premium)
 			else
-				print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for travel destination:", name, x, y, z, cost, premium)
+				Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for travel destination:", CONSOLEMESSAGE_TYPE_WARNING)
 			end
 		end
 	end
@@ -706,7 +706,7 @@ if Modules == nil then
 				elseif i == 5 then
 					realName = temp
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in buyable items parameter.", temp, item)
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Unknown parameter found in buyable items parameter.", CONSOLEMESSAGE_TYPE_WARNING)
 				end
 				i = i + 1
 			end
@@ -714,18 +714,18 @@ if Modules == nil then
 			if SHOPMODULE_MODE == SHOPMODULE_MODE_TRADE then
 				if itemid ~= nil and cost ~= nil then
 					if subType == nil and ItemType(itemid):isFluidContainer() then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "SubType missing for parameter item:", item)
+						Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: SubType missing for parameter item:", CONSOLEMESSAGE_TYPE_WARNING)
 					else
 						self:addBuyableItem(nil, itemid, cost, subType, realName)
 					end
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", itemid, cost)
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", CONSOLEMESSAGE_TYPE_WARNING)
 				end
 			else
 				if name ~= nil and itemid ~= nil and cost ~= nil then
 				local VIAL = 2006
 					if subType == nil and ItemType(itemid):isFluidContainer() then
-						print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "SubType missing for parameter item:", item)
+						Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: SubType missing for parameter item:", CONSOLEMESSAGE_TYPE_WARNING)
 					elseif itemid == VIAL then
 						local vials = {"vial of water","vial of blood", nil, "vial of slime", nil, nil, nil, nil, nil, nil, "vial of oil", nil, "vial of urine", nil, "vial of oil"}
 						self:addBuyableItem(nil, itemid, cost, subType, vials[subType])
@@ -735,7 +735,7 @@ if Modules == nil then
 						self:addBuyableItem(names, itemid, cost, subType, realName)
 					end
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", name, itemid, cost)
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", CONSOLEMESSAGE_TYPE_WARNING)
 				end
 			end
 		end
@@ -764,7 +764,7 @@ if Modules == nil then
 				elseif i == 5 then
 					subType = tonumber(temp)
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in sellable items parameter.", temp, item)
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Unknown parameter found in sellable items parameter.", CONSOLEMESSAGE_TYPE_WARNING)
 				end
 				i = i + 1
 			end
@@ -773,7 +773,7 @@ if Modules == nil then
 				if itemid ~= nil and cost ~= nil then
 					self:addSellableItem(nil, itemid, cost, realName, subType)
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", itemid, cost)
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", CONSOLEMESSAGE_TYPE_WARNING)
 				end
 			else
 				if name ~= nil and itemid ~= nil and cost ~= nil then
@@ -781,7 +781,7 @@ if Modules == nil then
 					names[#names + 1] = name
 					self:addSellableItem(names, itemid, cost, realName, subType)
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", name, itemid, cost)
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", CONSOLEMESSAGE_TYPE_WARNING)
 				end
 			end
 		end
@@ -813,21 +813,21 @@ if Modules == nil then
 				elseif i == 6 then
 					realName = temp
 				else
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Unknown parameter found in buyable items parameter.", temp, item)
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Unknown parameter found in buyable items parameter.", CONSOLEMESSAGE_TYPE_WARNING)
 				end
 				i = i + 1
 			end
 
 			if name ~= nil and container ~= nil and itemid ~= nil and cost ~= nil then
 				if subType == nil and ItemType(itemid):isFluidContainer() then
-					print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "SubType missing for parameter item:", item)
+					Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: SubType missing for parameter item:", CONSOLEMESSAGE_TYPE_WARNING)
 				else
 					local names = {}
 					names[#names + 1] = name
 					self:addBuyableItemContainer(names, container, itemid, cost, subType, realName)
 				end
 			else
-				print("[Warning : " .. Npc():getName() .. "] NpcSystem:", "Parameter(s) missing for item:", name, container, itemid, cost)
+				Game.sendConsoleMessage("[Warning : " .. Npc():getName() .. "] NpcSystem: Parameter(s) missing for item:", CONSOLEMESSAGE_TYPE_WARNING)
 			end
 		end
 	end
@@ -1325,3 +1325,4 @@ if Modules == nil then
 		return true
 	end
 end
+

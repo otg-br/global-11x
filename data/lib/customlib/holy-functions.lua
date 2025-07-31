@@ -334,7 +334,7 @@ end
 
 function debugAddEvent(file, ... )
 	local event = addEvent(...)
-	print(string.format("Event ID %d in file %s", event, file))
+	Game.sendConsoleMessage(string.format("Event ID %d in file %s", event, file), CONSOLEMESSAGE_TYPE_INFO)
 
 	return event
 end

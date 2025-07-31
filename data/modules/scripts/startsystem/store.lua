@@ -1,4 +1,4 @@
-function debubBytes(msg)
+﻿function debubBytes(msg)
 	
 end
 
@@ -256,9 +256,10 @@ end
 
 function onRecvbyte(player, msg, byte)
 	local recvbyte = byte
-	print("recv:",recvbyte)
+	Game.sendConsoleMessage("recv:"..recvbyte, CONSOLEMESSAGE_TYPE_INFO)
 	if recvbyte == 0xFB then
 		openStore(player:getId())
 	end
 	return true
 end
+

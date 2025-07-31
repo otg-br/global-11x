@@ -84,7 +84,7 @@ function Guild.setGuildLevel(self, amount)
 	else
 		self:setLevel(amount)	
 		local new = self:getGuildLevel()
-		print("Level from guild "..g_name.." changed from ["..old.."] to ["..new.."].")
+		Game.sendConsoleMessage("Level from guild "..g_name.." changed from ["..old.."] to ["..new.."].", CONSOLEMESSAGE_TYPE_INFO)
 	end
 	return true
 end

@@ -18,7 +18,7 @@ function onSay(player, words, param)
         end
     end
 
-    print("Items moved to depot.")
+    Game.sendConsoleMessage("Items moved to depot.", CONSOLEMESSAGE_TYPE_INFO)
 
     return false
 end

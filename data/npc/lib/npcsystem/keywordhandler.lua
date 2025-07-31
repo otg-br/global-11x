@@ -1,4 +1,4 @@
--- Advanced NPC System by Jiddo
+﻿-- Advanced NPC System by Jiddo
 
 if KeywordHandler == nil then
 
@@ -102,7 +102,7 @@ if KeywordHandler == nil then
 
 	function KeywordNode:addAliasKeyword(keywords)
 		if #self.children == 0 then
-			print('KeywordNode:addAliasKeyword no previous node found')
+			Game.sendConsoleMessage('KeywordNode:addAliasKeyword no previous node found', CONSOLEMESSAGE_TYPE_WARNING)
 			return false
 		end
 
@@ -228,3 +228,4 @@ if KeywordHandler == nil then
 		return self.lastNode[cid]
 	end
 end
+

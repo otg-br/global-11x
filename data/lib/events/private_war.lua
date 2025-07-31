@@ -100,7 +100,7 @@ PRIVATEWAR_TELEPORT = {
 function Guild.broadcastMessage(self, message, mType)
 	local messageType = mType or MESSAGE_STATUS_WARNING
 	local text = string.format("Guild broadcast:\n%s", message)
-	print("//" .. self:getName() .. " guild: " .. message .."//")
+	Game.sendConsoleMessage("//" .. self:getName() .. " guild: " .. message .."//", CONSOLEMESSAGE_TYPE_INFO)
 	for _, player in pairs(self:getMembersOnline()) do
 		player:sendTextMessage(messageType,  text)
 	end

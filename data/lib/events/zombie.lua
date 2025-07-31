@@ -107,7 +107,7 @@ if not Zombie then
 				local name = getCreatureName(pid) or pid
 				if pid and #self.players == 1 then
 					table.remove(self.players, i)
-					print(">> ["..self.eventName.."] Finalizado com sucesso. Vencedor: " .. name)
+					Game.sendConsoleMessage(">> ["..self.eventName.."] Finalizado com sucesso. Vencedor: " .. name, CONSOLEMESSAGE_TYPE_INFO)
 					return pid
 				end
 			end
@@ -148,7 +148,7 @@ if not Zombie then
 			for i = 1, #self.players do
 				local p = Player(self.players[i]:getId())
 				if p and p:getIp() == player:getIp() then
-					player:sendCancelMessage('Seu IP é idêntico ao do jogador '..p:getName()..', que já está dentro do evento.')
+					player:sendCancelMessage('Seu IP ï¿½ idï¿½ntico ao do jogador '..p:getName()..', que jï¿½ estï¿½ dentro do evento.')
 					block = true
 				end
 			end				
@@ -160,11 +160,11 @@ if not Zombie then
 			end
 		end
 		if #self.players >= self.maxPlayers then
-			player:sendCancelMessage('Desculpe, já existem ' .. self.maxPlayers .. ' jogadores dentro do evento.')
+			player:sendCancelMessage('Desculpe, jï¿½ existem ' .. self.maxPlayers .. ' jogadores dentro do evento.')
 			block = true
 		end
 		if player:getLevel() < self.minLevel then
-			player:sendCancelMessage('Você não possui level suficiente. Volte quando estiver level ' .. self.minLevel .. '.')
+			player:sendCancelMessage('Vocï¿½ nï¿½o possui level suficiente. Volte quando estiver level ' .. self.minLevel .. '.')
 			block = true
 		end	
 		if not block then

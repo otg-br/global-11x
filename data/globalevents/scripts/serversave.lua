@@ -8,7 +8,7 @@ local function ServerSave()
 		player:remove()
 		pc = pc + 1
 	end
-	print(string.format(">> %d player%s kickado%s", pc, pc > 1 and 's' or '', pc > 1 and 's' or ''))
+	Game.sendConsoleMessage(string.format(">> %d player%s kickado%s", pc, pc > 1 and 's' or '', pc > 1 and 's' or ''), CONSOLEMESSAGE_TYPE_STARTUP)
 	Game.setGameState(GAME_STATE_SHUTDOWN)
 
 end

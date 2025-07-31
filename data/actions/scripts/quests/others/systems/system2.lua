@@ -431,7 +431,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		for i = 1, size do
 			local tmp = Game.createItem(items[i].itemId, items[i].count or 1)
 			if reward:addItemEx(tmp) ~= RETURNVALUE_NOERROR then
-				print('[Warning] QuestSystem:', 'Could not add quest reward to container')
+				Game.sendConsoleMessage('[Warning] QuestSystem: Could not add quest reward to container', CONSOLEMESSAGE_TYPE_WARNING)
 			else
 				if items[i].actionId then
 					tmp:setActionId(items[i].actionId)

@@ -1,4 +1,4 @@
-registerMonsterType = {}
+﻿registerMonsterType = {}
 setmetatable(registerMonsterType,
 {
 	__call =
@@ -243,7 +243,7 @@ registerMonsterType.loot = function(mtype, mask)
 			mtype:addLoot(parent)
 		end
 		if lootError then
-			print("[Warning - end] Monster: \"".. mtype:name() .. "\" loot could not correctly be load.")
+			Game.sendConsoleMessage("[Warning - end] Monster: \"".. mtype:name() .. "\" loot could not correctly be load.", CONSOLEMESSAGE_TYPE_WARNING)
 		end
 	end
 end
@@ -490,3 +490,4 @@ registerMonsterType.defenses = function(mtype, mask)
 		end
 	end
 end
+

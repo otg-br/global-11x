@@ -89,7 +89,7 @@ function onSay(player, words, param)
 	local reloads = Game.getStorageValue("reload") or 0
 	if reloads >= 10 then
 		player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE,
-			"Por medidas de segurança, só é permitido 10 reloads no server até que fique arrumado")
+			"Por medidas de seguranï¿½a, sï¿½ ï¿½ permitido 10 reloads no server atï¿½ que fique arrumado")
 		return false
 	end
 
@@ -98,9 +98,7 @@ function onSay(player, words, param)
 	if param:lower() == "autoset" then
 		Game.reload(RELOAD_TYPE_GLOBAL)
 		Game.loadAutomation(true)
-		print(string.format("Reloaded %s and global.lua.", param:lower()))
-		player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE,
-			string.format("Reloaded %s and global.lua.", param:lower()))
+		Game.sendConsoleMessage(string.format("Reloaded %s and global.lua.", param:lower()), CONSOLEMESSAGE_TYPE_INFO)
 		return false
 	end
 
@@ -113,7 +111,7 @@ function onSay(player, words, param)
 	-- Optional: If you want to prevent certain reloads for safety:
 	-- if reloadType == RELOAD_TYPE_CREATURESCRIPTS then
 	-- 	player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE,
-	-- 		"Por medidas de segurança, esse reload está desativado até que fique arrumado")
+	-- 		"Por medidas de seguranï¿½a, esse reload estï¿½ desativado atï¿½ que fique arrumado")
 	-- 	return false
 	-- end
 
@@ -135,7 +133,7 @@ function onSay(player, words, param)
 		end
 	end
 
-	print(string.format("Reloaded %s.", param:lower()))
+	Game.sendConsoleMessage(string.format("Reloaded %s.", param:lower()), CONSOLEMESSAGE_TYPE_INFO)
 	player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, string.format("Reloaded %s.", param:lower()))
 	return false
 end

@@ -1259,8 +1259,14 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 			uint32_t classification = item ? item->getClassification() : it.classification;
 			uint32_t tier = item ? item->getTier() : it.tier;
 
-			if (classification) {
-				s << "\nClassification: " << classification << " Tier: " << tier;
+			if (classification > 0 || tier > 0) {
+				if (classification > 0 && tier > 0) {
+					s << "\nClassification: " << classification << " | Tier: " << tier;
+				} else if (classification > 0) {
+					s << "\nClassification: " << classification << " | Tier: 0";
+				} else {
+					s << "\nTier: " << tier;
+				}
 			}
 			
 			if (it.abilities) {
@@ -1578,6 +1584,20 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 				}
 			}
 
+			// Show Classification and Tier on item 
+			uint32_t classification = item ? item->getClassification() : it.classification;
+			uint32_t tier = item ? item->getTier() : it.tier;
+
+			if (classification > 0 || tier > 0) {
+				if (classification > 0 && tier > 0) {
+					s << "\nClassification: " << classification << " | Tier: " << tier;
+				} else if (classification > 0) {
+					s << "\nClassification: " << classification << " | Tier: 0";
+				} else {
+					s << "\nTier: " << tier;
+				}
+			}
+
 			if (it.abilities) {
 				for (uint8_t i = SKILL_FIRST; i <= SKILL_FISHING; i++) {
 					if (!it.abilities->skills[i]) {
@@ -1742,8 +1762,14 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 		uint32_t classification = item ? item->getClassification() : it.classification;
 		uint32_t tier = item ? item->getTier() : it.tier;
 
-		if (classification) {
-			s << "\nClassification: " << classification << " Tier: " << tier;
+		if (classification > 0 || tier > 0) {
+			if (classification > 0 && tier > 0) {
+				s << "\nClassification: " << classification << " | Tier: " << tier;
+			} else if (classification > 0) {
+				s << "\nClassification: " << classification << " | Tier: 0";
+			} else {
+				s << "\nTier: " << tier;
+			}
 		}
 
 		if (it.abilities) {

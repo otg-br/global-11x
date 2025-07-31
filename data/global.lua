@@ -88,7 +88,7 @@ debug.sethook(function(event, line)
     linecount = linecount + 1
     if os.mtime() - start >= 1 then
         if linecount >= 30000 then
-            print(string.format("possible infinite loop in file %s near line %s", debug.getinfo(2).source, line))
+            Game.sendConsoleMessage(string.format("possible infinite loop in file %s near line %s", debug.getinfo(2).source, line), CONSOLEMESSAGE_TYPE_ERROR)
             debug.sethook()
         end
         linecount = 0

@@ -1,5 +1,5 @@
-function onUpdateDatabase()
-	print("> Updating database to version 12 (storing players record and message of the day in database)")
+﻿function onUpdateDatabase()
+	Game.sendConsoleMessage("> Updating database to version 12 (storing players record and message of the day in database)", CONSOLEMESSAGE_TYPE_STARTUP)
 
 	local motdNum = ""
 	local motd = ""
@@ -22,3 +22,4 @@ function onUpdateDatabase()
 	db.query("INSERT INTO `server_config` (`config`, `value`) VALUES ('players_record', '" .. record .. "'), ('motd_hash', SHA1(" .. db.escapeString(motd) .. ")), ('motd_num', " .. db.escapeString(motdNum) .. ")")
 	return true
 end
+

@@ -34,7 +34,7 @@ function Creature:sendSquare(color, sec, canSee, n)
                 end
             end
         else
-            return print('Error [Creature:sendSquare] invalid argument type for canSee')
+            return Game.sendConsoleMessage('Error [Creature:sendSquare] invalid argument type for canSee', CONSOLEMESSAGE_TYPE_ERROR)
         end
     end
     send = (next(send) and send) or specs

@@ -1,4 +1,4 @@
-function onUpdateDatabase()
+﻿function onUpdateDatabase()
     db.query("ALTER TABLE `players` ADD `instantrewardtokens` int(11) UNSIGNED NOT NULL DEFAULT '0'")
     db.query([[
 		CREATE TABLE IF NOT EXISTS daily_reward_history (
@@ -15,3 +15,4 @@ function onUpdateDatabase()
 	]])
     return true
 end
+

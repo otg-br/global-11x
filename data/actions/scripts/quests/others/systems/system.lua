@@ -86,7 +86,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		for i = 1, size do
 			local tmp = items[i]
 			if reward:addItemEx(tmp) ~= RETURNVALUE_NOERROR then
-				print('[Warning] QuestSystem:', 'Could not add quest reward to container')
+				Game.sendConsoleMessage('[Warning] QuestSystem: Could not add quest reward to container', CONSOLEMESSAGE_TYPE_WARNING)
 			end
 		end
 		local ret = ItemType(reward.itemid)

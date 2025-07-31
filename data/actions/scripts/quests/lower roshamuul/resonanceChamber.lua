@@ -100,8 +100,8 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
                 for y, x in pairs(raid) do
                         local i = 1
                         while i <= #x  do
-                                print(x[i])
-                                print(x[i+1])
+                                Game.sendConsoleMessage(x[i], CONSOLEMESSAGE_TYPE_INFO)
+                                Game.sendConsoleMessage(x[i+1], CONSOLEMESSAGE_TYPE_INFO)
                                 time = time + config.timeBetweenraid
                                 for j = 1, x[i+1] do
                                         Game.setStorageValue(config.storage,x[i+1])

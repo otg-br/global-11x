@@ -8,7 +8,7 @@ local function doCheckHouses()
 
         local count = 0
 
-        print('house leave code')
+        Game.sendConsoleMessage('house leave code', CONSOLEMESSAGE_TYPE_INFO)
 
         repeat
             count = count + 1
@@ -18,13 +18,13 @@ local function doCheckHouses()
             local house = House(houseId)
 
             if house and (owner > 0) then
-                print(house:getName())
+                Game.sendConsoleMessage(house:getName(), CONSOLEMESSAGE_TYPE_INFO)
                 house:setOwnerGuid(0)
             end
 
         until not result.next(registros)
 
-        print('house leave house count:' .. count)
+        Game.sendConsoleMessage('house leave house count:' .. count, CONSOLEMESSAGE_TYPE_INFO)
 
         result.free(registros)
     end

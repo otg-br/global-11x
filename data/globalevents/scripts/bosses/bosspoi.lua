@@ -14,7 +14,7 @@ local spawns = {
    Game.createMonster(spawn.monster, spawn.position, true, true)
 
     if not monster then
-        print('>> Failed to spawn '..rand.bossName..'.')
+        Game.sendConsoleMessage('>> Failed to spawn '..spawn.monster..'.', CONSOLEMESSAGE_TYPE_WARNING)
         return true
     end
   return true

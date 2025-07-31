@@ -569,7 +569,7 @@ function isAchievementSecret(ach)
 	else
 		achievement = getAchievementInfoByName(ach)
 	end
-	if not achievement then return print("[!] -> Invalid achievement \"" .. ach .. "\".") and false end
+	if not achievement then return Game.sendConsoleMessage("[!] -> Invalid achievement \"" .. ach .. "\".", CONSOLEMESSAGE_TYPE_ERROR) and false end
 
 	return achievement.secret
 end
@@ -581,7 +581,7 @@ function Player.hasAchievement(self, ach)
 	else
 		achievement = getAchievementInfoByName(ach)
 	end
-	if not achievement then return print("[!] -> Invalid achievement \"" .. ach .. "\".") and false end
+	if not achievement then return Game.sendConsoleMessage("[!] -> Invalid achievement \"" .. ach .. "\".", CONSOLEMESSAGE_TYPE_ERROR) and false end
 
 	return self:getStorageValue(ACHIEVEMENTS_BASE + achievement.id) > 0
 end
@@ -603,7 +603,7 @@ function Player.addAchievement(self, ach, denyMsg)
 	else
 		achievement = getAchievementInfoByName(ach)
 	end
-	if not achievement then return print("[!] -> Invalid achievement \"" .. ach .. "\".") and false end
+	if not achievement then return Game.sendConsoleMessage("[!] -> Invalid achievement \"" .. ach .. "\".", CONSOLEMESSAGE_TYPE_ERROR) and false end
 
 	if not self:hasAchievement(achievement.id) then
 		self:setStorageValue(ACHIEVEMENTS_BASE + achievement.id, 1)
@@ -621,7 +621,7 @@ function Player.removeAchievement(self, ach)
 	else
 		achievement = getAchievementInfoByName(ach)
 	end
-	if not achievement then return print("[!] -> Invalid achievement \"" .. ach .. "\".") and false end
+	if not achievement then return Game.sendConsoleMessage("[!] -> Invalid achievement \"" .. ach .. "\".", CONSOLEMESSAGE_TYPE_ERROR) and false end
 
 	if self:hasAchievement(achievement.id) then
 		self:setStorageValue(ACHIEVEMENTS_BASE + achievement.id, -1)
@@ -682,7 +682,7 @@ end
 function Player.addAchievementProgress(self, ach, value)
 	local achievement = isNumber(ach) and getAchievementInfoById(ach) or getAchievementInfoByName(ach)
 	if not achievement then
-		print('[!] -> Invalid achievement "' .. ach .. '".')
+		Game.sendConsoleMessage('[!] -> Invalid achievement "' .. ach .. '".', CONSOLEMESSAGE_TYPE_ERROR)
 		return true
 	end
 

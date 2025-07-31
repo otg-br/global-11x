@@ -68,7 +68,7 @@ local function writeTags(filename)
 		for _, id in pairs(info) do
 			local itemType = ItemType(id)
 			if itemType:getName() == '' then
-				print("item name=" .. id .. " of equipment type=" .. tp .. " not found (add in items.xml)")
+				Game.sendConsoleMessage("item name=" .. id .. " of equipment type=" .. tp .. " not found (add in items.xml)", CONSOLEMESSAGE_TYPE_WARNING)
 			end
 			if not Game.itemidHasMoveevent(id) then
 				local reg = types[tp]
@@ -92,7 +92,8 @@ end
 
 function onStartup()
 	math.randomseed(os.mtime())
-	print(string.format('>> Loaded %d npcs and spawned %d monsters.\n>> Loaded %d towns with %d houses in total.', Game.getNpcCount(), Game.getMonsterCount(), #Game.getTowns(), #Game.getHouses()))
+	Game.sendConsoleMessage(string.format('>> Loaded %d npcs and spawned %d monsters.', Game.getNpcCount(), Game.getMonsterCount()), CONSOLEMESSAGE_TYPE_STARTUP)
+	Game.sendConsoleMessage(string.format('>> Loaded %d towns with %d houses in total.', #Game.getTowns(), #Game.getHouses()), CONSOLEMESSAGE_TYPE_STARTUP)
 	for i = 1, #startupGlobalStorages do
 		Game.setStorageValue(startupGlobalStorages[i], 0)
 	end
@@ -167,15 +168,14 @@ function onStartup()
 	local dailytime = os.time()
 	local lastServerSave = math.max(tonumber(getGlobalStorageValueDB(GlobalStorage.LastServerSave)),0)
 	if lastServerSave == 0 then
-		print('[daily reward WARNING] LastServerSave is 0, reseting to now')
+		Game.sendConsoleMessage('[daily reward WARNING] LastServerSave is 0, reseting to now', CONSOLEMESSAGE_TYPE_WARNING)
 		lastServerSave = dailytime
 	elseif lastServerSave < (dailytime - 24*60*60) then
-
-		print('[daily reward WARNING]: LastServerSave is more than 24 hours old, falling back to the last eligible time...')
+		Game.sendConsoleMessage('[daily reward WARNING]: LastServerSave is more than 24 hours old, falling back to the last eligible time...', CONSOLEMESSAGE_TYPE_WARNING)
 		while(lastServerSave<(dailytime - 24*60*60)) do
 			lastServerSave = lastServerSave + 23*60*60
 		end
-		print('[daily reward INFO] done falling back.')
+		Game.sendConsoleMessage('[daily reward INFO] done falling back.', CONSOLEMESSAGE_TYPE_INFO)
 	end
 
 
@@ -185,5 +185,5 @@ function onStartup()
 	Game.setStorageValue(GlobalStorage.XpDisplayMode, 1)
 	Game.loadAutomation(false)
 
-	print(">> Start time: ".. os.sdate("%d.%m.%Y - %X"))
+	Game.sendConsoleMessage(">> Start time: ".. os.sdate("%d.%m.%Y - %X"), CONSOLEMESSAGE_TYPE_STARTUP)
 end

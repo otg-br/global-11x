@@ -1923,6 +1923,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(ORIGIN_SPELL)
 	registerEnum(ORIGIN_MELEE)
 	registerEnum(ORIGIN_RANGED)
+	registerEnum(ORIGIN_WAND)
 	registerEnum(ORIGIN_CHARM)
 
 	// Use with house:getAccessList, house:setAccessList

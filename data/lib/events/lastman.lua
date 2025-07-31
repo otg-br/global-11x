@@ -63,12 +63,12 @@ if not TheLastMan then
 				difficult = "normal"
 			end
 			self.open = true		
-			broadcastMessage("[The Last Man Standing]\nO evento acabou de começar!\nDificuldade: "..difficult.."\nTempo de explosão: "..difficultTime.." segundos")
+			broadcastMessage("[The Last Man Standing]\nO evento acabou de comeï¿½ar!\nDificuldade: "..difficult.."\nTempo de explosï¿½o: "..difficultTime.." segundos")
 			Game.openEventChannel("The Last Man Standing")
 			self:callExplosion(self.positionsArena.fromPosition, self.positionsArena.toPosition, difficultTime)
 			return true 
 		else	
-			broadcastMessage("A guerra não aconteceu por não haver a quantidade necessária de jogadores... :(")	
+			broadcastMessage("A guerra nï¿½o aconteceu por nï¿½o haver a quantidade necessï¿½ria de jogadores... :(")	
 			for i = 1, #self.players do
 				local p = Player(self.players[i])
 				if p then
@@ -90,22 +90,22 @@ if not TheLastMan then
 				local p = Player(self.players[i])
 				if p and #self.players == 1 then
 					table.remove(self.players, i)
-					print(">> [The Last Man Standing] Finalizado com sucesso. Quantidade de jogadores lá dentro: " .. #self.players)
+					Game.sendConsoleMessage(">> [The Last Man Standing] Finalizado com sucesso. Quantidade de jogadores l dentro: " .. #self.players, CONSOLEMESSAGE_TYPE_INFO)
 					return p:getId()
 				end
 			end
 		end
 		local player = Player(returnWinner())				
 		if player then
-			broadcastMessage(string.format("[The Last Man Standing] O jogador %s sobreviveu até o final e ganhou o evento!", player:getName()))
+			broadcastMessage(string.format("[The Last Man Standing] O jogador %s sobreviveu atï¿½ o final e ganhou o evento!", player:getName()))
 		else
-			broadcastMessage("[The Last Man Standing] - Erro Inesperado\nNinguém ganhou o evento.")
+			broadcastMessage("[The Last Man Standing] - Erro Inesperado\nNinguï¿½m ganhou o evento.")
 		end
 		for i = 1, #self.reward do
 			local item = player:addItem(self.reward[i].id, self.reward[i].quantidade)
 		end
 		player:teleportTo(self.positionsArena.exitPosition)
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Você ganhou o evento The Last Man Standing.")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Vocï¿½ ganhou o evento The Last Man Standing.")
 		return true
 	end
 
@@ -115,17 +115,17 @@ if not TheLastMan then
 			for i = 1, #self.players do
 				local p = Player(self.players[i])
 				if p and p:getIp() == player:getIp() then
-					player:sendCancelMessage('Seu IP é idêntico ao do jogador '..p:getName()..', que já está dentro do evento.')
+					player:sendCancelMessage('Seu IP ï¿½ idï¿½ntico ao do jogador '..p:getName()..', que jï¿½ estï¿½ dentro do evento.')
 					block = true
 				end
 			end				
 		end
 		if #self.players >= self.maxPlayers then
-			player:sendCancelMessage('Desculpe, já existem ' .. self.maxPlayers .. ' jogadores dentro do evento.')
+			player:sendCancelMessage('Desculpe, jï¿½ existem ' .. self.maxPlayers .. ' jogadores dentro do evento.')
 			block = true
 		end
 		if player:getLevel() < self.minLevel then
-			player:sendCancelMessage('Você no possui level suficiente. Volte quando estiver level ' .. self.minLevel .. '.')
+			player:sendCancelMessage('Vocï¿½ no possui level suficiente. Volte quando estiver level ' .. self.minLevel .. '.')
 			block = true
 		end	
 		if not block then
@@ -148,13 +148,13 @@ if not TheLastMan then
 					table.remove(self.players, i)
 				end
 			end
-			Game.sendEventMessage("O jogador "..player:getName().." deu azar e foi pego em uma explosão.")
+			Game.sendEventMessage("O jogador "..player:getName().." deu azar e foi pego em uma explosï¿½o.")
 			if #self.players == 1 then
 				self:Close()
 			end
 		end
 		player:teleportTo(self.positionsArena.exitPosition)
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Você foi removido do evento.")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Vocï¿½ foi removido do evento.")
 		return true
 	end
 end

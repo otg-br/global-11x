@@ -10,7 +10,7 @@ function onSay(player, words, param)
 		return false
 	end
 
-	print("> " .. player:getName() .. " broadcasted: \"" .. param .. "\".")
+	Game.sendConsoleMessage("> " .. player:getName() .. " broadcasted: \"" .. param .. "\".", CONSOLEMESSAGE_TYPE_INFO)
 	for _, targetPlayer in ipairs(Game.getPlayers()) do
 		targetPlayer:sendPrivateMessage(player, param, TALKTYPE_BROADCAST)
 	end

@@ -1,4 +1,4 @@
--- recursive dump function
+﻿-- recursive dump function
 function dumpLevel(input, level)
 	local indent = ''
 	
@@ -35,7 +35,7 @@ end
 -- Call the dump function and print it to console
 function pdump(input)
 	local dump_str = dump(input)
-	print(dump_str)
+	Game.sendConsoleMessage(dump_str, CONSOLEMESSAGE_TYPE_INFO)
 	return dump_str
 end
 
@@ -53,7 +53,8 @@ function tdump(title, input)
 	local dump_str = dump(input)
 	local footer_str = '\n====' .. title_fill .. '====\n'
 
-	print(header_str .. dump_str .. footer_str)
+	Game.sendConsoleMessage(header_str .. dump_str .. footer_str, CONSOLEMESSAGE_TYPE_INFO)
 
 	return dump_str
 end
+

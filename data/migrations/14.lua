@@ -1,5 +1,5 @@
-function onUpdateDatabase()
-	print("> Updating database to version 15 (moving groups to data/XML/groups.xml)")
+﻿function onUpdateDatabase()
+	Game.sendConsoleMessage("> Updating database to version 15 (moving groups to data/XML/groups.xml)", CONSOLEMESSAGE_TYPE_STARTUP)
 
 	db.query("ALTER TABLE players DROP FOREIGN KEY players_ibfk_2")
 	db.query("DROP INDEX group_id ON players")
@@ -28,3 +28,4 @@ function onUpdateDatabase()
 	end
 	return true
 end
+

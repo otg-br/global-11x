@@ -15,7 +15,7 @@ local spawns = {
 	 monster:setReward(true)
 
     if not monster then
-        print('>> Failed to spawn '..rand.bossName..'.')
+        Game.sendConsoleMessage('>> Failed to spawn '..spawn.monster..'.', CONSOLEMESSAGE_TYPE_WARNING)
         return true
     end
   return true

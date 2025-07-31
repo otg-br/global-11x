@@ -1,4 +1,4 @@
-function insertIndex(i, buffer)
+﻿function insertIndex(i, buffer)
 	table.insert(buffer, "[")
 	if type(i) == "string" then
 		table.insert(buffer, '"')
@@ -14,7 +14,7 @@ function indexToStr(i, v, buffer)
 	local tp = type(v)
 	local itp = type(i)
 	if itp ~= "number" and itp ~= "string" then
-		print("Invalid index to serialize: " .. type(i))
+		Game.sendConsoleMessage("Invalid index to serialize: " .. type(i), CONSOLEMESSAGE_TYPE_ERROR)
 	else
 		if tp == "table" then
 			insertIndex(i, buffer)
@@ -34,7 +34,7 @@ function indexToStr(i, v, buffer)
 			table.insert(buffer, v == true and "true" or "false")
 			table.insert(buffer, ",")
 		else
-			print("Invalid type to serialize: " .. tp .. ", index: " .. i)
+			Game.sendConsoleMessage("Invalid type to serialize: " .. tp .. ", index: " .. i, CONSOLEMESSAGE_TYPE_ERROR)
 		end
 	end
 end
@@ -71,7 +71,7 @@ function unserializeTable(str, out)
 	if tmp then
 		tmp = tmp()
 	else
-		print("Unserialization error: " .. str)
+		Game.sendConsoleMessage("Unserialization error: " .. str, CONSOLEMESSAGE_TYPE_ERROR)
 		return false
 	end
 	return table.copy(tmp, out)
@@ -178,3 +178,4 @@ function Player:saveSpecialStorage()
 		db.query(string.format("INSERT INTO `player_misc` (`player_id`, `info`) VALUES (%d, %s)", self:getGuid(), db.escapeBlob(tmp, #tmp)))
 	end
 end
+

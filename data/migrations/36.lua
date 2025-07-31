@@ -1,5 +1,5 @@
-function onUpdateDatabase()
-    print("[DB] Updating database to version 1 (Hireling)")
+﻿function onUpdateDatabase()
+    Game.sendConsoleMessage("[DB] Updating database to version 1 (Hireling)", CONSOLEMESSAGE_TYPE_STARTUP)
 
     db.query([[
 		CREATE TABLE IF NOT EXISTS `player_hirelings` (

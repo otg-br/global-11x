@@ -1,4 +1,4 @@
-local function placeMask(position, wmask, nmask)
+﻿local function placeMask(position, wmask, nmask)
 	local item = Tile(position):getItemById(nmask)
 	if item then
 		item:transform(wmask)
@@ -20,7 +20,7 @@ local function resetArea()
 			end
 		end
 	end
-	print("player count: "..playerCount.."     infected count: ".. infectedCount)
+	Game.sendConsoleMessage("player count: "..playerCount.."     infected count: ".. infectedCount, CONSOLEMESSAGE_TYPE_INFO)
 	if playerCount == infectedCount then
 		return true
 	else

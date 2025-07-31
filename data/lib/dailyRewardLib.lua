@@ -197,9 +197,7 @@ function Player.loadDailyRewardBonuses(self)
 			soulRegen[self:getId()] = addEvent(regenSoul, delay * 60 * 1000, self:getId(), 1, delay * 60 * 1000)
 		end
 	end
-	--[[ Message for testing
-				print(string.format("> Player: %s, streak level: %d, active bonuses: %s", self:getName(), streakLevel, self:getActiveDailyRewardBonusesName()))
-	]]--
+	Game.sendConsoleMessage(string.format("> Player: %s, streak level: %d, active bonuses: %s", self:getName(), streakLevel, self:getActiveDailyRewardBonusesName()), CONSOLEMESSAGE_TYPE_INFO)
 end
 
 function Player.disableDailyRewardBonuses(self)

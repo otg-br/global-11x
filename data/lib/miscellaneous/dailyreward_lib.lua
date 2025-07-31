@@ -1129,7 +1129,7 @@ function Player:initDailyRewardSystem()
 
     if nextRewardPick < (Game.getLastServerSave() - (24*60*60)) then -- 24 hours of the limit time has passed, reset streak
         self:setCurrentDayStreak(0)
-        print('reset current day streak')
+        Game.sendConsoleMessage('reset current day streak', CONSOLEMESSAGE_TYPE_INFO)
     end
 
     self:loadStreakBonuses()
@@ -1145,7 +1145,7 @@ function Player:setLastRewardPick(timestamp)
     if tonumber(timestamp) then
         self:setStorageValue(Storage.dailyReward.lastRewardPick, timestamp)
     else
-        print('[WARNING - DAILY REWARD]: Invalid last reward timestamp')
+        Game.sendConsoleMessage('[WARNING - DAILY REWARD]: Invalid last reward timestamp', CONSOLEMESSAGE_TYPE_WARNING)
     end
 
 end
@@ -1158,7 +1158,7 @@ function Player:setNextRewardPick(timestamp)
     if tonumber(timestamp) then
         self:setStorageValue(Storage.dailyReward.nextRewardPick, timestamp)
     else
-        print('[WARNING - DAILY REWARD]: Invalid next reward timestamp')
+        Game.sendConsoleMessage('[WARNING - DAILY REWARD]: Invalid next reward timestamp', CONSOLEMESSAGE_TYPE_WARNING)
     end
 
 end

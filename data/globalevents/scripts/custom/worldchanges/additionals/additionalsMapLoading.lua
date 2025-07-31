@@ -3,11 +3,11 @@ local additionals = {
 }
 
 function onStartup()
-    print("> loading additional maps")
+    Game.sendConsoleMessage("> loading additional maps", CONSOLEMESSAGE_TYPE_STARTUP)
     for _, additional in ipairs(additionals) do 
         if additional.enabled then
             Game.loadMap(additional.file)
-            print("> loaded " .. additional.description)
+            Game.sendConsoleMessage("> loaded " .. additional.description, CONSOLEMESSAGE_TYPE_STARTUP)
         end
     end
 

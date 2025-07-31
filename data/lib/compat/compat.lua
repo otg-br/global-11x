@@ -1207,7 +1207,7 @@ end
 
 function broadcastMessage(message, messageType)
 	Game.broadcastMessage(message, messageType)
-	print("> Broadcasted message: \"" .. message .. "\".")
+	Game.sendConsoleMessage("> Broadcasted message: \"" .. message .. "\".", CONSOLEMESSAGE_TYPE_INFO)
 end
 
 function Guild.addMember(self, player)

@@ -1,5 +1,5 @@
-function onUpdateDatabase()
-	print("> Updating database to version 14 (account_bans, ip_bans and player_bans)")
+﻿function onUpdateDatabase()
+	Game.sendConsoleMessage("> Updating database to version 14 (account_bans, ip_bans and player_bans)", CONSOLEMESSAGE_TYPE_STARTUP)
 
 	db.query("CREATE TABLE IF NOT EXISTS `account_bans` (`account_id` int(11) NOT NULL, `reason` varchar(255) NOT NULL, `banned_at` bigint(20) NOT NULL, `expires_at` bigint(20) NOT NULL, `banned_by` int(11) NOT NULL, PRIMARY KEY (`account_id`), KEY `banned_by` (`banned_by`), FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`banned_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB")
 	db.query("CREATE TABLE IF NOT EXISTS `account_ban_history` (`account_id` int(11) NOT NULL, `reason` varchar(255) NOT NULL, `banned_at` bigint(20) NOT NULL, `expired_at` bigint(20) NOT NULL, `banned_by` int(11) NOT NULL, PRIMARY KEY (`account_id`), KEY `banned_by` (`banned_by`), FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`banned_by`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB")
@@ -27,11 +27,12 @@ function onUpdateDatabase()
 
 	db.query("DROP TABLE `bans`")
 
-	print("Run this query in your database to create the ondelete_players trigger:")
-	print("DELIMITER //")
-	print("CREATE TRIGGER `ondelete_players` BEFORE DELETE ON `players`")
-	print(" FOR EACH ROW BEGIN")
-	print("  UPDATE `houses` SET `owner` = 0 WHERE `owner` = OLD.`id`;")
-	print("END //")
+	Game.sendConsoleMessage("Run this query in your database to create the ondelete_players trigger:", CONSOLEMESSAGE_TYPE_INFO)
+	Game.sendConsoleMessage("DELIMITER //", CONSOLEMESSAGE_TYPE_INFO)
+	Game.sendConsoleMessage("CREATE TRIGGER `ondelete_players` BEFORE DELETE ON `players`", CONSOLEMESSAGE_TYPE_INFO)
+	Game.sendConsoleMessage(" FOR EACH ROW BEGIN", CONSOLEMESSAGE_TYPE_INFO)
+	Game.sendConsoleMessage("  UPDATE `houses` SET `owner` = 0 WHERE `owner` = OLD.`id`;", CONSOLEMESSAGE_TYPE_INFO)
+	Game.sendConsoleMessage("END //", CONSOLEMESSAGE_TYPE_INFO)
 	return true
 end
+

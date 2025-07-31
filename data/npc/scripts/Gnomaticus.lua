@@ -1,4 +1,4 @@
- local keywordHandler = KeywordHandler:new()
+﻿ local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 NpcSystem.parseParameters(npcHandler)
 
@@ -15,7 +15,7 @@ local function creatureSayCallback(cid, type, msg)
 	local player = Player(cid)
 
 	if msgcontains(msg, "again") then
-		print(player:getStorageValue(Storage.BigfootBurden.QuestLine))
+		Game.sendConsoleMessage(player:getStorageValue(Storage.BigfootBurden.QuestLine), CONSOLEMESSAGE_TYPE_INFO)
 		player:setStorageValue(Storage.BigfootBurden.QuestLine, 19)
 	end
 
@@ -46,3 +46,4 @@ end
 
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new())
+

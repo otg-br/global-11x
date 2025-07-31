@@ -1,4 +1,4 @@
-local classes = {Action, CreatureEvent, Spell, TalkAction, MoveEvent, GlobalEvent, Weapon}
+﻿local classes = {Action, CreatureEvent, Spell, TalkAction, MoveEvent, GlobalEvent, Weapon}
 
 for _, class in ipairs(classes) do
 	local MT = getmetatable(class)
@@ -41,7 +41,7 @@ for _, class in ipairs(classes) do
 		-- Only register if callback has already been defined, otherwise defining afterwards will not work
 		if def.register then
 			if not hasCallback then
-				print("Warning: Event not registered due to there being no callback.")
+				Game.sendConsoleMessage("Warning: Event not registered due to there being no callback.", CONSOLEMESSAGE_TYPE_WARNING)
 			else
 				obj:register()
 			end
@@ -50,3 +50,4 @@ for _, class in ipairs(classes) do
 		return obj
 	end
 end
+

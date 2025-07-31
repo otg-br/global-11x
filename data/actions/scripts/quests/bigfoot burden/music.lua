@@ -10,7 +10,7 @@ local cToneStorages = {
 
 function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if player:getStorageValue(Storage.BigfootBurden.QuestLine) == 21 then
-		print('a')
+		Game.sendConsoleMessage('a', CONSOLEMESSAGE_TYPE_INFO)
 		local value = player:getStorageValue(Storage.BigfootBurden.MelodyStatus)
 		if player:getStorageValue(cToneStorages[value]) == item.uid then
 			player:setStorageValue(Storage.BigfootBurden.MelodyStatus, value + 1)

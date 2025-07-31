@@ -34,7 +34,7 @@ local function freeRoom()
 end
 
 function onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	print('uhu')
+	Game.sendConsoleMessage('uhu', CONSOLEMESSAGE_TYPE_INFO)
 	if toPosition == deskPosition then
 		if isStuck(false) then
 			player:say('THE DARK KNOWLEDGE PILLS THE BOOK WITH RAW POWER. READY TO BE UNLEASHED!', TALKTYPE_MONSTER_SAY)

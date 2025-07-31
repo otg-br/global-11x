@@ -27,14 +27,14 @@ function onStartup()
 				addEvent(function()
 					Game.loadSpawnFile(map..'-spawn.xml')
 					str = str .. " (with respawn)"
-					print(str)
+					Game.sendConsoleMessage(str, CONSOLEMESSAGE_TYPE_STARTUP)
 				end, 2*1000)
 			else
-				print(str)
+				Game.sendConsoleMessage(str, CONSOLEMESSAGE_TYPE_STARTUP)
 			end
 			setWorldChangeActive(config[i].name)	
 		else
-			print('>> ['..config[i].name..'] not today.')
+			Game.sendConsoleMessage('>> ['..config[i].name..'] not today.', CONSOLEMESSAGE_TYPE_STARTUP)
 		end
 	end
 	return true

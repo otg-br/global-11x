@@ -90,13 +90,13 @@ function Player.canImbueItem(self, imbuement, item)
 		end
 	end
 	if imb_type == "" then
-		print(">> [Imbuement::canImbueItem] Error on search imbuement '".. imbuement:getName() .. "'")
+		Game.sendConsoleMessage(">> [Imbuement::canImbueItem] Error on search imbuement '".. imbuement:getName() .. "'", CONSOLEMESSAGE_TYPE_ERROR)
 		return false
 	end
 
 	local equip = equipitems[imb_type]
 	if not equip then
-		print(">> [Imbuement::canImbueItem] Error on search Weapons imbuement '" .. imbuement:getName() .. "'")
+		Game.sendConsoleMessage(">> [Imbuement::canImbueItem] Error on search Weapons imbuement '" .. imbuement:getName() .. "'", CONSOLEMESSAGE_TYPE_ERROR)
 		return false
 	end
 
@@ -112,7 +112,7 @@ function Player.canImbueItem(self, imbuement, item)
 	end
 	local stg = enablingStorages[imb_type]
 	if not stg then
-		print(">> [Imbuement::canImbueItem] Error on search Storage imbuement '" .. imbuement:getName() .. "'")
+		Game.sendConsoleMessage(">> [Imbuement::canImbueItem] Error on search Storage imbuement '" .. imbuement:getName() .. "'", CONSOLEMESSAGE_TYPE_ERROR)
 		return false
 	end
 

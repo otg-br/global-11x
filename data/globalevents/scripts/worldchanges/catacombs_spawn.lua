@@ -29,9 +29,9 @@ function onStartup()
 			Game.loadSpawnFile('data/world/worldchanges/catacombs/' .. config[os.sdate("%A")] ..'-spawn.xml')
 			str = str .. " (with respawn)"		
 		end, 2*1000)
-		print(str)
+		Game.sendConsoleMessage(str, CONSOLEMESSAGE_TYPE_STARTUP)
 	else
-		 print('>> Catacombs: not today')
+		 Game.sendConsoleMessage('>> Catacombs: not today', CONSOLEMESSAGE_TYPE_STARTUP)
 	end
 	return true
 end

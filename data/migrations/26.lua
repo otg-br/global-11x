@@ -1,5 +1,5 @@
-function onUpdateDatabase()
-	print("> Updating database to version 26 (Blessings Dialog System)")
+﻿function onUpdateDatabase()
+	Game.sendConsoleMessage("> Updating database to version 26 (Blessings Dialog System)", CONSOLEMESSAGE_TYPE_STARTUP)
 	db.query("CREATE TABLE `blessings_history` (`id` int(11) NOT NULL, `player_id` int(11) NOT NULL, `blessing` tinyint(4) NOT NULL, `loss` tinyint(1) NOT NULL, `timestamp` int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;")
 	db.query("ALTER TABLE `players` ADD COLUMN `blessings1` tinyint(4) NOT NULL DEFAULT '0' AFTER `blessings`")
 	db.query("ALTER TABLE `players` ADD COLUMN `blessings2` tinyint(4) NOT NULL DEFAULT '0' AFTER `blessings1`")
@@ -11,3 +11,4 @@ function onUpdateDatabase()
 	db.query("ALTER TABLE `players` ADD COLUMN `blessings8` tinyint(4) NOT NULL DEFAULT '0' AFTER `blessings7`")
 	return true
 end
+

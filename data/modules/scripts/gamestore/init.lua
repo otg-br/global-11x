@@ -1,4 +1,4 @@
-
+﻿
 
 -- Please don't edit those information!
 GameStore = {
@@ -371,7 +371,7 @@ function parseBuyStoreOffer(playerId, msg)
 
 	if not pcallError.code then -- unhandled error
 		-- log some debugging info
-		print(string.format("Gamestore: Purchase failed due to an unhandled script error. \n\tStacktrace: %s\n", pcallError))
+		Game.sendConsoleMessage(string.format("Gamestore: Purchase failed due to an unhandled script error. \n\tStacktrace: %s\n", pcallError), CONSOLEMESSAGE_TYPE_ERROR)
 	end
 
 		return queueSendStoreAlertToUser(alertMessage, 500, playerId)
@@ -1740,4 +1740,5 @@ function Player:openStore(serviceName) --exporting the method so other scripts c
 		addPlayerEvent(sendShowStoreOffers, 50, playerId, category)
 	end
 end
+
 

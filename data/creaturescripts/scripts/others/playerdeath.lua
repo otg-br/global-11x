@@ -136,7 +136,7 @@ function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDama
 									if Guild(guildid2) then
 										Guild(guildid2):broadcastMessage("War is over, please relog")
 									end
-									print(string.format("The war between '%s' and '%s' has ended.", Guild(guildid):getName(), Guild(guildid2):getName()))
+									Game.sendConsoleMessage(string.format("The war between '%s' and '%s' has ended.", Guild(guildid):getName(), Guild(guildid2):getName()), CONSOLEMESSAGE_TYPE_INFO)
 									Game.broadcastMessage(string.format("The war between '%s' and '%s' has ended. Winner: %s", Guild(guildid):getName(), Guild(guildid2):getName(), Guild(guildid):getName()))
 								end
 							end

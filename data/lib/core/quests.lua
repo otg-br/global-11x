@@ -3624,7 +3624,7 @@ if not Game.getStorageValue(RELOAD_TYPE_QUESTS) or Game.getStorageValue(RELOAD_T
 		},
 	}
 
-	print(">> Loaded ".. #Quests .." quests")
+	Game.sendConsoleMessage(">> Loaded ".. #Quests .." quests", CONSOLEMESSAGE_TYPE_STARTUP)
 end
 
 if not LastQuestlogUpdate then

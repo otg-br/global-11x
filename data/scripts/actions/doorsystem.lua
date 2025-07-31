@@ -38,7 +38,7 @@ function doorSystem.onUse(player, item, fromPosition, target, toPosition, isHotk
 
 	-- others system
 	if not door then
-		print(">> Door not found ".. itemid)
+		Game.sendConsoleMessage(">> Door not found ".. itemid, CONSOLEMESSAGE_TYPE_WARNING)
 		player:sendTextMessage(MESSAGE_STATUS_SMALL, "Its locked.")
 		return false
 	end
