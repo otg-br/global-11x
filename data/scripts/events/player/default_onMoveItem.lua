@@ -33,7 +33,7 @@ local CONTAINER_POSITION      = 65535  -- Macro for container position
 local CONST_SLOT_STORE_INBOX  = 11     -- Slot index for the Store Inbox
 local CONTAINER_WEIGHT        = 100000 -- 10k = 10000 oz | this function is only for containers, item below the weight determined here can be moved inside the container, for others items look game.cpp at the src
 
-local exercise_ids            = {32384, 32385, 32386, 32387, 32388, 32389}
+local exercise_ids            = {33082, 33083, 33084, 33085, 33086, 33087}
 local dummies                 = {32147, 32148, 32143, 32144, 32145, 32146}
 local bathTube                = {29312, 29313}
 local NOT_MOVEABLE_ACTION     = 8000

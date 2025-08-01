@@ -297,6 +297,12 @@ local function useStaminaXp(player)
 
 	local playerId = player:getId()
 	local currentTime = os.stime()
+	
+	if not nextUseXpStamina[playerId] then
+		nextUseXpStamina[playerId] = currentTime
+		return
+	end
+	
 	local timePassed = currentTime - nextUseXpStamina[playerId]
 	if timePassed <= 0 then
 		return
