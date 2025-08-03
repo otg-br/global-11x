@@ -1723,6 +1723,11 @@ class Player final : public Creature, public Cylinder
 		void setWalkExhaust(int64_t value) {
 			lastWalking = OTSYS_TIME() + value;
 		}
+
+		// Momentum system functions
+		uint32_t getHelmetCooldownReduction() const;
+		void setHelmetCooldownReduction(uint32_t reduction);
+
 		void updateImbuementTrackerStats() const;
 		void sendInventoryImbuements(const std::map<slots_t, Item*> items) const {
 			if (client) {
@@ -1924,6 +1929,7 @@ class Player final : public Creature, public Cylinder
 		uint16_t lastTimeStamina = 0;
 		uint16_t lastStatsTrainingTime = 0;
 		uint16_t staminaMinutes = 2520;
+		uint32_t helmetCooldownReduction = 0;
 		std::vector<uint8_t> blessings = { 0, 0, 0, 0, 0, 0, 0, 0 };
 		uint16_t maxWriteLen = 0;
 		uint16_t baseXpGain = 100;

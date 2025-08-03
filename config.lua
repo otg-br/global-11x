@@ -81,6 +81,10 @@ freeDepotLimit = 2000
 premiumDepotLimit = 10000
 depotBoxes = 18
 
+-- Max players allowed on a dummy.
+maxAllowedOnADummy = 5
+rateExerciseTrainingSpeed = rateAttackSpeed
+
 -- GameStore
 gamestoreByModules = false
 

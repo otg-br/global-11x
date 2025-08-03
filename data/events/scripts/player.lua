@@ -168,6 +168,13 @@ end
 
 local isTrainingStorage = 12835
 
+function Player:onStepTile(fromPosition, toPosition)
+    if hasEvent.onStepTile then
+        return Event.onStepTile(self, fromPosition, toPosition)
+    end
+    return true
+end
+
 function Player:onMoveCreature(creature, fromPosition, toPosition)
    if hasEvent.onMoveCreature then
 		return Event.onMoveCreature(self, creature, fromPosition, toPosition)

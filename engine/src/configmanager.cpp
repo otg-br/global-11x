@@ -267,6 +267,8 @@ bool ConfigManager::load()
 	integer[TIME_GMT] = getGlobalNumber(L, "timeGMT", -3 * 60 * 60);
 	integer[ANTI_MULTI_CLIENT_LIMIT] = getGlobalNumber(L, "antiMultiClientLimit", 4);
 	integer[PVP_PROTECTION_LEVEL] = getGlobalNumber(L, "pvpProtectionLevel", 50);
+	integer[MAX_ALLOWED_ON_A_DUMMY] = getGlobalNumber(L, "maxAllowedOnADummy", 5);
+	integer[RATE_EXERCISE_TRAINING_SPEED] = getGlobalNumber(L, "rateExerciseTrainingSpeed", 1.0);
 
 	floating[RATE_MONSTER_HEALTH] = getGlobalFloat(L, "rateMonsterHealth", 1.0);
 	floating[RATE_MONSTER_ATTACK] = getGlobalFloat(L, "rateMonsterAttack", 1.0);

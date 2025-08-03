@@ -2193,6 +2193,8 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::NETWORK_ATTACK_THRESHOLD)
 	registerEnumIn("configKeys", ConfigManager::AUTOLOOT_MODE)
 	registerEnumIn("configKeys", ConfigManager::TIME_GMT)
+	registerEnumIn("configKeys", ConfigManager::MAX_ALLOWED_ON_A_DUMMY)
+	registerEnumIn("configKeys", ConfigManager::RATE_EXERCISE_TRAINING_SPEED)
 
 	registerEnumIn("configKeys", ConfigManager::RATE_MONSTER_HEALTH)
 	registerEnumIn("configKeys", ConfigManager::RATE_MONSTER_ATTACK)
@@ -2796,6 +2798,10 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Player", "setBonusRerollCount", LuaScriptInterface::luaPlayerSetBonusRerollCount);
 	
 	registerMethod("Player", "isOffline", LuaScriptInterface::luaPlayerIsOffline);
+
+	// Momentum system functions
+	registerMethod("Player", "getHelmetCooldownReduction", LuaScriptInterface::luaPlayerGetHelmetCooldownReduction);
+	registerMethod("Player", "setHelmetCooldownReduction", LuaScriptInterface::luaPlayerSetHelmetCooldownReduction);
 
 	registerMethod("Player", "getBaseXpGain", LuaScriptInterface::luaPlayerGetBaseXpGain);
 	registerMethod("Player", "setBaseXpGain", LuaScriptInterface::luaPlayerSetBaseXpGain);
@@ -19617,4 +19623,31 @@ void LuaEnvironment::executeTimerEvent(uint32_t eventIndex)
 	for (auto parameter : timerEventDesc.parameters) {
 		luaL_unref(luaState, LUA_REGISTRYINDEX, parameter);
 	}
+}
+
+// Momentum system functions
+int LuaScriptInterface::luaPlayerGetHelmetCooldownReduction(lua_State* L)
+{
+	// player:getHelmetCooldownReduction()
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		lua_pushnumber(L, player->getHelmetCooldownReduction());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerSetHelmetCooldownReduction(lua_State* L)
+{
+	// player:setHelmetCooldownReduction(reduction)
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		uint32_t reduction = getNumber<uint32_t>(L, 2);
+		player->setHelmetCooldownReduction(reduction);
+		pushBoolean(L, true);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
 }

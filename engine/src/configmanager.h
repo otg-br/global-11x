@@ -22,6 +22,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <map>
 
 class ConfigManager
 {
@@ -159,6 +160,8 @@ class ConfigManager
 			TIME_GMT,
 			ANTI_MULTI_CLIENT_LIMIT,
 			PVP_PROTECTION_LEVEL,
+			MAX_ALLOWED_ON_A_DUMMY,
+			RATE_EXERCISE_TRAINING_SPEED,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};

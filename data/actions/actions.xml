@@ -590,8 +590,7 @@
 	<action itemid="7739" script="others/objects/costumeBags.lua" />
 	<action itemid="9076" script="others/objects/costumeBags.lua" />
 	<action itemid="13941" script="others/objects/cupOfMoltenGold.lua" />
-	<action fromid="33082" toid="33087" script="others/objects/exerciseTraining.lua" allowfaruse="1"/>
-	<action fromid="32127" toid="32129" script="others/objects/exerciseTraining.lua" allowfaruse="1"/>
+
 	<action itemid="6576" script="others/objects/fireworksRocket.lua" />
 	<action itemid="26347" script="others/objects/fishTank.lua"/>
 	<action itemid="23574" script="others/objects/gloothBag.lua"/>

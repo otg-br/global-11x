@@ -815,6 +815,9 @@ void Spell::postCastSpell(Player* player, bool finishedCast /*= true*/, bool pay
 {
 	if (finishedCast) {
 		if (!player->hasFlag(PlayerFlag_HasNoExhaustion)) {
+			// Momentum system: Apply cooldown reduction for secondary group spells
+			uint32_t momentumReduction = player->getHelmetCooldownReduction();
+			
 			if (cooldown > 0) {
 				Condition* condition = Condition::createCondition(CONDITIONID_DEFAULT, CONDITION_SPELLCOOLDOWN, cooldown, 0, false, spellId);
 				player->addCondition(condition);
@@ -826,7 +829,20 @@ void Spell::postCastSpell(Player* player, bool finishedCast /*= true*/, bool pay
 			}
 
 			if (secondaryGroupCooldown > 0) {
-				Condition* condition = Condition::createCondition(CONDITIONID_DEFAULT, CONDITION_SPELLGROUPCOOLDOWN, secondaryGroupCooldown, 0, false, secondaryGroup);
+				// Apply Momentum reduction to secondary group cooldowns
+				uint32_t reducedCooldown = secondaryGroupCooldown;
+				
+				// Apply Momentum reduction
+				if (momentumReduction > 0) {
+					if (reducedCooldown > momentumReduction) {
+						reducedCooldown -= momentumReduction;
+					} else {
+						reducedCooldown = 0; // No cooldown if reduction is greater
+					}
+				}
+				
+				// Always apply the condition, even if 0
+				Condition* condition = Condition::createCondition(CONDITIONID_DEFAULT, CONDITION_SPELLGROUPCOOLDOWN, reducedCooldown, 0, false, secondaryGroup);
 				player->addCondition(condition);
 			}
 		}

@@ -342,6 +342,8 @@ Storage = {
 		exaust = 98231521
 	},
 
+	ExerciseDummyExhaust = 30029,
+
 	DangerousDepths = {
 	Questline = 800,
 		Dwarves = {

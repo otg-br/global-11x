@@ -39,6 +39,7 @@
 	<event class="Player" method="clearImbuement" enabled="1" />
 	<event class="Player" method="onCombat" enabled="1" />
 	<event class="Player" method="onRemoveCount" enabled="1" /> <!-- tibia 11 function -->
+	<event class="Player" method="onStepTile" enabled="1" />
 
 	<!-- Monster Methods -->
 	<event class="Monster" method="onDropLoot" enabled="1" /> 
