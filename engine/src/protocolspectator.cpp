@@ -101,7 +101,7 @@ void ProtocolSpectator::onRecvFirstMessage(NetworkMessage& msg)
 	}
 	std::string password = sessionKey.substr(pos + 1);
 	if (password.empty()) {
-		password = "cast";
+		password = ""; // Allow empty password for cast
 	}
 	std::string characterName = msg.getString();
 
@@ -299,6 +299,7 @@ void ProtocolSpectator::login(const std::string& liveCastName, const std::string
 	}
 
 	const auto& liveCastPassword = liveCasterProtocol->getLiveCastPassword();
+	
 	if (liveCasterProtocol->isLiveCaster()) {
 		if (!liveCastPassword.empty() && password != liveCastPassword) {
 			disconnectSpectator("Wrong live cast password.");

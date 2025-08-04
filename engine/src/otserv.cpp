@@ -462,6 +462,7 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 	uint16_t loginPort = static_cast<uint16_t>(g_config.getNumber(ConfigManager::LOGIN_PORT));
 	uint16_t gamePort = static_cast<uint16_t>(g_config.getNumber(ConfigManager::GAME_PORT));
 	uint16_t statusPort = static_cast<uint16_t>(g_config.getNumber(ConfigManager::STATUS_PORT));
+	uint16_t liveCastPort = static_cast<uint16_t>(g_config.getNumber(ConfigManager::LIVE_CAST_PORT));
 
 	// Game client protocols
 	services->add<ProtocolGame>(gamePort);
@@ -472,6 +473,11 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 
 	// Legacy login protocol
 	services->add<ProtocolOld>(loginPort);
+
+	// Live Cast protocol
+	if (g_config.getBoolean(ConfigManager::ENABLE_LIVE_CASTING)) {
+		services->add<ProtocolSpectator>(liveCastPort);
+	}
 
 	console::printLoginPorts(loginPort, gamePort, statusPort);
 

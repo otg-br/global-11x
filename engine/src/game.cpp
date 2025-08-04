@@ -153,6 +153,10 @@ void Game::setGameState(GameState_t newState)
 			loadMotdNum();
 			loadPlayersRecord();
 			g_globalEvents->startup();
+
+			if (g_config.getBoolean(ConfigManager::ENABLE_LIVE_CASTING)) {
+				ProtocolGame::clearLiveCastInfo();
+			}
 			break;
 		}
 
