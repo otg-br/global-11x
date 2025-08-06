@@ -1,10 +1,10 @@
 function onUse(player, item, position, target, targetPosition)
-	local days = item.actionid - 7097
-	if days > 0 then
-		item:remove(1)
-		player:setPremiumEndsAt(player:getPremiumEndsAt() + (days * 86400)) -- Add days to current premium time
-		player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("You won %d days VIP, now you have %d days VIP.", days, math.max(0, math.ceil((player:getPremiumEndsAt() - os.stime()) / 86400))))
-	end
-
-	return true
+	local days = 30  -- Fixed 30 days VIP
+    
+    item:remove(1)
+    player:addVipDays(days)
+    
+    player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("You won %d days VIP, now you have %d days VIP.", days, math.max(0, math.ceil((player:getVipDays() - os.time()) / 86400))))
+    
+    return true
 end

@@ -150,6 +150,10 @@ forceMonsterTypesOnLoad = true
 yellMinimumLevel = 2
 yellAlwaysAllowPremium = false
 
+-- Store Configuration
+-- Experience Boost Prices (can be modified without recompiling)
+expBoostPrice1 = 45  -- 1x boost price
+
 -- Server Save
 -- NOTE: serverSaveNotifyDuration in minutes
 serverSaveNotifyMessage = true

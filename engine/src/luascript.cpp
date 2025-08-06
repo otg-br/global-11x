@@ -2716,6 +2716,10 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Player", "getPremiumEndsAt", LuaScriptInterface::luaPlayerGetPremiumEndsAt);
 	registerMethod("Player", "setPremiumEndsAt", LuaScriptInterface::luaPlayerSetPremiumEndsAt);
 
+	registerMethod("Player", "getVipDays", LuaScriptInterface::luaPlayerGetVipDays);
+	registerMethod("Player", "addVipDays", LuaScriptInterface::luaPlayerAddVipDays);
+	registerMethod("Player", "removeVipDays", LuaScriptInterface::luaPlayerRemoveVipDays);
+
 	registerMethod("Player", "getTibiaCoins", LuaScriptInterface::luaPlayerGetTibiaCoins);
 	registerMethod("Player", "getCoinsBalance", LuaScriptInterface::luaPlayerGetTibiaCoins);
 	registerMethod("Player", "addTibiaCoins", LuaScriptInterface::luaPlayerAddTibiaCoins);
@@ -10850,6 +10854,68 @@ int LuaScriptInterface::luaPlayerSetPremiumEndsAt(lua_State* L)
 
 	player->setPremiumTime(timestamp);
 	IOLoginData::updatePremiumTime(player->getAccount(), timestamp);
+	pushBoolean(L, true);
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerGetVipDays(lua_State* L)
+{
+	// player:getVipDays()
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		lua_pushnumber(L, player->viptime);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerAddVipDays(lua_State* L)
+{
+	// player:addVipDays(days)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	if (player->viptime != std::numeric_limits<uint32_t>::max()) {
+		uint32_t days = (getNumber<uint32_t>(L, 2) * 86400);
+		uint32_t addDays = OS_TIME(nullptr);
+		if (player->viptime > addDays) {
+			addDays = player->viptime + days;
+		} else {
+			addDays += days;
+		}
+
+		player->setVipDays(addDays);
+		IOLoginData::setVipDays(player->getAccount(), addDays);
+	}
+	pushBoolean(L, true);
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerRemoveVipDays(lua_State* L)
+{
+	// player:removeVipDays(days)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	if (player->viptime != std::numeric_limits<uint32_t>::max()) {
+		uint32_t days = (getNumber<uint32_t>(L, 2) * 86400);
+		uint32_t removeDays = OS_TIME(nullptr);
+		if (player->viptime > removeDays) {
+			removeDays = player->viptime - days;
+		} else {
+			removeDays -= days;
+		}
+
+		player->setVipDays(removeDays);
+		IOLoginData::setVipDays(player->getAccount(), removeDays);
+	}
 	pushBoolean(L, true);
 	return 1;
 }

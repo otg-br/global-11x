@@ -1736,7 +1736,7 @@ Storage = {
 	Supply = 7095,
 
 	SkillBot = 7096,
-	VipSystem = 7097,
+	VipSystem = 30037,
 
 	NPCTable = 7098,
 

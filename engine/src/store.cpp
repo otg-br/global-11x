@@ -8,6 +8,7 @@
 #include "pugicast.h"
 #include "game.h"
 #include "configmanager.h"
+#include "luascript.h"
 
 extern Game g_game;
 extern ConfigManager g_config;
@@ -744,4 +745,23 @@ std::string StoreOffer::getDescription(Player* player /*= nullptr */)
 	}
 
 	return showDesc;
+}
+
+uint32_t StoreOffer::getExpBoostPrice(int32_t value)
+{
+	// Get prices from config.lua
+	switch (value) {
+		case 1:
+			return g_config.getNumber(ConfigManager::EXP_BOOST_PRICE1);
+		case 2:
+			return g_config.getNumber(ConfigManager::EXP_BOOST_PRICE2);
+		case 3:
+			return g_config.getNumber(ConfigManager::EXP_BOOST_PRICE3);
+		case 4:
+			return g_config.getNumber(ConfigManager::EXP_BOOST_PRICE4);
+		case 5:
+			return g_config.getNumber(ConfigManager::EXP_BOOST_PRICE5);
+		default:
+			return g_config.getNumber(ConfigManager::EXP_BOOST_PRICE1);
+	}
 }
