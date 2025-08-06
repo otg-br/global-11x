@@ -596,7 +596,6 @@ function Player.updateExpState(self)
 	else
 		displayRate = 1
 	end
-
 	-- display stamina
 	local staminaMinutes = self:getStamina()
 	if staminaMinutes > 2400 and isPremium then
@@ -606,7 +605,6 @@ function Player.updateExpState(self)
 	else
 		self:setStaminaXpBoost(50)
 	end
-
 
 	local storeBoost = self:getExpBoostStamina()
 
@@ -621,8 +619,6 @@ function Player.updateExpState(self)
 	else
 		self:setGrindingXpBoost(0)
 	end
-
-
 
 	self:setBaseXpGain(displayRate*100)
 	return true

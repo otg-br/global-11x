@@ -10,7 +10,6 @@
 #include "const.h"
 #include "enums.h"
 #include "tools.h"
-#include <cstdint>
 #include <boost/lexical_cast.hpp>
 
 class Player;
@@ -279,7 +278,21 @@ class StoreOffer {
 			return skull;
 		}
 
-		uint32_t getExpBoostPrice(int32_t value);
+		uint32_t getExpBoostPrice(int32_t value) {
+			if(value == 1)
+				return 30;
+			else if (value == 2)
+				return 45;
+			else if (value == 3)
+				return 90;
+			else if (value == 4)
+				return 180;
+			else if (value == 5)
+				return 360;
+			else
+				return 30;
+
+		}
 
 		bool haveOfferRookgaard() {
 			return rookgaard;
