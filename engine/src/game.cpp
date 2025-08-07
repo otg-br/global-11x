@@ -2919,7 +2919,7 @@ void Game::playerRotateItem(uint32_t playerId, const Position& pos, uint8_t stac
 	}
 }
 
-void Game::playerWrapableItem(uint32_t playerId, const Position& pos, uint8_t stackPos, const uint16_t spriteId)
+void Game::playerWrapItem(uint32_t playerId, const Position& pos, uint8_t stackPos, const uint16_t spriteId)
 {
 	Player* player = getPlayerByID(playerId);
 	if (!player) {
@@ -2944,7 +2944,7 @@ void Game::playerWrapableItem(uint32_t playerId, const Position& pos, uint8_t st
 		item->setIntAttr(ITEM_ATTRIBUTE_WRAPID, newId);
 		item->removeAttribute(ITEM_ATTRIBUTE_ACTIONID);
 
-		SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerWrapableItem, this,
+		SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerWrapItem, this,
 			playerId, pos, stackPos, spriteId));
 		player->setNextWalkActionTask(task);
 		return;
@@ -2978,7 +2978,7 @@ void Game::playerWrapableItem(uint32_t playerId, const Position& pos, uint8_t st
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 				this, player->getID(), listDir)));
 
-			SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerWrapableItem, this,
+			SchedulerTask* task = createSchedulerTask(400, std::bind(&Game::playerWrapItem, this,
 				playerId, pos, stackPos, spriteId));
 			player->setNextWalkActionTask(task);
 		} else {

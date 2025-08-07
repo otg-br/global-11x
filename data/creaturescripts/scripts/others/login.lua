@@ -118,9 +118,8 @@ function onLogin(player)
 		player:setStorageValue(Storage.DreamCourts.UnsafeRelease.hasBait, - 1)
 	end
 	
-	local isTrainingStorage = 12835
-	if player:getStorageValue(isTrainingStorage) >= 1 then
-		player:setStorageValue(isTrainingStorage, -1)
+	if player:getStorageValue(Storage.isTrainingStorage) >= 1 then
+		player:setStorageValue(Storage.isTrainingStorage, -1)
 	end
 
 	if player:getStorageValue(ENTREGAR_QUESTS) < 1 then

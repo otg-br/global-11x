@@ -1947,4 +1947,7 @@ GlobalStorage = {
 	WarDelay = 69800,
 	WarDelay1 = 69801,
 
+	-- Training Storage
+	isTrainingStorage = 12835,
+
 }

@@ -199,33 +199,7 @@ local getDefaultModalState --(player)
 local sendModalSelectRecursive --(player)
 local getChoiceModalState --(playerid, rewardAmmount)
 -- -----------------
-local function getHours(seconds)
-    return math.floor((seconds/60)/60)
-end
 
-local function getMinutes(seconds)
-    return math.floor(seconds/60)
-end
-
-local function getSeconds(seconds)
-    return seconds%60
-end
-local function getTimeinWords(secs)
-    local hours, minutes, seconds = getHours(secs), getMinutes(secs), getSeconds(secs)
-    if (minutes > 59) then
-        minutes = minutes-hours*60
-    end
-
-    local timeStr = ''
-
-    if hours > 0 then
-        timeStr = timeStr .. string.format('%d hour%s',hours,(hours > 1 and "s" or '') )
-    end
-
-    timeStr = timeStr .. string.format('%d minute%s and %d second%s',minutes,(minutes~=1 and "s" or ''), seconds, (seconds~=1 and 's' or ''))
-
-    return timeStr
-end
 
 local function getDefaultStateData(player, MODAL_STATE)
     local statedata = {}

@@ -5,48 +5,6 @@ function Player:onBrowseField(position)
 	return true
 end
 
-local function getHours(seconds)
-    return math.floor((seconds / 60) / 60)
-end
-
-local function getMinutes(seconds)
-    return math.floor(seconds / 60)
-end
-
-local function getSeconds(seconds)
-    return seconds % 60
-end
-
-local function getTime(seconds)
-    local hours, minutes = getHours(seconds), getMinutes(seconds)
-    if minutes > 59 then
-        minutes = minutes - hours * 60
-    end
-
-    if minutes < 10 then
-        minutes = "0" .. minutes
-    end
-
-    return hours .. ":" .. minutes .. "h"
-end
-
-local function getTimeinWords(secs)
-    local hours, minutes, seconds = getHours(secs), getMinutes(secs), getSeconds(secs)
-    if minutes > 59 then
-        minutes = minutes - hours * 60
-    end
-
-    local timeStr = ''
-
-    if hours > 0 then
-        timeStr = timeStr .. hours .. ' hours '
-    end
-
-    timeStr = timeStr .. minutes .. ' minutes and ' .. seconds .. ' seconds.'
-
-    return timeStr
-end
-
 function Player:onLook(thing, position, distance)
  local description = ""
 	if hasEvent.onLook then
@@ -78,55 +36,6 @@ if hasEvent.onLookInShop then
 	self:sendTextMessage(MESSAGE_INFO_DESCR, description)
 end
 
-local config = {
-	maxItemsPerSeconds = 1,
-	exhaustTime = 2000,
-}
-
-if not pushDelay then
-	pushDelay = { }
-end
-
-local function antiPush(self, item, count, fromPosition, toPosition, fromCylinder, toCylinder)
-	if toPosition.x == CONTAINER_POSITION then
-		return true
-	end
-
-	local tile = Tile(toPosition)
-	if not tile then
-		self:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
-		return false
-	end
-
-	local cid = self:getId()
-	if not pushDelay[cid] then
-		pushDelay[cid] = {items = 0, time = 0}
-	end
-
-	pushDelay[cid].items = pushDelay[cid].items + 1
-
-	local currentTime = os.mtime()
-	if pushDelay[cid].time == 0 then
-		pushDelay[cid].time = currentTime
-	elseif pushDelay[cid].time == currentTime then
-		pushDelay[cid].items = pushDelay[cid].items + 1
-	elseif currentTime > pushDelay[cid].time then
-		pushDelay[cid].time = 0
-		pushDelay[cid].items = 0
-	end
-
-	if pushDelay[cid].items > config.maxItemsPerSeconds then
-		pushDelay[cid].time = currentTime + config.exhaustTime
-	end
-
-	if pushDelay[cid].time > currentTime then
-		self:sendCancelMessage("You can't move that item so fast.")
-		return false
-	end
-
-	return true
-end
-
 function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, toCylinder)
     if hasEvent.onMoveItem then
         return Event.onMoveItem(self, item, count, fromPosition, toPosition, fromCylinder, toCylinder)
@@ -134,74 +43,11 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
     return true
 end
 
-function Player:onItemMoved(item, count, fromPosition, toPosition, fromCylinder, toCylinder)
-    if hasEvent.onItemMoved then
-        Event.onItemMoved(self, item, count, fromPosition, toPosition, fromCylinder, toCylinder)
-    end
-
-    -- Loot Analyser only for version 11.x+
-    local t = Tile(fromCylinder:getPosition())
-    if t then
-        local corpse = t:getTopDownItem()
-        if corpse then
-            local itemType = corpse:getType()
-            if itemType:isCorpse() and toPosition.x == CONTAINER_POSITION then
-                self:sendLootStats(item)
-            end
-        end
-    end
-
-    local containerIdTo = toPosition.y - 64
-    if containerIdTo >= 0 then
-        local containerTo = self:getContainerById(containerIdTo)
-        if containerTo and isDepot(containerTo:getId()) then
-            self:onManageLocker(item, false)
-        elseif containerTo and containerTo:getTopParent() and containerTo:getTopParent():getId() == self:getId() then
-            local fromContainerId = fromPosition.y - 64
-            if fromContainerId >= 0 and isDepot(fromContainerId) then
-                self:onManageLocker(item, true)
-            end
-        end
-    end
-end
-
-
-local isTrainingStorage = 12835
-
 function Player:onStepTile(fromPosition, toPosition)
     if hasEvent.onStepTile then
         return Event.onStepTile(self, fromPosition, toPosition)
     end
     return true
-end
-
-function Player:onMoveCreature(creature, fromPosition, toPosition)
-   if hasEvent.onMoveCreature then
-		return Event.onMoveCreature(self, creature, fromPosition, toPosition)
-    end
-
-    if self:getGroup():getId() < 4 then
-        if Game.getWorldType() == WORLD_TYPE_RETRO_OPEN_PVP then
-            if creature:isMonster() and creature:getType() and not creature:getType():isPet() then
-                return false
-            end
-        end
-        if creature:isPlayer() and creature:getStorageValue(isTrainingStorage) > 0 then
-            self:sendCancelMessage("You cannot push a player while they are training.")
-            return false
-        end
-    end
-    return true
-end
-
-local function hasPendingReport(name, targetName, reportType)
-	local f = io.open(string.format("data/reports/players/%s-%s-%d.txt", name, targetName, reportType), "r")
-	if f then
-		io.close(f)
-		return true
-	else
-		return false
-	end
 end
 
 function Player:onReportRuleViolation(targetName, reportType, reportReason, comment, translation)
@@ -319,47 +165,9 @@ function Player:clearImbuement(item, slot)
 	return true
 end
 
-
 function Player:onCombat(target, item, primaryDamage, primaryType, secondaryDamage, secondaryType)
 	if hasEvent.onCombat then
 		return Event.onCombat(self, target, item, primaryDamage, primaryType, secondaryDamage, secondaryType)
 	end
-end
-
-function Player:onWrapItem(item)
-    local topCylinder = item:getTopParent()
-    if not topCylinder then
-        return
-    end
-
-    local tile = Tile(topCylinder:getPosition())
-    if not tile then
-        return
-    end
-
-    local house = tile:getHouse()
-    if not house then
-        self:sendCancelMessage("You can only wrap and unwrap this item inside a house.")
-        return
-    end
-
-    if house ~= self:getHouse() and not string.find(house:getAccessList(SUBOWNER_LIST):lower(), "%f[%a]" .. self:getName():lower() .. "%f[%A]") then
-        self:sendCancelMessage("You cannot wrap or unwrap items from a house, which you are only guest to.")
-        return
-    end
-
-    local wrapId = item:getAttribute("wrapid")
-    if wrapId == 0 then
-        return
-    end
-
-  if not hasEvent.onWrapItem or Event.onWrapItem(self, item) then
-        local oldId = item:getId()
-        item:remove(1)
-        local item = tile:addItem(wrapId)
-        if item then
-            item:setAttribute("wrapid", oldId)
-        end
-    end
 end
 

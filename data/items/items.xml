@@ -10663,6 +10663,7 @@
 	<item id="6112" article="an" name="armor rack">
 		<attribute key="rotateTo" value="6111" />
 		<attribute key="containerSize" value="20" />
+		<attribute key="wrapableTo" value="6114" />
 	</item>
 	<item id="6113" article="a" name="letter to Eremo">
 		<attribute key="weight" value="50" />

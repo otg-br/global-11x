@@ -72,6 +72,7 @@ class Events
 		int32_t playerOnApplyImbuement = -1;
 		int32_t playerClearImbuement = -1;
 		int32_t playerOnCombat = -1;
+		int32_t onWrapItem = -1;
 
 		// Monster
 		int32_t monsterOnSpawn = -1;
@@ -122,6 +123,7 @@ class Events
 		void eventPlayerOnApplyImbuement(Player* player, Imbuement* imbuement, Item* item, uint8_t slot, bool protectionCharm);
 		void eventPlayerClearImbuement(Player* player, Item* item, uint8_t slot);
 		void eventPlayerOnCombat(Player* player, Creature* target, Item* item, CombatDamage& damage);
+		bool eventPlayerOnWrapItem(Player* player, Item* item);
 
 		// Monster
 		bool eventMonsterOnSpawn(Monster* monster, const Position& position, bool startup, bool artificial);
