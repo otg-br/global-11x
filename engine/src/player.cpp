@@ -2001,15 +2001,6 @@ void Player::addExperience(Creature* source, uint64_t exp, bool sendText/* = fal
 			expString += " (active prey bonus";
 		}
 
-		if (isVip()) {
-			if (!hasparenteses) {
-				hasparenteses = true;
-				expString += " (VIP Boost Active";
-			} else {
-				expString += " and VIP Boost";
-			}
-		}
-
 		if (hasparenteses) {
 			expString += ")";
 		}

@@ -154,7 +154,7 @@ function onLogin(player)
         player:setStorageValue(Storage.VipSystem, -1)
     end
 
-    player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("You have %d day%s vip.", days, (days > 1 and "s" or "")))
+    player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("You have %d day%s vip (+10%% experience bonus).", days, (days > 1 and "s" or "")))
 
     -- Handle VIP expiration
     if not hasVip and player:getStorageValue(Storage.VipSystem) > -1 then
