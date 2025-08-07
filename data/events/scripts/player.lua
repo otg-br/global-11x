@@ -43,6 +43,19 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
     return true
 end
 
+function Player:onItemMoved(item, count, fromPosition, toPosition, fromCylinder, toCylinder)
+    if hasEvent.onItemMoved then
+        Event.onItemMoved(self, item, count, fromPosition, toPosition, fromCylinder, toCylinder)
+    end
+end
+
+function Player:onMoveCreature(creature, fromPosition, toPosition)
+    if hasEvent.onMoveCreature then
+        return Event.onMoveCreature(self, creature, fromPosition, toPosition)
+    end
+    return true
+end
+
 function Player:onStepTile(fromPosition, toPosition)
     if hasEvent.onStepTile then
         return Event.onStepTile(self, fromPosition, toPosition)
@@ -126,6 +139,13 @@ function Player:onGainSkillTries(skill, tries)
     end
     tries = tries * configManager.getNumber(configKeys.RATE_SKILL)
  return hasEvent.onGainSkillTries and Event.onGainSkillTries(self, skill, tries) or tries
+end
+
+function Player:onWrapItem(item)
+    if hasEvent.onWrapItem then
+        return Event.onWrapItem(self, item)
+    end
+    return true
 end
 
 function Player:onRemoveCount(item)
