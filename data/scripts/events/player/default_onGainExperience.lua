@@ -111,6 +111,34 @@ local function sharedExpParty(player, exp)
 	return finalExp
 end
 
+if not CAST_BONUS_STATUS then
+	CAST_BONUS_STATUS = {}
+end
+
+	-- Cast System - 5% XP Bonus
+local function sharedExpCast(player, exp)
+	local castConfig = {
+		casterBonusPercent = 5   -- 5% XP bonus for caster
+	}
+	
+	if not player:isLiveCaster() then
+		return exp
+	end
+	
+	local playerId = player:getId()
+
+	if not CAST_BONUS_STATUS[playerId] then
+		CAST_BONUS_STATUS[playerId] = true
+	end
+	
+	if CAST_BONUS_STATUS[playerId] then
+		local casterBonus = exp * castConfig.casterBonusPercent / 100
+		return exp + casterBonus
+	end
+	
+	return exp
+end
+
 local event = Event()
 event.onGainExperience = function(self, source, exp, rawExp, sendText)
 	if not source or source:isPlayer() then
@@ -154,6 +182,9 @@ event.onGainExperience = function(self, source, exp, rawExp, sendText)
 	-- Experience Stage Multiplier
 	exp = Game.getExperienceStage(self:getLevel()) * exp
 	exp = sharedExpParty(self, exp)
+	
+	-- Cast XP Sharing System
+	exp = sharedExpCast(self, exp)
 	
 	-- Store Bonus and Multipliers
 	self:updateExpState()

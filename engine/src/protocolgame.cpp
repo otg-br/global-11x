@@ -369,6 +369,11 @@ void ProtocolGame::addSpectator(ProtocolSpectator_ptr spectatorClient)
 	//DO NOT do any send operations here
 	spectators.emplace_back(spectatorClient);
 	updateLiveCastInfo();
+	
+	if (player) {
+		std::string message = "view" + std::to_string(spectators.size()) + " joined!";
+		sendChannelMessage("", message, TALKTYPE_CHANNEL_O, CHANNEL_CAST);
+	}
 }
 
 void ProtocolGame::removeSpectator(ProtocolSpectator_ptr spectatorClient)
@@ -379,6 +384,11 @@ void ProtocolGame::removeSpectator(ProtocolSpectator_ptr spectatorClient)
 	if (it != spectators.end()) {
 		spectators.erase(it);
 		updateLiveCastInfo();
+		
+		if (player) {
+			std::string message = "view left! Total: " + std::to_string(spectators.size());
+			sendChannelMessage("", message, TALKTYPE_CHANNEL_O, CHANNEL_CAST);
+		}
 	}
 }
 
