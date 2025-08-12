@@ -61,6 +61,10 @@ local function sendLootMessage(player, message, messageType)
     end
     
     player:sendTextMessage(color, message)
+    
+    if messageType == "collected" or messageType == "info" or messageType == "warning" then
+        player:sendChannelMessage("", message, TALKTYPE_CHANNEL_O, 9)
+    end
 end
 
 local CONST_SLOT_BACKPACK = 3
@@ -349,14 +353,15 @@ function canStackInGoldPouch(player, itemId, count)
     
     local itemType = ItemType(itemId)
     if not itemType:isStackable() then
-        return false, 1
+        return false, count
     end
+    
+    local maxStack = 100
     
     for i = 0, goldPouch:getCapacity() - 1 do
         local item = goldPouch:getItem(i)
         if item and item:getId() == itemId then
             local currentCount = item:getCount()
-            local maxStack = itemType:getStackSize()
             
             if currentCount + count <= maxStack then
                 return true, 0
@@ -368,7 +373,6 @@ function canStackInGoldPouch(player, itemId, count)
         end
     end
     
-    local maxStack = itemType:getStackSize()
     local slotsNeeded = math.ceil(count / maxStack)
     return false, slotsNeeded
 end
@@ -378,7 +382,7 @@ local function moveToGoldPouch(player, item)
         return false
     end
 
-    local goldPouch = player:getItemById(26377, true)
+    local goldPouch = player:getItemById(config.GOLD_POUCH, true)
     if not goldPouch then
         sendLootMessage(player, "You need a Gold Pouch to use auto-loot.")
         return false
@@ -633,7 +637,7 @@ moveItemEvent.onMoveItem = function(player, item, count, fromPosition, toPositio
         return true
     end
     
-    if toCylinder:getId() == 26377 then
+    if toCylinder:getId() == config.GOLD_POUCH then
         if AutoLootList and AutoLootList:itemInList(player:getId(), item:getId()) then
             return true
         end
