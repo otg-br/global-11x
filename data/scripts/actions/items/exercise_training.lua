@@ -1,5 +1,4 @@
 local exerciseTraining = Action()
-
 function exerciseTraining.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local playerId = player:getId()
 	local targetId = target:getId()
@@ -12,7 +11,7 @@ function exerciseTraining.onUse(player, item, fromPosition, target, toPosition, 
 
 	if target:isItem() and (table.contains(HouseDummies, targetId) or table.contains(FreeDummies, targetId)) then
 		if onExerciseTraining[playerId] then
-			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "This exercise dummy can only be used after a 30 seconds cooldown.")
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Training stopped manually.")
 			LeaveTraining(playerId)
 			return true
 		end
@@ -60,6 +59,9 @@ function exerciseTraining.onUse(player, item, fromPosition, target, toPosition, 
 			onExerciseTraining[playerId].event = addEvent(ExerciseEvent, 0, playerId, targetPos, item.itemid, targetId)
 			onExerciseTraining[playerId].dummyPos = targetPos
 			player:setStorageValue(Storage.ExerciseDummyExhaust, os.time() + 30)
+			player:setStorageValue(Storage.isTrainingStorage, 1)
+			
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You are training with the exercise dummy, good luck!")
 		end
 		return true
 	end
@@ -72,7 +74,6 @@ for weaponId, weapon in pairs(ExerciseWeaponsTable) do
 		exerciseTraining:allowFarUse(true)
 	end
 end
-
 exerciseTraining:register()
 
 local exerciseTraining_Login = CreatureEvent("ExerciseTraining_Login")
@@ -82,8 +83,20 @@ function exerciseTraining_Login.onLogin(player)
 		stopEvent(onExerciseTraining[player:getId()].event)
 		onExerciseTraining[player:getId()] = nil
 	end
+	
+	player:setStorageValue(Storage.isTrainingStorage, -1)
 
 	return true
 end
+exerciseTraining_Login:register()
 
-exerciseTraining_Login:register() 
+local exerciseTraining_Logout = CreatureEvent("ExerciseTraining_Logout")
+function exerciseTraining_Logout.onLogout(player)
+	local playerId = player:getId()
+	if onExerciseTraining[playerId] then
+		stopEvent(onExerciseTraining[playerId].event)
+		onExerciseTraining[playerId] = nil
+	end
+	return true
+end
+exerciseTraining_Logout:register()

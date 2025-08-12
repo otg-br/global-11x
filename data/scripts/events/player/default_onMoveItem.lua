@@ -94,6 +94,12 @@ local event = Event()
 event.onMoveItem = function(self, item, count, fromPosition, toPosition, fromCylinder, toCylinder)
     -- 1) Exercise Weapons
     if isInArray(exercise_ids, item.itemid) then
+        local containerIdFrom = fromPosition.y - 64
+        local containerFrom = self:getContainerById(containerIdFrom)
+        if containerFrom and containerFrom:getId() == ITEM_STORE_INBOX then
+            return true
+        end
+        
         self:sendCancelMessage("You cannot move this item outside this container.")
         return false
     end

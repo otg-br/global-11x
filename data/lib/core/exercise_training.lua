@@ -35,7 +35,45 @@ function LeaveTraining(playerId)
 	end
 
 	local player = Player(playerId)
+	if player then
+		player:setStorageValue(Storage.isTrainingStorage, -1)
+	end
 	return
+end
+
+function findExerciseWeaponInStoreInbox(player, weaponId)
+	for i = 0, 15 do 
+		local container = player:getContainerById(i)
+		if container and container:getId() == ITEM_STORE_INBOX then
+			for j = 0, container:getSize() - 1 do
+				local item = container:getItem(j)
+				if item and item:getId() == weaponId and item:hasAttribute(ITEM_ATTRIBUTE_CHARGES) then
+					local charges = item:getAttribute(ITEM_ATTRIBUTE_CHARGES)
+					if charges and charges > 0 then
+						return item
+					end
+				end
+			end
+			break
+		end
+	end
+	return nil
+end
+
+function getExerciseWeapon(player, weaponId)
+	local weapon = player:getItemById(weaponId, true)
+	if weapon and weapon:isItem() and weapon:hasAttribute(ITEM_ATTRIBUTE_CHARGES) then
+		local charges = weapon:getAttribute(ITEM_ATTRIBUTE_CHARGES)
+		if charges and charges > 0 then
+			return weapon
+		end
+	end
+	
+	if player:getVipDays() > os.time() then
+		return findExerciseWeaponInStoreInbox(player, weaponId)
+	end
+	
+	return nil
 end
 
 function ExerciseEvent(playerId, tilePosition, weaponId, dummyId)
@@ -57,15 +95,13 @@ function ExerciseEvent(playerId, tilePosition, weaponId, dummyId)
         return true
     end
 
-	if player:getItemCount(weaponId) <= 0 then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You need the training weapon in the backpack, the training has stopped.")
-		LeaveTraining(playerId)
-		return false
-	end
-
-	local weapon = player:getItemById(weaponId, true)
-	if not weapon:isItem() or not weapon:hasAttribute(ITEM_ATTRIBUTE_CHARGES) then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The selected item is not a training weapon, the training has stopped.")
+	local weapon = getExerciseWeapon(player, weaponId)
+	if not weapon then
+		if player:getVipDays() > os.time() then
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You need the training weapon in your backpack or store inbox, the training has stopped.")
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You need the training weapon in the backpack, the training has stopped.")
+		end
 		LeaveTraining(playerId)
 		return false
 	end
@@ -73,9 +109,26 @@ function ExerciseEvent(playerId, tilePosition, weaponId, dummyId)
 	local weaponCharges = weapon:getAttribute(ITEM_ATTRIBUTE_CHARGES)
 	if not weaponCharges or weaponCharges <= 0 then
 		weapon:remove(1)
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared.")
-		LeaveTraining(playerId)
-		return false
+		
+		local nextWeapon = getExerciseWeapon(player, weaponId)
+		if nextWeapon then
+			if player:getVipDays() > os.time() then
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared. Automatically using another one! [VIP Feature]")
+			else
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared. Using another one from your backpack.")
+			end
+			local vocation = player:getVocation()
+			onExerciseTraining[playerId].event = addEvent(ExerciseEvent, vocation:getAttackSpeed() / configManager.getNumber(configKeys.RATE_EXERCISE_TRAINING_SPEED), playerId, tilePosition, weaponId, dummyId)
+			return true
+		else
+			if player:getVipDays() > os.time() then
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared. No more exercise weapons found in backpack or store inbox.")
+			else
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared. You need to equip another one to continue training.")
+			end
+			LeaveTraining(playerId)
+			return false
+		end
 	end
 
 	local isMagic = ExerciseWeaponsTable[weaponId].skill == SKILL_MAGLEVEL
@@ -102,9 +155,26 @@ function ExerciseEvent(playerId, tilePosition, weaponId, dummyId)
 
 	if weapon:getAttribute(ITEM_ATTRIBUTE_CHARGES) <= 0 then
 		weapon:remove(1)
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared.")
-		LeaveTraining(playerId)
-		return false
+		
+		local nextWeapon = getExerciseWeapon(player, weaponId)
+		if nextWeapon then
+			if player:getVipDays() > os.time() then
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared. Automatically using another one! [VIP Feature]")
+			else
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared. Using another one from your backpack.")
+			end
+			local vocation = player:getVocation()
+			onExerciseTraining[playerId].event = addEvent(ExerciseEvent, vocation:getAttackSpeed() / configManager.getNumber(configKeys.RATE_EXERCISE_TRAINING_SPEED), playerId, tilePosition, weaponId, dummyId)
+			return true
+		else
+			if player:getVipDays() > os.time() then
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared. No more exercise weapons found in backpack or store inbox.")
+			else
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared. You need to equip another one to continue training.")
+			end
+			LeaveTraining(playerId)
+			return false
+		end
 	end
 
 	local vocation = player:getVocation()
@@ -114,4 +184,4 @@ end
 
 if onExerciseTraining == nil then
 	onExerciseTraining = {}
-end 
+end
