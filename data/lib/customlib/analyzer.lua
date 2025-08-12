@@ -46,8 +46,13 @@ function Player:addDamageTicks(amount)
 		analyzerDamage[self:getId()] = {}
 	end
 
+	local validAmount = tonumber(amount) or 0
+	if validAmount <= 0 then
+		return true
+	end
+
   	local count = #analyzerDamage[self:getId()]
-  	analyzerDamage[self:getId()][count + 1] = {math.abs(amount), os.stime()}
+  	analyzerDamage[self:getId()][count + 1] = {math.abs(validAmount), os.stime()}
 	analyzerDamage[self:getId()] = updateinfotable(analyzerDamage[self:getId()])
 	return true
 end
@@ -57,8 +62,13 @@ function Player:addExpTicks(amount)
 		analyzerExp[self:getId()] = {}
 	end
 
+	local validAmount = tonumber(amount) or 0
+	if validAmount <= 0 then
+		return true
+	end
+
   	local count = #analyzerExp[self:getId()]
-  	analyzerExp[self:getId()][count + 1] = {math.abs(amount), os.stime()}
+  	analyzerExp[self:getId()][count + 1] = {math.abs(validAmount), os.stime()}
 	analyzerExp[self:getId()] = updateinfotable(analyzerExp[self:getId()])
 	return true
 end

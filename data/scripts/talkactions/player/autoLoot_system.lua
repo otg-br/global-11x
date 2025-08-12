@@ -397,6 +397,11 @@ function AutoLootList.getLootItem(self, playerId, position)
         return false
     end
 
+    local itemCount = self:countList(playerId)
+    if itemCount == 0 then
+        return false
+    end
+
     local tile = Tile(position)
     if not tile then
         return false
@@ -473,6 +478,8 @@ function AutoLootList.getLootItem(self, playerId, position)
     if itemsCollected > 0 then
         local finalUsed = usedSlots + slotsUsedThisSession
         sendLootMessage(player, string.format("Auto-loot session complete: %d items collected, %d slots used. %s: %d/%d slots.", itemsCollected, slotsUsedThisSession, accountType, finalUsed, maxSlots), "info")
+
+        player:openChannel(9)
     end
 
     return true
@@ -480,6 +487,10 @@ end
 
 local system_autoloot_talk = TalkAction("!autoloot", "/autoloot")
 function system_autoloot_talk.onSay(player, words, param, type)
+    if type ~= TALKTYPE_SAY and type ~= TALKTYPE_WHISPER and type ~= TALKTYPE_YELL then
+        return false
+    end
+    
     if player:getStorageValue(AUTO_LOOT_COOLDOWN_STORAGE) > os.time() then
         player:sendCancelMessage(string.format("You are on cooldown. Please wait %d seconds to use the command again.", config.exhaustTime))
         return false
@@ -575,29 +586,35 @@ function system_autoloot_talk.onSay(player, words, param, type)
         
         player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, string.format("=== AUTO LOOT SYSTEM HELP ===\n\nCurrent Status:\n%s\n\nCommands:\n!autoloot add, item name - Add item to auto-loot list\n!autoloot remove, item name - Remove item from auto-loot list\n!autoloot list - Show your auto-loot list\n!autoloot clear - Clear your auto-loot list\n!autoloot monster, monster name - Show monster loot\n\nItems will be automatically moved to your Gold Pouch when collected.\nStackable items (like rubies) will stack together, saving space!", statusText))
     else
-        local usedSlots = getGoldPouchUsedSlots(player)
-        local maxSlots = getGoldPouchMaxSlots(player)
-        local accountType = (player:getVipDays() > os.time()) and "VIP" or "Free"
-        local itemCount = AutoLootList:countList(playerId)
-        
-        sendLootMessage(player, "=== AUTO LOOT SYSTEM ===")
-        
-        if maxSlots == 0 then
-            sendLootMessage(player, string.format("Status: %s account - Gold Pouch: Not found", accountType))
-            sendLootMessage(player, string.format("Configured items: %d types", itemCount))
-            sendLootMessage(player, "You need a Gold Pouch to use auto-loot!")
+        if param and param:trim() ~= "" then
+            local usedSlots = getGoldPouchUsedSlots(player)
+            local maxSlots = getGoldPouchMaxSlots(player)
+            local accountType = (player:getVipDays() > os.time()) and "VIP" or "Free"
+            local itemCount = AutoLootList:countList(playerId)
+            
+            sendLootMessage(player, "=== AUTO LOOT SYSTEM ===")
+            
+            if maxSlots == 0 then
+                sendLootMessage(player, string.format("Status: %s account - Gold Pouch: Not found", accountType))
+                sendLootMessage(player, string.format("Configured items: %d types", itemCount))
+                sendLootMessage(player, "You need a Gold Pouch to use auto-loot!")
+            else
+                sendLootMessage(player, string.format("Status: %s account - Gold Pouch slots: %d/%d used", accountType, usedSlots, maxSlots))
+                sendLootMessage(player, string.format("Configured items: %d types", itemCount))
+            end
+            
+            sendLootMessage(player, "Commands:")        
+            sendLootMessage(player, "!autoloot add, item name - Add item to auto-loot list")
+            sendLootMessage(player, "!autoloot remove, item name - Remove item from auto-loot list")
+            sendLootMessage(player, "!autoloot list - Show your auto-loot list")
+            sendLootMessage(player, "!autoloot clear - Clear your auto-loot list")
+            sendLootMessage(player, "Items will be moved to your Gold Pouch.")
+            sendLootMessage(player, string.format("Limits: VIP players (%d slots), Free players (%d slots)", config.vipMaxItems, config.freeMaxItems))
         else
-            sendLootMessage(player, string.format("Status: %s account - Gold Pouch slots: %d/%d used", accountType, usedSlots, maxSlots))
-            sendLootMessage(player, string.format("Configured items: %d types", itemCount))
+            if param == "" or not param then
+                sendLootMessage(player, "Use !autoloot help for commands.")
+            end
         end
-        
-        sendLootMessage(player, "Commands:")        
-        sendLootMessage(player, "!autoloot add, item name - Add item to auto-loot list")
-        sendLootMessage(player, "!autoloot remove, item name - Remove item from auto-loot list")
-        sendLootMessage(player, "!autoloot list - Show your auto-loot list")
-        sendLootMessage(player, "!autoloot clear - Clear your auto-loot list")
-        sendLootMessage(player, "Items will be moved to your Gold Pouch.")
-        sendLootMessage(player, string.format("Limits: VIP players (%d slots), Free players (%d slots)", config.vipMaxItems, config.freeMaxItems))
         return false
     end
 

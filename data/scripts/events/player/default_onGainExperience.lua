@@ -69,17 +69,22 @@ local function useStaminaXp(player)
 end
 
 local function sharedExpParty(player, exp)
+	local validExp = tonumber(exp) or 0
+	if validExp <= 0 then
+		return validExp
+	end
+
 	local party = player:getParty()
 	if not party then
-		return exp
+		return validExp
 	end
 
 	if not party:isSharedExperienceActive() then
-		return exp
+		return validExp
 	end
 
 	if not party:isSharedExperienceEnabled() then
-		return exp
+		return validExp
 	end
 
 	local config = {
@@ -107,8 +112,8 @@ local function sharedExpParty(player, exp)
 		end
 	end	
 
-	local finalExp = (exp * sharedExperienceMultiplier) / (#party:getMembers() + 1)
-	return finalExp
+	local finalExp = (validExp * sharedExperienceMultiplier) / (#party:getMembers() + 1)
+	return math.max(0, finalExp)
 end
 
 if not CAST_BONUS_STATUS then
@@ -117,12 +122,17 @@ end
 
 	-- Cast System - 5% XP Bonus
 local function sharedExpCast(player, exp)
+	local validExp = tonumber(exp) or 0
+	if validExp <= 0 then
+		return validExp
+	end
+
 	local castConfig = {
 		casterBonusPercent = 5   -- 5% XP bonus for caster
 	}
 	
 	if not player:isLiveCaster() then
-		return exp
+		return validExp
 	end
 	
 	local playerId = player:getId()
@@ -132,18 +142,21 @@ local function sharedExpCast(player, exp)
 	end
 	
 	if CAST_BONUS_STATUS[playerId] then
-		local casterBonus = exp * castConfig.casterBonusPercent / 100
-		return exp + casterBonus
+		local casterBonus = validExp * castConfig.casterBonusPercent / 100
+		return validExp + casterBonus
 	end
 	
-	return exp
+	return validExp
 end
 
 local event = Event()
 event.onGainExperience = function(self, source, exp, rawExp, sendText)
 	if not source or source:isPlayer() then
 		if self:getClient().version <= 1100 then
-			self:addExpTicks(exp)
+			local validExp = tonumber(exp) or 0
+			if validExp > 0 then
+				self:addExpTicks(validExp)
+			end
 		end
 		return exp
 	end
@@ -226,7 +239,10 @@ event.onGainExperience = function(self, source, exp, rawExp, sendText)
 	exp = exp * staminaMultiplier
 	
 	if self:getClient().version <= 1100 then
-		self:addExpTicks(exp)
+		local validExp = tonumber(exp) or 0
+		if validExp > 0 then
+			self:addExpTicks(validExp)
+		end
 	end
 	
 	return exp

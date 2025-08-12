@@ -797,6 +797,7 @@ Storage = {
 		Warzone1Reward = 958,
 		Warzone2Reward = 959,
 		Warzone3Reward = 960,
+
 		bossKills = 961,
 		openGoldenFruits = 962,
 
@@ -1739,6 +1740,12 @@ Storage = {
 
 	NPCTable = 7098,
 
+	TaskLinked = {
+		storageBase = 1010000,
+		activeTaskStorage = 1011000,
+		roomStorageBase = 1010500,
+		chestActionId = 49026
+	}
 }
 
 GlobalStorage = {
