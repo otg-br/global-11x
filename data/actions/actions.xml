@@ -123,8 +123,7 @@
 	<action itemid="24181" pos="32240;32179;8" script="arena_pvp/arena10x10.lua"/>
 	<action itemid="24173" pos="32271;32180;8" script="arena_pvp/arena2x2.lua"/>
 
-	<!-- Autoloot mode 2 -->
-	<!-- <action actionid="500" script="autoloot.lua" /> -->
+
 
 	<!-- Barbarian Test Quest -->
 	<action fromid="7174" toid="7176" script="quests/barbarian test/horn.lua" />

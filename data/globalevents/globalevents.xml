@@ -11,9 +11,6 @@
 	<!-- Morgathla -->
 	<globalevent name="morgathlaTiles" interval="15000" script="morgathlaTiles.lua" />
 
-	<!-- Autoloot -->
-	<globalevent name="autoloot" type="startup" script="autoloot.lua"/>
-
 	<!-- Mawhawk -->
 	<globalevent name="Mawhawk" interval="14399999" script="bosses/Mawhawk.lua"/>
 

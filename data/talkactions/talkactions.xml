@@ -58,7 +58,6 @@
 	<talkaction words="/kick" separator=" " script="gamemaster/kick.lua" />
 	<talkaction words="/b" separator=" " script="gamemaster/broadcast.lua" />
 	<talkaction words="/looktype" separator=" " script="gamemaster/looktype.lua" />
-
 	<!--Tutor/Senior -->
 	<talkaction words="/mute" separator=" " script="tutor/mute.lua" />
 
@@ -79,14 +78,6 @@
 	<talkaction words="!frags" separator=" " script="player/frags.lua" />
 	<talkaction words="!xpinfo" script="player/xpinfo.lua" />
 
-	<!-- Autoloot Vankk -->
-	<talkaction words="!autoloot" separator=" " script="player/autoloot.lua" />
-
-
-	<!-- <talkaction words="!add" separator=" " script="player/addautoloot.lua" /> -->
-	<!-- <talkaction words="!show" separator=" " script="player/autoloot_show.lua" /> -->
-	<!-- <talkaction words="!bp" separator=" " script="player/autoloot_container.lua" /> -->
-	<!-- <talkaction words="!autoloot" separator=" " script="player/autoloot_help.lua" /> -->
 	<!-- <talkaction words="!analyser" separator=" " script="player/analyser.lua" /> -->
 	<!-- <talkaction words="!daily" separator=" " script="player/dailyrewardtalkaction.lua" /> -->
 	<!-- Guild -->

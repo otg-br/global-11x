@@ -296,27 +296,31 @@ event.onMoveItem = function(self, item, count, fromPosition, toPosition, fromCyl
         end
         -- Gold Pouch
         if containerTo:getId() == GOLD_POUCH then
-            -- Only coins can be moved
-            if (item:getId() ~= ITEM_CRYSTAL_COIN and
-                item:getId() ~= ITEM_PLATINUM_COIN and
-                item:getId() ~= ITEM_GOLD_COIN) then
-                self:sendCancelMessage("You can only move money to this container.")
-                return false
-            end
-
-            -- Convert coins into bank balance
+            -- Check if it's a coin
             local worth = {
                 [ITEM_GOLD_COIN]     = 1,
                 [ITEM_PLATINUM_COIN] = 100,
                 [ITEM_CRYSTAL_COIN]  = 10000,
             }
             local goldValue = worth[item:getId()]
+            
             if goldValue then
+                -- Convert coins into bank balance
                 local newBalance = self:getBankBalance() + (goldValue * item:getCount())
                 item:remove()
                 self:setBankBalance(newBalance)
                 self:sendTextMessage(MESSAGE_STATUS_DEFAULT, string.format("Your new bank balance is %d gps.", newBalance))
                 return true
+            else
+                -- Check if it's an autoloot item (allow autoloot items to be stored)
+                if AutoLootList and AutoLootList:itemInList(self:getId(), item:getId()) then
+                    -- Allow autoloot items to be moved to Gold Pouch
+                    return true
+                else
+                    -- Only coins and autoloot items can be moved
+                    self:sendCancelMessage("You can only move money or auto-loot items to this container.")
+                    return false
+                end
             end
         end
 

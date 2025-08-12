@@ -71,6 +71,15 @@ clientVersionStr = "Only support outdated 10.00 and version 12.91"
 antiMultiClientEnabled = true
 antiMultiClientLimit = 2
 
+-- Auto Loot Configuration
+-- NOTE: autolootmode values:
+-- 0 = disabled
+-- 1 = enabled (items go to player inventory)
+-- 2 = enabled (items go to backpack)
+autolootmode = 2
+vip_autoloot = 25
+free_autoloot = 15
+
 -- Configuração para permitir mount em Protection Zone (PZ)
 -- true = permite mount em PZ
 -- false = não permite mount em PZ (comportamento padrão)
@@ -124,9 +133,9 @@ maxMarketOffersAtATimePerPlayer = 100
 
 -- MySQL
 mysqlHost = "127.0.0.1"
-mysqlUser = "root"
+mysqlUser = "forgottenserver"
 mysqlPass = ""
-mysqlDatabase = "database"
+mysqlDatabase = "forgottenserver"
 mysqlPort = 3306
 mysqlSock = ""
 passwordType = "sha1"

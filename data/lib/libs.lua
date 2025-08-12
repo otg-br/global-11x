@@ -35,6 +35,3 @@ dofile('data/lib/events/private_war.lua')
 
 -- Debugging helper function for Lua developers
 dofile('data/lib/debugging/dump.lua')
-
--- Autoloot
-dofile('data/lib/autoloot.lua')

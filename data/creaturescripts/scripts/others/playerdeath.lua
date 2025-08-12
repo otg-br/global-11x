@@ -24,7 +24,7 @@ function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDama
 		nextUseStaminaTime[playerId] = nil
 	end
 	
-	AutoLootList:onLogout(player:getId(), player:getGuid())
+
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You are dead.')
 	if player:getStorageValue(Storage.SvargrondArena.Pit) > 0 then

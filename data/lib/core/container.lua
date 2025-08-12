@@ -3,7 +3,7 @@ function Container.isContainer(self)
 end
 
 --[[
-	return values for autoloot
+	return values for loot creation
 	0 = Did not drop the item. No error
 	-1 = For some reason, the item can not be created.
 	> 0 = UID

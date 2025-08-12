@@ -14,7 +14,7 @@ function onLogout(player)
         nextUseStaminaTime[playerId] = nil
     end
 	
-	AutoLootList:onLogout(player:getId(), player:getGuid())
+
 
 	player:setStorageValue(Storage.Exercisedummy.exaust, 0)
 

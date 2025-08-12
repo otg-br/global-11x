@@ -88,8 +88,7 @@ Modal = {
 		}
 	},
 
-	autoloot = 7135,
-	autolootContainer = 7136,
+
 }
 
 Storage = {

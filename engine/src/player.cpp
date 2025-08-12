@@ -6029,7 +6029,7 @@ void Player::setAutolootItem(uint16_t itemId, bool isLogin /* = false */)
 		count++;
 	}
 
-	size_t limit = isVip() ? 20 : 10;
+	size_t limit = isVip() ? g_config.getNumber(ConfigManager::VIP_AUTOLOOT_LIMIT) : g_config.getNumber(ConfigManager::FREE_AUTOLOOT_LIMIT);
 	if (autoLootItemIds.size() >= limit) {
 		if (!isLogin)
 			sendTextMessage(MESSAGE_STATUS_WARNING, "You have reached the limit of items in the list.");

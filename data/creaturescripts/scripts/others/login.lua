@@ -224,7 +224,7 @@ function onLogin(player)
 		loginStr = string.format('Your last visit was on %s.', os.sdate('%a %b %d %X %Y', player:getLastLoginSaved()))
 	end
     
-	AutoLootList:onLogin(player:getId())
+
 	
 	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, loginStr)
 	
@@ -341,7 +341,6 @@ function onLogin(player)
 	-- Events
 	for i = 1, #events do
 		player:registerEvent(events[i])
-		player:registerEvent("AutoLoot")
 	end
 
 

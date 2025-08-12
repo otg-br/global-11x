@@ -5,9 +5,6 @@
 	
 	<!-- Hirelings -->
 	<event type="logout" name="HirelingLogoutPlayer" script="others/hireling_logout.lua" />
-    
-	<!-- AutoLoot Vankk Master -->
-	<event type="kill" name="AutoLoot" script="autoloot.lua" />
 	
 	<!-- Cobra Bastion
 	<event type="kill" name="killingCobra" script="quests/cobra_bastion/kill.lua"/>
