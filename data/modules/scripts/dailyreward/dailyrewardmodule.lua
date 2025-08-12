@@ -175,7 +175,8 @@ function Player:sendOpenRewardWall(isFreePick, nextRewardPick, hasString, confir
     if not self:canGetDailyReward() then
         timestampPickLimit = 0
     else
-        timestampPickLimit = Game.getLastServerSave() + 24*60*60
+        local lastRewardTime = self:getLastRewardPick()
+        timestampPickLimit = lastRewardTime + (48*60*60)
     end
 
     local currentDayStreak = self:getCurrentDayStreak()

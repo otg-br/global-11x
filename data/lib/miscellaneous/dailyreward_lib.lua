@@ -1330,11 +1330,12 @@ function Player:receiveReward(useToken, rewardType, additional)
     end
 
     --update values
-    local nextReward = Game.getLastServerSave() + (24*60*60) -- next day
+    local currentTime = os.time()
+    local nextReward = currentTime + (24*60*60)
 
     self:incrementCurrentRewardLaneIndex()
     self:setCurrentDayStreak(self:getCurrentDayStreak()+1)
-    self:setLastRewardPick(os.time())
+    self:setLastRewardPick(currentTime)
     self:setNextRewardPick(nextReward)
     if self:getCurrentDayStreak()<=7 then
         self:enableStreakBonus(self:getCurrentDayStreak()) --load the new bonus
@@ -1355,7 +1356,21 @@ function Player:receiveReward(useToken, rewardType, additional)
 end
 
 function Player:canGetDailyReward()
-    return os.time() > self:getNextRewardPick()
+    local lastRewardTime = self:getLastRewardPick()
+    local currentTime = os.time()
+    
+    if lastRewardTime <= 0 then
+        return true
+    end
+    
+    local timeDifference = currentTime - lastRewardTime
+    
+    if timeDifference >= 172800 then
+        self:setCurrentDayStreak(0)
+        self:loadStreakBonuses()
+    end
+    
+    return timeDifference >= 86400
 end
 
 --[[
