@@ -247,9 +247,9 @@ void Spawns::startup()
 	for (Npc* npc : npcList) {
 		if (!g_game.placeCreature(npc, npc->getMasterPos(), false, true)) {
 			std::ostringstream warnMsg;
-			warnMsg << "Couldn't spawn NPC \"" << npc->getName() << "\"";
-			warnMsg << " on position: " << npc->getMasterPos() << "!";
-			console::reportWarning("Spawns::startup", warnMsg.str());
+			//warnMsg << "Couldn't spawn NPC \"" << npc->getName() << "\"";
+			//warnMsg << " on position: " << npc->getMasterPos() << "!";
+			//console::reportWarning("Spawns::startup", warnMsg.str());
 			delete npc;
 		}
 	}
@@ -326,17 +326,17 @@ bool Spawn::spawnMonster(uint32_t spawnId, MonsterType* mType, const Position& p
 		//No need to send out events to the surrounding since there is no one out there to listen!
 		if (!g_game.internalPlaceCreature(monster_ptr.get(), pos, true)) {
 			std::ostringstream warnMsg;
-			warnMsg << "Couldn't spawn monster \"" << monster_ptr->getName() << "\"";
-			warnMsg << " on position: " << pos << "!";
-			console::reportWarning("Spawns::startup", warnMsg.str());
+			//warnMsg << "Couldn't spawn monster \"" << monster_ptr->getName() << "\"";
+			//warnMsg << " on position: " << pos << "!";
+			//console::reportWarning("Spawns::startup", warnMsg.str());
 			return false;
 		}
 	} else {
 		if (!g_game.placeCreature(monster_ptr.get(), pos, false, true)) {
 			std::ostringstream warnMsg;
-			warnMsg << "Couldn't spawn monster \"" << monster_ptr->getName() << "\"";
-			warnMsg << " on position: " << pos << "!";
-			console::reportWarning("Spawns::startup", warnMsg.str());
+			//warnMsg << "Couldn't spawn monster \"" << monster_ptr->getName() << "\"";
+			//warnMsg << " on position: " << pos << "!";
+			//console::reportWarning("Spawns::startup", warnMsg.str());
 			return false;
 		}
 	}
