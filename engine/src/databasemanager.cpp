@@ -38,7 +38,7 @@ bool DatabaseManager::optimizeTables()
 
 	do {
 		std::string tableName = result->getString("TABLE_NAME");
-		console::print(CONSOLEMESSAGE_TYPE_INFO, "Optimizing table " + tableName + "...", false);
+		console::print(CONSOLEMESSAGE_TYPE_STARTUP, "Optimizing table " + tableName + "...", false);
 
 		query.str(std::string());
 		query << "OPTIMIZE TABLE `" << tableName << '`';
@@ -46,7 +46,7 @@ bool DatabaseManager::optimizeTables()
 		if (db.executeQuery(query.str())) {
 			console::printResult(CONSOLE_LOADING_OK);
 		} else {
-									console::printResult(CONSOLE_LOADING_ERROR);
+			console::printResult(CONSOLE_LOADING_ERROR);
 		}
 	} while (result->next());
 	return true;

@@ -196,4 +196,4 @@ loginEvent:register()
 
 local count = 0
 for _ in pairs(TaskLinkedSystem.tasks) do count = count + 1 end
-Game.sendConsoleMessage("Task System loaded with " .. count .. " tasks", CONSOLEMESSAGE_TYPE_INFO)
+-- Task System loaded silently to avoid interfering with startup formatting

@@ -320,4 +320,5 @@ function TaskLinkedSystem.canStartTask(player, taskNumber)
     return player:getStorageValue(prevStorage) >= prevTask.kills
 end
 
-Game.sendConsoleMessage("Task Linked System loaded with " .. #TaskLinkedSystem.tasks .. " tasks", CONSOLEMESSAGE_TYPE_INFO)
+-- Task Linked System loaded silently to avoid interfering with startup formatting
+-- Game.sendConsoleMessage("Task Linked System loaded with " .. #TaskLinkedSystem.tasks .. " tasks", CONSOLEMESSAGE_TYPE_INFO)

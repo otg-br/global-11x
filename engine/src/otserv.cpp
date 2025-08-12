@@ -127,7 +127,7 @@ void printServerVersion()
     startupMsg << hrLine;
     startupMsg << "- " << "A server developed by " << console::setColor(console::developers, "Johncore, Mark Samman and Mateuskl (Mateus Roberto)") << std::endl;
     startupMsg << "- " << "Engine Credits for: " << console::setColor(console::developers, "TFS Team, Erick Nunes, Leo Pereira, Marson Schneider, LukST, worthdavi, OTX Team, OTG Team") << std::endl;
-    	startupMsg << "- " << "Based on TFS 1.4 (Protocol 1100), heavily modified by " << console::setColor(console::error, "Mateus Roberto") << std::endl;
+    startupMsg << "- " << "Based on TFS 1.4 (Protocol 1100), heavily modified by " << console::setColor(console::error, "Mateus Roberto") << std::endl;
     startupMsg << "- " << "Visit our community: " << console::setColor(console::community, "https://github.com/Mateuzkl") << " and " << console::setColor(console::community, "https://github.com/otg-br") << std::endl;
     startupMsg << hrLine;
     std::cout << startupMsg.str() << std::flush;
@@ -217,7 +217,6 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 			config_lua.close();
 			config_lua_dist.close();
 			console::printResult(CONSOLE_LOADING_OK);
-			console::print(CONSOLEMESSAGE_TYPE_STARTUP, "Loading " + configFile + " ... ", false);
 		} else {
 			console::printResult(CONSOLE_LOADING_ERROR);
 			console::reportFileError("", distFile);
@@ -289,12 +288,8 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 
 	if (g_config.getBoolean(ConfigManager::OPTIMIZE_DATABASE)) {
 		console::print(CONSOLEMESSAGE_TYPE_STARTUP, "Optimizing database tables ...", false);
-		if (!DatabaseManager::optimizeTables()) {
-			console::printResult(CONSOLE_LOADING_OK);
-			console::print(CONSOLEMESSAGE_TYPE_INFO, "No tables were optimized.");
-		} else {
-			console::printResult(CONSOLE_LOADING_OK);
-		}
+		DatabaseManager::optimizeTables();
+		console::printResult(CONSOLE_LOADING_OK);
 	}
 
 	//load vocations
@@ -341,12 +336,14 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 		startupErrorMessage("Unable to load Bestiaries!");
 		return;
 	}
+	console::printResult(CONSOLE_LOADING_OK);
 
 	console::print(CONSOLEMESSAGE_TYPE_STARTUP, "Loading lua scripts ...", false);
 	if (!g_scripts->loadScripts("scripts", false, false)) {
 		startupErrorMessage("Failed to load lua scripts");
 		return;
 	}
+	console::printResult(CONSOLE_LOADING_OK);
 
 	// Load lua monsters
 	console::print(CONSOLEMESSAGE_TYPE_STARTUP, "Loading monsters (xml + lua) ... ", false);
@@ -363,10 +360,11 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 
 	// Load quests
 	console::print(CONSOLEMESSAGE_TYPE_STARTUP, "Loading quests ...", false);
-	if (!g_config.getBoolean(ConfigManager::QUEST_LUA)) {
-		// Quest loading is handled in game.cpp, but we can show the message here
+	if (g_config.getBoolean(ConfigManager::QUEST_LUA)) {
 		console::printResult(CONSOLE_LOADING_OK);
-		console::printResultText("Loaded 1 quests");
+	} else {
+		console::printResult(CONSOLE_LOADING_OK);
+		console::printResultText("Quest system disabled");
 	}
 
 	// Load outfits
@@ -421,7 +419,7 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 		g_game.setWorldType(WORLD_TYPE_RETRO_OPEN_PVP);
 	} else {
 		console::printResult(CONSOLE_LOADING_ERROR);
-		startupErrorMessage(fmt::format("Unknown world type: {}, valid world types are: pvp, no-pvp and pvp-enforced.", g_config.getString(ConfigManager::WORLD_TYPE)));
+		startupErrorMessage(fmt::format("Unknown world type: {}, valid world types are: pvp, no-pvp, pvp-enforced and retro-pvp.", g_config.getString(ConfigManager::WORLD_TYPE)));
 		return;
 	}
 
@@ -429,7 +427,6 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 
 	// load map
 	console::print(CONSOLEMESSAGE_TYPE_STARTUP, "Loading world map...");
-	console::print(CONSOLEMESSAGE_TYPE_STARTUP, "");
 
 	const std::string& worldName = g_config.getString(ConfigManager::MAP_NAME);
 	console::printWorldInfo("Filename", worldName + ".otbm");
@@ -457,7 +454,6 @@ void mainLoader(int argc, char* argv[], ServiceManager* services)
 	g_game.setGameState(GAME_STATE_INIT);
 
 	console::print(CONSOLEMESSAGE_TYPE_STARTUP, "");
-	//console::print(CONSOLEMESSAGE_TYPE_STARTUP, "Binding ports ...");
 
 	uint16_t loginPort = static_cast<uint16_t>(g_config.getNumber(ConfigManager::LOGIN_PORT));
 	uint16_t gamePort = static_cast<uint16_t>(g_config.getNumber(ConfigManager::GAME_PORT));
@@ -528,7 +524,8 @@ bool argumentsHandler(const StringVector& args)
 			"\t--ip=$1\t\t\tIP address of the server.\n"
 			"\t\t\t\tShould be equal to the global IP.\n"
 			"\t--login-port=$1\tPort for login server to listen on.\n"
-			"\t--game-port=$1\tPort for game server to listen on.\n";
+			"\t--game-port=$1\tPort for game server to listen on.\n"
+			"\t--status-port=$1\tPort for status server to listen on.\n";
 			return false;
 		} else if (arg == "--version") {
 			printServerVersion();
@@ -545,6 +542,8 @@ bool argumentsHandler(const StringVector& args)
 			g_config.setNumber(ConfigManager::LOGIN_PORT, std::stoi(tmp[1]));
 		else if (tmp[0] == "--game-port")
 			g_config.setNumber(ConfigManager::GAME_PORT, std::stoi(tmp[1]));
+		else if (tmp[0] == "--status-port")
+			g_config.setNumber(ConfigManager::STATUS_PORT, std::stoi(tmp[1]));
 	}
 
 	return true;
