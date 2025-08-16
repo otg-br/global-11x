@@ -11,6 +11,9 @@ include(cotire)
 
 add_compile_options(-Wall -Werror -pipe -fvisibility=hidden)
 
+# Enable stats system
+add_definitions(-DSTATS_ENABLED)
+
 set(CMAKE_CXX_FLAGS_PERFORMANCE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast -march=native -mtune=native -DBOOST_DISABLE_ASSERTS -DNDEBUG -g")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-Ofast -march=native -mtune=native -DBOOST_DISABLE_ASSERTS -DNDEBUG -g")
 

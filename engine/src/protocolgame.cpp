@@ -552,9 +552,9 @@ void ProtocolGame::parsePacket(NetworkMessage& msg)
 	//a dead player can not perform actions
 	if (!player || player->isRemoved() || player->getHealth() <= 0) {
 		auto this_ptr = getThis();
-		g_dispatcher.addTask(createTask([this_ptr]() {
+		g_dispatcher.addTask(createTaskWithStats([this_ptr]() {
 			this_ptr->stopLiveCast();
-		}));
+		}, "ProtocolGame::parsePacket", "Stop live cast for dead/removed player"));
 		if (recvbyte == 0x0F) {
 			// g_dispatcher.addTask(createTask(std::bind(&ProtocolGame::onRecvFirstMessage, getThis(), msg)));
 			disconnect();

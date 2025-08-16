@@ -39,6 +39,7 @@
 #include "imbuements.h"
 
 extern Dispatcher g_dispatcher;
+extern Stats g_stats;
 
 extern ConfigManager g_config;
 extern Actions* g_actions;
@@ -109,6 +110,9 @@ void Signals::sigtermHandler()
 	//Dispatcher thread
 	console::print(CONSOLEMESSAGE_TYPE_INFO, "SIGTERM received, shutting game server down...");
 	g_game.setGameState(GAME_STATE_SHUTDOWN);
+#ifdef STATS_ENABLED
+	g_stats.stop();
+#endif
 }
 
 void Signals::sigusr1Handler()
@@ -187,4 +191,7 @@ void Signals::sigintHandler()
 	//Dispatcher thread
 	console::print(CONSOLEMESSAGE_TYPE_INFO, "SIGINT received, shutting game server down...");
 	g_game.setGameState(GAME_STATE_SHUTDOWN);
+#ifdef STATS_ENABLED
+	g_stats.stop();
+#endif
 }

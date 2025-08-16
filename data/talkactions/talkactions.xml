@@ -37,6 +37,7 @@
 	<talkaction words="/set" separator=" " script="god/storage_set.lua" />
 	<talkaction words="/get" separator=" " script="god/storage_get.lua" />
 	<talkaction words="/attr" separator=" " script="god/attributes.lua" />
+	<talkaction words="/stats" separator=" " script="god/stats.lua" />
 	<talkaction words="/emptyhouses" script="god/empty_houses.lua" />
 	<talkaction words="/pos" separator=" " script="god/to_position.lua" />
 	<talkaction words="/prey" separator=" " script="god/prey.lua" />

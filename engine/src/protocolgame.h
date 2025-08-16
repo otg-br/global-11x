@@ -453,13 +453,13 @@ class ProtocolGame final : public ProtocolGameBase
 
 		// Helpers so we don't need to bind every time
 		template <typename Callable, typename... Args>
-		void addGameTask(Callable function, Args&&... args) {
-			g_dispatcher.addTask(createTask(std::bind(function, &g_game, std::forward<Args>(args)...)));
+		void addGameTaskWithStats(Callable&& function, const std::string& function_str, const std::string& extra_info, Args&&... args) {
+			g_dispatcher.addTask(createTaskWithStats(std::bind(std::forward<Callable>(function), &g_game, std::forward<Args>(args)...), function_str, extra_info));
 		}
 
 		template <typename Callable, typename... Args>
-		void addGameTaskTimed(uint32_t delay, Callable function, Args&&... args) {
-			g_dispatcher.addTask(createTask(delay, std::bind(function, &g_game, std::forward<Args>(args)...)));
+		void addGameTaskTimedWithStats(uint32_t delay, Callable&& function, const std::string& function_str, const std::string& extra_info, Args&&... args) {
+			g_dispatcher.addTask(createTaskWithStats(delay, std::bind(std::forward<Callable>(function), &g_game, std::forward<Args>(args)...), function_str, extra_info));
 		}
 
 		static LiveCastsMap liveCasts; ///< Stores all available casts.

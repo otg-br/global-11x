@@ -271,6 +271,9 @@ bool ConfigManager::load()
 	integer[PVP_PROTECTION_LEVEL] = getGlobalNumber(L, "pvpProtectionLevel", 50);
 	integer[MAX_ALLOWED_ON_A_DUMMY] = getGlobalNumber(L, "maxAllowedOnADummy", 5);
 	integer[RATE_EXERCISE_TRAINING_SPEED] = getGlobalNumber(L, "rateExerciseTrainingSpeed", 1.0);
+	integer[STATS_DUMP_INTERVAL] = getGlobalNumber(L, "statsDumpInterval", 30000);
+	integer[STATS_SLOW_LOG_TIME] = getGlobalNumber(L, "statsSlowLogTime", 10);
+	integer[STATS_VERY_SLOW_LOG_TIME] = getGlobalNumber(L, "statsVerySlowLogTime", 50);
 	
 
 

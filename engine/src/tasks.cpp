@@ -23,15 +23,16 @@
 #include "game.h"
 
 extern Game g_game;
+extern Stats g_stats;
 
-Task* createTask(std::function<void (void)> f)
+Task* createTaskWithStats(std::function<void (void)> f, const std::string& description, const std::string& extraDescription)
 {
-	return new Task(std::move(f));
+	return new Task(std::move(f), description, extraDescription);
 }
 
-Task* createTask(uint32_t expiration, std::function<void (void)> f)
+Task* createTaskWithStats(uint32_t expiration, std::function<void (void)> f, const std::string& description, const std::string& extraDescription)
 {
-	return new Task(expiration, std::move(f));
+	return new Task(expiration, std::move(f), description, extraDescription);
 }
 
 void Dispatcher::threadMain()
@@ -39,13 +40,23 @@ void Dispatcher::threadMain()
 	// NOTE: second argument defer_lock is to prevent from immediate locking
 	std::unique_lock<std::mutex> taskLockUnique(taskLock, std::defer_lock);
 
+#ifdef STATS_ENABLED
+	std::chrono::high_resolution_clock::time_point time_point;
+#endif
+
 	while (getState() != THREAD_STATE_TERMINATED) {
 		// check if there are tasks waiting
 		taskLockUnique.lock();
 
 		if (taskList.empty()) {
 			//if the list is empty wait for signal
+#ifdef STATS_ENABLED
+			time_point = std::chrono::high_resolution_clock::now();
 			taskSignal.wait(taskLockUnique);
+			g_stats.dispatcherWaitTime(dispatcherId) += std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - time_point).count();
+#else
+			taskSignal.wait(taskLockUnique);
+#endif
 		}
 
 		if (!taskList.empty()) {
@@ -57,9 +68,23 @@ void Dispatcher::threadMain()
 			if (!task->hasExpired()) {
 				++dispatcherCycle;
 				// execute it
+#ifdef STATS_ENABLED
+				time_point = std::chrono::high_resolution_clock::now();
+#endif
 				(*task)();
+#ifdef STATS_ENABLED
+				task->executionTime = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - time_point).count();
+				g_stats.addDispatcherTask(dispatcherId, task);
+#else
+				delete task;
+#endif
+			} else {
+#ifdef STATS_ENABLED
+				delete task;
+#else
+				delete task;
+#endif
 			}
-			delete task;
 		} else {
 			taskLockUnique.unlock();
 		}
@@ -94,10 +119,10 @@ void Dispatcher::addTask(Task* task, bool push_front /*= false*/)
 
 void Dispatcher::shutdown()
 {
-	Task* task = createTask([this]() {
+	Task* task = createTaskWithStats([this]() {
 		setState(THREAD_STATE_TERMINATED);
 		taskSignal.notify_one();
-	});
+	}, "Dispatcher::shutdown", "Terminating dispatcher");
 
 	std::lock_guard<std::mutex> lockClass(taskLock);
 	taskList.push_back(task);

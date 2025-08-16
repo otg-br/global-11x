@@ -43,14 +43,15 @@ class SchedulerTask : public Task
 		}
 
 	protected:
-		SchedulerTask(uint32_t delay, std::function<void (void)>&& f) : Task(delay, std::move(f)) {}
+		SchedulerTask(uint32_t delay, std::function<void (void)>&& f, const std::string& description, const std::string& extraDescription) : 
+			Task(delay, std::move(f), description, extraDescription) {}
 
 		uint32_t eventId = 0;
 
-		friend SchedulerTask* createSchedulerTask(uint32_t, std::function<void (void)>);
+		friend SchedulerTask* createSchedulerTaskWithStats(uint32_t, std::function<void (void)>, const std::string&, const std::string&);
 };
 
-SchedulerTask* createSchedulerTask(uint32_t delay, std::function<void (void)> f);
+SchedulerTask* createSchedulerTaskWithStats(uint32_t delay, std::function<void (void)> f, const std::string& description, const std::string& extraDescription);
 
 struct TaskComparator {
 	bool operator()(const SchedulerTask* lhs, const SchedulerTask* rhs) const {
