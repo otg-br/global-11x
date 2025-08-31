@@ -1,5 +1,5 @@
 {
-  "name": "Otg-server",
+  "name": "otg-server",
   "version": "1.0.0",
   "dependencies": [
     "boost-iostreams",
