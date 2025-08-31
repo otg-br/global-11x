@@ -92,7 +92,7 @@ depotBoxes = 18
 
 -- Max players allowed on a dummy.
 maxAllowedOnADummy = 5
-rateExerciseTrainingSpeed = rateAttackSpeed
+rateExerciseTrainingSpeed = 1.0
 
 -- GameStore
 gamestoreByModules = false
