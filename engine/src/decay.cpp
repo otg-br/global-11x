@@ -28,8 +28,8 @@ Decay g_decay;
 
 void Decay::startDecay(Item* item, int32_t duration)
 {
-	if (item->hasAttribute(ITEM_ATTRIBUTE_DURATION_TIMESTAMP)) {
-		stopDecay(item, item->getIntAttr(ITEM_ATTRIBUTE_DURATION_TIMESTAMP));
+	if (item->hasAttribute(ITEM_ATTRIBUTE_DECAYTO)) {
+		stopDecay(item, item->getIntAttr(ITEM_ATTRIBUTE_DECAYTO));
 	}
 
 	int64_t timestamp = OTSYS_TIME() + static_cast<int64_t>(duration);
@@ -44,7 +44,7 @@ void Decay::startDecay(Item* item, int32_t duration)
 
 	item->incrementReferenceCounter();
 	item->setDecaying(DECAYING_TRUE);
-	item->setDurationTimestamp(timestamp);
+	item->setDecayTo(timestamp);
 	decayMap[timestamp].push_back(item);
 }
 
