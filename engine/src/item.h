@@ -233,6 +233,10 @@ class ItemAttributes
 			setIntAttr(ITEM_ATTRIBUTE_DURATION_TIMESTAMP, timestamp);
 		}
 		int32_t getDuration() const {
+			return getIntAttr(ITEM_ATTRIBUTE_DURATION);
+		}
+		
+		int32_t getRemainingDuration() const {
 			ItemDecayState_t decayState = getDecaying();
 			if (decayState == DECAYING_TRUE || decayState == DECAYING_STOPPING) {
 				return std::max<int32_t>(0, static_cast<int32_t>(getIntAttr(ITEM_ATTRIBUTE_DURATION_TIMESTAMP) - OTSYS_TIME()));
@@ -801,6 +805,12 @@ class Item : virtual public Thing
 			setIntAttr(ITEM_ATTRIBUTE_DURATION_TIMESTAMP, timestamp);
 		}
 		int32_t getDuration() const {
+			// Always return the original duration from items.xml, never the remaining time
+			return getIntAttr(ITEM_ATTRIBUTE_DURATION);
+		}
+		
+		int32_t getRemainingDuration() const {
+			// Calculate and return the remaining time until decay
 			ItemDecayState_t decayState = getDecaying();
 			if (decayState == DECAYING_TRUE || decayState == DECAYING_STOPPING) {
 				return std::max<int32_t>(0, static_cast<int32_t>(getIntAttr(ITEM_ATTRIBUTE_DURATION_TIMESTAMP) - OTSYS_TIME()));

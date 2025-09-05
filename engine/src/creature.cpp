@@ -731,6 +731,11 @@ bool Creature::dropCorpse(Creature* lastHitCreature, Creature* mostDamageCreatur
 
 		Item* corpse = getCorpse(lastHitCreature, mostDamageCreature);
 		if (corpse) {
+			const ItemType& it = Item::items[corpse->getID()];
+			if (it.corpseType != RACE_NONE && it.decayTime > 0) {
+				corpse->setDuration(it.decayTime * 1000);
+			}
+			
 			g_game.internalAddItem(tile, corpse, INDEX_WHEREEVER, FLAG_NOLIMIT);
 			g_game.startDecay(corpse);
 		}

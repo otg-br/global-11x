@@ -110,6 +110,14 @@ void Decay::checkDecay()
 			item->setDuration(item->getDuration());
 			item->setDecaying(DECAYING_FALSE);
 		} else {
+			const ItemType& it = Item::items[item->getID()];
+			if (it.corpseType != RACE_NONE && it.decayTime > 0) {
+				int32_t correctDuration = it.decayTime * 1000;
+				if (item->getIntAttr(ITEM_ATTRIBUTE_DURATION) != correctDuration) {
+					item->setDuration(correctDuration);
+				}
+			}
+			
 			item->setDecaying(DECAYING_FALSE);
 			g_game.internalDecayItem(item);
 		}

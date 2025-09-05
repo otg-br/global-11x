@@ -58,6 +58,18 @@ event.onLook = function(self, thing, position, distance, description)
 			if decayId ~= -1 then
 				description = string.format("%s\nDecays to: %d", description, decayId)
 			end
+
+			-- Show remaining decay time for GMs/Gods
+			if thing:getDuration() > 0 then
+				local remainingTime = thing:getRemainingDuration()
+				local remainingSeconds = remainingTime / 1000
+				if remainingSeconds > 0 then
+					description = string.format("%s\nDuration left: %d seconds (%.1f minutes)", description, remainingSeconds, remainingSeconds / 60)
+				else
+					description = string.format("%s\nDuration left: 0 seconds (expired)", description)
+				end
+			end
+			
 		elseif thing:isCreature() then
 			local str = "%s\nHealth: %d / %d"
 			if thing:isPlayer() and thing:getMaxMana() > 0 then

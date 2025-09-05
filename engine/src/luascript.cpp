@@ -2489,6 +2489,9 @@ void LuaScriptInterface::registerFunctions()
 
 	registerMethod("Item", "getDescription", LuaScriptInterface::luaItemGetDescription);
 
+	registerMethod("Item", "getDuration", LuaScriptInterface::luaItemGetDuration);
+	registerMethod("Item", "getRemainingDuration", LuaScriptInterface::luaItemGetRemainingDuration);
+
 	registerMethod("Item", "hasProperty", LuaScriptInterface::luaItemHasProperty);
 
 	// Container
@@ -7284,7 +7287,7 @@ int LuaScriptInterface::luaItemGetAttribute(lua_State* L)
 
 	if (ItemAttributes::isIntAttrType(attribute)) {
 		if (attribute == ITEM_ATTRIBUTE_DURATION) {
-			lua_pushnumber(L, item->getDuration());
+			lua_pushnumber(L, item->getRemainingDuration());
 			return 1;
 		}
 		lua_pushnumber(L, item->getIntAttr(attribute));
@@ -7776,6 +7779,30 @@ int LuaScriptInterface::luaItemGetDescription(lua_State* L)
 	if (item) {
 		int32_t distance = getNumber<int32_t>(L, 2);
 		pushString(L, item->getDescription(distance));
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaItemGetDuration(lua_State* L)
+{
+	// item:getDuration()
+	Item* item = getUserdata<Item>(L, 1);
+	if (item) {
+		lua_pushnumber(L, item->getDuration());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaItemGetRemainingDuration(lua_State* L)
+{
+	// item:getRemainingDuration()
+	Item* item = getUserdata<Item>(L, 1);
+	if (item) {
+		lua_pushnumber(L, item->getRemainingDuration());
 	} else {
 		lua_pushnil(L);
 	}

@@ -1811,7 +1811,6 @@ Item* Game::transformItem(Item* item, uint16_t newId, int32_t newCount /*= -1*/)
 				}
 			}
 		} else {
-			uint32_t currentDuration = item->getDuration();
 
 			cylinder->postRemoveNotification(item, cylinder, itemIndex);
 			uint16_t itemId = item->getID();
@@ -1830,8 +1829,20 @@ Item* Game::transformItem(Item* item, uint16_t newId, int32_t newCount /*= -1*/)
 			}
 
 			cylinder->updateThing(item, itemId, count);
-			if (currentDuration) {
-				item->setDuration(currentDuration);
+			// For decay transformations, use the new item's original duration from items.xml
+			// For other transformations, preserve the current duration
+			if (curType.decayTo == newId) {
+				// This is a decay transformation - use the new item's original duration
+				uint32_t newDuration = newType.decayTime * 1000; // Convert seconds to milliseconds
+				if (newDuration > 0) {
+					item->setDuration(newDuration);
+				}
+			} else {
+				// This is not a decay transformation - preserve current duration
+				uint32_t currentDuration = item->getDuration();
+				if (currentDuration) {
+					item->setDuration(currentDuration);
+				}
 			}
 			cylinder->postAddNotification(item, cylinder, itemIndex);
 			item->startDecaying();
@@ -6528,6 +6539,17 @@ void Game::startDecay(Item* item)
 	}
 
 	int32_t duration = item->getIntAttr(ITEM_ATTRIBUTE_DURATION);
+
+	// Fix for corpse decay: ensure corpses use the correct duration from items.xml
+	if (duration <= 0) {
+		const ItemType& it = Item::items[item->getID()];
+		if (it.corpseType != RACE_NONE) {
+			// For corpses, use the decayTime from items.xml (in seconds) converted to milliseconds
+			duration = it.decayTime * 1000;
+			item->setDuration(duration);
+		}
+	}
+	
 	if (duration > 0) {
 		g_decay.startDecay(item, duration);
 	} else {
