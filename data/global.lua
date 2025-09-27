@@ -152,9 +152,6 @@ function getTibianTime()
 	return hours .. ':' .. minutes
 end
 
-function trim(string)
-   return string:match("^%s*(.-)%s*$")
-end
 
 local dataTypes = {
     number = result.getNumber,
@@ -198,24 +195,12 @@ table.contains = function(array, value)
 	return false
 end
 
-string.split = function(str, sep)
-	local res = {}
-	for v in str:gmatch("([^" .. sep .. "]+)") do
-		res[#res + 1] = v
-	end
-	return res
-end
-
 string.splitTrimmed = function(str, sep)
 	local res = {}
 	for v in str:gmatch("([^" .. sep .. "]+)") do
 		res[#res + 1] = v:trim()
 	end
 	return res
-end
-
-string.trim = function(str)
-	return str:match'^()%s*$' and '' or str:match'^%s*(.*%S)'
 end
 
 -- Stamina
