@@ -2531,6 +2531,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Creature", "isCreature", LuaScriptInterface::luaCreatureIsCreature);
 	registerMethod("Creature", "isInGhostMode", LuaScriptInterface::luaCreatureIsInGhostMode);
 	registerMethod("Creature", "isHealthHidden", LuaScriptInterface::luaCreatureIsHealthHidden);
+	registerMethod("Creature", "isMovementBlocked", LuaScriptInterface::luaCreatureIsMovementBlocked);
 	registerMethod("Creature", "isImmune", LuaScriptInterface::luaCreatureIsImmune);
 	registerMethod("Creature", "isDead", LuaScriptInterface::luaCreatureIsDead);
 
@@ -2558,6 +2559,8 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Creature", "getSpeed", LuaScriptInterface::luaCreatureGetSpeed);
 	registerMethod("Creature", "getBaseSpeed", LuaScriptInterface::luaCreatureGetBaseSpeed);
 	registerMethod("Creature", "changeSpeed", LuaScriptInterface::luaCreatureChangeSpeed);
+	registerMethod("Creature", "setSpeed", LuaScriptInterface::luaCreatureSetSpeed);
+	registerMethod("Creature", "setBaseSpeed", LuaScriptInterface::luaCreatureSetBaseSpeed);
 
 	registerMethod("Creature", "setDropLoot", LuaScriptInterface::luaCreatureSetDropLoot);
 	registerMethod("Creature", "setSkillLoss", LuaScriptInterface::luaCreatureSetSkillLoss);
@@ -2573,6 +2576,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Creature", "getMaxHealth", LuaScriptInterface::luaCreatureGetMaxHealth);
 	registerMethod("Creature", "setMaxHealth", LuaScriptInterface::luaCreatureSetMaxHealth);
 	registerMethod("Creature", "setHiddenHealth", LuaScriptInterface::luaCreatureSetHiddenHealth);
+	registerMethod("Creature", "setMovementBlocked", LuaScriptInterface::luaCreatureSetMovementBlocked);
 
 	registerMethod("Creature", "isMoveLocked", LuaScriptInterface::luaCreatureIsMoveLocked);
 	registerMethod("Creature", "setMoveLocked", LuaScriptInterface::luaCreatureSetMoveLocked);
@@ -8235,6 +8239,18 @@ int LuaScriptInterface::luaCreatureIsHealthHidden(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaCreatureIsMovementBlocked(lua_State* L)
+{
+	// creature:isMovementBlocked()
+	const Creature* creature = getUserdata<const Creature>(L, 1);
+	if (creature) {
+		pushBoolean(L, creature->isMovementBlocked());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int LuaScriptInterface::luaCreatureCanSee(lua_State* L)
 {
 	// creature:canSee(position)
@@ -8491,6 +8507,38 @@ int LuaScriptInterface::luaCreatureChangeSpeed(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaCreatureSetSpeed(lua_State* L)
+{
+	// creature:setSpeed(speed)
+	Creature* creature = getCreature(L, 1);
+	if (!creature) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));
+		pushBoolean(L, false);
+		return 1;
+	}
+
+	int32_t speed = getNumber<int32_t>(L, 2);
+	g_game.setCreatureSpeed(creature, speed);
+	pushBoolean(L, true);
+	return 1;
+}
+
+int LuaScriptInterface::luaCreatureSetBaseSpeed(lua_State* L)
+{
+	// creature:setBaseSpeed(speed)
+	Creature* creature = getCreature(L, 1);
+	if (!creature) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));
+		pushBoolean(L, false);
+		return 1;
+	}
+
+	uint32_t speed = getNumber<uint32_t>(L, 2);
+	creature->setBaseSpeed(speed);
+	pushBoolean(L, true);
+	return 1;
+}
+
 int LuaScriptInterface::luaCreatureSetDropLoot(lua_State* L)
 {
 	// creature:setDropLoot(doDrop)
@@ -8737,6 +8785,19 @@ int LuaScriptInterface::luaCreatureGetMaxMana(lua_State* L)
 	const Creature* creature = getUserdata<const Creature>(L, 1);
 	if (creature) {
 		lua_pushnumber(L, creature->getMaxMana());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaCreatureSetMovementBlocked(lua_State* L)
+{
+	// creature:setMovementBlocked(state)
+	Creature* creature = getUserdata<Creature>(L, 1);
+	if (creature) {
+		creature->setMovementBlocked(getBoolean(L, 2));
+		pushBoolean(L, true);
 	} else {
 		lua_pushnil(L);
 	}

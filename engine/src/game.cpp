@@ -797,6 +797,11 @@ void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Po
 
 	player->setNextActionTask(nullptr);
 
+	if (movingCreature->isMovementBlocked()) {
+		player->sendCancelMessage(RETURNVALUE_NOTMOVEABLE);
+		return;
+	}
+
 	if (!Position::areInRange<1, 1, 0>(movingCreatureOrigPos, player->getPosition())) {
 		//need to walk to the creature first before moving it
 		std::forward_list<Direction> listDir;
@@ -2297,6 +2302,11 @@ void Game::playerMove(uint32_t playerId, Direction direction)
 {
 	Player* player = getPlayerByID(playerId);
 	if (!player) {
+		return;
+	}
+
+	if (player->isMovementBlocked()) {
+		player->sendCancelWalk();
 		return;
 	}
 
@@ -5591,6 +5601,18 @@ void Game::changeSpeed(Creature* creature, int32_t varSpeedDelta)
 	varSpeed += varSpeedDelta;
 
 	creature->setSpeed(varSpeed);
+
+	//send to clients
+	SpectatorHashSet spectators;
+	map.getSpectators(spectators, creature->getPosition(), false, true);
+	for (Creature* spectator : spectators) {
+		spectator->getPlayer()->sendChangeSpeed(creature, creature->getStepSpeed());
+	}
+}
+
+void Game::setCreatureSpeed(Creature* creature, int32_t speed)
+{
+	creature->setBaseSpeed(speed);
 
 	//send to clients
 	SpectatorHashSet spectators;

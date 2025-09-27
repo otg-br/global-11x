@@ -337,6 +337,7 @@ function getCreaturePosition(cid) local c = Creature(cid) return c ~= nil and c:
 function getCreatureOutfit(cid) local c = Creature(cid) return c ~= nil and c:getOutfit() or false end
 function getCreatureSpeed(cid) local c = Creature(cid) return c ~= nil and c:getSpeed() or false end
 function getCreatureBaseSpeed(cid) local c = Creature(cid) return c ~= nil and c:getBaseSpeed() or false end
+function getCreatureNoMove(cid) local c = Creature(cid) return c and c:isMovementBlocked() or false end
 
 function getCreatureTarget(cid)
 	local c = Creature(cid)
@@ -374,6 +375,7 @@ getCreaturePos = getCreaturePosition
 function doCreatureAddHealth(cid, health) local c = Creature(cid) return c ~= nil and c:addHealth(health) or false end
 function doRemoveCreature(cid) local c = Creature(cid) return c ~= nil and c:remove() or false end
 function doCreatureSetLookDir(cid, direction) local c = Creature(cid) return c ~= nil and c:setDirection(direction) or false end
+function doCreatureSetNoMove(cid, block) local c = Creature(cid) return c and c:setMovementBlocked(block) or false end
 function doCreatureSay(cid, text, type, ...) local c = Creature(cid) return c ~= nil and c:say(text, type, ...) or false end
 function doCreatureChangeOutfit(cid, outfit) local c = Creature(cid) return c ~= nil and c:setOutfit(outfit) or false end
 function doSetCreatureDropLoot(cid, doDrop) local c = Creature(cid) return c ~= nil and c:setDropLoot(doDrop) or false end
