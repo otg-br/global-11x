@@ -187,7 +187,7 @@ function onUseRope(player, item, fromPosition, target, toPosition, isHotkey)
 
 	local tile = Tile(toPosition)
 	local ground = tile:getGround()
-	if ground and isInArray(ropeSpots, ground.itemid) or tile:getItemById(14435) then
+	if ground and table.contains(ropeSpots, ground:getId()) or tile:getItemById(14435) then
 		player:teleportTo(toPosition:moveUpstairs())
 		if targetId == 8592 then
 			if player:getStorageValue(Storage.RookgaardTutorialIsland.tutorialHintsStorage) < 22 then
@@ -202,7 +202,7 @@ function onUseRope(player, item, fromPosition, target, toPosition, isHotkey)
 			local thing = tile:getTopVisibleThing()
 			if thing:isItem() and thing:getType():isMovable() then
 				return thing:moveTo(toPosition:moveUpstairs())
-			elseif thing:isCreature() and thing:isPlayer() then
+			elseif thing:isCreature() and (thing:isPlayer() or thing:isMonster()) then
 				return thing:teleportTo(toPosition:moveUpstairs())
 			end
 		end
