@@ -657,9 +657,9 @@ void Creature::onDeath()
 				mostDamageCreature = attacker;
 			}
 
-			////ADICIONE ESTA PARTE: Registrar todos os atacantes válidos (apenas jogadores)
+			////Registrar todos os atacantes válidos (apenas jogadores)
 			if (attacker != this && (timeNow - cb.ticks <= inFightTicks)) {
-				if (Player* attackerPlayer = attacker->getPlayer()) {
+				if (attacker->getPlayer()) {
 					killers.push_back(attacker);
 				}
 			}
