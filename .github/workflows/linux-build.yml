@@ -34,20 +34,18 @@ jobs:
           libpugixml-dev \
           libfmt-dev
 
-    - name: Configurar CMake
+    - name: Compilar TFS
+      working-directory: ./engine
       run: |
-        mkdir build
+        mkdir -p build
         cd build
         cmake ..
-
-    - name: Compilar
-      run: |
-        cd build
         make -j$(nproc)
 
-    - name: Testar binário
+    - name: Verificar binário
+      working-directory: ./engine/build
       run: |
-        cd build
+        ls -la tfs
         file tfs
         ./tfs --version || true
 
@@ -55,5 +53,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: tfs-linux-binary
-        path: build/tfs
+        path: engine/build/tfs
         if-no-files-found: error
