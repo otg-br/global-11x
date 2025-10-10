@@ -1,4 +1,4 @@
-name: Linux Build - Debian 11
+name: Linux Build
 
 on:
   push:
@@ -7,26 +7,20 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build-debian:
-    name: Build TFS 1.3 on Debian 11
-    runs-on: ubuntu-latest
-    container: debian:11
+  build-linux:
+    name: Build TFS 1.3
+    runs-on: ubuntu-20.04
 
     steps:
-    - name: Instalar Git primeiro
-      run: |
-        apt-get update
-        apt-get install -y git
-
-    - name: Checkout código com submodules
+    - name: Checkout código
       uses: actions/checkout@v4
       with:
         submodules: recursive
 
-    - name: Instalar dependências de compilação
+    - name: Instalar dependências Ubuntu 20.04
       run: |
-        apt-get update
-        apt-get install -y \
+        sudo apt-get update
+        sudo apt-get install -y \
           build-essential \
           cmake \
           libboost-system-dev \
@@ -34,7 +28,7 @@ jobs:
           libboost-thread-dev \
           libboost-iostreams-dev \
           liblua5.2-dev \
-          default-libmysqlclient-dev \
+          libmysqlclient-dev \
           libssl-dev \
           libcrypto++-dev \
           libpugixml-dev \
@@ -48,16 +42,21 @@ jobs:
         cmake .. -DCMAKE_BUILD_TYPE=Release
         make -j$(nproc)
 
-    - name: Verificar binário
+    - name: Verificar binário (sem executar)
       working-directory: ./engine/build
       run: |
+        echo "=== Verificando binário ==="
         ls -la tfs
         file tfs
-        ./tfs --version || ./tfs --help || echo "Binário compilado com sucesso"
+        echo "=== Verificando dependências ==="
+        ldd tfs
+        echo "=== Tamanho do binário ==="
+        du -h tfs
+        echo "✅ Binário compilado com sucesso!"
 
     - name: Upload artefatos
       uses: actions/upload-artifact@v4
       with:
-        name: tfs-debian11-binary
+        name: tfs-linux-binary
         path: engine/build/tfs
         if-no-files-found: error
