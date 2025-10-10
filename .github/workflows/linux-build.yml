@@ -1,4 +1,4 @@
-name: Linux Build
+name: Linux Build - Debian 11
 
 on:
   push:
@@ -7,20 +7,21 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build-linux:
-    name: Build TFS 1.3 for Linux
+  build-debian:
+    name: Build TFS 1.3 on Debian 11
     runs-on: ubuntu-latest
-    
+    container: debian:11
+
     steps:
     - name: Checkout código
       uses: actions/checkout@v4
       with:
         submodules: recursive
 
-    - name: Instalar dependências
+    - name: Atualizar e instalar dependências
       run: |
-        sudo apt-get update
-        sudo apt-get install -y \
+        apt-get update
+        apt-get install -y \
           build-essential \
           cmake \
           libboost-system-dev \
@@ -28,18 +29,19 @@ jobs:
           libboost-thread-dev \
           libboost-iostreams-dev \
           liblua5.2-dev \
-          libmariadb-dev \
+          default-libmysqlclient-dev \
           libssl-dev \
           libcrypto++-dev \
           libpugixml-dev \
-          libfmt-dev
+          libfmt-dev \
+          git
 
     - name: Compilar TFS
       working-directory: ./engine
       run: |
         mkdir -p build
         cd build
-        cmake ..
+        cmake .. -DCMAKE_BUILD_TYPE=Release
         make -j$(nproc)
 
     - name: Verificar binário
@@ -47,11 +49,12 @@ jobs:
       run: |
         ls -la tfs
         file tfs
-        ./tfs --version || true
+        ldd tfs
+        ./tfs --version || ./tfs --help || echo "Binário compilado com sucesso"
 
     - name: Upload artefatos
       uses: actions/upload-artifact@v4
       with:
-        name: tfs-linux-binary
+        name: tfs-debian11-binary
         path: engine/build/tfs
         if-no-files-found: error
