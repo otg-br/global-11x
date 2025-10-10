@@ -13,12 +13,17 @@ jobs:
     container: debian:11
 
     steps:
-    - name: Checkout código
+    - name: Instalar Git primeiro
+      run: |
+        apt-get update
+        apt-get install -y git
+
+    - name: Checkout código com submodules
       uses: actions/checkout@v4
       with:
         submodules: recursive
 
-    - name: Atualizar e instalar dependências
+    - name: Instalar dependências de compilação
       run: |
         apt-get update
         apt-get install -y \
@@ -33,8 +38,7 @@ jobs:
           libssl-dev \
           libcrypto++-dev \
           libpugixml-dev \
-          libfmt-dev \
-          git
+          libfmt-dev
 
     - name: Compilar TFS
       working-directory: ./engine
@@ -49,7 +53,6 @@ jobs:
       run: |
         ls -la tfs
         file tfs
-        ldd tfs
         ./tfs --version || ./tfs --help || echo "Binário compilado com sucesso"
 
     - name: Upload artefatos
