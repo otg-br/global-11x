@@ -645,23 +645,12 @@ void Creature::onDeath()
 	const uint32_t inFightTicks = g_config.getNumber(ConfigManager::PZ_LOCKED);
 	int32_t mostDamage = 0;
 	std::map<Creature*, uint64_t> experienceMap;
-	
-	////Lista para armazenar todos os atacantes que devem receber frag
-	std::vector<Creature*> killers;
-	
 	for (const auto& it : damageMap) {
 		if (Creature* attacker = g_game.getCreatureByID(it.first)) {
 			CountBlock_t cb = it.second;
 			if ((cb.total > mostDamage && (timeNow - cb.ticks <= inFightTicks))) {
 				mostDamage = cb.total;
 				mostDamageCreature = attacker;
-			}
-
-			////Registrar todos os atacantes válidos (apenas jogadores)
-			if (attacker != this && (timeNow - cb.ticks <= inFightTicks)) {
-				if (attacker->getPlayer()) {
-					killers.push_back(attacker);
-				}
 			}
 
 			if (attacker != this) {
@@ -682,13 +671,6 @@ void Creature::onDeath()
 					tmpIt->second += gainExp;
 				}
 			}
-		}
-	}
-
-	////Atribuir frag para todos os atacantes
-	for (Creature* killer : killers) {
-		if (killer && killer != this) {
-			killer->onKilledCreature(this);
 		}
 	}
 
@@ -715,6 +697,7 @@ void Creature::onDeath()
 	if (droppedCorpse) {
 		g_game.removeCreature(this, false);
 	}
+
 }
 
 bool Creature::dropCorpse(Creature* lastHitCreature, Creature* mostDamageCreature, bool lastHitUnjustified, bool mostDamageUnjustified)
