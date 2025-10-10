@@ -1,0 +1,59 @@
+name: Linux Build
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-linux:
+    name: Build TFS 1.3 for Linux
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Instalar dependências
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          cmake \
+          libboost-system-dev \
+          libboost-filesystem-dev \
+          libboost-thread-dev \
+          libboost-iostreams-dev \
+          liblua5.2-dev \
+          libmariadb-dev \
+          libssl-dev \
+          libcrypto++-dev \
+          libpugixml-dev \
+          libfmt-dev
+
+    - name: Configurar CMake
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+
+    - name: Compilar
+      run: |
+        cd build
+        make -j$(nproc)
+
+    - name: Testar binário
+      run: |
+        cd build
+        file tfs
+        ./tfs --version || true
+
+    - name: Upload artefatos
+      uses: actions/upload-artifact@v4
+      with:
+        name: tfs-linux-binary
+        path: build/tfs
+        if-no-files-found: error
