@@ -1,4 +1,4 @@
-name: Linux Build
+name: Linux Build - Debian 11
 
 on:
   push:
@@ -7,20 +7,26 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build-linux:
-    name: Build TFS 1.3
-    runs-on: ubuntu-20.04
+  build-debian:
+    name: Build TFS 1.3 on Debian 11
+    runs-on: ubuntu-latest
+    container: debian:11
 
     steps:
-    - name: Checkout código
+    - name: Instalar Git primeiro
+      run: |
+        apt-get update
+        apt-get install -y git
+
+    - name: Checkout código com submodules
       uses: actions/checkout@v4
       with:
         submodules: recursive
 
-    - name: Instalar dependências Ubuntu 20.04
+    - name: Instalar dependências do Debian 11
       run: |
-        sudo apt-get update
-        sudo apt-get install -y \
+        apt-get update
+        apt-get install -y \
           build-essential \
           cmake \
           libboost-system-dev \
@@ -28,7 +34,7 @@ jobs:
           libboost-thread-dev \
           libboost-iostreams-dev \
           liblua5.2-dev \
-          libmysqlclient-dev \
+          default-libmysqlclient-dev \
           libssl-dev \
           libcrypto++-dev \
           libpugixml-dev \
@@ -42,21 +48,42 @@ jobs:
         cmake .. -DCMAKE_BUILD_TYPE=Release
         make -j$(nproc)
 
-    - name: Verificar binário (sem executar)
+    - name: Verificação segura do binário
       working-directory: ./engine/build
       run: |
-        echo "=== Verificando binário ==="
+        echo "🔍 Verificando binário no Debian 11..."
+        
+        # Verifica se o arquivo existe
+        if [ ! -f "tfs" ]; then
+          echo "❌ Erro: Binário 'tfs' não encontrado"
+          exit 1
+        fi
+        
+        # Informações básicas do arquivo
+        echo "📁 Informações do arquivo:"
         ls -la tfs
+        echo ""
+        
+        # Tipo do binário
+        echo "📦 Tipo do binário:"
         file tfs
-        echo "=== Verificando dependências ==="
+        echo ""
+        
+        # Dependências
+        echo "🔗 Dependências vinculadas:"
         ldd tfs
-        echo "=== Tamanho do binário ==="
+        echo ""
+        
+        # Tamanho
+        echo "📏 Tamanho do binário:"
         du -h tfs
-        echo "✅ Binário compilado com sucesso!"
+        echo ""
+        
+        echo "✅ Binário compilado com sucesso no Debian 11!"
 
     - name: Upload artefatos
       uses: actions/upload-artifact@v4
       with:
-        name: tfs-linux-binary
+        name: tfs-debian11-binary
         path: engine/build/tfs
         if-no-files-found: error
