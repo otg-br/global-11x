@@ -4,7 +4,7 @@
 	Discord: Ly�#8767
 ]]
 
-local Config = require('data/scripts/events/events/magic-roulette/config')
+local Config = require('data/scripts/events/events/magic-roulette/config_roulette')
 local Animation = require('data/scripts/events/events/magic-roulette/lib/animation')
 local DatabaseRoulettePlays = require('data/scripts/events/events/magic-roulette/lib/database/roulette_plays')
 local Strings = require('data/scripts/events/events/magic-roulette/lib/core/strings')

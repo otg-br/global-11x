@@ -1,5 +1,5 @@
 -- Requires
-local Config = require('data/scripts/events/events/magic-roulette/config')
+local Config = require('data/scripts/events/events/magic-roulette/config_roulette')
 local Roulette = require('data/scripts/events/events/magic-roulette/lib/roulette')
 local Strings = require('data/scripts/events/events/magic-roulette/lib/core/strings')
 local DatabaseRoulettePlays = require('data/scripts/events/events/magic-roulette/lib/database/roulette_plays')

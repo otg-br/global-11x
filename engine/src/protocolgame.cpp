@@ -4269,7 +4269,7 @@ void ProtocolGame::sendInventoryImbuements(const std::map<slots_t, Item*> items)
 			msg.addByte(0x01);
 			msg.addString(imbuement->getName());
 			msg.add<uint16_t>(imbuement->getIconID());
-			msg.add<uint32_t>(0); // Duration placeholder
+			msg.add<uint32_t>(imbuementId >> 8);
 
 			const Tile* playerTile = player->getTile();
 			// Check if the player is in a protection zone
