@@ -472,6 +472,7 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 	if(otcV8StringLength == 5 && msg.getString(5) == "OTCv8") {
 		otclientV8 = msg.get<uint16_t>(); // 253, 260, 261, ...
 	}
+	supportsExtendedMagicEffects = otclientV8 != 0 || operatingSystem >= CLIENTOS_OTCLIENT_LINUX;
 
 	if (version < g_config.getNumber(ConfigManager::VERSION_MIN) || version > g_config.getNumber(ConfigManager::VERSION_MAX)) {
 		std::ostringstream ss;

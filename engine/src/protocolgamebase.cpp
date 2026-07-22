@@ -750,15 +750,17 @@ void ProtocolGameBase::sendChannel(uint16_t channelId, const std::string& channe
 
 void ProtocolGameBase::sendMagicEffect(const Position& pos, uint16_t type)
 {
-	if (!canSee(pos)) {
+	if (!canSee(pos) || (!supportsExtendedMagicEffects && type > std::numeric_limits<uint8_t>::max())) {
 		return;
 	}
 
 	NetworkMessage msg;
 	msg.addByte(0x83);
 	msg.addPosition(pos);
-	if(version < 1220) {
+	if (supportsExtendedMagicEffects) {
 		msg.add<uint16_t>(type);
+	} else if (version < 1220) {
+		msg.addByte(static_cast<uint8_t>(type));
 	} else {
 		msg.addByte(0x83);
 		msg.addByte(0x1);

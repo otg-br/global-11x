@@ -17,5 +17,16 @@
     "cryptopp",
     "luajit"
   ],
+  "overrides": [
+    {
+      "name": "boost-modular-build-helper",
+      "version": "1.84.0",
+      "port-version": 1
+    },
+    {
+      "name": "cryptopp",
+      "version": "2026-03-02"
+    }
+  ],
   "builtin-baseline": "215a2535590f1f63788ac9bd2ed58ad15e6afdff"
 }

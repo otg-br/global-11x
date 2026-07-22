@@ -140,6 +140,7 @@ class ProtocolGameBase : public Protocol {
 		uint32_t challengeTimestamp = 0;
 		uint16_t version = CLIENT_VERSION_MIN;
 		uint32_t clientVersion = 0;
+		bool supportsExtendedMagicEffects = false;
 
 		uint8_t challengeRandom = 0;
 

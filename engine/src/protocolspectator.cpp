@@ -65,6 +65,7 @@ void ProtocolSpectator::onRecvFirstMessage(NetworkMessage& msg)
 
 	operatingSystem = (OperatingSystem_t)msg.get<uint16_t>();
 	version = msg.get<uint16_t>();
+	supportsExtendedMagicEffects = operatingSystem >= CLIENTOS_OTCLIENT_LINUX;
 	if (version >= 1111) {
 		setChecksumMethod(CHECKSUM_METHOD_SEQUENCE);
 	} else if (version >= 830) {
