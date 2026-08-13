@@ -228,7 +228,7 @@ bool Npc::canSee(const Position& pos) const
 	if (pos.z != getPosition().z) {
 		return false;
 	}
-	return Creature::canSee(getPosition(), pos, 3, 3);
+	return Creature::canSee(getPosition(), pos, 10, 10);
 }
 
 std::string Npc::getDescription(int32_t) const
@@ -253,12 +253,14 @@ void Npc::onCreatureAppear(Creature* creature, bool isLogin)
 			npcEventHandler->onCreatureAppear(creature);
 		}
 	} else if (Player* player = creature->getPlayer()) {
-		if (npcEventHandler) {
-			npcEventHandler->onCreatureAppear(creature);
-		}
+		if (canSee(player->getPosition())) {
+			if (npcEventHandler) {
+				npcEventHandler->onCreatureAppear(creature);
+			}
 
-		spectators.insert(player);
-		updateIdleStatus();
+			spectators.insert(player);
+			updateIdleStatus();
+		}
 	}
 }
 
@@ -286,21 +288,21 @@ void Npc::onCreatureMove(Creature* creature, const Tile* newTile, const Position
 {
 	Creature::onCreatureMove(creature, newTile, newPos, oldTile, oldPos, teleport);
 
-	if (creature == this || creature->getPlayer()) {
+	if (creature == this) {
 		if (npcEventHandler) {
 			npcEventHandler->onCreatureMove(creature, oldPos, newPos);
 		}
-
-		if (creature != this) {
-			Player* player = creature->getPlayer();
-
-			// if player is now in range, add to spectators list, otherwise erase
-			if (player->canSee(position)) {
-				spectators.insert(player);
-			} else {
-				spectators.erase(player);
+	} else if (Player* player = creature->getPlayer()) {
+		// only react to players on the same floor and within range (NPC's own vision)
+		if (canSee(player->getPosition())) {
+			if (npcEventHandler) {
+				npcEventHandler->onCreatureMove(creature, oldPos, newPos);
 			}
 
+			spectators.insert(player);
+			updateIdleStatus();
+		} else if (spectators.find(player) != spectators.end()) {
+			spectators.erase(player);
 			updateIdleStatus();
 		}
 	}
@@ -332,7 +334,7 @@ void Npc::onThink(uint32_t interval)
 {
 	Creature::onThink(interval);
 
-	if (npcEventHandler) {
+	if (!isIdle && npcEventHandler) {
 		npcEventHandler->onThink();
 	}
 
