@@ -26,6 +26,12 @@
 extern Game g_game;
 Decay g_decay;
 
+// Maximum number of items processed per checkDecay() tick. This caps the amount
+// of synchronous work (and therefore the CPU spike) when a large burst of items
+// expires at once, spreading the load across several scheduler ticks instead of
+// stalling a single tick.
+static constexpr size_t MAX_DECAY_PER_TICK = 1000;
+
 void Decay::startDecay(Item* item, int32_t duration)
 {
 	if (item->hasAttribute(ITEM_ATTRIBUTE_DURATION_TIMESTAMP)) {
@@ -91,16 +97,23 @@ void Decay::checkDecay()
 	int64_t timestamp = OTSYS_TIME();
 
 	std::vector<Item*> tempItems;
-	tempItems.reserve(32);// Small preallocation
+	tempItems.reserve(MAX_DECAY_PER_TICK);
 
 	auto it = decayMap.begin(), end = decayMap.end();
+	size_t processed = 0;
 	while (it != end) {
 		if (it->first > timestamp) {
 			break;
 		}
 
+		if (processed >= MAX_DECAY_PER_TICK) {
+			// Too much work for a single tick, leave the rest for the next one.
+			break;
+		}
+
 		// Iterating here is unsafe so let's copy our items into temporary vector
 		std::vector<Item*>& decayItems = it->second;
+		processed += decayItems.size();
 		tempItems.insert(tempItems.end(), decayItems.begin(), decayItems.end());
 		it = decayMap.erase(it);
 	}

@@ -2320,11 +2320,6 @@ void Item::setUniqueId(uint16_t n, bool force /* = false*/)
 
 bool Item::canDecay() const
 {
-	const Item* item = dynamic_cast<const Item*>(this);
-	if (!item || item == nullptr) {
-		return false;
-	}
-
 	Cylinder* dynamicParent = dynamic_cast<Cylinder*>(parent);
 	if (dynamicParent == nullptr) {
 		return false;
