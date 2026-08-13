@@ -363,8 +363,9 @@ void Map::getSpectators(FastSpectatorVector& spectators, const Position& centerP
 				continue;
 			}
 
-			auto creatures = leaf->getSpectators().getCreatures();
-			uint16_t capacity = leaf->getSpectators().getCapacity();
+			const auto& holder = leaf->getSpectators();
+			auto creatures = holder.getCreatures();
+			uint16_t capacity = holder.getCapacity();
 			for (uint16_t i = 0; i < capacity; ++i) {
 				auto& it = creatures[i];
 				if (!it.creature) {
@@ -379,8 +380,12 @@ void Map::getSpectators(FastSpectatorVector& spectators, const Position& centerP
 					continue;
 				}
 
-				int_fast16_t offsetZ = Position::getOffsetZ(centerPos, it.pos);
-				if ((min_y + offsetZ) > it.pos.y || (max_y + offsetZ) < it.pos.y || (min_x + offsetZ) > it.pos.x || (max_x + offsetZ) < it.pos.x) {
+				if (multifloor) {
+					int_fast16_t offsetZ = Position::getOffsetZ(centerPos, it.pos);
+					if ((min_y + offsetZ) > it.pos.y || (max_y + offsetZ) < it.pos.y || (min_x + offsetZ) > it.pos.x || (max_x + offsetZ) < it.pos.x) {
+						continue;
+					}
+				} else if (min_y > it.pos.y || max_y < it.pos.y || min_x > it.pos.x || max_x < it.pos.x) {
 					continue;
 				}
 
