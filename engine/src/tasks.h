@@ -21,6 +21,7 @@
 #define FS_TASKS_H_A66AC384766041E59DCA059DAB6E1976
 
 #include <condition_variable>
+#include <deque>
 #include "thread_holder_base.h"
 #include "enums.h"
 #include "stats.h"
@@ -93,7 +94,7 @@ class Dispatcher : public ThreadHolder<Dispatcher> {
 		std::mutex taskLock;
 		std::condition_variable taskSignal;
 
-		std::list<Task*> taskList;
+		std::deque<Task*> taskList;
 	uint64_t dispatcherCycle = 0;
 	int dispatcherId = 0;
 };

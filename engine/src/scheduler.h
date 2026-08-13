@@ -23,6 +23,7 @@
 #include "tasks.h"
 #include <unordered_set>
 #include <queue>
+#include <vector>
 
 #include "thread_holder_base.h"
 
@@ -74,7 +75,7 @@ class Scheduler : public ThreadHolder<Scheduler>
 		std::condition_variable eventSignal;
 
 		uint32_t lastEventId {0};
-		std::priority_queue<SchedulerTask*, std::deque<SchedulerTask*>, TaskComparator> eventList;
+		std::priority_queue<SchedulerTask*, std::vector<SchedulerTask*>, TaskComparator> eventList;
 		std::unordered_set<uint32_t> eventIds;
 };
 
