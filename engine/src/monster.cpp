@@ -94,7 +94,13 @@ void Monster::removeList()
 
 bool Monster::canSee(const Position& pos) const
 {
-	return Creature::canSee(getPosition(), pos, 10, 10); //jlcvp FIX - range 10 Avoids killing monster without reaction
+	// Monsters only perceive creatures on their own floor. This prevents players
+	// walking on floors above/below from waking up (and making this monster think,
+	// search targets and walk) monsters that should stay idle - a major CPU drain.
+	if (pos.z != getPosition().z) {
+		return false;
+	}
+	return Creature::canSee(getPosition(), pos, 10, 10);
 }
 
 bool Monster::canWalkOnFieldType(CombatType_t combatType) const
@@ -155,7 +161,9 @@ void Monster::onCreatureAppear(Creature* creature, bool isLogin)
 		updateTargetList();
 		updateIdleStatus();
 	} else {
-		onCreatureEnter(creature);
+		if (canSee(creature->getPosition())) {
+			onCreatureEnter(creature);
+		}
 	}
 }
 
@@ -378,7 +386,7 @@ void Monster::updateTargetList()
 	}
 
 	SpectatorHashSet spectators;
-	g_game.map.getSpectators(spectators, position, true);
+	g_game.map.getSpectators(spectators, position, false);
 	spectators.erase(this);
 	for (Creature* spectator : spectators) {
 		if (canSee(spectator->getPosition())) {
