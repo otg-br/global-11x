@@ -19,6 +19,15 @@ only_commits:
     - /engine/cmake/
 
 install:
+  # Vai até a pasta de instalação padrão do vcpkg no AppVeyor
+  - cmd: cd C:\tools\vcpkg
+  # Puxa as atualizações mais recentes do repositório oficial
+  - cmd: git pull
+  # Recompila o vcpkg para garantir que está na versão mais nova
+  - cmd: .\bootstrap-vcpkg.bat
+  # Volta para a pasta do seu projeto global11
+  - cmd: cd %APPVEYOR_BUILD_FOLDER%
+  # Finalmente, roda a instalação das bibliotecas
   - cmd: vcpkg install
 
 build:
