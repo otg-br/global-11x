@@ -754,6 +754,9 @@ AStarNodes::AStarNodes(uint32_t x, uint32_t y)
 	startNode.y = y;
 	startNode.f = 0;
 	nodeTable[(x << 16) | y] = nodes;
+
+	openHeap.push_back(0);
+	std::push_heap(openHeap.begin(), openHeap.end(), OpenHeapComparator{nodes});
 }
 
 AStarNode* AStarNodes::createOpenNode(AStarNode* parent, uint32_t x, uint32_t y, int_fast32_t f, int_fast32_t g)
@@ -772,27 +775,22 @@ AStarNode* AStarNodes::createOpenNode(AStarNode* parent, uint32_t x, uint32_t y,
 	node->y = y;
 	node->f = f;
 	node->g = g;
+
+	openHeap.push_back(retNode);
+	std::push_heap(openHeap.begin(), openHeap.end(), OpenHeapComparator{nodes});
 	return node;
 }
 
 AStarNode* AStarNodes::getBestNode()
 {
-	int32_t best_node_f = std::numeric_limits<int32_t>::max();
-	int32_t best_node = -1;
-	for (size_t i = 0; i < curNode; i++) {
-		if (!openNodes[i]) {
-			continue;
+	OpenHeapComparator comparator{nodes};
+	while (!openHeap.empty()) {
+		std::pop_heap(openHeap.begin(), openHeap.end(), comparator);
+		size_t index = openHeap.back();
+		openHeap.pop_back();
+		if (openNodes[index]) {
+			return nodes + index;
 		}
-		
-		int32_t cost = nodes[i].f + nodes[i].g;
-		if (cost < best_node_f) {
-			best_node_f = cost;
-			best_node = i;
-		}
-	}
-
-	if (best_node >= 0) {
-		return nodes + best_node;
 	}
 	return nullptr;
 }
@@ -813,6 +811,9 @@ void AStarNodes::openNode(AStarNode* node)
 		openNodes[index] = true;
 		--closedNodes;
 	}
+
+	openHeap.push_back(index);
+	std::push_heap(openHeap.begin(), openHeap.end(), OpenHeapComparator{nodes});
 }
 
 int_fast32_t AStarNodes::getClosedNodes() const

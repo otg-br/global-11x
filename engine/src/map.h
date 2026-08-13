@@ -66,8 +66,16 @@ class AStarNodes
 		static int_fast32_t getTileWalkCost(const Creature& creature, const Tile* tile);
 
 	private:
+		struct OpenHeapComparator {
+			const AStarNode* nodes;
+			bool operator()(size_t a, size_t b) const {
+				return (nodes[a].f + nodes[a].g) > (nodes[b].f + nodes[b].g);
+			}
+		};
+
 		AStarNode nodes[MAX_NODES];
 		bool openNodes[MAX_NODES];
+		std::vector<size_t> openHeap;
 		std::unordered_map<uint32_t, AStarNode*> nodeTable;
 		size_t curNode;
 		int_fast32_t closedNodes;
