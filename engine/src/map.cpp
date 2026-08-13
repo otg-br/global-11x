@@ -94,6 +94,23 @@ Tile* Map::getTile(uint16_t x, uint16_t y, uint8_t z) const
 	return floor->tiles[x & FLOOR_MASK][y & FLOOR_MASK];
 }
 
+Tile* Map::getTile(const QTreeLeafNode* leaf, uint16_t x, uint16_t y, uint8_t z) const
+{
+	if (z >= MAP_MAX_LAYERS) {
+		return nullptr;
+	}
+
+	if (!leaf) {
+		return nullptr;
+	}
+
+	const Floor* floor = leaf->getFloor(z);
+	if (!floor) {
+		return nullptr;
+	}
+	return floor->tiles[x & FLOOR_MASK][y & FLOOR_MASK];
+}
+
 void Map::setTile(uint16_t x, uint16_t y, uint8_t z, Tile* newTile)
 {
 	if (z >= MAP_MAX_LAYERS) {

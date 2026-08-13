@@ -280,6 +280,7 @@ class Map
 		  * \returns A pointer to that tile.
 		  */
 		Tile* getTile(uint16_t x, uint16_t y, uint8_t z) const;
+		Tile* getTile(const QTreeLeafNode* leaf, uint16_t x, uint16_t y, uint8_t z) const;
 		Tile* getTile(const Position& pos) const {
 			return getTile(pos.x, pos.y, pos.z);
 		}

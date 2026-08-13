@@ -641,9 +641,28 @@ void ProtocolGameBase::GetMapDescription(int32_t x, int32_t y, int32_t z, int32_
 
 void ProtocolGameBase::GetFloorDescription(NetworkMessage& msg, int32_t x, int32_t y, int32_t z, int32_t width, int32_t height, int32_t offset, int32_t& skip)
 {
+	const QTreeLeafNode* cachedLeaf = nullptr;
+	uint16_t cachedLeafX = 0, cachedLeafY = 0;
+
 	for (int32_t nx = 0; nx < width; nx++) {
 		for (int32_t ny = 0; ny < height; ny++) {
-			Tile* tile = g_game.map.getTile(x + nx + offset, y + ny + offset, z);
+			int32_t tileX = x + nx + offset;
+			int32_t tileY = y + ny + offset;
+
+			uint16_t leafX = static_cast<uint16_t>(tileX >> FLOOR_BITS);
+			uint16_t leafY = static_cast<uint16_t>(tileY >> FLOOR_BITS);
+
+			const QTreeLeafNode* leaf;
+			if (!cachedLeaf || leafX != cachedLeafX || leafY != cachedLeafY) {
+				leaf = g_game.map.getQTNode(static_cast<uint16_t>(tileX), static_cast<uint16_t>(tileY));
+				cachedLeaf = leaf;
+				cachedLeafX = leafX;
+				cachedLeafY = leafY;
+			} else {
+				leaf = cachedLeaf;
+			}
+
+			Tile* tile = g_game.map.getTile(leaf, static_cast<uint16_t>(tileX), static_cast<uint16_t>(tileY), z);
 			if (tile) {
 				if (skip >= 0) {
 					msg.addByte(skip);
