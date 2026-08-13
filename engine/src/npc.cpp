@@ -228,7 +228,7 @@ bool Npc::canSee(const Position& pos) const
 	if (pos.z != getPosition().z) {
 		return false;
 	}
-	return Creature::canSee(getPosition(), pos, 10, 10);
+	return Creature::canSee(getPosition(), pos, 3, 3);
 }
 
 std::string Npc::getDescription(int32_t) const
