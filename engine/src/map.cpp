@@ -237,14 +237,13 @@ void Map::moveCreature(Creature& creature, Tile& newTile, bool forceTeleport/* =
 		getSpectators(spectators, oldPos, true, false, maxViewportX + mnorth, maxViewportX + msouth, maxViewportY + mwest, +maxViewportY + meast);
 	}
 
-	std::vector<int32_t> oldStackPosVector;
+	// gather players once (monsters are handled via onCreatureMove below)
+	std::vector<std::pair<Player*, int32_t>> playerSpectators;
+	playerSpectators.reserve(spectators.size());
 	for (Creature* spectator : spectators) {
 		if (Player* tmpPlayer = spectator->getPlayer()) {
-			if (tmpPlayer->canSeeCreature(&creature)) {
-				oldStackPosVector.push_back(oldTile.getClientIndexOfCreature(tmpPlayer, &creature));
-			} else {
-				oldStackPosVector.push_back(-1);
-			}
+			int32_t stackpos = tmpPlayer->canSeeCreature(&creature) ? oldTile.getClientIndexOfCreature(tmpPlayer, &creature) : -1;
+			playerSpectators.emplace_back(tmpPlayer, stackpos);
 		}
 	}
 
@@ -280,14 +279,11 @@ void Map::moveCreature(Creature& creature, Tile& newTile, bool forceTeleport/* =
 	}
 
 	//send to client
-	size_t i = 0;
-	for (Creature* spectator : spectators) {
-		if (Player* tmpPlayer = spectator->getPlayer()) {
-			//Use the correct stackpos
-			int32_t stackpos = oldStackPosVector[i++];
-			if (stackpos != -1) {
-				tmpPlayer->sendCreatureMove(&creature, newPos, newTile.getStackposOfCreature(tmpPlayer, &creature), oldPos, stackpos, teleport);
-			}
+	for (const auto& entry : playerSpectators) {
+		Player* tmpPlayer = entry.first;
+		int32_t stackpos = entry.second;
+		if (stackpos != -1) {
+			tmpPlayer->sendCreatureMove(&creature, newPos, newTile.getStackposOfCreature(tmpPlayer, &creature), oldPos, stackpos, teleport);
 		}
 	}
 
