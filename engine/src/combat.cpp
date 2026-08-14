@@ -671,10 +671,12 @@ void Combat::doCombat(Creature* caster, Creature* target) const
 
 	} else {
 		if (!params.aggressive || (caster != target && Combat::canDoCombat(caster, target) == RETURNVALUE_NOERROR)) {
-			SpectatorHashSet spectators;
+		SpectatorHashSet spectators;
+		if (params.impactEffect != CONST_ME_NONE) {
 			g_game.map.getSpectators(spectators, target->getPosition(), true, true);
+		}
 
-			if (params.origin != ORIGIN_MELEE) {
+		if (params.origin != ORIGIN_MELEE) {
 				for (const auto& condition : params.conditionList) {
 					if (caster->getMonster() && (target->getMonster() || (target->getMaster() && !target->getMaster()->getPlayer()))) {
 						continue;
@@ -729,28 +731,31 @@ void Combat::doCombat(Creature* caster, const Position& position) const
 			getCombatArea(position, position, area.get(), tileList);
 		}
 
+		// spectators are only needed to propagate the impact magic effect
 		SpectatorHashSet spectators;
-		uint32_t maxX = 0;
-		uint32_t maxY = 0;
+		if (params.impactEffect != CONST_ME_NONE) {
+			uint32_t maxX = 0;
+			uint32_t maxY = 0;
 
-		//calculate the max viewable range
-		for (Tile* tile : tileList) {
-			const Position& tilePos = tile->getPosition();
+			//calculate the max viewable range
+			for (Tile* tile : tileList) {
+				const Position& tilePos = tile->getPosition();
 
-			uint32_t diff = Position::getDistanceX(tilePos, position);
-			if (diff > maxX) {
-				maxX = diff;
+				uint32_t diff = Position::getDistanceX(tilePos, position);
+				if (diff > maxX) {
+					maxX = diff;
+				}
+
+				diff = Position::getDistanceY(tilePos, position);
+				if (diff > maxY) {
+					maxY = diff;
+				}
 			}
 
-			diff = Position::getDistanceY(tilePos, position);
-			if (diff > maxY) {
-				maxY = diff;
-			}
+			const int32_t rangeX = maxX + Map::maxViewportX;
+			const int32_t rangeY = maxY + Map::maxViewportY;
+			g_game.map.getSpectators(spectators, position, true, true, rangeX, rangeX, rangeY, rangeY);
 		}
-
-		const int32_t rangeX = maxX + Map::maxViewportX;
-		const int32_t rangeY = maxY + Map::maxViewportY;
-		g_game.map.getSpectators(spectators, position, true, true, rangeX, rangeX, rangeY, rangeY);
 
 		postCombatEffects(caster, position, params);
 
@@ -912,6 +917,15 @@ void Combat::doAreaCombat(Creature* caster, const Position& position, const Area
 	}
 
 	Player* casterPlayer = caster ? caster->getPlayer() : nullptr;
+	bool casterIsPlayer = false;
+	if (caster) {
+		if (casterPlayer) {
+			casterIsPlayer = true;
+		} else if (Creature* master = caster->getMaster()) {
+			casterIsPlayer = master->getPlayer() != nullptr;
+		}
+	}
+
 	int32_t criticalPrimary = 0;
 	int32_t criticalSecondary = 0;
 	if (casterPlayer) {
@@ -926,29 +940,32 @@ void Combat::doAreaCombat(Creature* caster, const Position& position, const Area
 		}
 	}
 
-	uint32_t maxX = 0;
-	uint32_t maxY = 0;
-
-	//calculate the max viewable range
-	for (Tile* tile : tileList) {
-		const Position& tilePos = tile->getPosition();
-
-		uint32_t diff = Position::getDistanceX(tilePos, position);
-		if (diff > maxX) {
-			maxX = diff;
-		}
-
-		diff = Position::getDistanceY(tilePos, position);
-		if (diff > maxY) {
-			maxY = diff;
-		}
-	}
-
-	const int32_t rangeX = maxX + Map::maxViewportX;
-	const int32_t rangeY = maxY + Map::maxViewportY;
-
+	// spectators are only needed to propagate the impact magic effect
 	SpectatorHashSet spectators;
-	g_game.map.getSpectators(spectators, position, true, true, rangeX, rangeX, rangeY, rangeY);
+	if (params.impactEffect != CONST_ME_NONE) {
+		uint32_t maxX = 0;
+		uint32_t maxY = 0;
+
+		//calculate the max viewable range
+		for (Tile* tile : tileList) {
+			const Position& tilePos = tile->getPosition();
+
+			uint32_t diff = Position::getDistanceX(tilePos, position);
+			if (diff > maxX) {
+				maxX = diff;
+			}
+
+			diff = Position::getDistanceY(tilePos, position);
+			if (diff > maxY) {
+				maxY = diff;
+			}
+		}
+
+		const int32_t rangeX = maxX + Map::maxViewportX;
+		const int32_t rangeY = maxY + Map::maxViewportY;
+
+		g_game.map.getSpectators(spectators, position, true, true, rangeX, rangeX, rangeY, rangeY);
+	}
 
 	postCombatEffects(caster, position, params);
 
@@ -977,22 +994,11 @@ void Combat::doAreaCombat(Creature* caster, const Position& position, const Area
 
 				if (!params.aggressive || (caster != creature && Combat::canDoCombat(caster, creature) == RETURNVALUE_NOERROR)) {
 					CombatDamage damageCopy = damage; // we cannot avoid copying here, because we don't know if it's player combat or not, so we can't modify the initial damage.
-					bool playerCombatReduced = false;
-					if ((damageCopy.primary.value < 0 || damageCopy.secondary.value < 0) && caster) {
-						Player* targetPlayer = creature->getPlayer();
-						bool casterIsPlayer = false;
-						if (caster) {
-							if (caster->getPlayer()) {
-								casterIsPlayer = true;
-							} else {
-								Creature* casterMaster = caster ? caster->getMaster() : nullptr;
-								if (casterMaster) {
-									casterIsPlayer = casterMaster->getPlayer() != nullptr ? true : false;
-								}
-							}
-						}
+				bool playerCombatReduced = false;
+				if ((damageCopy.primary.value < 0 || damageCopy.secondary.value < 0) && caster) {
+					Player* targetPlayer = creature->getPlayer();
 
-						if (targetPlayer && casterIsPlayer && targetPlayer->getSkull() != SKULL_BLACK) {
+					if (targetPlayer && casterIsPlayer && targetPlayer->getSkull() != SKULL_BLACK) {
 							damageCopy.primary.value /= 2;
 							damageCopy.secondary.value /= 2;
 							playerCombatReduced = true;
