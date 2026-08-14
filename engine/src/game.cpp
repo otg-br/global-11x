@@ -5502,17 +5502,14 @@ bool Game::internalCreatureSay(Creature* creature, SpeakClasses type, const std:
 		}
 	}
 
-	//send to client
-	for (Creature* spectator : ((isSpectatorsPtrInvalid) ? spectators : *spectatorsPtr)) {
+	//send to client + event method (single pass over spectators)
+	const SpectatorHashSet& spectatorList = (isSpectatorsPtrInvalid) ? spectators : *spectatorsPtr;
+	for (Creature* spectator : spectatorList) {
 		if (Player* tmpPlayer = spectator->getPlayer()) {
 			if (!ghostMode || tmpPlayer->canSeeCreature(creature)) {
 				tmpPlayer->sendCreatureSay(creature, type, text, pos);
 			}
 		}
-	}
-
-	//event method
-	for (Creature* spectator : ((isSpectatorsPtrInvalid) ? spectators : *spectatorsPtr)) {
 		spectator->onCreatureSay(creature, type, text);
 		if (creature != spectator) {
 			g_events->eventCreatureOnHear(spectator, creature, text, type);
@@ -5903,19 +5900,15 @@ void Game::combatGetEffect(CombatType_t combatType, Creature* target, uint8_t& e
 bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage& damage, bool isEvent)
 {
 	const Position& targetPos = target->getPosition();
+
+	Player* attackerPlayer = attacker ? attacker->getPlayer() : nullptr;
+	Player* targetPlayer = target->getPlayer();
+	if (attackerPlayer && targetPlayer && attackerPlayer->getSkull() == SKULL_BLACK && attackerPlayer->getSkullClient(targetPlayer) == SKULL_NONE) {
+		return false;
+	}
+
 	if (damage.primary.value > 0) {
 		if (target->getHealth() <= 0) {
-			return false;
-		}
-		Player* attackerPlayer;
-		if (attacker) {
-			attackerPlayer = attacker->getPlayer();
-		} else {
-			attackerPlayer = nullptr;
-		}
-
-		Player* targetPlayer = target->getPlayer();
-		if (attackerPlayer && targetPlayer && attackerPlayer->getSkull() == SKULL_BLACK && attackerPlayer->getSkullClient(targetPlayer) == SKULL_NONE) {
 			return false;
 		}
 
@@ -5996,18 +5989,6 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 				addMagicEffect(targetPos, CONST_ME_POFF);
 			}
 			return true;
-		}
-
-		Player* attackerPlayer;
-		if (attacker) {
-			attackerPlayer = attacker->getPlayer();
-		} else {
-			attackerPlayer = nullptr;
-		}
-
-		Player* targetPlayer = target->getPlayer();
-		if (attackerPlayer && targetPlayer && attackerPlayer->getSkull() == SKULL_BLACK && attackerPlayer->getSkullClient(targetPlayer) == SKULL_NONE) {
-			return false;
 		}
 
 		damage.primary.value = std::abs(damage.primary.value);
@@ -6315,20 +6296,15 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 bool Game::combatChangeMana(Creature* attacker, Creature* target, CombatDamage& damage)
 {
 	const Position& targetPos = target->getPosition();
+
+	Player* attackerPlayer = attacker ? attacker->getPlayer() : nullptr;
+	Player* targetPlayer = target->getPlayer();
+	if (attackerPlayer && targetPlayer && attackerPlayer->getSkull() == SKULL_BLACK && attackerPlayer->getSkullClient(targetPlayer) == SKULL_NONE) {
+		return false;
+	}
+
 	int32_t manaChange = damage.primary.value + damage.secondary.value;
 	if (manaChange > 0) {
-		Player* attackerPlayer;
-		if (attacker) {
-			attackerPlayer = attacker->getPlayer();
-		} else {
-			attackerPlayer = nullptr;
-		}
-
-		Player* targetPlayer = target->getPlayer();
-		if (attackerPlayer && targetPlayer && attackerPlayer->getSkull() == SKULL_BLACK && attackerPlayer->getSkullClient(targetPlayer) == SKULL_NONE) {
-			return false;
-		}
-
 		if (damage.origin != ORIGIN_NONE) {
 			const auto& events = target->getCreatureEvents(CREATURE_EVENT_MANACHANGE);
 			if (!events.empty()) {
@@ -6395,18 +6371,6 @@ bool Game::combatChangeMana(Creature* attacker, Creature* target, CombatDamage& 
 			if (!target->isInGhostMode()) {
 				addMagicEffect(targetPos, CONST_ME_POFF);
 			}
-			return false;
-		}
-
-		Player* attackerPlayer;
-		if (attacker) {
-			attackerPlayer = attacker->getPlayer();
-		} else {
-			attackerPlayer = nullptr;
-		}
-
-		Player* targetPlayer = target->getPlayer();
-		if (attackerPlayer && targetPlayer && attackerPlayer->getSkull() == SKULL_BLACK && attackerPlayer->getSkullClient(targetPlayer) == SKULL_NONE) {
 			return false;
 		}
 
